@@ -180,6 +180,16 @@
                                                                                         </constraints>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="Path 123"/>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                                                                <real key="value" value="10"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Path 123"/>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                                                                <real key="value" value="50"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
                                                                                     </textField>
                                                                                 </subviews>
                                                                                 <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
@@ -200,6 +210,13 @@
                                                                                         </constraints>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isPickerVisiblityToggleEnabled" value="YES"/>
+                                                                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="Path 123"/>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                                                                <real key="value" value="10"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
                                                                                     </textField>
                                                                                 </subviews>
                                                                                 <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
@@ -226,6 +243,9 @@
                                                                                         <real key="value" value="25"/>
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
+                                                                                <connections>
+                                                                                    <action selector="loginButtonPressed:" destination="FVS-3Q-OUx" eventType="touchUpInside" id="b7B-PA-mFs"/>
+                                                                                </connections>
                                                                             </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -253,7 +273,7 @@ VerySubtleGray</string>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="370"/>
+                                                        <real key="value" value="35"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -288,13 +308,28 @@ VerySubtleGray</string>
                             <constraint firstItem="Clh-U8-VKT" firstAttribute="trailing" secondItem="bcf-9I-gxp" secondAttribute="trailing" id="vd7-Cr-F6N"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cityTextField" destination="HZB-Y0-d5l" id="zaS-FG-gwk"/>
+                        <outlet property="emailTextField" destination="l2m-XX-jQq" id="5hK-8x-cBH"/>
+                        <outlet property="firstNameTextField" destination="mXI-d6-7ef" id="x1f-g5-wcT"/>
+                        <outlet property="lastNameTextField" destination="PaI-Re-bC3" id="PAy-Tq-EpB"/>
+                        <outlet property="loginButton" destination="QLc-TY-763" id="Tkg-9f-eiX"/>
+                        <outlet property="phoneTextField" destination="1xh-Jq-vNW" id="AaW-cd-rvd"/>
+                        <outlet property="pickUpAddressTextField" destination="3jv-VF-y3S" id="OWX-EL-QMe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHK-YJ-h2l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="875.57251908396938" y="-3.5211267605633805"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="QLc-TY-763">
+            <size key="intrinsicContentSize" width="67.666666666666671" height="36"/>
+        </designable>
+    </designables>
     <resources>
+        <image name="Path 123" width="10" height="5"/>
         <namedColor>
             <string key="name">
 VerySubtleGray</string>

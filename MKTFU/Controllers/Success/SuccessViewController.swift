@@ -1,13 +1,13 @@
 //
-//  CreateAccountViewController.swift
+//  SuccessViewController.swift
 //  MKTFU
 //
-//  Created by mac on 2023-01-31.
+//  Created by mac on 2023-02-03.
 //
 
 import UIKit
 
-class CreateAccountViewController: UIViewController {
+class SuccessViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
