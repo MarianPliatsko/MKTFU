@@ -9,6 +9,8 @@ import UIKit
 
 class CreatePasswordViewController: UIViewController {
     
+    //MARK: - Properties
+    
     let checkedImage = UIImage(named: "CheckedImage")
     let uncheckedImage = UIImage(named: "UncheckedImage")
     var isChecked: Bool = false
@@ -33,6 +35,8 @@ class CreatePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        createAccountButton.isEnabled = false
+        
         // Set default image for check mark
         checkMarkTermsAndPolicyButton.setImage(uncheckedImage, for: UIControl.State.normal)
         
@@ -48,13 +52,28 @@ class CreatePasswordViewController: UIViewController {
     }
     
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
-        print(sender)
+        showSuccessVC()
     }
     
     
-    // MARK: - Methods
+    //MARK: - Navigation methods
+    
+    // Show CreateAccount VC
+    func showSuccessVC() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Success", bundle: nil)
+        let createAccountVC = storyBoard.instantiateViewController(withIdentifier: "SuccessViewController")
+        createAccountVC.modalPresentationStyle = .fullScreen
+        self.show(createAccountVC, sender: self)
+    }
+
+    
+    // MARK: - Validation methods
     
     @objc func textFieldDidChange(_ textField: UITextField) {
+        validate()
+    }
+        
+    func validate() {
         
         guard let password = passwordTextField.text,
               let confirmPassword = confirmPasswordTextField.text else {return}
@@ -63,8 +82,8 @@ class CreatePasswordViewController: UIViewController {
         if validPassword == false {
         }
         
-        let one = validate(regEX: "^.{6,}$", password: password)
-        if one == false {
+        let sixCharacters = validateString(regEX: "^.{6,}$", password: password)
+        if sixCharacters == false {
             sixCharactersImage.image = UIImage(named: "Icon awesome-check-circle")
             passwordSecurityLevelLabel.isHidden = true
             reloadInputViews()
@@ -76,28 +95,28 @@ class CreatePasswordViewController: UIViewController {
             reloadInputViews()
         }
         
-        let two = validate(regEX: ".*[A-Z]+.*", password: password)
-        if two == false {
+        let oneUppercase = validateString(regEX: ".*[A-Z]+.*", password: password)
+        if oneUppercase == false {
             oneUppercaseImage.image = UIImage(named: "Icon awesome-check-circle")
         } else {
             oneUppercaseImage.image = UIImage(named: "Icon awesome-check-circle-fill")
         }
         
-        let three = validate(regEX: ".*[0-9]+.*", password: password)
-        if three == false {
+        let oneNumber = validateString(regEX: ".*[0-9]+.*", password: password)
+        if oneNumber == false {
             oneNumberImage.image = UIImage(named: "Icon awesome-check-circle")
         } else {
             oneNumberImage.image = UIImage(named: "Icon awesome-check-circle-fill")
         }
         
-        if one == true, two == true, three == true {
+        if sixCharacters == true, oneUppercase == true, oneNumber == true {
             passwordSecurityLevelLabel.isHidden = false
             passwordSecurityLevelLabel.textColor = UIColor.appColor(LPColor.GoodJobGreen)
             passwordSecurityLevelLabel.text = "Strong"
             reloadInputViews()
         }
         
-         if validPassword == true, password == confirmPassword, one == true, two == true, three == true, isChecked == true {
+         if validPassword == true, password == confirmPassword, sixCharacters == true, oneUppercase == true, oneNumber == true, isChecked == true {
             createAccountButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
             createAccountButton.isEnabled = true
             reloadInputViews()
@@ -109,25 +128,8 @@ class CreatePasswordViewController: UIViewController {
         reloadInputViews()
     }
     
-    //Change image of check mark
-    func checkMarkTapped() {
-        isChecked = !isChecked
-        
-        if isChecked == true {
-            checkMarkTermsAndPolicyButton.setImage(checkedImage, for: UIControl.State.normal)
-            createAccountButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
-            createAccountButton.isEnabled = true
-            reloadInputViews()
-        } else {
-            checkMarkTermsAndPolicyButton.setImage(uncheckedImage, for: UIControl.State.normal)
-            createAccountButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
-            createAccountButton.isEnabled = false
-            reloadInputViews()
-        }
-    }
-    
-    
-    func validate(regEX: String, password: String) -> Bool {
+    // Validate
+    func validateString(regEX: String, password: String) -> Bool {
         let passRegEx = regEX
         let trimmedString = password.trimmingCharacters(in: .whitespaces)
         let validatePassord = NSPredicate(format:"SELF MATCHES %@", passRegEx)
@@ -142,6 +144,21 @@ class CreatePasswordViewController: UIViewController {
         let validatePassord = NSPredicate(format:"SELF MATCHES %@", passRegEx)
         let isvalidatePass = validatePassord.evaluate(with: trimmedString)
         return isvalidatePass
+    }
+    
+    //MARK: - Change UI methods
+    
+    //Change image of check mark
+    func checkMarkTapped() {
+        isChecked.toggle()
+        
+        if isChecked == true {
+            checkMarkTermsAndPolicyButton.setImage(checkedImage, for: UIControl.State.normal)
+            validate()
+        } else {
+            checkMarkTermsAndPolicyButton.setImage(uncheckedImage, for: UIControl.State.normal)
+            validate()
+        }
     }
 }
 

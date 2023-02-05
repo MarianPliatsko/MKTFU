@@ -29,6 +29,7 @@ class CreateAccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        loginButton.isEnabled = false
         phoneTextField.delegate = self
         
         thePicker.delegate = self
@@ -83,8 +84,7 @@ class CreateAccountViewController: UIViewController {
         if isValidatePhone == false {
             print("Invalid phone number")
         }
-        let pickupAddress = validatePickupAddress(adress: address)
-        if pickupAddress == false {
+        if pickUpAddressTextField.text?.isEmpty == true {
             print("Incorrect pickup address")
         }
         if isValideCity == false {
@@ -93,15 +93,15 @@ class CreateAccountViewController: UIViewController {
         if cityTextField.text == nil || cityTextField.text == "" {
             cityTextField.text = cityNamesData[0]
         }
-        if isValidateFirstName == true, isValidateLastName == true, isValidateEmail == true, isValidatePhone == true, pickupAddress == true, isValideCity == true {
+        if isValidateFirstName == true, isValidateLastName == true, isValidateEmail == true, isValidatePhone == true, pickUpAddressTextField.text?.isEmpty == false, isValideCity == true {
             
-//            loginButton.isEnabled = true
+            loginButton.isEnabled = true
             loginButton.backgroundColor = UIColor.appColor(LPColor.WarningYellow)
             loginButton.setTitle("Next", for: .normal)
             reloadInputViews()
             print("All fields are correct")
         } else {
-//            loginButton.isEnabled = false
+            loginButton.isEnabled = false
             loginButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
             loginButton.setTitle("Login", for: .normal)
             reloadInputViews()
@@ -161,14 +161,14 @@ class CreateAccountViewController: UIViewController {
         return result
     }
     
-    func validatePickupAddress(adress: String) -> Bool {
-        let adressRegex = "^\\w{3,18}$"
-        let trimmedString = adress.trimmingCharacters(in: .whitespaces)
-        let validateAdress = NSPredicate(format: "SELF MATCHES %@", adressRegex)
-        let isValidateAddress = validateAdress.evaluate(with: trimmedString)
-        print("isValidateAddress: \(isValidateAddress)")
-        return isValidateAddress
-    }
+//    func validatePickupAddress(adress: String) -> Bool {
+//        let adressRegex = "^\\w{3,18}$"
+//        let trimmedString = adress.trimmingCharacters(in: .whitespaces)
+//        let validateAdress = NSPredicate(format: "SELF MATCHES %@", adressRegex)
+//        let isValidateAddress = validateAdress.evaluate(with: trimmedString)
+//        print("isValidateAddress: \(isValidateAddress)")
+//        return isValidateAddress
+//    }
     
     func validateEmailId(emailID: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

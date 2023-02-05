@@ -3,30 +3,55 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Success View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="SuccessViewController" customModule="MKTFU" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SuccessViewController" id="Y6W-OH-hqX" customClass="SuccessViewController" customModule="MKTFU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Pge-1v-daL">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h3q-Ni-ckM">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="264.33333333333331"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lf20_sb8d3ngn.json]" translatesAutoresizingMaskIntoConstraints="NO" id="1jQ-hi-LxG">
+                                        <rect key="frame" x="0.0" y="264.33333333333337" width="393" height="264.33333333333337"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clouds" translatesAutoresizingMaskIntoConstraints="NO" id="fT0-6H-zsv">
+                                        <rect key="frame" x="0.0" y="528.66666666666663" width="393" height="264.33333333333337"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="OccasionalPurple"/>
+                        <constraints>
+                            <constraint firstItem="Pge-1v-daL" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="ADh-PJ-SEb"/>
+                            <constraint firstAttribute="bottom" secondItem="Pge-1v-daL" secondAttribute="bottom" id="J2k-JQ-sop"/>
+                            <constraint firstItem="Pge-1v-daL" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Wkb-73-XGc"/>
+                            <constraint firstItem="Pge-1v-daL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ct1-fo-gUP"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="25" y="4"/>
+            <point key="canvasLocation" x="23.664122137404579" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="Clouds" width="375" height="238"/>
+        <image name="lf20_sb8d3ngn.json]" width="300" height="300"/>
+        <namedColor name="OccasionalPurple">
+            <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
