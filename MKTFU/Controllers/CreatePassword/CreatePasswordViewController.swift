@@ -14,6 +14,7 @@ class CreatePasswordViewController: UIViewController {
     let checkedImage = UIImage(named: "CheckedImage")
     let uncheckedImage = UIImage(named: "UncheckedImage")
     var isChecked: Bool = false
+    let termsAndPolicyText = "By checking this box, you agree to our Terms of Service and our Privacy Policy"
     
     //MARK: - Outlets
     
@@ -27,6 +28,8 @@ class CreatePasswordViewController: UIViewController {
     @IBOutlet weak var oneNumberImage: UIImageView!
     
     @IBOutlet weak var checkMarkTermsAndPolicyButton: UIButton!
+    @IBOutlet weak var termsAndPolicyTextView: UITextView!
+    
     
     @IBOutlet weak var createAccountButton: UIButton!
     
@@ -37,12 +40,16 @@ class CreatePasswordViewController: UIViewController {
         super.viewDidLoad()
 //        createAccountButton.isEnabled = false
         
+        termsAndPolicyTextView.delegate = self
+        termsAndPolicyTextView.addHyperLinksToText(text: termsAndPolicyText, textView: termsAndPolicyTextView)
+        
         // Set default image for check mark
         checkMarkTermsAndPolicyButton.setImage(uncheckedImage, for: UIControl.State.normal)
         
         passwordTextField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
         confirmPasswordTextField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
         passwordSecurityLevelLabel.isHidden = true
+        
     }
     
     //MARK: - Actions
@@ -52,20 +59,19 @@ class CreatePasswordViewController: UIViewController {
     }
     
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
-        showSuccessVC()
+        showNextVC(name: "Success", identifier: "SuccessViewController")
     }
     
     
     //MARK: - Navigation methods
     
     // Show CreateAccount VC
-    func showSuccessVC() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Success", bundle: nil)
-        let createAccountVC = storyBoard.instantiateViewController(withIdentifier: "SuccessViewController")
+    func showNextVC(name: String, identifier: String) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: name, bundle: nil)
+        let createAccountVC = storyBoard.instantiateViewController(withIdentifier: identifier)
         createAccountVC.modalPresentationStyle = .fullScreen
         self.show(createAccountVC, sender: self)
     }
-
     
     // MARK: - Validation methods
     
@@ -160,6 +166,23 @@ class CreatePasswordViewController: UIViewController {
             validate()
         }
     }
+}
+
+extension CreatePasswordViewController: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+            if URL.scheme == "terms" {
+                showNextVC(name: "TermsOfService", identifier: "TermsOfServiceViewController")
+                return false
+            } else  if URL.scheme == "privacy"{
+               showNextVC(name: "PrivacyPolicy", identifier: "PrivacyPolicyViewController")
+                 return false
+            }
+            return true
+            // let the system open this URL
+        }
+    
 }
 
 

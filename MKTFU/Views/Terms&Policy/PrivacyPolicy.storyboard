@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Privacy Policy View Controller-->
+        <scene sceneID="H1J-cc-RbL">
+            <objects>
+                <viewController storyboardIdentifier="PrivacyPolicyViewController" id="5VG-2c-z4p" customClass="PrivacyPolicyViewController" customModule="MKTFU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hyi-0P-2jB">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a63-6x-FtF">
+                                <rect key="frame" x="0.0" y="59" width="393" height="52"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9v-4V-2L8">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="52"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Privacy policy">
+                                            <fontDescription key="titleFontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="LighestPurple"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="q9v-4V-2L8" firstAttribute="top" secondItem="a63-6x-FtF" secondAttribute="top" id="5mW-e3-vaJ"/>
+                                    <constraint firstItem="q9v-4V-2L8" firstAttribute="leading" secondItem="a63-6x-FtF" secondAttribute="leading" id="8HK-Fg-AjU"/>
+                                    <constraint firstAttribute="trailing" secondItem="q9v-4V-2L8" secondAttribute="trailing" id="BVF-Jv-K2D"/>
+                                    <constraint firstAttribute="bottom" secondItem="q9v-4V-2L8" secondAttribute="bottom" id="DFO-aI-3a4"/>
+                                    <constraint firstAttribute="height" constant="52" id="MAb-om-JmJ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ED2-vb-v3j" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="111" width="393" height="741"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3L-Cf-SOy">
+                                        <rect key="frame" x="0.0" y="651" width="393" height="90"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAc-mj-nhj" customClass="LPButton" customModule="MKTFU" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="0.0" width="353" height="56"/>
+                                                <color key="backgroundColor" name="OccasionalPurple"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="51" id="s4l-h3-aQ4"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Accept">
+                                                    <fontDescription key="titleFontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                                    <color key="baseForegroundColor" name="VoidWhite"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="acceptButtonPressed:" destination="5VG-2c-z4p" eventType="touchUpInside" id="oeg-ax-BBD"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="IAc-mj-nhj" secondAttribute="trailing" constant="20" id="1fa-fw-mAk"/>
+                                            <constraint firstItem="IAc-mj-nhj" firstAttribute="top" secondItem="p3L-Cf-SOy" secondAttribute="top" id="2n7-IC-wZI"/>
+                                            <constraint firstItem="IAc-mj-nhj" firstAttribute="leading" secondItem="p3L-Cf-SOy" secondAttribute="leading" constant="20" id="9NJ-DJ-ZKk"/>
+                                            <constraint firstAttribute="bottom" secondItem="IAc-mj-nhj" secondAttribute="bottom" constant="34" id="NOu-b1-Mmx"/>
+                                            <constraint firstAttribute="height" constant="90" id="cjK-pL-j5R"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9sh-I8-O4t" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="651"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rsc-ns-7Al">
+                                                <rect key="frame" x="20" y="20" width="353" height="611"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <mutableString key="text">Privacy is the ability of an individual or group to seclude themselves or information about themselves, and thereby express themselves selectively.
+When something is private to a person, it usually means that something is inherently special or sensitive to them. The domain of privacy partially overlaps with security, which can include the concepts of appropriate use, as well as protection of information. Privacy may also take the form of bodily integrity. The right not to be subjected to unsanctioned invasions of privacy by the government, corporations or individuals is part of many countries’ privacy laws, and in some cases, constitutions.
+In the business world, a person may volunteer personal details, including for advertising, in order to receive some sort of benefit. Public figures may be subject to rules on the public interest. Personal information which is voluntarily shared but subsequently stolen or misused can lead to identity theft.
+The concept of universal individual privacy is a modern concept primarily associated with Western culture, British and North American in particular, and remained virtually unknown in some cultures until recent times. Most cultures, however, recognize the ability of individuals to withhold certain parts of their personal information from wider society, such as closing the door to one’s home.
+
+Privacy is the ability of an individual or group to seclude themselves or information about themselves, and thereby express themselves selectively.
+When something is private to a person, it usually means that something is inherently special or sensitive to them. The domain of privacy partially overlaps with security, which can include the concepts of appropriate use, as well as protection of information. Privacy may also take the form of bodily integrity. The right not to be subjected to unsanctioned invasions of privacy by the government, corporations or individuals is part of many countries’ privacy laws, and in some cases, constitutions.
+In the business world, a person may volunteer personal details, including for advertising, in order to receive some sort of benefit. Public figures may be subject to rules on the public interest. Personal information which is voluntarily shared but subsequently stolen or misused can lead to identity theft.
+The concept of universal individual privacy is a modern concept primarily associated with Western culture, British and North American in particular, and remained virtually unknown in some cultures until recent times. Most cultures, however, recognize the ability of individuals to withhold certain parts of their personal information from wider society, such as closing the door to one’s home.</mutableString>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor">
+                                    <string key="name">
+VerySubtleGray</string>
+                                </color>
+                                <constraints>
+                                    <constraint firstItem="p3L-Cf-SOy" firstAttribute="leading" secondItem="ED2-vb-v3j" secondAttribute="leading" id="29Z-ZR-APG"/>
+                                    <constraint firstAttribute="bottom" secondItem="p3L-Cf-SOy" secondAttribute="bottom" id="4bB-wj-tkR"/>
+                                    <constraint firstItem="9sh-I8-O4t" firstAttribute="leading" secondItem="ED2-vb-v3j" secondAttribute="leading" id="9jz-Yf-xg5"/>
+                                    <constraint firstItem="p3L-Cf-SOy" firstAttribute="top" secondItem="9sh-I8-O4t" secondAttribute="bottom" id="Ctc-YL-TsH"/>
+                                    <constraint firstItem="9sh-I8-O4t" firstAttribute="top" secondItem="ED2-vb-v3j" secondAttribute="top" id="F7P-Uy-84n"/>
+                                    <constraint firstAttribute="trailing" secondItem="p3L-Cf-SOy" secondAttribute="trailing" id="LS9-2G-oT4"/>
+                                    <constraint firstAttribute="trailing" secondItem="9sh-I8-O4t" secondAttribute="trailing" id="g0r-Dc-Lbm"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7Cd-zm-8jI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ED2-vb-v3j" firstAttribute="top" secondItem="a63-6x-FtF" secondAttribute="bottom" id="4Hy-P9-e7a"/>
+                            <constraint firstAttribute="trailing" secondItem="ED2-vb-v3j" secondAttribute="trailing" id="A1F-vJ-ItP"/>
+                            <constraint firstItem="a63-6x-FtF" firstAttribute="top" secondItem="7Cd-zm-8jI" secondAttribute="top" id="Crr-Tm-54M"/>
+                            <constraint firstItem="a63-6x-FtF" firstAttribute="leading" secondItem="7Cd-zm-8jI" secondAttribute="leading" id="H4u-BS-aem"/>
+                            <constraint firstAttribute="bottom" secondItem="ED2-vb-v3j" secondAttribute="bottom" id="gLg-LS-lJB"/>
+                            <constraint firstItem="ED2-vb-v3j" firstAttribute="leading" secondItem="hyi-0P-2jB" secondAttribute="leading" id="h6P-x6-sU8"/>
+                            <constraint firstItem="7Cd-zm-8jI" firstAttribute="trailing" secondItem="a63-6x-FtF" secondAttribute="trailing" id="w2I-ys-QMD"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="goX-QV-2G5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768.7022900763359" y="-4.2253521126760569"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="IAc-mj-nhj">
+            <size key="intrinsicContentSize" width="78.333333333333329" height="36"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor>
+            <string key="name">
+VerySubtleGray</string>
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LighestPurple">
+            <color red="0.57647058823529407" green="0.28627450980392155" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="OccasionalPurple">
+            <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VoidWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

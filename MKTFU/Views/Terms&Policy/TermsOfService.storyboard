@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Terms Of Service View Controller-->
+        <scene sceneID="UhT-1v-I5j">
+            <objects>
+                <viewController storyboardIdentifier="TermsOfServiceViewController" id="tfy-Su-hRQ" customClass="TermsOfServiceViewController" customModule="MKTFU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IVa-uZ-6jy">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQj-fd-Rix">
+                                <rect key="frame" x="0.0" y="59" width="393" height="52"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ToW-YZ-MD7">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="52"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Terms of service">
+                                            <fontDescription key="titleFontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="LighestPurple"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ToW-YZ-MD7" firstAttribute="top" secondItem="jQj-fd-Rix" secondAttribute="top" id="3xI-YV-xBp"/>
+                                    <constraint firstAttribute="bottom" secondItem="ToW-YZ-MD7" secondAttribute="bottom" id="V13-kS-3eV"/>
+                                    <constraint firstAttribute="trailing" secondItem="ToW-YZ-MD7" secondAttribute="trailing" id="Wm0-uz-EIF"/>
+                                    <constraint firstItem="ToW-YZ-MD7" firstAttribute="leading" secondItem="jQj-fd-Rix" secondAttribute="leading" id="Yeu-C7-LVe"/>
+                                    <constraint firstAttribute="height" constant="52" id="pMk-cv-ek2"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-Xf-8fD" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="111" width="393" height="741"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eE7-Nh-gNs">
+                                        <rect key="frame" x="0.0" y="651" width="393" height="90"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJy-Ei-a3Y" customClass="LPButton" customModule="MKTFU" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="0.0" width="353" height="56"/>
+                                                <color key="backgroundColor" name="OccasionalPurple"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="51" id="ilG-yQ-VuA"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Accept">
+                                                    <fontDescription key="titleFontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                                    <color key="baseForegroundColor" name="VoidWhite"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="acceptButtonPressed:" destination="tfy-Su-hRQ" eventType="touchUpInside" id="5tQ-eF-BwJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="aJy-Ei-a3Y" secondAttribute="bottom" constant="34" id="8Ry-Gm-0jD"/>
+                                            <constraint firstAttribute="trailing" secondItem="aJy-Ei-a3Y" secondAttribute="trailing" constant="20" id="KQN-ge-aL8"/>
+                                            <constraint firstItem="aJy-Ei-a3Y" firstAttribute="leading" secondItem="eE7-Nh-gNs" secondAttribute="leading" constant="20" id="Uht-JD-LlS"/>
+                                            <constraint firstAttribute="height" constant="90" id="b7A-Gi-7cb"/>
+                                            <constraint firstItem="aJy-Ei-a3Y" firstAttribute="top" secondItem="eE7-Nh-gNs" secondAttribute="top" id="fIq-jW-7ly"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEf-4m-cGj" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="651"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fOY-Gh-Xvp">
+                                                <rect key="frame" x="20" y="20" width="353" height="611"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <mutableString key="text">These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [business entity name] (“we,” “us” or “our”), concerning your access to and use of the [website name.com] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
+
+You agree that by accessing the Site, you have read, understood, and agree to be bound by all of these Terms of Service. If you do not agree with all of these Terms of Service, then you are expressly prohibited from using the Site and you must discontinue use immediately.
+
+Supplemental Terms of Service or documents that may be posted on the Site from time to time are hereby expressly incorporated herein by reference. We reserve the right, in our sole discretion, to make changes or modifications to these Terms of Service at any time and for any reason.
+
+We will alert you about any changes by updating the “Last updated” date of these Terms of Service, and you waive any right to receive specific notice of each such change.
+
+It is your responsibility to periodically review these Terms of Service to stay informed of updates. You will be subject to, and will be deemed to have been made aware of and to have accepted, the changes in any revised Terms of Service by your continued use of the Site after the date such revised Terms of Service are posted.
+
+The information provided on the Site is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country.</mutableString>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor">
+                                    <string key="name">
+VerySubtleGray</string>
+                                </color>
+                                <constraints>
+                                    <constraint firstItem="UEf-4m-cGj" firstAttribute="leading" secondItem="8Iu-Xf-8fD" secondAttribute="leading" id="5Mi-C3-zaJ"/>
+                                    <constraint firstItem="eE7-Nh-gNs" firstAttribute="leading" secondItem="8Iu-Xf-8fD" secondAttribute="leading" id="6X9-Nh-SAC"/>
+                                    <constraint firstAttribute="bottom" secondItem="eE7-Nh-gNs" secondAttribute="bottom" id="ZKB-wh-uXt"/>
+                                    <constraint firstAttribute="trailing" secondItem="eE7-Nh-gNs" secondAttribute="trailing" id="Zds-9s-E4J"/>
+                                    <constraint firstAttribute="trailing" secondItem="UEf-4m-cGj" secondAttribute="trailing" id="bN2-TL-ec6"/>
+                                    <constraint firstItem="eE7-Nh-gNs" firstAttribute="top" secondItem="UEf-4m-cGj" secondAttribute="bottom" id="tEd-RB-sfL"/>
+                                    <constraint firstItem="UEf-4m-cGj" firstAttribute="top" secondItem="8Iu-Xf-8fD" secondAttribute="top" id="z2W-so-EUU"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="b5P-Q9-1Y6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="b5P-Q9-1Y6" firstAttribute="trailing" secondItem="jQj-fd-Rix" secondAttribute="trailing" id="97h-nP-vWa"/>
+                            <constraint firstItem="jQj-fd-Rix" firstAttribute="top" secondItem="b5P-Q9-1Y6" secondAttribute="top" id="FXA-OP-wx3"/>
+                            <constraint firstItem="8Iu-Xf-8fD" firstAttribute="top" secondItem="jQj-fd-Rix" secondAttribute="bottom" id="Gjb-Ma-0sO"/>
+                            <constraint firstAttribute="trailing" secondItem="8Iu-Xf-8fD" secondAttribute="trailing" id="J9W-oe-4gM"/>
+                            <constraint firstItem="jQj-fd-Rix" firstAttribute="leading" secondItem="b5P-Q9-1Y6" secondAttribute="leading" id="KrN-EY-bca"/>
+                            <constraint firstItem="8Iu-Xf-8fD" firstAttribute="leading" secondItem="IVa-uZ-6jy" secondAttribute="leading" id="qyS-MD-BhH"/>
+                            <constraint firstAttribute="bottom" secondItem="8Iu-Xf-8fD" secondAttribute="bottom" id="u6y-Yr-Jzu"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Yi-NR-x1p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768.7022900763359" y="-4.2253521126760569"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="aJy-Ei-a3Y">
+            <size key="intrinsicContentSize" width="78.333333333333329" height="36"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor>
+            <string key="name">
+VerySubtleGray</string>
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LighestPurple">
+            <color red="0.57647058823529407" green="0.28627450980392155" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="OccasionalPurple">
+            <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VoidWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

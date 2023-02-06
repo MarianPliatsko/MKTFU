@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0420A7A92990C91E0044CDC1 /* LPTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0420A7A82990C91E0044CDC1 /* LPTextView.swift */; };
 		043FDF62298E2F33003A7295 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043FDF61298E2F33003A7295 /* SuccessViewController.swift */; };
 		043FDF69298E2FA8003A7295 /* Success.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 043FDF68298E2FA8003A7295 /* Success.storyboard */; };
 		04445EBC298AFB2200B13D5D /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04445EBB298AFB2200B13D5D /* OpenSans-Semibold.ttf */; };
@@ -26,10 +27,18 @@
 		04808D4F298C574B0018CB04 /* CreatePassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04808D4E298C574B0018CB04 /* CreatePassword.storyboard */; };
 		04808D52298C57CA0018CB04 /* CreatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04808D51298C57CA0018CB04 /* CreatePasswordViewController.swift */; };
 		048680B52989D29300193579 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048680B42989D29300193579 /* Main.storyboard */; };
+		04BDB0D22990803C00983D91 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDB0D12990803C00983D91 /* UITextView+.swift */; };
+		04BDB0D52990B46600983D91 /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDB0D42990B46600983D91 /* TermsOfServiceViewController.swift */; };
+		04BDB0D72990B47D00983D91 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDB0D62990B47D00983D91 /* PrivacyPolicyViewController.swift */; };
+		04BDB0DE2990B4E700983D91 /* TermsOfService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BDB0DD2990B4E700983D91 /* TermsOfService.storyboard */; };
+		04BDB0E02990B4F800983D91 /* PrivacyPolicy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BDB0DF2990B4F800983D91 /* PrivacyPolicy.storyboard */; };
+		04BDB0E32990C6D600983D91 /* EmailVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDB0E22990C6D600983D91 /* EmailVerificationViewController.swift */; };
+		04BDB0E72990C74400983D91 /* EmailVerification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BDB0E62990C74400983D91 /* EmailVerification.storyboard */; };
 		04C730BA298A23DF00FBDF3E /* LPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C730B9298A23DF00FBDF3E /* LPView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0420A7A82990C91E0044CDC1 /* LPTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPTextView.swift; sourceTree = "<group>"; };
 		043FDF61298E2F33003A7295 /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		043FDF68298E2FA8003A7295 /* Success.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Success.storyboard; sourceTree = "<group>"; };
 		04445EBB298AFB2200B13D5D /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
@@ -51,6 +60,13 @@
 		04808D4E298C574B0018CB04 /* CreatePassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePassword.storyboard; sourceTree = "<group>"; };
 		04808D51298C57CA0018CB04 /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
 		048680B42989D29300193579 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		04BDB0D12990803C00983D91 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
+		04BDB0D42990B46600983D91 /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
+		04BDB0D62990B47D00983D91 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		04BDB0DD2990B4E700983D91 /* TermsOfService.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TermsOfService.storyboard; sourceTree = "<group>"; };
+		04BDB0DF2990B4F800983D91 /* PrivacyPolicy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrivacyPolicy.storyboard; sourceTree = "<group>"; };
+		04BDB0E22990C6D600983D91 /* EmailVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewController.swift; sourceTree = "<group>"; };
+		04BDB0E62990C74400983D91 /* EmailVerification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmailVerification.storyboard; sourceTree = "<group>"; };
 		04C730B9298A23DF00FBDF3E /* LPView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,7 +156,6 @@
 				046E52A42988B8D2009E9F3F /* Controllers */,
 				046E52A52988B8DF009E9F3F /* Views */,
 				046E52992988B8BD009E9F3F /* Assets.xcassets */,
-				046E529B2988B8BD009E9F3F /* LaunchScreen.storyboard */,
 				046E529E2988B8BD009E9F3F /* Info.plist */,
 			);
 			path = MKTFU;
@@ -152,6 +167,8 @@
 				046E52B1298987E3009E9F3F /* LogIn */,
 				04808D50298C57680018CB04 /* CreateAccount */,
 				043FDF67298E2F75003A7295 /* CreatePassword */,
+				04BDB0E12990C6A400983D91 /* EmailVerification */,
+				04BDB0D32990B43200983D91 /* Terms&Policy */,
 				043FDF60298E2E72003A7295 /* Success */,
 			);
 			path = Controllers;
@@ -160,9 +177,12 @@
 		046E52A52988B8DF009E9F3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04BDB0E42990C70F00983D91 /* LaunchScreen */,
 				043FDF66298E2F45003A7295 /* LogIn */,
 				043FDF65298E2F42003A7295 /* CreateAccount */,
 				043FDF64298E2F40003A7295 /* CreatePassword */,
+				04BDB0E52990C72100983D91 /* EmailVerification */,
+				04BDB0D82990B49200983D91 /* Terms&Policy */,
 				043FDF63298E2F3D003A7295 /* Success */,
 			);
 			path = Views;
@@ -192,6 +212,7 @@
 			children = (
 				046E52AF2988F6C6009E9F3F /* LPButton.swift */,
 				04C730B9298A23DF00FBDF3E /* LPView.swift */,
+				0420A7A82990C91E0044CDC1 /* LPTextView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -201,6 +222,7 @@
 			children = (
 				046E52A72988BC24009E9F3F /* UIColor+.swift */,
 				046E52B42989906A009E9F3F /* UITextField+.swift */,
+				04BDB0D12990803C00983D91 /* UITextView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -227,6 +249,48 @@
 				046E52B92989B6D0009E9F3F /* CreateAccountViewController.swift */,
 			);
 			path = CreateAccount;
+			sourceTree = "<group>";
+		};
+		04BDB0D32990B43200983D91 /* Terms&Policy */ = {
+			isa = PBXGroup;
+			children = (
+				04BDB0D42990B46600983D91 /* TermsOfServiceViewController.swift */,
+				04BDB0D62990B47D00983D91 /* PrivacyPolicyViewController.swift */,
+			);
+			path = "Terms&Policy";
+			sourceTree = "<group>";
+		};
+		04BDB0D82990B49200983D91 /* Terms&Policy */ = {
+			isa = PBXGroup;
+			children = (
+				04BDB0DD2990B4E700983D91 /* TermsOfService.storyboard */,
+				04BDB0DF2990B4F800983D91 /* PrivacyPolicy.storyboard */,
+			);
+			path = "Terms&Policy";
+			sourceTree = "<group>";
+		};
+		04BDB0E12990C6A400983D91 /* EmailVerification */ = {
+			isa = PBXGroup;
+			children = (
+				04BDB0E22990C6D600983D91 /* EmailVerificationViewController.swift */,
+			);
+			path = EmailVerification;
+			sourceTree = "<group>";
+		};
+		04BDB0E42990C70F00983D91 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				046E529B2988B8BD009E9F3F /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		04BDB0E52990C72100983D91 /* EmailVerification */ = {
+			isa = PBXGroup;
+			children = (
+				04BDB0E62990C74400983D91 /* EmailVerification.storyboard */,
+			);
+			path = EmailVerification;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,8 +358,11 @@
 				046E529A2988B8BD009E9F3F /* Assets.xcassets in Resources */,
 				046E52BC2989B6E7009E9F3F /* CreateAccount.storyboard in Resources */,
 				046E52AB2988CAC2009E9F3F /* OpenSans-Regular.ttf in Resources */,
+				04BDB0DE2990B4E700983D91 /* TermsOfService.storyboard in Resources */,
 				048680B52989D29300193579 /* Main.storyboard in Resources */,
 				04808D4F298C574B0018CB04 /* CreatePassword.storyboard in Resources */,
+				04BDB0E72990C74400983D91 /* EmailVerification.storyboard in Resources */,
+				04BDB0E02990B4F800983D91 /* PrivacyPolicy.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,13 +373,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BDB0D52990B46600983D91 /* TermsOfServiceViewController.swift in Sources */,
+				04BDB0D72990B47D00983D91 /* PrivacyPolicyViewController.swift in Sources */,
 				04C730BA298A23DF00FBDF3E /* LPView.swift in Sources */,
+				04BDB0D22990803C00983D91 /* UITextView+.swift in Sources */,
 				046E52B02988F6C6009E9F3F /* LPButton.swift in Sources */,
 				046E52952988B8BB009E9F3F /* LogInViewController.swift in Sources */,
 				043FDF62298E2F33003A7295 /* SuccessViewController.swift in Sources */,
+				0420A7A92990C91E0044CDC1 /* LPTextView.swift in Sources */,
 				046E52A82988BC24009E9F3F /* UIColor+.swift in Sources */,
 				046E52B82989987D009E9F3F /* LogIn.swift in Sources */,
 				046E52BA2989B6D0009E9F3F /* CreateAccountViewController.swift in Sources */,
+				04BDB0E32990C6D600983D91 /* EmailVerificationViewController.swift in Sources */,
 				046E52B52989906A009E9F3F /* UITextField+.swift in Sources */,
 				046E52912988B8BB009E9F3F /* AppDelegate.swift in Sources */,
 				046E52932988B8BB009E9F3F /* SceneDelegate.swift in Sources */,
