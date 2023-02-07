@@ -8,22 +8,32 @@
 import UIKit
 
 class EmailVerificationViewController: UIViewController {
-
+    
+    @IBOutlet weak var didntRecieveTheMailButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+       adjustForgotPasswordButton()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func didntRecieveTheMailButtonPressed(_ sender: UIButton) {
     }
-    */
+    
+    // MARK: - UI setup methods
+    
+    // Make underline fot button text and adjust
+    func adjustForgotPasswordButton() {
+        let attributedTitle = NSAttributedString(
+            string: "I didn’t receive the code, send it again",
+            attributes: [
+                .foregroundColor: UIColor.appColor(LPColor.WarningYellow)!,
+                .font: UIFont(name: "OpenSans", size: 14)!,
+                .underlineStyle: NSUnderlineStyle.single.rawValue
+            ]
+        )
+        didntRecieveTheMailButton.setAttributedTitle(attributedTitle, for: .normal)
+    }
+
 
 }

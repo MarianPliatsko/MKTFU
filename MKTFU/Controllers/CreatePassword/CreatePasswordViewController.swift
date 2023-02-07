@@ -65,7 +65,7 @@ class CreatePasswordViewController: UIViewController {
     
     //MARK: - Navigation methods
     
-    // Show CreateAccount VC
+    // Show next VC
     func showNextVC(name: String, identifier: String) {
         let storyBoard: UIStoryboard = UIStoryboard(name: name, bundle: nil)
         let createAccountVC = storyBoard.instantiateViewController(withIdentifier: identifier)

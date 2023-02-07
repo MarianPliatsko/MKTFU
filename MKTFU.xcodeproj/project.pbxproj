@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040B5E5929916A0600CE1177 /* ForgotPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040B5E5829916A0600CE1177 /* ForgotPassword.storyboard */; };
+		040B5E5B29916A4000CE1177 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B5E5A29916A4000CE1177 /* ForgotPasswordViewController.swift */; };
+		040B5E5E2991716E00CE1177 /* ForgotPasswordVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B5E5D2991716E00CE1177 /* ForgotPasswordVerificationViewController.swift */; };
+		040B5E612991719300CE1177 /* ForgotPasswordVerification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040B5E602991719300CE1177 /* ForgotPasswordVerification.storyboard */; };
 		0420A7A92990C91E0044CDC1 /* LPTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0420A7A82990C91E0044CDC1 /* LPTextView.swift */; };
 		043FDF62298E2F33003A7295 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043FDF61298E2F33003A7295 /* SuccessViewController.swift */; };
 		043FDF69298E2FA8003A7295 /* Success.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 043FDF68298E2FA8003A7295 /* Success.storyboard */; };
@@ -21,12 +25,14 @@
 		046E52AB2988CAC2009E9F3F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 046E52AA2988CAC2009E9F3F /* OpenSans-Regular.ttf */; };
 		046E52B02988F6C6009E9F3F /* LPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E52AF2988F6C6009E9F3F /* LPButton.swift */; };
 		046E52B52989906A009E9F3F /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E52B42989906A009E9F3F /* UITextField+.swift */; };
-		046E52B82989987D009E9F3F /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E52B72989987D009E9F3F /* LogIn.swift */; };
 		046E52BA2989B6D0009E9F3F /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E52B92989B6D0009E9F3F /* CreateAccountViewController.swift */; };
 		046E52BC2989B6E7009E9F3F /* CreateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046E52BB2989B6E7009E9F3F /* CreateAccount.storyboard */; };
 		04808D4F298C574B0018CB04 /* CreatePassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04808D4E298C574B0018CB04 /* CreatePassword.storyboard */; };
 		04808D52298C57CA0018CB04 /* CreatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04808D51298C57CA0018CB04 /* CreatePasswordViewController.swift */; };
 		048680B52989D29300193579 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048680B42989D29300193579 /* Main.storyboard */; };
+		04B5D1642991B28A0037B44D /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B5D1632991B2890037B44D /* Test.storyboard */; };
+		04B5D1662991B2AD0037B44D /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5D1652991B2AD0037B44D /* TestViewController.swift */; };
+		04B5D1692991D1E60037B44D /* LPInputTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B5D1682991D1E60037B44D /* LPInputTextField.xib */; };
 		04BDB0D22990803C00983D91 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDB0D12990803C00983D91 /* UITextView+.swift */; };
 		04BDB0D52990B46600983D91 /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDB0D42990B46600983D91 /* TermsOfServiceViewController.swift */; };
 		04BDB0D72990B47D00983D91 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDB0D62990B47D00983D91 /* PrivacyPolicyViewController.swift */; };
@@ -34,10 +40,14 @@
 		04BDB0E02990B4F800983D91 /* PrivacyPolicy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BDB0DF2990B4F800983D91 /* PrivacyPolicy.storyboard */; };
 		04BDB0E32990C6D600983D91 /* EmailVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDB0E22990C6D600983D91 /* EmailVerificationViewController.swift */; };
 		04BDB0E72990C74400983D91 /* EmailVerification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BDB0E62990C74400983D91 /* EmailVerification.storyboard */; };
-		04C730BA298A23DF00FBDF3E /* LPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C730B9298A23DF00FBDF3E /* LPView.swift */; };
+		04C730BA298A23DF00FBDF3E /* LPInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C730B9298A23DF00FBDF3E /* LPInputTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040B5E5829916A0600CE1177 /* ForgotPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPassword.storyboard; sourceTree = "<group>"; };
+		040B5E5A29916A4000CE1177 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		040B5E5D2991716E00CE1177 /* ForgotPasswordVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVerificationViewController.swift; sourceTree = "<group>"; };
+		040B5E602991719300CE1177 /* ForgotPasswordVerification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPasswordVerification.storyboard; sourceTree = "<group>"; };
 		0420A7A82990C91E0044CDC1 /* LPTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPTextView.swift; sourceTree = "<group>"; };
 		043FDF61298E2F33003A7295 /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		043FDF68298E2FA8003A7295 /* Success.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Success.storyboard; sourceTree = "<group>"; };
@@ -54,12 +64,14 @@
 		046E52AA2988CAC2009E9F3F /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		046E52AF2988F6C6009E9F3F /* LPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPButton.swift; sourceTree = "<group>"; };
 		046E52B42989906A009E9F3F /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
-		046E52B72989987D009E9F3F /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		046E52B92989B6D0009E9F3F /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		046E52BB2989B6E7009E9F3F /* CreateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAccount.storyboard; sourceTree = "<group>"; };
 		04808D4E298C574B0018CB04 /* CreatePassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePassword.storyboard; sourceTree = "<group>"; };
 		04808D51298C57CA0018CB04 /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
 		048680B42989D29300193579 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		04B5D1632991B2890037B44D /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
+		04B5D1652991B2AD0037B44D /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		04B5D1682991D1E60037B44D /* LPInputTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LPInputTextField.xib; sourceTree = "<group>"; };
 		04BDB0D12990803C00983D91 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		04BDB0D42990B46600983D91 /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		04BDB0D62990B47D00983D91 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
@@ -67,7 +79,7 @@
 		04BDB0DF2990B4F800983D91 /* PrivacyPolicy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrivacyPolicy.storyboard; sourceTree = "<group>"; };
 		04BDB0E22990C6D600983D91 /* EmailVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewController.swift; sourceTree = "<group>"; };
 		04BDB0E62990C74400983D91 /* EmailVerification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmailVerification.storyboard; sourceTree = "<group>"; };
-		04C730B9298A23DF00FBDF3E /* LPView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPView.swift; sourceTree = "<group>"; };
+		04C730B9298A23DF00FBDF3E /* LPInputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPInputTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +93,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040B5E542991693000CE1177 /* EmailVerification */ = {
+			isa = PBXGroup;
+			children = (
+				04BDB0E22990C6D600983D91 /* EmailVerificationViewController.swift */,
+			);
+			path = EmailVerification;
+			sourceTree = "<group>";
+		};
+		040B5E56299169B800CE1177 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				040B5E5A29916A4000CE1177 /* ForgotPasswordViewController.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		040B5E57299169E400CE1177 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				040B5E5829916A0600CE1177 /* ForgotPassword.storyboard */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		040B5E5C2991714500CE1177 /* ForgotPasswordVerification */ = {
+			isa = PBXGroup;
+			children = (
+				040B5E5D2991716E00CE1177 /* ForgotPasswordVerificationViewController.swift */,
+			);
+			path = ForgotPasswordVerification;
+			sourceTree = "<group>";
+		};
+		040B5E5F2991717600CE1177 /* ForgotPasswordVerification */ = {
+			isa = PBXGroup;
+			children = (
+				040B5E602991719300CE1177 /* ForgotPasswordVerification.storyboard */,
+			);
+			path = ForgotPasswordVerification;
+			sourceTree = "<group>";
+		};
 		043FDF60298E2E72003A7295 /* Success */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,9 +219,12 @@
 				046E52B1298987E3009E9F3F /* LogIn */,
 				04808D50298C57680018CB04 /* CreateAccount */,
 				043FDF67298E2F75003A7295 /* CreatePassword */,
-				04BDB0E12990C6A400983D91 /* EmailVerification */,
+				040B5E542991693000CE1177 /* EmailVerification */,
 				04BDB0D32990B43200983D91 /* Terms&Policy */,
+				040B5E56299169B800CE1177 /* ForgotPassword */,
+				040B5E5C2991714500CE1177 /* ForgotPasswordVerification */,
 				043FDF60298E2E72003A7295 /* Success */,
+				04B5D1652991B2AD0037B44D /* TestViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,12 +232,15 @@
 		046E52A52988B8DF009E9F3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04B5D1632991B2890037B44D /* Test.storyboard */,
 				04BDB0E42990C70F00983D91 /* LaunchScreen */,
 				043FDF66298E2F45003A7295 /* LogIn */,
 				043FDF65298E2F42003A7295 /* CreateAccount */,
 				043FDF64298E2F40003A7295 /* CreatePassword */,
 				04BDB0E52990C72100983D91 /* EmailVerification */,
 				04BDB0D82990B49200983D91 /* Terms&Policy */,
+				040B5E57299169E400CE1177 /* ForgotPassword */,
+				040B5E5F2991717600CE1177 /* ForgotPasswordVerification */,
 				043FDF63298E2F3D003A7295 /* Success */,
 			);
 			path = Views;
@@ -211,7 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				046E52AF2988F6C6009E9F3F /* LPButton.swift */,
-				04C730B9298A23DF00FBDF3E /* LPView.swift */,
+				04B5D1672991D1C80037B44D /* LPView */,
 				0420A7A82990C91E0044CDC1 /* LPTextView.swift */,
 			);
 			path = Base;
@@ -238,7 +296,6 @@
 		046E52B629899861009E9F3F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				046E52B72989987D009E9F3F /* LogIn.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -249,6 +306,15 @@
 				046E52B92989B6D0009E9F3F /* CreateAccountViewController.swift */,
 			);
 			path = CreateAccount;
+			sourceTree = "<group>";
+		};
+		04B5D1672991D1C80037B44D /* LPView */ = {
+			isa = PBXGroup;
+			children = (
+				04C730B9298A23DF00FBDF3E /* LPInputTextField.swift */,
+				04B5D1682991D1E60037B44D /* LPInputTextField.xib */,
+			);
+			path = LPView;
 			sourceTree = "<group>";
 		};
 		04BDB0D32990B43200983D91 /* Terms&Policy */ = {
@@ -267,14 +333,6 @@
 				04BDB0DF2990B4F800983D91 /* PrivacyPolicy.storyboard */,
 			);
 			path = "Terms&Policy";
-			sourceTree = "<group>";
-		};
-		04BDB0E12990C6A400983D91 /* EmailVerification */ = {
-			isa = PBXGroup;
-			children = (
-				04BDB0E22990C6D600983D91 /* EmailVerificationViewController.swift */,
-			);
-			path = EmailVerification;
 			sourceTree = "<group>";
 		};
 		04BDB0E42990C70F00983D91 /* LaunchScreen */ = {
@@ -353,6 +411,7 @@
 			files = (
 				04445EBC298AFB2200B13D5D /* OpenSans-Semibold.ttf in Resources */,
 				04445EBE298AFB2C00B13D5D /* OpenSans-Bold.ttf in Resources */,
+				04B5D1692991D1E60037B44D /* LPInputTextField.xib in Resources */,
 				043FDF69298E2FA8003A7295 /* Success.storyboard in Resources */,
 				046E529D2988B8BD009E9F3F /* LaunchScreen.storyboard in Resources */,
 				046E529A2988B8BD009E9F3F /* Assets.xcassets in Resources */,
@@ -360,9 +419,12 @@
 				046E52AB2988CAC2009E9F3F /* OpenSans-Regular.ttf in Resources */,
 				04BDB0DE2990B4E700983D91 /* TermsOfService.storyboard in Resources */,
 				048680B52989D29300193579 /* Main.storyboard in Resources */,
+				04B5D1642991B28A0037B44D /* Test.storyboard in Resources */,
 				04808D4F298C574B0018CB04 /* CreatePassword.storyboard in Resources */,
 				04BDB0E72990C74400983D91 /* EmailVerification.storyboard in Resources */,
 				04BDB0E02990B4F800983D91 /* PrivacyPolicy.storyboard in Resources */,
+				040B5E5929916A0600CE1177 /* ForgotPassword.storyboard in Resources */,
+				040B5E612991719300CE1177 /* ForgotPasswordVerification.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,21 +435,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040B5E5B29916A4000CE1177 /* ForgotPasswordViewController.swift in Sources */,
 				04BDB0D52990B46600983D91 /* TermsOfServiceViewController.swift in Sources */,
 				04BDB0D72990B47D00983D91 /* PrivacyPolicyViewController.swift in Sources */,
-				04C730BA298A23DF00FBDF3E /* LPView.swift in Sources */,
+				04C730BA298A23DF00FBDF3E /* LPInputTextField.swift in Sources */,
 				04BDB0D22990803C00983D91 /* UITextView+.swift in Sources */,
 				046E52B02988F6C6009E9F3F /* LPButton.swift in Sources */,
+				040B5E5E2991716E00CE1177 /* ForgotPasswordVerificationViewController.swift in Sources */,
 				046E52952988B8BB009E9F3F /* LogInViewController.swift in Sources */,
 				043FDF62298E2F33003A7295 /* SuccessViewController.swift in Sources */,
 				0420A7A92990C91E0044CDC1 /* LPTextView.swift in Sources */,
 				046E52A82988BC24009E9F3F /* UIColor+.swift in Sources */,
-				046E52B82989987D009E9F3F /* LogIn.swift in Sources */,
 				046E52BA2989B6D0009E9F3F /* CreateAccountViewController.swift in Sources */,
 				04BDB0E32990C6D600983D91 /* EmailVerificationViewController.swift in Sources */,
 				046E52B52989906A009E9F3F /* UITextField+.swift in Sources */,
 				046E52912988B8BB009E9F3F /* AppDelegate.swift in Sources */,
 				046E52932988B8BB009E9F3F /* SceneDelegate.swift in Sources */,
+				04B5D1662991B2AD0037B44D /* TestViewController.swift in Sources */,
 				04808D52298C57CA0018CB04 /* CreatePasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

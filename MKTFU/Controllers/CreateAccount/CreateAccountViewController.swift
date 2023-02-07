@@ -66,8 +66,7 @@ class CreateAccountViewController: UIViewController {
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let firstName = firstNameTextField.text,
               let lastName = lastNameTextField.text,
-              let email = emailTextField.text,
-              let address = pickUpAddressTextField.text else {return}
+              let email = emailTextField.text else {return}
          
         let isValidateFirstName = validateFirstName(name: firstName)
         if isValidateFirstName == false {
@@ -160,15 +159,6 @@ class CreateAccountViewController: UIViewController {
         print(result)
         return result
     }
-    
-//    func validatePickupAddress(adress: String) -> Bool {
-//        let adressRegex = "^\\w{3,18}$"
-//        let trimmedString = adress.trimmingCharacters(in: .whitespaces)
-//        let validateAdress = NSPredicate(format: "SELF MATCHES %@", adressRegex)
-//        let isValidateAddress = validateAdress.evaluate(with: trimmedString)
-//        print("isValidateAddress: \(isValidateAddress)")
-//        return isValidateAddress
-//    }
     
     func validateEmailId(emailID: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

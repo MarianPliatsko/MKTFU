@@ -29,7 +29,7 @@ class LPView: UIView {
         }
     }
     
-    @IBInspectable var shadowColor: UIColor = UIColor.clear {        
+    @IBInspectable var shadowColor: UIColor = UIColor.clear {
         didSet {
             layer.shadowColor = shadowColor.cgColor
             layer.masksToBounds = false
@@ -59,5 +59,42 @@ class LPView: UIView {
     override internal func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+}
 
+class LPInputTextField: LPView {
+    var view:UIView!
+    @IBOutlet weak private var lblTitle: UILabel!
+    @IBOutlet weak private var lblError: UILabel!
+    @IBOutlet weak var txtInputField: UITextField!
+    @IBInspectable var title: String = "Title" {
+        didSet {
+            lblTitle.text = title
+        }
+    }
+    
+    func loadViewFromNib() -> UIView {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: "LPInputTextField", bundle: bundle)
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        return view
+    }
+    func xibSetup() {
+        view = loadViewFromNib()
+        view.frame = bounds
+        view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth,
+                                 UIView.AutoresizingMask.flexibleHeight]
+        addSubview(view)
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        xibSetup()
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+        xibSetup()
+    }
 }

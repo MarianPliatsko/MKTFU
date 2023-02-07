@@ -35,9 +35,23 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
-        showCreateAccountVC()
+        // Show CreateAccount VC
+        showNextVC(name: "CreateAccount", identifier: "AccountViewController")
     }
     
+    @IBAction func forgotPasswordButtonPressed(_ sender: UIButton) {
+        showNextVC(name: "ForgotPassword", identifier: "ForgotPasswordViewController")
+    }
+    
+    //MARK: - Navigation methods
+    
+    // Show next VC
+    func showNextVC(name: String, identifier: String) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: name, bundle: nil)
+        let createAccountVC = storyBoard.instantiateViewController(withIdentifier: identifier)
+        createAccountVC.modalPresentationStyle = .fullScreen
+        self.show(createAccountVC, sender: self)
+    }
     
     //MARK: - Validation Methods
     
@@ -86,15 +100,5 @@ class LogInViewController: UIViewController {
             ]
         )
         iForgotMyPasswordButton.setAttributedTitle(attributedTitle, for: .normal)
-    }
-    
-    //MARK: - Navigation methods
-    
-    // Show CreateAccount VC
-    func showCreateAccountVC() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "CreateAccount", bundle: nil)
-        let createAccountVC = storyBoard.instantiateViewController(withIdentifier: "AccountViewController")
-        createAccountVC.modalPresentationStyle = .fullScreen
-        self.show(createAccountVC, sender: self)
     }
 }

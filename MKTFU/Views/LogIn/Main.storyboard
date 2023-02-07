@@ -124,6 +124,9 @@
                                                         <color key="tintColor" name="HoverYellow"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="I forgot my password"/>
+                                                        <connections>
+                                                            <action selector="forgotPasswordButtonPressed:" destination="h68-ls-w4N" eventType="touchUpInside" id="Xii-Ha-DrA"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
