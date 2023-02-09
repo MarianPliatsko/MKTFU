@@ -80,11 +80,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEf-4m-cGj" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="651"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="641"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fOY-Gh-Xvp">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fOY-Gh-Xvp">
                                                 <rect key="frame" x="20" y="20" width="353" height="611"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <string key="text">These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [business entity name] (“we,” “us” or “our”), concerning your access to and use of the [website name.com] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
 
@@ -103,6 +102,12 @@ The information provided on the Site is not intended for distribution to or use 
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="fOY-Gh-Xvp" firstAttribute="top" secondItem="UEf-4m-cGj" secondAttribute="top" constant="20" symbolic="YES" id="7ge-TQ-hNv"/>
+                                            <constraint firstAttribute="bottom" secondItem="fOY-Gh-Xvp" secondAttribute="bottom" constant="10" id="OEl-jh-591"/>
+                                            <constraint firstAttribute="trailing" secondItem="fOY-Gh-Xvp" secondAttribute="trailing" constant="20" symbolic="YES" id="fi3-8e-yWF"/>
+                                            <constraint firstItem="fOY-Gh-Xvp" firstAttribute="leading" secondItem="UEf-4m-cGj" secondAttribute="leading" constant="20" symbolic="YES" id="ibf-KE-sjY"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor">
@@ -115,7 +120,7 @@ VerySubtleGray</string>
                                     <constraint firstAttribute="bottom" secondItem="eE7-Nh-gNs" secondAttribute="bottom" id="ZKB-wh-uXt"/>
                                     <constraint firstAttribute="trailing" secondItem="eE7-Nh-gNs" secondAttribute="trailing" id="Zds-9s-E4J"/>
                                     <constraint firstAttribute="trailing" secondItem="UEf-4m-cGj" secondAttribute="trailing" id="bN2-TL-ec6"/>
-                                    <constraint firstItem="eE7-Nh-gNs" firstAttribute="top" secondItem="UEf-4m-cGj" secondAttribute="bottom" id="tEd-RB-sfL"/>
+                                    <constraint firstItem="eE7-Nh-gNs" firstAttribute="top" secondItem="UEf-4m-cGj" secondAttribute="bottom" constant="10" id="tEd-RB-sfL"/>
                                     <constraint firstItem="UEf-4m-cGj" firstAttribute="top" secondItem="8Iu-Xf-8fD" secondAttribute="top" id="z2W-so-EUU"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>

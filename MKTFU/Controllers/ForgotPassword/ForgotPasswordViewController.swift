@@ -11,37 +11,26 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var lpViewEmail: LpCustomView!
     @IBOutlet weak var sentButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTextField.delegate = self
         
-       
-        emailTextField.addTarget(self, action: #selector(ForgotPasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
+        lpViewEmail.txtInputField.delegate = self
+        lpViewEmail.txtInputField.addTarget(self, action: #selector(ForgotPasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     //MARK: Actions
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {
-        showNextVC(name: "ForgotPasswordVerification", identifier: "ForgotPasswordVerificationViewController")
-    }
-    
-    //MARK: - Navigation method
-    
-    // Show next VC
-    func showNextVC(name: String, identifier: String) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: name, bundle: nil)
-        let createAccountVC = storyBoard.instantiateViewController(withIdentifier: identifier)
-        createAccountVC.modalPresentationStyle = .fullScreen
-        self.show(createAccountVC, sender: self)
+        pushToVC(name: "ForgotPasswordVerification", identifier: "ForgotPasswordVerificationViewController")
     }
     
     //MARK: - Validation methods
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        guard let email = emailTextField.text else {return}
+        guard let email = lpViewEmail.txtInputField.text else {return}
         
         let isValidateEmail = validateEmailId(with: email)
         if isValidateEmail == false {

@@ -18,55 +18,48 @@ class CreateAccountViewController: UIViewController {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var lastNameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var pickUpAddressTextField: UITextField!
-    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var lpViewFirstName: LpCustomView!
+    @IBOutlet weak var lpViewLastName: LpCustomView!
+    @IBOutlet weak var lpViewEmail: LpCustomView!
+    @IBOutlet weak var lpViewPhone: LpCustomView!
+    @IBOutlet weak var lpViewPickupAddress: LpCustomView!
+    @IBOutlet weak var lpViewCityName: LpCustomView!
     @IBOutlet weak var loginButton: UIButton!
     
+    //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        loginButton.isEnabled = false
-        phoneTextField.delegate = self
+        
+        lpViewPhone.txtInputField.delegate = self
         
         thePicker.delegate = self
-        cityTextField.inputView = thePicker
+        lpViewCityName.txtInputField.inputView = thePicker
         
-        firstNameTextField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
-        lastNameTextField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
-        emailTextField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
-        phoneTextField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
-        pickUpAddressTextField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
-        cityTextField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingDidBegin)
+        lpViewFirstName.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
+        lpViewLastName.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
+        lpViewEmail.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
+        lpViewPhone.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
         
-        cityTextField.withImage(direction: .Right, image: UIImage(named: "Path 123") ?? UIImage(), colorSeparator: UIColor.orange, colorBorder: UIColor.black)
+        lpViewPickupAddress.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
+        lpViewCityName.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingDidBegin)
+        
+        lpViewCityName.txtInputField.withImage(direction: .Right, image: UIImage(named: "Path 123") ?? UIImage(), colorSeparator: UIColor.orange, colorBorder: UIColor.black)
     }
     
     //MARK: - Actions
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        showCreatePasswordVC()
-    }
-    
-    //MARK: - Navigation methods
-    
-    // Show CreateAccount VC
-    func showCreatePasswordVC() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "CreatePassword", bundle: nil)
-        let createAccountVC = storyBoard.instantiateViewController(withIdentifier: "PasswordViewController")
-        createAccountVC.modalPresentationStyle = .fullScreen
-        self.show(createAccountVC, sender: self)
+        pushToVC(name: "CreatePassword", identifier: "PasswordViewController")
     }
     
     // MARK: - Validation Methods
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        guard let firstName = firstNameTextField.text,
-              let lastName = lastNameTextField.text,
-              let email = emailTextField.text else {return}
+        guard let firstName = lpViewFirstName.txtInputField.text,
+              let lastName = lpViewLastName.txtInputField.text,
+              let email = lpViewEmail.txtInputField.text else {return}
          
         let isValidateFirstName = validateFirstName(name: firstName)
         if isValidateFirstName == false {
@@ -83,16 +76,16 @@ class CreateAccountViewController: UIViewController {
         if isValidatePhone == false {
             print("Invalid phone number")
         }
-        if pickUpAddressTextField.text?.isEmpty == true {
+        if lpViewPickupAddress.txtInputField.text?.isEmpty == true {
             print("Incorrect pickup address")
         }
         if isValideCity == false {
             print("Incorrect city")
         }
-        if cityTextField.text == nil || cityTextField.text == "" {
-            cityTextField.text = cityNamesData[0]
+        if lpViewCityName.txtInputField.text == nil || lpViewCityName.txtInputField.text == "" {
+            lpViewCityName.txtInputField.text = cityNamesData[0]
         }
-        if isValidateFirstName == true, isValidateLastName == true, isValidateEmail == true, isValidatePhone == true, pickUpAddressTextField.text?.isEmpty == false, isValideCity == true {
+        if isValidateFirstName == true, isValidateLastName == true, isValidateEmail == true, isValidatePhone == true, lpViewPickupAddress.txtInputField.text?.isEmpty == false, isValideCity == true {
             
             loginButton.isEnabled = true
             loginButton.backgroundColor = UIColor.appColor(LPColor.WarningYellow)
@@ -197,10 +190,10 @@ extension CreateAccountViewController: UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        cityTextField.text = cityNamesData[row]
-        if cityTextField.text != "" {
+        lpViewCityName.txtInputField.text = cityNamesData[row]
+        if lpViewCityName.txtInputField.text != "" {
             isValideCity = true
-            textFieldDidChange(cityTextField)
+            textFieldDidChange(lpViewCityName.txtInputField)
         } else {
             isValideCity = false
         }

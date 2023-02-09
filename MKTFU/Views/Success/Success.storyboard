@@ -17,17 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Pge-1v-daL">
-                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h3q-Ni-ckM">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="264.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="284"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lf20_sb8d3ngn.json]" translatesAutoresizingMaskIntoConstraints="NO" id="1jQ-hi-LxG">
-                                        <rect key="frame" x="0.0" y="264.33333333333337" width="393" height="264.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="284" width="393" height="284"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clouds" translatesAutoresizingMaskIntoConstraints="NO" id="fT0-6H-zsv">
-                                        <rect key="frame" x="0.0" y="528.66666666666663" width="393" height="264.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="568" width="393" height="284"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -37,7 +37,7 @@
                         <constraints>
                             <constraint firstItem="Pge-1v-daL" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="ADh-PJ-SEb"/>
                             <constraint firstAttribute="bottom" secondItem="Pge-1v-daL" secondAttribute="bottom" id="J2k-JQ-sop"/>
-                            <constraint firstItem="Pge-1v-daL" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Wkb-73-XGc"/>
+                            <constraint firstItem="Pge-1v-daL" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Wkb-73-XGc"/>
                             <constraint firstItem="Pge-1v-daL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ct1-fo-gUP"/>
                         </constraints>
                     </view>

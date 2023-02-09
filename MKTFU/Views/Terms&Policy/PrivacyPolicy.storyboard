@@ -82,11 +82,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9sh-I8-O4t" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="651"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rsc-ns-7Al">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rsc-ns-7Al">
                                                 <rect key="frame" x="20" y="20" width="353" height="611"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <mutableString key="text">Privacy is the ability of an individual or group to seclude themselves or information about themselves, and thereby express themselves selectively.
+                                                <string key="text">Privacy is the ability of an individual or group to seclude themselves or information about themselves, and thereby express themselves selectively.
 When something is private to a person, it usually means that something is inherently special or sensitive to them. The domain of privacy partially overlaps with security, which can include the concepts of appropriate use, as well as protection of information. Privacy may also take the form of bodily integrity. The right not to be subjected to unsanctioned invasions of privacy by the government, corporations or individuals is part of many countries’ privacy laws, and in some cases, constitutions.
 In the business world, a person may volunteer personal details, including for advertising, in order to receive some sort of benefit. Public figures may be subject to rules on the public interest. Personal information which is voluntarily shared but subsequently stolen or misused can lead to identity theft.
 The concept of universal individual privacy is a modern concept primarily associated with Western culture, British and North American in particular, and remained virtually unknown in some cultures until recent times. Most cultures, however, recognize the ability of individuals to withhold certain parts of their personal information from wider society, such as closing the door to one’s home.
@@ -94,13 +93,19 @@ The concept of universal individual privacy is a modern concept primarily associ
 Privacy is the ability of an individual or group to seclude themselves or information about themselves, and thereby express themselves selectively.
 When something is private to a person, it usually means that something is inherently special or sensitive to them. The domain of privacy partially overlaps with security, which can include the concepts of appropriate use, as well as protection of information. Privacy may also take the form of bodily integrity. The right not to be subjected to unsanctioned invasions of privacy by the government, corporations or individuals is part of many countries’ privacy laws, and in some cases, constitutions.
 In the business world, a person may volunteer personal details, including for advertising, in order to receive some sort of benefit. Public figures may be subject to rules on the public interest. Personal information which is voluntarily shared but subsequently stolen or misused can lead to identity theft.
-The concept of universal individual privacy is a modern concept primarily associated with Western culture, British and North American in particular, and remained virtually unknown in some cultures until recent times. Most cultures, however, recognize the ability of individuals to withhold certain parts of their personal information from wider society, such as closing the door to one’s home.</mutableString>
+The concept of universal individual privacy is a modern concept primarily associated with Western culture, British and North American in particular, and remained virtually unknown in some cultures until recent times. Most cultures, however, recognize the ability of individuals to withhold certain parts of their personal information from wider society, such as closing the door to one’s home.</string>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="rsc-ns-7Al" secondAttribute="trailing" constant="20" symbolic="YES" id="4zK-6i-yC3"/>
+                                            <constraint firstItem="rsc-ns-7Al" firstAttribute="top" secondItem="9sh-I8-O4t" secondAttribute="top" constant="20" symbolic="YES" id="Au1-nJ-Jor"/>
+                                            <constraint firstAttribute="bottom" secondItem="rsc-ns-7Al" secondAttribute="bottom" constant="20" symbolic="YES" id="iLo-Vc-w1f"/>
+                                            <constraint firstItem="rsc-ns-7Al" firstAttribute="leading" secondItem="9sh-I8-O4t" secondAttribute="leading" constant="20" symbolic="YES" id="jRi-Ul-cad"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor">

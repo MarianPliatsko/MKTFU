@@ -11,8 +11,11 @@ class SuccessViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.setHidesBackButton(true, animated: false)
 
-        // Do any additional setup after loading the view.
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { _ in
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
     
 

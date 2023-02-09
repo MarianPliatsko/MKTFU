@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h68-ls-w4N">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -19,108 +18,83 @@
             <objects>
                 <viewController storyboardIdentifier="LPLoginViewController" id="h68-ls-w4N" customClass="LogInViewController" customModule="MKTFU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T57-p7-oPi">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clouds" translatesAutoresizingMaskIntoConstraints="NO" id="Nln-Dp-7I4">
-                                <rect key="frame" x="0.0" y="592" width="393" height="260"/>
+                                <rect key="frame" x="0.0" y="340" width="600" height="260"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="ToO-NL-51S"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="aAW-ku-9Oe">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rna-vU-Bzs">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="82"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="82"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="82" id="4FO-eN-yxi"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ieX-bE-1Fv">
-                                        <rect key="frame" x="0.0" y="139" width="393" height="80"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ieX-bE-1Fv">
+                                        <rect key="frame" x="0.0" y="82" width="600" height="76.666666666666686"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Path 73761" translatesAutoresizingMaskIntoConstraints="NO" id="bC5-Y2-4h8">
-                                                <rect key="frame" x="79" y="0.0" width="235" height="52"/>
+                                                <rect key="frame" x="182.66666666666663" y="0.0" width="235" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="235" id="FQl-4h-zcj"/>
                                                     <constraint firstAttribute="height" constant="52" id="cv1-iM-efa"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy and sell stuff!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqz-qO-PQE">
-                                                <rect key="frame" x="130.33333333333331" y="58" width="132.33333333333331" height="22"/>
+                                                <rect key="frame" x="236.33333333333334" y="57.999999999999993" width="127.33333333333334" height="18.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                 <color key="textColor" name="LighestPurple"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ykj-u8-cMr">
-                                        <rect key="frame" x="0.0" y="275.66666666666674" width="393" height="269.33333333333326"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ykj-u8-cMr">
+                                        <rect key="frame" x="0.0" y="158.66666666666666" width="600" height="284.33333333333337"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="wH5-X6-WNl">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="219.33333333333334"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="wH5-X6-WNl">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="250"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="nBZ-il-Ofv">
-                                                        <rect key="frame" x="20" y="0.0" width="353" height="101.66666666666667"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPk-Ya-eat">
-                                                                <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J4e-Hi-RYR">
-                                                                <rect key="frame" x="0.0" y="26.333333333333314" width="353" height="50"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="WYW-gR-KTf"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your email is incorect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MoO-9O-EMR">
-                                                                <rect key="frame" x="0.0" y="82.333333333333314" width="353" height="19.333333333333329"/>
-                                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                                <color key="textColor" name="MistakeRed"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="iNn-Ew-jsm">
-                                                        <rect key="frame" x="20" y="117.66666666666663" width="353" height="101.66666666666669"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hs-YA-8fF">
-                                                                <rect key="frame" x="0.0" y="0.0" width="353" height="45.666666666666664"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CID-L3-NCM">
-                                                                <rect key="frame" x="0.0" y="51.666666666666686" width="353" height="50"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="Koh-HO-1jz"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isPasswordVisiblityToggleEnabled" value="YES"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </textField>
-                                                        </subviews>
-                                                    </stackView>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HcI-EN-eeD" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="0.0" width="560" height="117"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your email"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="email" value="Email"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="errorMessage" value="Your email is incorrect"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showSecurityLevel" value="NO"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a3r-ym-zST" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="133.00000000000003" width="560" height="117"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your password"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showSecurityLevel" value="NO"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
                                                 </subviews>
                                                 <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="3QP-Ha-fQH">
-                                                <rect key="frame" x="0.0" y="219.33333333333331" width="393" height="50"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="3QP-Ha-fQH">
+                                                <rect key="frame" x="0.0" y="250.00000000000003" width="600" height="34.333333333333343"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7w-oT-nTK">
-                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="34.333333333333336"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGH-gW-dNj">
-                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="34.333333333333336"/>
+                                                        <rect key="frame" x="300" y="0.0" width="300" height="34.333333333333336"/>
                                                         <color key="tintColor" name="HoverYellow"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="I forgot my password"/>
@@ -136,17 +110,18 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="1yl-1J-gwt">
-                                        <rect key="frame" x="0.0" y="602" width="393" height="157"/>
+                                        <rect key="frame" x="0.0" y="443" width="600" height="157"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mao-fZ-J7k" customClass="LPButton" customModule="MKTFU" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="0.0" width="353" height="64"/>
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <rect key="frame" x="20" y="0.0" width="560" height="64"/>
+                                                <color key="backgroundColor" name="DisabledGray"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="VA4-Ad-W39"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Login">
-                                                    <color key="baseForegroundColor" red="0.95925635099999995" green="0.95925635099999995" blue="0.95925635099999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="titleFontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                                    <color key="baseForegroundColor" name="VoidWhite"/>
                                                 </buttonConfiguration>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -158,15 +133,15 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6on-Ba-nMo" customClass="LPButton" customModule="MKTFU" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="113" width="353" height="44"/>
-                                                <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="20" y="113" width="560" height="44"/>
+                                                <color key="backgroundColor" name="VoidWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="NNl-2T-PDj"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Don't have an account? Create an account!">
-                                                    <color key="titleColor" name="LighestPurple"/>
+                                                    <color key="titleColor" name="OccasionalPurple"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -196,10 +171,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailIsIncorrectWarning" destination="MoO-9O-EMR" id="nXX-kC-fQ4"/>
-                        <outlet property="emailTextField" destination="J4e-Hi-RYR" id="L6Z-Rn-gNb"/>
                         <outlet property="iForgotMyPasswordButton" destination="EGH-gW-dNj" id="zko-dl-KOF"/>
                         <outlet property="logInButton" destination="mao-fZ-J7k" id="gXL-8k-KR5"/>
+                        <outlet property="lpViewEmail" destination="HcI-EN-eeD" id="1CY-rH-IQp"/>
+                        <outlet property="lpViewPassword" destination="a3r-ym-zST" id="BYB-hh-UcW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtT-NR-vUW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -207,25 +182,23 @@
             <point key="canvasLocation" x="-335.1145038167939" y="-1.4084507042253522"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="6on-Ba-nMo">
-            <size key="intrinsicContentSize" width="278" height="29"/>
-        </designable>
-        <designable name="mao-fZ-J7k">
-            <size key="intrinsicContentSize" width="65.666666666666671" height="34.333333333333336"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Clouds" width="375" height="238"/>
         <image name="Path 73761" width="235" height="52"/>
+        <namedColor name="DisabledGray">
+            <color red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="HoverYellow">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LighestPurple">
             <color red="0.57647058823529407" green="0.28627450980392155" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="MistakeRed">
-            <color red="1" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="OccasionalPurple">
+            <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VoidWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

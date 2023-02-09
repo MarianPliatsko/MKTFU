@@ -18,10 +18,8 @@ class CreatePasswordViewController: UIViewController {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var passwordSecurityLevelLabel: UILabel!
-    
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var lpViewPassword: LpCustomView!
+    @IBOutlet weak var lpViewConfirmPassword: LpCustomView!
     
     @IBOutlet weak var sixCharactersImage: UIImageView!
     @IBOutlet weak var oneUppercaseImage: UIImageView!
@@ -38,7 +36,7 @@ class CreatePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        createAccountButton.isEnabled = false
+        //        createAccountButton.isEnabled = false
         
         termsAndPolicyTextView.delegate = self
         termsAndPolicyTextView.addHyperLinksToText(text: termsAndPolicyText, textView: termsAndPolicyTextView)
@@ -46,10 +44,9 @@ class CreatePasswordViewController: UIViewController {
         // Set default image for check mark
         checkMarkTermsAndPolicyButton.setImage(uncheckedImage, for: UIControl.State.normal)
         
-        passwordTextField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
-        confirmPasswordTextField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
-        passwordSecurityLevelLabel.isHidden = true
-        
+        lpViewPassword.txtInputField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
+        lpViewConfirmPassword.txtInputField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
+        lpViewPassword.lblPasswordSecurityLevel.isHidden = true
     }
     
     //MARK: - Actions
@@ -59,18 +56,7 @@ class CreatePasswordViewController: UIViewController {
     }
     
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
-        showNextVC(name: "Success", identifier: "SuccessViewController")
-    }
-    
-    
-    //MARK: - Navigation methods
-    
-    // Show next VC
-    func showNextVC(name: String, identifier: String) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: name, bundle: nil)
-        let createAccountVC = storyBoard.instantiateViewController(withIdentifier: identifier)
-        createAccountVC.modalPresentationStyle = .fullScreen
-        self.show(createAccountVC, sender: self)
+        pushToVC(name: "Success", identifier: "SuccessViewController")
     }
     
     // MARK: - Validation methods
@@ -78,11 +64,11 @@ class CreatePasswordViewController: UIViewController {
     @objc func textFieldDidChange(_ textField: UITextField) {
         validate()
     }
-        
+    
     func validate() {
         
-        guard let password = passwordTextField.text,
-              let confirmPassword = confirmPasswordTextField.text else {return}
+        guard let password = lpViewPassword.txtInputField.text,
+              let confirmPassword = lpViewConfirmPassword.txtInputField.text else {return}
         
         let validPassword = validatePassword(password: password)
         if validPassword == false {
@@ -91,13 +77,13 @@ class CreatePasswordViewController: UIViewController {
         let sixCharacters = validateString(regEX: "^.{6,}$", password: password)
         if sixCharacters == false {
             sixCharactersImage.image = UIImage(named: "Icon awesome-check-circle")
-            passwordSecurityLevelLabel.isHidden = true
+            lpViewPassword.lblPasswordSecurityLevel.isHidden = true
             reloadInputViews()
         } else {
             sixCharactersImage.image = UIImage(named: "Icon awesome-check-circle-fill")
-            passwordSecurityLevelLabel.isHidden = false
-            passwordSecurityLevelLabel.textColor = UIColor.appColor(LPColor.WarningYellow)
-            passwordSecurityLevelLabel.text = "Weak"
+            lpViewPassword.lblPasswordSecurityLevel.isHidden = false
+            lpViewPassword.lblPasswordSecurityLevel.textColor = UIColor.appColor(LPColor.WarningYellow)
+            lpViewPassword.lblPasswordSecurityLevel.text = "Weak"
             reloadInputViews()
         }
         
@@ -116,13 +102,13 @@ class CreatePasswordViewController: UIViewController {
         }
         
         if sixCharacters == true, oneUppercase == true, oneNumber == true {
-            passwordSecurityLevelLabel.isHidden = false
-            passwordSecurityLevelLabel.textColor = UIColor.appColor(LPColor.GoodJobGreen)
-            passwordSecurityLevelLabel.text = "Strong"
+            lpViewPassword.lblPasswordSecurityLevel.isHidden = false
+            lpViewPassword.lblPasswordSecurityLevel.textColor = UIColor.appColor(LPColor.GoodJobGreen)
+            lpViewPassword.lblPasswordSecurityLevel.text = "Strong"
             reloadInputViews()
         }
         
-         if validPassword == true, password == confirmPassword, sixCharacters == true, oneUppercase == true, oneNumber == true, isChecked == true {
+        if validPassword == true, password == confirmPassword, sixCharacters == true, oneUppercase == true, oneNumber == true, isChecked == true {
             createAccountButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
             createAccountButton.isEnabled = true
             reloadInputViews()
@@ -172,19 +158,18 @@ extension CreatePasswordViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         
-            if URL.scheme == "terms" {
-                showNextVC(name: "TermsOfService", identifier: "TermsOfServiceViewController")
-                return false
-            } else  if URL.scheme == "privacy"{
-               showNextVC(name: "PrivacyPolicy", identifier: "PrivacyPolicyViewController")
-                 return false
-            }
-            return true
-            // let the system open this URL
+        if URL.scheme == "terms" {
+            pushToVC(name: "TermsOfService", identifier: "TermsOfServiceViewController")
+            return false
+        } else  if URL.scheme == "privacy"{
+            pushToVC(name: "PrivacyPolicy", identifier: "PrivacyPolicyViewController")
+            return false
         }
+        return true
+        // let the system open this URL
+    }
     
 }
-
 
 
 

@@ -8,97 +8,80 @@
 import UIKit
 
 class LogInViewController: UIViewController {
-
+    
     //MARK: - Outlets
     
     @IBOutlet weak var iForgotMyPasswordButton: UIButton!
     @IBOutlet weak var logInButton: UIButton!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var emailIsIncorrectWarning: UILabel!
+    @IBOutlet weak var lpViewEmail: LpCustomView!
+    @IBOutlet weak var lpViewPassword: LpCustomView!
     
-    //MARK: - Lifecycle
+    //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailIsIncorrectWarning.isHidden = true
+        // to hide error message when view did load
+        lpViewEmail.showError = false
+        logInButton.isEnabled = false
         
-        adjustForgotPusswordButton()
+        // setup forgot button UI
+        iForgotMyPasswordButton.setupYellowButtonUI(text: "I forgot my password")
         
-        emailTextField.addTarget(self, action: #selector(LogInViewController.textFieldDidChange(_:)), for: .editingChanged)
+        // get any changes in text fields
+        lpViewEmail.txtInputField.addTarget(self, action: #selector(LogInViewController.textFieldDidChange(_:)), for: .editingChanged)
+        lpViewPassword.txtInputField.addTarget(self, action: #selector(LogInViewController.textFieldDidChange(_:)), for: .editingChanged)
+        
+        //create Navigation Controller
+        createNavigationController(rootViewController: self)
+        
+
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "Vector 7"), style: .plain, target: nil, action: nil)
+//        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "Vector 7")
+//        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "Vector 7")
+//
     }
     
     //MARK: - Actions
     
     @IBAction func logInButtonPressed(_ sender: UIButton) {
-        checkEmail()
+        //Check email validation after button pressed
+        lpViewEmail.checkEmail()
+        print(sender)
     }
-    
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
-        // Show CreateAccount VC
-        showNextVC(name: "CreateAccount", identifier: "AccountViewController")
+        // Push to CreateAccount VC
+        pushToVC(name: "CreateAccount", identifier: "CreateAccountViewController")
     }
-    
     @IBAction func forgotPasswordButtonPressed(_ sender: UIButton) {
-        showNextVC(name: "ForgotPassword", identifier: "ForgotPasswordViewController")
-    }
-    
-    //MARK: - Navigation methods
-    
-    // Show next VC
-    func showNextVC(name: String, identifier: String) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: name, bundle: nil)
-        let createAccountVC = storyBoard.instantiateViewController(withIdentifier: identifier)
-        createAccountVC.modalPresentationStyle = .fullScreen
-        self.show(createAccountVC, sender: self)
+        // Push to ForgotPassword VC
+        pushToVC(name: "ForgotPassword", identifier: "ForgotPasswordViewController")
     }
     
     //MARK: - Validation Methods
     
     // Check email validation while typing in text field
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if let email = textField.text, email != "" {
-            if self.isValidEmail(email) == false {
-                self.logInButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
-            } else {
-                self.emailIsIncorrectWarning.isHidden = true
-                self.logInButton.backgroundColor = UIColor.appColor(LPColor.WarningYellow)
-            }
-        }
+        checkEmailAndPassword()
         reloadInputViews()
     }
     
-    // Check email validation after button pressed
-    func checkEmail() {
-        if let email = emailTextField.text, email != "" {
-            if self.isValidEmail(email) == false {
-                self.emailIsIncorrectWarning.isHidden = false
-            } else {
-                self.emailIsIncorrectWarning.isHidden = true
-            }
+    // check if email and password were written correct
+    // if yes - button isEnabled and color is Yellow
+    // if no  - button !isEnamble and color is Gray
+    func checkEmailAndPassword() {
+        guard let email = lpViewEmail.txtInputField.text,
+              let password = lpViewPassword.txtInputField.text else {return}
+        
+        if lpViewEmail.isValidEmail(email) == true, password.count >= 6 {
+            self.logInButton.backgroundColor = UIColor.appColor(LPColor.WarningYellow)
+            logInButton.isEnabled = true
         }
-        reloadInputViews()
-    }
-    
-    // Check email for validation
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
-    
-    // MARK: - UI setup methods
-    
-    // Make underline fot button text and adjust
-    func adjustForgotPusswordButton() {
-        let attributedTitle = NSAttributedString(
-            string: "I forgot my password" ,
-            attributes: [
-                .foregroundColor: UIColor.appColor(LPColor.WarningYellow)!,
-                .font: UIFont(name: "OpenSans", size: 14)!,
-                .underlineStyle: NSUnderlineStyle.single.rawValue
-            ]
-        )
-        iForgotMyPasswordButton.setAttributedTitle(attributedTitle, for: .normal)
+        else {
+            logInButton.isEnabled = false
+            lpViewEmail.showError = true
+            self.logInButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
+        }
     }
 }

@@ -1,8 +1,8 @@
 //
-//  LBView.swift
+//  File.swift
 //  MKTFU
 //
-//  Created by Duy Pham on 2023-01-30.
+//  Created by mac on 2023-02-07.
 //
 
 import Foundation
@@ -62,20 +62,50 @@ class LPView: UIView {
     
 }
 
-class LPInputTextField: LPView {
+//MARK: - LPInputTextField
+
+class LpCustomView: LPView, UITextFieldDelegate {
+    
     var view:UIView!
+    
     @IBOutlet weak private var lblTitle: UILabel!
     @IBOutlet weak private var lblError: UILabel!
     @IBOutlet weak var txtInputField: UITextField!
+    @IBOutlet weak var lblPasswordSecurityLevel: UILabel!
+    
+    @IBInspectable var showError: Bool = false {
+        didSet {
+            lblError.isHidden = !showError
+        }
+    }
+    
+    @IBInspectable var showSecurityLevel: Bool = false {
+        didSet {
+            lblPasswordSecurityLevel.isHidden = !showSecurityLevel
+        }
+    }
+    
     @IBInspectable var title: String = "Title" {
         didSet {
             lblTitle.text = title
         }
     }
     
+    @IBInspectable var placeHolder: String = "Placeholder" {
+        didSet {
+            txtInputField.placeholder = placeHolder
+        }
+    }
+    
+    @IBInspectable var errorMessage: String = "Error" {
+        didSet {
+            lblError.text = errorMessage
+        }
+    }
+    
     func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "LPInputTextField", bundle: bundle)
+        let nib = UINib(nibName: "LPCustomView", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         return view
     }
@@ -92,9 +122,32 @@ class LPInputTextField: LPView {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+       
     }
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         xibSetup()
+    }   
+    
+    //MARK: - Validation methods
+    
+    //Check email validation after button pressed
+    func checkEmail() {
+        if let email = txtInputField.text, email != "" {
+            if isValidEmail(email) == false {
+                showError = true
+            } else {
+                showError = false
+            }
+        }
+        reloadInputViews()
     }
+    
+    // Check email for validation
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
 }

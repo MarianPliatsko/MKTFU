@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 enum LPColor: String {
+    case TitleGray
     case LighestPurple
     case MediumestPurple
     case DarkestPurple
@@ -16,6 +17,7 @@ enum LPColor: String {
     case GoodJobGreen
     case WarningYellow
     case DisabledGray
+    case MistakeRed
 }
 
 extension UIColor {
