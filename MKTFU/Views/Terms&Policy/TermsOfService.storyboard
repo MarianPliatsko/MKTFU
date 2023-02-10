@@ -22,26 +22,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQj-fd-Rix">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQj-fd-Rix" customClass="LPHeaderView" customModule="MKTFU" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="59" width="393" height="52"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ToW-YZ-MD7">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="52"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Terms of service">
-                                            <fontDescription key="titleFontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
-                                            <color key="baseForegroundColor" name="LighestPurple"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="ToW-YZ-MD7" firstAttribute="top" secondItem="jQj-fd-Rix" secondAttribute="top" id="3xI-YV-xBp"/>
-                                    <constraint firstAttribute="bottom" secondItem="ToW-YZ-MD7" secondAttribute="bottom" id="V13-kS-3eV"/>
-                                    <constraint firstAttribute="trailing" secondItem="ToW-YZ-MD7" secondAttribute="trailing" id="Wm0-uz-EIF"/>
-                                    <constraint firstItem="ToW-YZ-MD7" firstAttribute="leading" secondItem="jQj-fd-Rix" secondAttribute="leading" id="Yeu-C7-LVe"/>
                                     <constraint firstAttribute="height" constant="52" id="pMk-cv-ek2"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Terms of service"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-Xf-8fD" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="111" width="393" height="741"/>
@@ -158,9 +147,6 @@ VerySubtleGray</string>
             <string key="name">
 VerySubtleGray</string>
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="LighestPurple">
-            <color red="0.57647058823529407" green="0.28627450980392155" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="OccasionalPurple">
             <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

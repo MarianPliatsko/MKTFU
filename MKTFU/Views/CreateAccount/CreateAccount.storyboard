@@ -22,44 +22,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bh-Vm-EfP">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bh-Vm-EfP" customClass="LPHeaderView" customModule="MKTFU" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="59" width="393" height="52"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWv-ZI-XMl">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="52"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Create account">
-                                            <fontDescription key="titleFontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
-                                            <color key="baseForegroundColor" name="LighestPurple"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="D2G-aN-RLK"/>
-                                    <constraint firstItem="AWv-ZI-XMl" firstAttribute="leading" secondItem="6bh-Vm-EfP" secondAttribute="leading" id="Mdn-ne-7vO"/>
-                                    <constraint firstAttribute="trailing" secondItem="AWv-ZI-XMl" secondAttribute="trailing" id="QrU-aN-M4n"/>
-                                    <constraint firstAttribute="bottom" secondItem="AWv-ZI-XMl" secondAttribute="bottom" id="juP-hL-epc"/>
-                                    <constraint firstItem="AWv-ZI-XMl" firstAttribute="top" secondItem="6bh-Vm-EfP" secondAttribute="top" id="u9N-Mp-gDS"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Create account"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Clh-U8-VKT">
-                                <rect key="frame" x="0.0" y="111" width="393" height="0.0"/>
+                                <rect key="frame" x="0.0" y="111" width="393" height="741"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gfc-cc-SDJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="741"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKw-lJ-JYa" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="741"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="vPb-Ki-Ig9">
-                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="741"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tc7-w3-g2J">
-                                                                <rect key="frame" x="0.0" y="0.0" width="393" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="393" height="336"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7K1-67-zCd" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
-                                                                        <rect key="frame" x="20" y="0.0" width="353" height="0.0"/>
+                                                                        <rect key="frame" x="20" y="0.0" width="353" height="84"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
@@ -69,7 +58,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOa-Zp-7Gs" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
-                                                                        <rect key="frame" x="20" y="0.0" width="353" height="0.0"/>
+                                                                        <rect key="frame" x="20" y="84" width="353" height="84"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
@@ -79,7 +68,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w0W-Q2-lYk" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
-                                                                        <rect key="frame" x="20" y="0.0" width="353" height="0.0"/>
+                                                                        <rect key="frame" x="20" y="168" width="353" height="84"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
@@ -89,7 +78,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0b-0A-fxF" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
-                                                                        <rect key="frame" x="20" y="0.0" width="353" height="0.0"/>
+                                                                        <rect key="frame" x="20" y="252" width="353" height="84"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
@@ -102,10 +91,10 @@
                                                                 <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vdH-yl-P8t">
-                                                                <rect key="frame" x="0.0" y="0.0" width="393" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="336" width="393" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adress Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMl-dq-2kN">
-                                                                        <rect key="frame" x="20" y="0.0" width="353" height="0.0"/>
+                                                                        <rect key="frame" x="20" y="0.0" width="353" height="50"/>
                                                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -117,13 +106,13 @@
                                                                 <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KbQ-co-cdG">
-                                                                <rect key="frame" x="0.0" y="0.0" width="393" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="386" width="393" height="355"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AZa-ap-XNc">
-                                                                        <rect key="frame" x="20" y="0.0" width="353" height="0.0"/>
+                                                                        <rect key="frame" x="20" y="0.0" width="353" height="160"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpV-NO-17H" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="353" height="80"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
@@ -133,7 +122,7 @@
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </view>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJL-yo-wXR" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
+                                                                                <rect key="frame" x="0.0" y="80" width="353" height="80"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
@@ -145,10 +134,10 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLN-Oh-3TK">
-                                                                        <rect key="frame" x="20" y="-161" width="353" height="161"/>
+                                                                        <rect key="frame" x="20" y="160" width="353" height="161"/>
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLc-TY-763" customClass="LPButton" customModule="MKTFU" customModuleProvider="target">
-                                                                                <rect key="frame" x="15" y="30.666666666666671" width="323" height="52"/>
+                                                                                <rect key="frame" x="15" y="30.666666666666629" width="323" height="52"/>
                                                                                 <color key="backgroundColor" name="DisabledGray"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="52" id="PH5-lw-ZkA"/>
@@ -233,6 +222,7 @@ VerySubtleGray</string>
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="QLc-TY-763" id="Tkg-9f-eiX"/>
+                        <outlet property="lpHeaderView" destination="6bh-Vm-EfP" id="OPL-Ag-8jb"/>
                         <outlet property="lpViewCityName" destination="WJL-yo-wXR" id="M2d-HL-KSy"/>
                         <outlet property="lpViewEmail" destination="w0W-Q2-lYk" id="Xfu-aY-wH7"/>
                         <outlet property="lpViewFirstName" destination="7K1-67-zCd" id="Mnh-MU-msb"/>
@@ -248,7 +238,7 @@ VerySubtleGray</string>
     </scenes>
     <designables>
         <designable name="QLc-TY-763">
-            <size key="intrinsicContentSize" width="64" height="32.666666666666664"/>
+            <size key="intrinsicContentSize" width="67.666666666666671" height="36"/>
         </designable>
     </designables>
     <resources>
@@ -259,9 +249,6 @@ VerySubtleGray</string>
         </namedColor>
         <namedColor name="DisabledGray">
             <color red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="LighestPurple">
-            <color red="0.57647058823529407" green="0.28627450980392155" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VoidWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

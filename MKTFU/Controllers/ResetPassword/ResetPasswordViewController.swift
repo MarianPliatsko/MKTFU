@@ -1,57 +1,39 @@
 //
-//  CreatePasswordViewController.swift
+//  ResetPasswordViewController.swift
 //  MKTFU
 //
-//  Created by mac on 2023-02-02.
+//  Created by mac on 2023-02-09.
 //
 
 import UIKit
 
-class CreatePasswordViewController: UIViewController {
+class ResetPasswordViewController: UIViewController {
     
     //MARK: - Properties
     
     let validate = Validate()
-    let checkedImage = UIImage(named: "CheckedImage")
-    let uncheckedImage = UIImage(named: "UncheckedImage")
-    var isChecked: Bool = false
-    let termsAndPolicyText = "By checking this box, you agree to our Terms of Service and our Privacy Policy"
     
-    //MARK: - Outlets
+    //MARK: Outlets
     
     @IBOutlet weak var lpHeaderView: LPHeaderView!
+    
     @IBOutlet weak var lpViewPassword: LpCustomView!
     @IBOutlet weak var lpViewConfirmPassword: LpCustomView!
     
-    @IBOutlet weak var sixCharactersImage: UIImageView!
-    @IBOutlet weak var oneUppercaseImage: UIImageView!
-    @IBOutlet weak var oneNumberImage: UIImageView!
-    
-    @IBOutlet weak var checkMarkTermsAndPolicyButton: UIButton!
-    @IBOutlet weak var termsAndPolicyTextView: UITextView!
+    @IBOutlet weak var sixCharactersImageView: UIImageView!
+    @IBOutlet weak var oneUppercaseImageView: UIImageView!
+    @IBOutlet weak var oneNumberImageView: UIImageView!
     
     @IBOutlet weak var createAccountButton: UIButton!
     
-    
-    //MARK: - Life cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //createAccountButton.isEnabled = false
+        createAccountButton.isEnabled = false
         
         //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
-        
-        //call text view delegate
-        termsAndPolicyTextView.delegate = self
-        
-        //call clickable links in text view
-        termsAndPolicyTextView.addHyperLinksToText(text: termsAndPolicyText, textView: termsAndPolicyTextView)
-        
-        // Set default image for check mark
-        checkMarkTermsAndPolicyButton.setImage(uncheckedImage, for: UIControl.State.normal)
         
         lpViewPassword.txtInputField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
         lpViewConfirmPassword.txtInputField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
@@ -60,11 +42,7 @@ class CreatePasswordViewController: UIViewController {
     
     //MARK: - Actions
     
-    @IBAction func checkMarkButtonPressed(_ sender: UIButton) {
-        checkMarkTapped()
-    }
-    
-    @IBAction func createAccountButtonPressed(_ sender: UIButton) {
+    @IBAction func checkMarkTermsAndPolicyButton(_ sender: UIButton) {
         pushToVC(name: "Success", identifier: "SuccessViewController")
     }
     
@@ -81,16 +59,17 @@ class CreatePasswordViewController: UIViewController {
         
         let validPassword = validate.validatePassword.validatePassword(password: password)
         if validPassword == false {
+            print("InvalidPassword")
         }
         
         let sixCharacters = validate.validateString.validateString(regEX: "^.{6,}$",
                                                                    password: password)
         if sixCharacters == false {
-            sixCharactersImage.image = UIImage(named: "Icon awesome-check-circle")
+            sixCharactersImageView.image = UIImage(named: "Icon awesome-check-circle")
             lpViewPassword.lblPasswordSecurityLevel.isHidden = true
             reloadInputViews()
         } else {
-            sixCharactersImage.image = UIImage(named: "Icon awesome-check-circle-fill")
+            sixCharactersImageView.image = UIImage(named: "Icon awesome-check-circle-fill")
             lpViewPassword.lblPasswordSecurityLevel.isHidden = false
             lpViewPassword.lblPasswordSecurityLevel.textColor = UIColor.appColor(LPColor.WarningYellow)
             lpViewPassword.lblPasswordSecurityLevel.text = "Weak"
@@ -100,17 +79,17 @@ class CreatePasswordViewController: UIViewController {
         let oneUppercase = validate.validateString.validateString(regEX: ".*[A-Z]+.*",
                                                                   password: password)
         if oneUppercase == false {
-            oneUppercaseImage.image = UIImage(named: "Icon awesome-check-circle")
+            oneUppercaseImageView.image = UIImage(named: "Icon awesome-check-circle")
         } else {
-            oneUppercaseImage.image = UIImage(named: "Icon awesome-check-circle-fill")
+            oneUppercaseImageView.image = UIImage(named: "Icon awesome-check-circle-fill")
         }
         
         let oneNumber = validate.validateString.validateString(regEX: ".*[0-9]+.*",
                                                                password: password)
         if oneNumber == false {
-            oneNumberImage.image = UIImage(named: "Icon awesome-check-circle")
+            oneNumberImageView.image = UIImage(named: "Icon awesome-check-circle")
         } else {
-            oneNumberImage.image = UIImage(named: "Icon awesome-check-circle-fill")
+            oneNumberImageView.image = UIImage(named: "Icon awesome-check-circle-fill")
         }
         
         if sixCharacters == true, oneUppercase == true, oneNumber == true {
@@ -120,7 +99,7 @@ class CreatePasswordViewController: UIViewController {
             reloadInputViews()
         }
         
-        if validPassword == true, password == confirmPassword, sixCharacters == true, oneUppercase == true, oneNumber == true, isChecked == true {
+        if validPassword == true, password == confirmPassword, sixCharacters == true, oneUppercase == true, oneNumber == true {
             createAccountButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
             createAccountButton.isEnabled = true
             reloadInputViews()
@@ -131,43 +110,4 @@ class CreatePasswordViewController: UIViewController {
         }
         reloadInputViews()
     }
-    
-    //MARK: - Change UI methods
-    
-    //Change image of check mark
-    func checkMarkTapped() {
-        isChecked.toggle()
-        
-        if isChecked == true {
-            checkMarkTermsAndPolicyButton.setImage(checkedImage, for: UIControl.State.normal)
-            validating()
-        } else {
-            checkMarkTermsAndPolicyButton.setImage(uncheckedImage, for: UIControl.State.normal)
-            validating()
-        }
-    }
 }
-
-extension CreatePasswordViewController: UITextViewDelegate {
-    
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        
-        if URL.scheme == "terms" {
-            pushToVC(name: "TermsOfService", identifier: "TermsOfServiceViewController")
-            return false
-        } else  if URL.scheme == "privacy"{
-            pushToVC(name: "PrivacyPolicy", identifier: "PrivacyPolicyViewController")
-            return false
-        }
-        return true
-        // let the system open this URL
-    }
-    
-}
-
-
-
-
-
-
-

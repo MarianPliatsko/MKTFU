@@ -11,6 +11,7 @@ class ForgotPasswordVerificationViewController: UIViewController {
     
     //MARK: - Outlets
     
+    @IBOutlet weak var lpHeaderView: LPHeaderView!
     @IBOutlet weak var lpViewVerificationCode: LpCustomView!
     @IBOutlet weak var didntRecieveTheCode: UIButton!
     
@@ -18,6 +19,11 @@ class ForgotPasswordVerificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //make back button useful in custom header view
+        lpHeaderView.onBackPressed = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
         
         // Make underline fot button text and adjust
         didntRecieveTheCode.setupYellowButtonUI(text: "I didn’t receive the code, send it again")
@@ -30,5 +36,6 @@ class ForgotPasswordVerificationViewController: UIViewController {
     }
     
     @IBAction func verifyButtonPressed(_ sender: UIButton) {
+        pushToVC(name: "ResetPassword", identifier: "ResetPasswordViewController")
     }
 }

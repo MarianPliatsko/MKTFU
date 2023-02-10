@@ -9,13 +9,23 @@ import UIKit
 
 class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     
+    //MARK: - Properties
+    
+    let validate = Validate()
+    
     //MARK: - Outlets
     
+    @IBOutlet weak var lpHeaderView: LPHeaderView!
     @IBOutlet weak var lpViewEmail: LpCustomView!
     @IBOutlet weak var sentButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //make back button useful in custom header view
+        lpHeaderView.onBackPressed = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
         
         lpViewEmail.txtInputField.delegate = self
         lpViewEmail.txtInputField.addTarget(self, action: #selector(ForgotPasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
@@ -32,21 +42,12 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let email = lpViewEmail.txtInputField.text else {return}
         
-        let isValidateEmail = validateEmailId(with: email)
+        let isValidateEmail = validate.validateEmail.validateEmailId(emailID: email)
         if isValidateEmail == false {
             sentButton.isEnabled = false
         } else {
             sentButton.isEnabled = true
         }
         reloadInputViews()
-    }
-    
-    func validateEmailId(with emailID: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let trimmedString = emailID.trimmingCharacters(in: .whitespaces)
-        let validateEmail = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        let isValidateEmail = validateEmail.evaluate(with: trimmedString)
-        print("isValidateEmail:\(isValidateEmail)")
-        return isValidateEmail
     }
 }

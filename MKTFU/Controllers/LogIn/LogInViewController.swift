@@ -9,6 +9,8 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
+    let validate = Validate()
+    
     //MARK: - Outlets
     
     @IBOutlet weak var iForgotMyPasswordButton: UIButton!
@@ -34,13 +36,7 @@ class LogInViewController: UIViewController {
         
         //create Navigation Controller
         createNavigationController(rootViewController: self)
-        
-
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "Vector 7"), style: .plain, target: nil, action: nil)
-//        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "Vector 7")
-//        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "Vector 7")
-//
+        navigationController?.navigationBar.isHidden = true
     }
     
     //MARK: - Actions
@@ -74,7 +70,7 @@ class LogInViewController: UIViewController {
         guard let email = lpViewEmail.txtInputField.text,
               let password = lpViewPassword.txtInputField.text else {return}
         
-        if lpViewEmail.isValidEmail(email) == true, password.count >= 6 {
+        if validate.validateEmail.validateEmailId(emailID: email) == true, password.count >= 6 {
             self.logInButton.backgroundColor = UIColor.appColor(LPColor.WarningYellow)
             logInButton.isEnabled = true
         }

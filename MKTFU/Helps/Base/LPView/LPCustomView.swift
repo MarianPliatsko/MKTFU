@@ -62,11 +62,13 @@ class LPView: UIView {
     
 }
 
-//MARK: - LPInputTextField
+//MARK: - LpCustomView
 
 class LpCustomView: LPView, UITextFieldDelegate {
     
-    var view:UIView!
+    let validate = Validate()
+    
+    var view: UIView!
     
     @IBOutlet weak private var lblTitle: UILabel!
     @IBOutlet weak private var lblError: UILabel!
@@ -134,7 +136,7 @@ class LpCustomView: LPView, UITextFieldDelegate {
     //Check email validation after button pressed
     func checkEmail() {
         if let email = txtInputField.text, email != "" {
-            if isValidEmail(email) == false {
+            if validate.validateEmail.validateEmailId(emailID: email) == false {
                 showError = true
             } else {
                 showError = false
@@ -142,12 +144,4 @@ class LpCustomView: LPView, UITextFieldDelegate {
         }
         reloadInputViews()
     }
-    
-    // Check email for validation
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
-    
 }
