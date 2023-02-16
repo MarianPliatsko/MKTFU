@@ -25,7 +25,7 @@ class LogInViewController: UIViewController {
         
         // to hide error message when view did load
         lpViewEmail.showError = false
-        logInButton.isEnabled = false
+//        logInButton.isEnabled = false
         
         // setup forgot button UI
         iForgotMyPasswordButton.setupYellowButtonUI(text: "I forgot my password")
@@ -45,6 +45,7 @@ class LogInViewController: UIViewController {
         //Check email validation after button pressed
         lpViewEmail.checkEmail()
         print(sender)
+        pushToVC(name: "Home", identifier: "HomeViewController")
     }
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
         // Push to CreateAccount VC
