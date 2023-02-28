@@ -4,8 +4,12 @@
 //
 //  Created by mac on 2023-01-30.
 //
+// call back
+//com.MarianPliatsko.MKTFU://dev-p77zu24vjhtaaicl.us.auth0.com/los/com.MarianPliatsko.MKTFU/callback
 
 import UIKit
+import Auth0
+import JWTDecode
 
 class LogInViewController: UIViewController {
     
@@ -22,10 +26,16 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lpViewEmail.txtInputField.text = "marianpliatsko@icloud.com"
+        lpViewPassword.txtInputField.text = "Tani4kamarik!"
         
         // to hide error message when view did load
         lpViewEmail.showError = false
-//        logInButton.isEnabled = false
+        
+        //make password not visible
+        lpViewPassword.txtInputField.isSecureTextEntry = true
+        
+        //        logInButton.isEnabled = false
         
         // setup forgot button UI
         iForgotMyPasswordButton.setupYellowButtonUI(text: "I forgot my password")
@@ -43,8 +53,8 @@ class LogInViewController: UIViewController {
     
     @IBAction func logInButtonPressed(_ sender: UIButton) {
         //Check email validation after button pressed
-        lpViewEmail.checkEmail()
-        print(sender)
+        //        lpViewEmail.checkEmail()
+        logInWithAuth0()
         pushToVC(name: "Home", identifier: "HomeViewController")
     }
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
@@ -54,6 +64,30 @@ class LogInViewController: UIViewController {
     @IBAction func forgotPasswordButtonPressed(_ sender: UIButton) {
         // Push to ForgotPassword VC
         pushToVC(name: "ForgotPassword", identifier: "ForgotPasswordViewController")
+    }
+    
+    //MARK: - Log In Methods
+    
+    // make log in with
+    func logInWithAuth0() {
+        guard let email = lpViewEmail.txtInputField.text,
+              let password = lpViewPassword.txtInputField.text else {return}
+        
+        Auth0Manager.shared.loginWithEmail(email, password: password) { result in
+            switch result {
+            case .success(let accessToken):
+                print("Access Token: \(String(describing: accessToken))")
+            case .failure(let error):
+                switch error {
+                case .missingEmail:
+                    print(error.localizedDescription)
+                case .missingPassword:
+                    print(error.localizedDescription)
+                case .error(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
     
     //MARK: - Validation Methods
@@ -77,7 +111,6 @@ class LogInViewController: UIViewController {
         }
         else {
             logInButton.isEnabled = false
-            lpViewEmail.showError = true
             self.logInButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
         }
     }

@@ -6,8 +6,16 @@
 //
 
 import UIKit
+import Auth0
+
+protocol ForgotPasswordVerificationDelegate: AnyObject {
+    func passBearerTocken(_ viewController: ForgotPasswordVerificationViewController,
+                          bearerToken: String)
+}
 
 class ForgotPasswordVerificationViewController: UIViewController {
+    
+    weak var delegate: ForgotPasswordVerificationDelegate?
     
     //MARK: - Outlets
     
@@ -36,6 +44,30 @@ class ForgotPasswordVerificationViewController: UIViewController {
     }
     
     @IBAction func verifyButtonPressed(_ sender: UIButton) {
-        pushToVC(name: "ResetPassword", identifier: "ResetPasswordViewController")
+        verifyCode()
+        
+    }
+    
+    func verifyCode() {
+        Auth0
+           .authentication()
+           .login(
+               email: "marianpliatsko@gmail.com",
+               code: lpViewVerificationCode.txtInputField.text!,
+               audience: "https://dev-p77zu24vjhtaaicl.us.auth0.com/api/v2/",
+               scope: "openid email")
+           .start { result in
+               switch result {
+               case .success(let credentials):
+                   DispatchQueue.main.async {
+                       self.delegate?.passBearerTocken(self, bearerToken: credentials.accessToken)
+                       self.pushToVC(name: "ResetPassword", identifier: "ResetPasswordViewController")
+                   }
+               case .failure(let error):
+                   DispatchQueue.main.async {
+                       print("Error:\(error)")
+                   }
+               }
+           }
     }
 }

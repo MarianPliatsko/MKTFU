@@ -38,8 +38,8 @@
                                             <constraint firstAttribute="height" constant="82" id="4FO-eN-yxi"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ieX-bE-1Fv">
-                                        <rect key="frame" x="0.0" y="128.66666666666666" width="393" height="80"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ieX-bE-1Fv">
+                                        <rect key="frame" x="0.0" y="137.66666666666666" width="393" height="76.666666666666657"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Path 73761" translatesAutoresizingMaskIntoConstraints="NO" id="bC5-Y2-4h8">
                                                 <rect key="frame" x="79" y="0.0" width="235" height="52"/>
@@ -49,21 +49,21 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy and sell stuff!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqz-qO-PQE">
-                                                <rect key="frame" x="130.33333333333331" y="58" width="132.33333333333331" height="22"/>
+                                                <rect key="frame" x="133" y="57.999999999999993" width="127.33333333333331" height="18.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                 <color key="textColor" name="LighestPurple"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ykj-u8-cMr">
-                                        <rect key="frame" x="0.0" y="255.33333333333331" width="393" height="299.99999999999994"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ykj-u8-cMr">
+                                        <rect key="frame" x="0.0" y="270.33333333333331" width="393" height="275.99999999999994"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="wH5-X6-WNl">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="250"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="wH5-X6-WNl">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="226"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HcI-EN-eeD" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="0.0" width="353" height="117"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HcI-EN-eeD" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="0.0" width="353" height="105"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email"/>
@@ -74,21 +74,22 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showSecurityLevel" value="NO"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a3r-ym-zST" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="133" width="353" height="117"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3r-ym-zST" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="121" width="353" height="105"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your password"/>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showSecurityLevel" value="NO"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isPasswordVisiblityToggleEnabled" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
                                                 <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="3QP-Ha-fQH">
-                                                <rect key="frame" x="0.0" y="250.00000000000006" width="393" height="50"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="3QP-Ha-fQH">
+                                                <rect key="frame" x="0.0" y="226.00000000000006" width="393" height="50"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7w-oT-nTK">
                                                         <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="50"/>
@@ -180,15 +181,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtT-NR-vUW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-335.1145038167939" y="-1.4084507042253522"/>
+            <point key="canvasLocation" x="-98" y="30"/>
         </scene>
     </scenes>
     <designables>
         <designable name="6on-Ba-nMo">
-            <size key="intrinsicContentSize" width="277" height="32"/>
+            <size key="intrinsicContentSize" width="272" height="29"/>
         </designable>
         <designable name="mao-fZ-J7k">
-            <size key="intrinsicContentSize" width="67.666666666666671" height="36"/>
+            <size key="intrinsicContentSize" width="64" height="32.666666666666664"/>
         </designable>
     </designables>
     <resources>

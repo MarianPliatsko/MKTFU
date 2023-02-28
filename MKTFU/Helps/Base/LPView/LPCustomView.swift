@@ -124,12 +124,12 @@ class LpCustomView: LPView, UITextFieldDelegate {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        
     }
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         xibSetup()
-    }   
+    }
     
     //MARK: - Validation methods
     
@@ -144,4 +144,56 @@ class LpCustomView: LPView, UITextFieldDelegate {
         }
         reloadInputViews()
     }
+    
+    private func isValid(with word: String) -> Bool {
+        let check = "[A-Za-z]"
+        let checkPred = NSPredicate(format:"SELF MATCHES %@", check)
+        return checkPred.evaluate(with: word)
+    }
+    
+    
+    // Enabling password visibility view on text field
+    @IBInspectable var isPasswordVisiblityToggleEnabled: Bool {
+        set {
+            if newValue {
+                addPasswordVisibilityToggle("Icon awesome-eye-slash")
+            }
+            else {
+                removePasswordVisibilityToggle()
+            }
+        }
+        
+        get {
+            txtInputField.rightView != nil
+        }
+    }
+    
+    private func removePasswordVisibilityToggle() {
+        txtInputField.rightView = nil
+    }
+    
+    private func addPasswordVisibilityToggle(_ named: String) {
+        let rightButton = UIButton(type: .custom)
+        rightButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+        rightButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        rightButton.addTarget(
+            self,
+            action: #selector(passwordVisibilityTogglePressed(_:)),
+            for: .touchUpInside
+        )
+        rightButton.setImage(UIImage(named: named), for: .selected)
+        rightButton.setImage(UIImage(named: named), for: .normal)
+        rightButton.isSelected = true
+        
+        txtInputField.rightViewMode = .always
+        txtInputField.rightView = rightButton
+        
+    }
+    
+    @objc
+    private func passwordVisibilityTogglePressed(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        txtInputField.isSecureTextEntry = sender.isSelected
+    }
 }
+   

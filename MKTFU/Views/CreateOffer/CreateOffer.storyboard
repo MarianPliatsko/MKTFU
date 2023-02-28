@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Create Offer View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="CreateOfferViewController" id="Y6W-OH-hqX" customClass="CreateOfferViewController" customModule="MKTFU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1pJ-sI-bat" customClass="LPHeaderView" customModule="MKTFU" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="59" width="393" height="51"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="Re3-vT-8Ma"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Pickup information"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFb-6C-Mbd">
+                                <rect key="frame" x="0.0" y="110" width="393" height="708"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="c5e-ZZ-hzO">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="740"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ta-kd-r9E" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="740"/>
+                                                <color key="backgroundColor">
+                                                    <string key="name">
+VerySubtleGray</string>
+                                                </color>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="35"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="2ta-kd-r9E" secondAttribute="trailing" id="LyG-FK-A9L"/>
+                                            <constraint firstItem="2ta-kd-r9E" firstAttribute="top" secondItem="c5e-ZZ-hzO" secondAttribute="top" id="cEz-tx-zdZ"/>
+                                            <constraint firstItem="2ta-kd-r9E" firstAttribute="leading" secondItem="c5e-ZZ-hzO" secondAttribute="leading" id="mBD-2B-SmP"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="c5e-ZZ-hzO" firstAttribute="width" secondItem="OFb-6C-Mbd" secondAttribute="width" id="9IE-bt-CYM"/>
+                                    <constraint firstItem="c5e-ZZ-hzO" firstAttribute="leading" secondItem="OFb-6C-Mbd" secondAttribute="leading" id="HgU-wN-VId"/>
+                                    <constraint firstItem="c5e-ZZ-hzO" firstAttribute="top" secondItem="OFb-6C-Mbd" secondAttribute="top" id="ZmZ-7v-Ozf"/>
+                                    <constraint firstAttribute="trailing" secondItem="c5e-ZZ-hzO" secondAttribute="trailing" id="iaw-zN-8Sb"/>
+                                    <constraint firstAttribute="bottom" secondItem="c5e-ZZ-hzO" secondAttribute="bottom" id="mXL-GD-HgT"/>
+                                    <constraint firstItem="c5e-ZZ-hzO" firstAttribute="height" secondItem="OFb-6C-Mbd" secondAttribute="height" priority="250" id="rkJ-TK-11p"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="OFb-6C-Mbd" secondAttribute="bottom" id="4Hx-EA-Jsy"/>
+                            <constraint firstItem="OFb-6C-Mbd" firstAttribute="top" secondItem="1pJ-sI-bat" secondAttribute="bottom" id="4WI-yC-J1W"/>
+                            <constraint firstItem="1pJ-sI-bat" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="B7A-wT-d4y"/>
+                            <constraint firstItem="OFb-6C-Mbd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="BrV-zj-PlM"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="OFb-6C-Mbd" secondAttribute="trailing" id="DRv-lj-ipA"/>
+                            <constraint firstItem="1pJ-sI-bat" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ZdI-cH-uxB"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="1pJ-sI-bat" secondAttribute="trailing" id="jMA-bP-ymW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lpHeaderView" destination="1pJ-sI-bat" id="EIa-ES-1Do"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="81.679389312977094" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor>
+            <string key="name">
+VerySubtleGray</string>
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

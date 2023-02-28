@@ -7,11 +7,16 @@
 
 import UIKit
 
-class ResetPasswordViewController: UIViewController {
+class ResetPasswordViewController: UIViewController, ForgotPasswordVerificationDelegate {
+    func passBearerTocken(_ forgotPasswordVerificationViewController: ForgotPasswordVerificationViewController, bearerToken: String) {
+        tocken = bearerToken
+    }
+    
     
     //MARK: - Properties
     
     let validate = Validate()
+    private var tocken = ""
     
     //MARK: Outlets
     
@@ -42,14 +47,61 @@ class ResetPasswordViewController: UIViewController {
     
     //MARK: - Actions
     
-    @IBAction func checkMarkTermsAndPolicyButton(_ sender: UIButton) {
-        pushToVC(name: "Success", identifier: "SuccessViewController")
+    @IBAction func resetPasswordButtonPressed(_ sender: UIButton) {
+        resetPassword()
+//        pushToVC(name: "Success", identifier: "SuccessViewController")
     }
     
     // MARK: - Validation methods
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         validating()
+    }
+    
+    func resetPassword() {
+        
+//        ManagementAPI.shared.request(token: tocken) { result in
+//            switch result {
+//            case .success(let response):
+//                DispatchQueue.main.async {
+//                    print(response.allHeaderFields)
+//                }
+//            case .failure(let error):
+//                DispatchQueue.main.async {
+//                    print(error)
+//                }
+//            }
+//        }
+      
+//        let headers = [
+//          "content-type": "application/json",
+//          "authorization": "Bearer \(tocken)"
+//        ]
+//        let parameters = [
+//            "password": lpViewPassword.txtInputField.text!,
+//          "connection": "Username-Password-Authentication"
+//        ] as [String : Any]
+//
+//        let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+//
+//        let request = NSMutableURLRequest(url: NSURL(string: "https://dev-p77zu24vjhtaaicl.us.auth0.com/api/v2/users/%7BuserId%7D")! as URL,
+//                                                cachePolicy: .useProtocolCachePolicy,
+//                                            timeoutInterval: 10.0)
+//        request.httpMethod = "PATCH"
+//        request.allHTTPHeaderFields = headers
+//        request.httpBody = postData as Data
+//
+//        let session = URLSession.shared
+//        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+//          if (error != nil) {
+//              print(error)
+//          } else {
+//            let httpResponse = response as? HTTPURLResponse
+//            print(httpResponse)
+//          }
+//        })
+//
+//        dataTask.resume()
     }
     
     func validating() {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Auth0
 
 class CreateAccountViewController: UIViewController {
     
@@ -19,6 +20,8 @@ class CreateAccountViewController: UIViewController {
     let thePicker = UIPickerView()
     
     private var isValideCity: Bool = false
+    
+    var user: User?
     
     //MARK: - Outlets
     
@@ -36,7 +39,6 @@ class CreateAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        loginButton.isEnabled = false
-        
         //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
@@ -64,9 +66,33 @@ class CreateAccountViewController: UIViewController {
     //MARK: - Actions
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        pushToVC(name: "CreatePassword", identifier: "CreatePasswordViewController")
+        createUser()
+        
+        let storyboard = UIStoryboard(name: "CreatePassword", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CreatePasswordViewController") as! CreatePasswordViewController
+        vc.user = user
+        self.navigationController?.pushViewController(vc,animated: true)
+        
+//        pushToVC(name: "CreatePassword", identifier: "CreatePasswordViewController")
+        
     }
     
+    func createUser() {
+        let firstName = lpViewFirstName.txtInputField.text
+        let lastName = lpViewLastName.txtInputField.text
+        let email = lpViewEmail.txtInputField.text
+        let phone = lpViewPhone.txtInputField.text
+        let address = lpViewPickupAddress.txtInputField.text
+        let city = lpViewCityName.txtInputField.text
+        
+        user = User(firstName: firstName ?? "",
+                        lastName: lastName ?? "",
+                        email: email ?? "",
+                        phone: phone ?? "",
+                        adress: address ?? "",
+                        city: city ?? "")
+    }
+        
     // MARK: - Validation Methods
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -96,7 +122,6 @@ class CreateAccountViewController: UIViewController {
             lpViewCityName.txtInputField.text = cityNamesData[0]
         }
         if isValidateFirstName == true, isValidateLastName == true, isValidateEmail == true, lpViewPickupAddress.txtInputField.text?.isEmpty == false, isValideCity == true {
-            
             loginButton.isEnabled = true
             loginButton.backgroundColor = UIColor.appColor(LPColor.WarningYellow)
             loginButton.setTitle("Next", for: .normal)

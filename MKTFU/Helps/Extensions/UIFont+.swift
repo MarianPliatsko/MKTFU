@@ -12,6 +12,7 @@ enum LPFont: String {
     case OpenSansRegular
     case OpenSansSemibold
     case OpenSansBold
+    case OpenSansLight
 }
 extension UIFont {
     static func appFont(_ name: LPFont) -> String {

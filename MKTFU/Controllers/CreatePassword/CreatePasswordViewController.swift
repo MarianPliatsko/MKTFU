@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Auth0
 
 class CreatePasswordViewController: UIViewController {
     
     //MARK: - Properties
+    var user: User?
     
     let validate = Validate()
     let checkedImage = UIImage(named: "CheckedImage")
@@ -37,7 +39,9 @@ class CreatePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         //createAccountButton.isEnabled = false
+        
         
         //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
@@ -65,7 +69,32 @@ class CreatePasswordViewController: UIViewController {
     }
     
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
-        pushToVC(name: "Success", identifier: "SuccessViewController")
+        createAccount(user: user!)
+//        pushToVC(name: "Success", identifier: "SuccessViewController")
+    }
+
+
+    func createAccount(user: User) {
+        let userMetaData = ["firstName": user.firstName,
+                            "lastName": user.lastName,
+                            "email": user.email,
+                            "phone": user.phone,
+                            "address": user.adress,
+                            "city": user.city]
+        guard let password = lpViewPassword.txtInputField.text else {return}
+        
+        Auth0.authentication().signup(email: user.email,
+                                      password: password,
+                                      connection: Constants.connection,
+                                      userMetadata: userMetaData)
+        .start { result in
+            switch result {
+            case .success(let user):
+                print(user)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     // MARK: - Validation methods
