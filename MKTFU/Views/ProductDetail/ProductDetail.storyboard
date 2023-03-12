@@ -96,9 +96,12 @@
                                                                         </buttonConfiguration>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="30"/>
+                                                                                <real key="value" value="25"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="iWantThisBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="L58-Wl-frk"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" name="SubtleGray"/>
@@ -179,7 +182,7 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ne-ak-aAW">
-                                                                        <rect key="frame" x="130" y="62" width="9" height="22"/>
+                                                                        <rect key="frame" x="130" y="62" width="9.3333333333333428" height="22"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="22" id="Au2-8k-Q2c"/>
                                                                         </constraints>
@@ -188,7 +191,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAN-mx-vGe">
-                                                                        <rect key="frame" x="149" y="62" width="244" height="22"/>
+                                                                        <rect key="frame" x="149.33333333333337" y="62" width="243.66666666666663" height="22"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="22" id="CC6-TO-H6s"/>
                                                                         </constraints>
@@ -281,7 +284,7 @@ VerySubtleGray</string>
     </scenes>
     <designables>
         <designable name="Kgk-lT-tOV">
-            <size key="intrinsicContentSize" width="101.33333333333333" height="32.666666666666664"/>
+            <size key="intrinsicContentSize" width="113.33333333333333" height="36"/>
         </designable>
     </designables>
     <resources>

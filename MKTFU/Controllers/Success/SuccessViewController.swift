@@ -6,27 +6,24 @@
 //
 
 import UIKit
+import SwiftyGif
 
-class SuccessViewController: UIViewController {
-
+class SuccessViewController: UIViewController, Storyboarded {
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.setHidesBackButton(true, animated: false)
-
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { _ in
-            self.navigationController?.popToRootViewController(animated: true)
+        
+        do {
+            let gif = try UIImage(gifName: "animated checkmark.gif")
+            self.imageView.setGifImage(gif)
+            Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { _ in
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        } catch {
+                print(error)
+            }
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}

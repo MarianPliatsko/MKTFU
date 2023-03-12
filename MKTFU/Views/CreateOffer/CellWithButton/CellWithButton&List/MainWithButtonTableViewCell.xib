@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainWithButtonTableViewCell" rowHeight="567" id="KGk-i7-Jjw" customClass="CellWithButtonTableViewCell" customModule="MKTFU" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="567"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="374" height="567"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Zxz-HR-AB2">
+                        <rect key="frame" x="10" y="10" width="354" height="567.33333333333337"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EjP-9w-iX2" customClass="LpCustomViewWithButton" customModule="MKTFU" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="354" height="283.66666666666669"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="SomeTitle"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="SomeText"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YlU-X0-XMw" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="283.66666666666663" width="354" height="283.66666666666663"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ViC-Zn-rdW">
+                                        <rect key="frame" x="20" y="10" width="314" height="263.66666666666669"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ViC-Zn-rdW" secondAttribute="bottom" constant="10" id="18v-tw-wiE"/>
+                                    <constraint firstItem="ViC-Zn-rdW" firstAttribute="top" secondItem="YlU-X0-XMw" secondAttribute="top" constant="10" id="5vN-zP-PIV"/>
+                                    <constraint firstAttribute="height" constant="150" id="6FK-En-nVu"/>
+                                    <constraint firstAttribute="trailing" secondItem="ViC-Zn-rdW" secondAttribute="trailing" constant="20" id="Ut0-kI-knW"/>
+                                    <constraint firstItem="ViC-Zn-rdW" firstAttribute="leading" secondItem="YlU-X0-XMw" secondAttribute="leading" constant="20" id="r8q-w0-FW0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor">
+                    <string key="name">
+VerySubtleGray</string>
+                </color>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Zxz-HR-AB2" secondAttribute="bottom" constant="10" id="RT2-yZ-ZBa"/>
+                    <constraint firstItem="Zxz-HR-AB2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="WG2-c5-iOF"/>
+                    <constraint firstItem="Zxz-HR-AB2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="dn4-Fn-PEi"/>
+                    <constraint firstAttribute="trailing" secondItem="Zxz-HR-AB2" secondAttribute="trailing" constant="10" id="fHQ-MW-Xbl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <edgeInsets key="layoutMargins" top="20" left="20" bottom="20" right="20"/>
+            <connections>
+                <outlet property="listTableView" destination="ViC-Zn-rdW" id="SfE-fC-MLO"/>
+                <outlet property="lpView" destination="EjP-9w-iX2" id="ek9-uv-Awm"/>
+                <outlet property="lpViewList" destination="YlU-X0-XMw" id="dW2-1E-f6t"/>
+            </connections>
+            <point key="canvasLocation" x="-6.1068702290076331" y="74.295774647887328"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor>
+            <string key="name">
+VerySubtleGray</string>
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

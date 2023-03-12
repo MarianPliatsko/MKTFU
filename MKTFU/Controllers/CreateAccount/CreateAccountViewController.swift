@@ -8,7 +8,9 @@
 import UIKit
 import Auth0
 
-class CreateAccountViewController: UIViewController {
+class CreateAccountViewController: UIViewController, Storyboarded {
+    
+    weak var coordinator: MainCoordinator?
     
     //MARK: - Properties
     
@@ -21,7 +23,7 @@ class CreateAccountViewController: UIViewController {
     
     private var isValideCity: Bool = false
     
-    var user: User?
+    static var user: User?
     
     //MARK: - Outlets
     
@@ -67,14 +69,7 @@ class CreateAccountViewController: UIViewController {
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         createUser()
-        
-        let storyboard = UIStoryboard(name: "CreatePassword", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "CreatePasswordViewController") as! CreatePasswordViewController
-        vc.user = user
-        self.navigationController?.pushViewController(vc,animated: true)
-        
-//        pushToVC(name: "CreatePassword", identifier: "CreatePasswordViewController")
-        
+        coordinator?.goToCreatePasswordVC()
     }
     
     func createUser() {
@@ -85,12 +80,13 @@ class CreateAccountViewController: UIViewController {
         let address = lpViewPickupAddress.txtInputField.text
         let city = lpViewCityName.txtInputField.text
         
-        user = User(firstName: firstName ?? "",
+        CreateAccountViewController.user = User(firstName: firstName ?? "",
                         lastName: lastName ?? "",
                         email: email ?? "",
                         phone: phone ?? "",
                         adress: address ?? "",
                         city: city ?? "")
+        print("User: \(String(describing: CreateAccountViewController.user))")
     }
         
     // MARK: - Validation Methods

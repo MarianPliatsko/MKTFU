@@ -7,9 +7,11 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, Storyboarded {
     
     //MARK: - Properties
+    
+    weak var coordinator: MainCoordinator?
     
     private let images: [UIImage] = Array(1...10).map { UIImage(named: String($0))!}
     private let text = ["Cat&DogCat&Dog",
@@ -49,9 +51,8 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func createListingViewPressed(_ sender: Any) {
-        pushToVC(name: "CreateOffer", identifier: "CreateOfferViewController")
+        coordinator?.goToCreateOfferVC()
     }
-    
     
     
     //MARK: - Life cycle
@@ -122,7 +123,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        pushToVC(name: "ProductDetail", identifier: "ProductDetailViewController")
+        coordinator?.goToProductDetailVC()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

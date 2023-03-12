@@ -68,10 +68,12 @@ class LpCustomView: LPView, UITextFieldDelegate {
     
     let validate = Validate()
     
+    let rightButton = UIButton(type: .custom)
+    
     var view: UIView!
     
-    @IBOutlet weak private var lblTitle: UILabel!
-    @IBOutlet weak private var lblError: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblError: UILabel!
     @IBOutlet weak var txtInputField: UITextField!
     @IBOutlet weak var lblPasswordSecurityLevel: UILabel!
     
@@ -157,6 +159,7 @@ class LpCustomView: LPView, UITextFieldDelegate {
         set {
             if newValue {
                 addPasswordVisibilityToggle("Icon awesome-eye-slash")
+                txtInputField.isSecureTextEntry = true
             }
             else {
                 removePasswordVisibilityToggle()
@@ -173,7 +176,7 @@ class LpCustomView: LPView, UITextFieldDelegate {
     }
     
     private func addPasswordVisibilityToggle(_ named: String) {
-        let rightButton = UIButton(type: .custom)
+        
         rightButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         rightButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         rightButton.addTarget(
@@ -192,8 +195,15 @@ class LpCustomView: LPView, UITextFieldDelegate {
     
     @objc
     private func passwordVisibilityTogglePressed(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        sender.isSelected.toggle()
         txtInputField.isSecureTextEntry = sender.isSelected
+        if sender.isSelected {
+            rightButton.setImage(UIImage(named: "Icon awesome-eye-slash"), for: .selected)
+            rightButton.setImage(UIImage(named: "Icon awesome-eye-slash"), for: .normal)
+        } else {
+            rightButton.setImage(UIImage(named: "Icon awesome-eye"), for: .selected)
+            rightButton.setImage(UIImage(named: "Icon awesome-eye"), for: .normal)
+        }
     }
 }
    

@@ -7,15 +7,13 @@
 
 import UIKit
 
-class PrivacyPolicyViewController: UIViewController {
+class PrivacyPolicyViewController: UIViewController, Storyboarded {
+    
+    weak var coordinator: MainCoordinator?
     
     //MARK: - Actions
     
     @IBAction func acceptButtonPressed(_ sender: UIButton) {
-       
+        coordinator?.goToCreatePasswordVC()
     }
-    
-    //MARK: - Navigation methods
-    
-   
 }

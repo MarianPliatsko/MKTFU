@@ -15,4 +15,5 @@ class Validate {
     let validatePassword = ValidatePassword()
     let validatePhoneNumber = ValidatePhoneNumber()
     let validateEmail = ValidateEmail()
+    let validateVerificationCode = ValidateVerificationCode()
 }

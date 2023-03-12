@@ -7,9 +7,11 @@
 
 import UIKit
 
-class ProductDetailViewController: UIViewController {
+class ProductDetailViewController: UIViewController, Storyboarded {
     
     //MARK: - Properties
+    
+    weak var coordinator: MainCoordinator?
     
     private let images: [UIImage] = Array(1...10).map { UIImage(named: String($0))!}
     
@@ -39,6 +41,13 @@ class ProductDetailViewController: UIViewController {
         collectionView.register(ImageCollectionViewCell.nib(), forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
         
     }
+    
+    //MARK: - IBAction
+    
+    @IBAction func iWantThisBtnPressed(_ sender: UIButton) {
+        coordinator?.goToCheckoutViewController()
+    }
+    
     
     //MARK: - Methods
     

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Checkout View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="CheckoutViewController" id="Y6W-OH-hqX" customClass="CheckoutViewController" customModule="MKTFU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="749-3u-7dv" customClass="LPHeaderView" customModule="MKTFU" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="59" width="393" height="51"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="kJr-A8-LPd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Checkout"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RqV-qb-nsF">
+                                <rect key="frame" x="0.0" y="110" width="393" height="612"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmL-lf-QmB">
+                                <rect key="frame" x="0.0" y="722" width="393" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjH-Mr-Smz" customClass="LPButton" customModule="MKTFU" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="24.666666666666629" width="363" height="51"/>
+                                        <color key="backgroundColor" name="OccasionalPurple"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="51" id="SLg-TB-reU"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Confirm">
+                                            <fontDescription key="titleFontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                            <color key="baseForegroundColor" name="VoidWhite"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="confirmBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9KD-st-BcR"/>
+                                            <action selector="confirmBtnPressed:" destination="CVy-2x-oHU" eventType="touchUpInside" id="bj8-V0-6sQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="2gU-rP-dVF"/>
+                                    <constraint firstItem="gjH-Mr-Smz" firstAttribute="leading" secondItem="xmL-lf-QmB" secondAttribute="leading" constant="15" id="Fv1-C4-lSs"/>
+                                    <constraint firstItem="gjH-Mr-Smz" firstAttribute="centerY" secondItem="xmL-lf-QmB" secondAttribute="centerY" id="IPp-pk-3bG"/>
+                                    <constraint firstItem="gjH-Mr-Smz" firstAttribute="centerX" secondItem="xmL-lf-QmB" secondAttribute="centerX" id="WJV-jQ-leE"/>
+                                    <constraint firstAttribute="trailing" secondItem="gjH-Mr-Smz" secondAttribute="trailing" constant="15" id="ehL-Ts-eZs"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="xmL-lf-QmB" secondAttribute="bottom" constant="30" id="9Ur-4b-bWS"/>
+                            <constraint firstItem="xmL-lf-QmB" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="FPL-qx-hu2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="749-3u-7dv" secondAttribute="trailing" id="PkE-2Q-qSy"/>
+                            <constraint firstItem="RqV-qb-nsF" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Zdv-L1-FW9"/>
+                            <constraint firstItem="xmL-lf-QmB" firstAttribute="top" secondItem="RqV-qb-nsF" secondAttribute="bottom" id="aZm-ZO-1q1"/>
+                            <constraint firstItem="xmL-lf-QmB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="arM-Ac-vY6"/>
+                            <constraint firstItem="749-3u-7dv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="dLq-DW-ZAE"/>
+                            <constraint firstItem="RqV-qb-nsF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="iwQ-vy-Lhr"/>
+                            <constraint firstItem="RqV-qb-nsF" firstAttribute="top" secondItem="749-3u-7dv" secondAttribute="bottom" id="pcG-Jn-8S7"/>
+                            <constraint firstItem="749-3u-7dv" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="y9G-xN-ixP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lpHeaderView" destination="749-3u-7dv" id="BBk-ye-FGi"/>
+                        <outlet property="tableView" destination="RqV-qb-nsF" id="1rU-NC-nLn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="CVy-2x-oHU" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="17.557251908396946" y="-2.1126760563380285"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="gjH-Mr-Smz">
+            <size key="intrinsicContentSize" width="88.666666666666671" height="36"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="OccasionalPurple">
+            <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VoidWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

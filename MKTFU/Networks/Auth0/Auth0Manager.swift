@@ -72,4 +72,19 @@ class Auth0Manager {
             
         }
     }
+    
+    func resetPassword(_ email: String) {
+        Auth0
+            .authentication()
+            .resetPassword(email: email,
+                           connection: Constants.connection)
+            .start { result in
+                switch result {
+                case .success:
+                    print("Sent link to reset password")
+                case .failure(let error):
+                    print(error)
+                }
+            }
+    }
 }

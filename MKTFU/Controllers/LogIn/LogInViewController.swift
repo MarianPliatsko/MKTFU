@@ -4,15 +4,14 @@
 //
 //  Created by mac on 2023-01-30.
 //
-// call back
-//com.MarianPliatsko.MKTFU://dev-p77zu24vjhtaaicl.us.auth0.com/los/com.MarianPliatsko.MKTFU/callback
 
 import UIKit
 import Auth0
 import JWTDecode
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, Storyboarded {
     
+    weak var coordinator: MainCoordinator?
     let validate = Validate()
     
     //MARK: - Outlets
@@ -32,9 +31,6 @@ class LogInViewController: UIViewController {
         // to hide error message when view did load
         lpViewEmail.showError = false
         
-        //make password not visible
-        lpViewPassword.txtInputField.isSecureTextEntry = true
-        
         //        logInButton.isEnabled = false
         
         // setup forgot button UI
@@ -43,10 +39,6 @@ class LogInViewController: UIViewController {
         // get any changes in text fields
         lpViewEmail.txtInputField.addTarget(self, action: #selector(LogInViewController.textFieldDidChange(_:)), for: .editingChanged)
         lpViewPassword.txtInputField.addTarget(self, action: #selector(LogInViewController.textFieldDidChange(_:)), for: .editingChanged)
-        
-        //create Navigation Controller
-        createNavigationController(rootViewController: self)
-        navigationController?.navigationBar.isHidden = true
     }
     
     //MARK: - Actions
@@ -55,15 +47,15 @@ class LogInViewController: UIViewController {
         //Check email validation after button pressed
         //        lpViewEmail.checkEmail()
         logInWithAuth0()
-        pushToVC(name: "Home", identifier: "HomeViewController")
+        coordinator?.goToHomeVC()
     }
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
         // Push to CreateAccount VC
-        pushToVC(name: "CreateAccount", identifier: "CreateAccountViewController")
+        coordinator?.goToCreateAccountVC()
     }
     @IBAction func forgotPasswordButtonPressed(_ sender: UIButton) {
         // Push to ForgotPassword VC
-        pushToVC(name: "ForgotPassword", identifier: "ForgotPasswordViewController")
+        coordinator?.goToForgotPasswordVC()
     }
     
     //MARK: - Log In Methods
@@ -78,6 +70,7 @@ class LogInViewController: UIViewController {
             case .success(let accessToken):
                 print("Access Token: \(String(describing: accessToken))")
             case .failure(let error):
+                
                 switch error {
                 case .missingEmail:
                     print(error.localizedDescription)

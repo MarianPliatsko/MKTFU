@@ -8,9 +8,11 @@
 import UIKit
 import Auth0
 
-class CreatePasswordViewController: UIViewController {
+class CreatePasswordViewController: UIViewController, Storyboarded {
     
     //MARK: - Properties
+    weak var coordinator: MainCoordinator?
+    
     var user: User?
     
     let validate = Validate()
@@ -33,6 +35,8 @@ class CreatePasswordViewController: UIViewController {
     @IBOutlet weak var termsAndPolicyTextView: UITextView!
     
     @IBOutlet weak var createAccountButton: UIButton!
+    
+    
     
     
     //MARK: - Life cycle
@@ -70,7 +74,7 @@ class CreatePasswordViewController: UIViewController {
     
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
         createAccount(user: user!)
-//        pushToVC(name: "Success", identifier: "SuccessViewController")
+        coordinator?.goToSuccessVC()
     }
 
 
@@ -90,7 +94,7 @@ class CreatePasswordViewController: UIViewController {
         .start { result in
             switch result {
             case .success(let user):
-                print(user)
+                print("User with passwrod: \(user)")
             case .failure(let error):
                 print(error)
             }
@@ -182,10 +186,10 @@ extension CreatePasswordViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         
         if URL.scheme == "terms" {
-            pushToVC(name: "TermsOfService", identifier: "TermsOfServiceViewController")
+            coordinator?.goToTermsOfServiceVC()
             return false
         } else  if URL.scheme == "privacy"{
-            pushToVC(name: "PrivacyPolicy", identifier: "PrivacyPolicyViewController")
+            coordinator?.goToPrivacyPolicyVC()
             return false
         }
         return true

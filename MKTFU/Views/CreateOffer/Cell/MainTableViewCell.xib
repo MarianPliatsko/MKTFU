@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainTableViewCell" rowHeight="133" id="KGk-i7-Jjw" customClass="MainTableViewCell" customModule="MKTFU" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zes-rv-ZXB" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
+                        <rect key="frame" x="10" y="10" width="300" height="123"/>
+                        <color key="backgroundColor">
+                            <string key="name">
+VerySubtleGray</string>
+                        </color>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="showSecurityLevel" value="NO"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isPasswordVisiblityToggleEnabled" value="NO"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor">
+                    <string key="name">
+VerySubtleGray</string>
+                </color>
+                <constraints>
+                    <constraint firstItem="Zes-rv-ZXB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="6mg-8C-RJV"/>
+                    <constraint firstAttribute="trailing" secondItem="Zes-rv-ZXB" secondAttribute="trailing" constant="10" id="FiX-f3-aPG"/>
+                    <constraint firstAttribute="bottom" secondItem="Zes-rv-ZXB" secondAttribute="bottom" id="Jzj-MO-mKC"/>
+                    <constraint firstItem="Zes-rv-ZXB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="QFx-VU-D4r"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lpUIView" destination="Zes-rv-ZXB" id="hfV-zv-OUj"/>
+            </connections>
+            <point key="canvasLocation" x="27.480916030534349" y="-10.91549295774648"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor>
+            <string key="name">
+VerySubtleGray</string>
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
