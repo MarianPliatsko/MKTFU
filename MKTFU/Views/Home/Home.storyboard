@@ -36,6 +36,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="42" height="60"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="Lines menu"/>
+                                                <connections>
+                                                    <action selector="menuButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="BND-w8-xes"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ry-nD-agc">
                                                 <rect key="frame" x="331" y="0.0" width="42" height="60"/>

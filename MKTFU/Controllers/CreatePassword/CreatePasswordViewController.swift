@@ -36,8 +36,11 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var createAccountButton: UIButton!
     
-    
-    
+    @IBOutlet weak var agreementTextView: UITextView! {
+        didSet {
+            agreementTextView.centerVertically()
+        }
+    }
     
     //MARK: - Life cycle
     
@@ -64,6 +67,11 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
         lpViewPassword.txtInputField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
         lpViewConfirmPassword.txtInputField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
         lpViewPassword.lblPasswordSecurityLevel.isHidden = true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        agreementTextView.centerVertically()
     }
     
     //MARK: - Actions

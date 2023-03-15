@@ -33,6 +33,8 @@
 		045020FE29AE7D4E00DC627C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045020FD29AE7D4E00DC627C /* Coordinator.swift */; };
 		0450210029AE7E2D00DC627C /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045020FF29AE7E2D00DC627C /* MainCoordinator.swift */; };
 		0450210229AE83B600DC627C /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450210129AE83B600DC627C /* Storyboarded.swift */; };
+		046A728B29C0C95D00854D74 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A728A29C0C95D00854D74 /* ContactUsViewController.swift */; };
+		046A728E29C0CCF100854D74 /* ContactUs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046A728D29C0CCF100854D74 /* ContactUs.storyboard */; };
 		046E52912988B8BB009E9F3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E52902988B8BB009E9F3F /* AppDelegate.swift */; };
 		046E52932988B8BB009E9F3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E52922988B8BB009E9F3F /* SceneDelegate.swift */; };
 		046E52952988B8BB009E9F3F /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E52942988B8BB009E9F3F /* LogInViewController.swift */; };
@@ -96,12 +98,27 @@
 		04BDB0E02990B4F800983D91 /* PrivacyPolicy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BDB0DF2990B4F800983D91 /* PrivacyPolicy.storyboard */; };
 		04BDB0E32990C6D600983D91 /* EmailVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDB0E22990C6D600983D91 /* EmailVerificationViewController.swift */; };
 		04BDB0E72990C74400983D91 /* EmailVerification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BDB0E62990C74400983D91 /* EmailVerification.storyboard */; };
+		04CDE9E629C016A600F0E92C /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDE9E529C016A600F0E92C /* UIImageView+.swift */; };
+		04CDE9E929C0193100F0E92C /* MyListingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDE9E829C0193100F0E92C /* MyListingsViewController.swift */; };
+		04CDE9EC29C019CD00F0E92C /* MyListing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CDE9EB29C019CD00F0E92C /* MyListing.storyboard */; };
+		04CDE9EF29C0234000F0E92C /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDE9EE29C0234000F0E92C /* FAQViewController.swift */; };
+		04CDE9F229C0237300F0E92C /* FAQ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CDE9F129C0237300F0E92C /* FAQ.storyboard */; };
+		04CDE9F529C02A4300F0E92C /* HowMKTFYWorksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDE9F429C02A4300F0E92C /* HowMKTFYWorksViewController.swift */; };
+		04CDE9F829C02A5D00F0E92C /* HowMKTFYWorks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CDE9F729C02A5D00F0E92C /* HowMKTFYWorks.storyboard */; };
 		04D135E029B4646C00CDC18C /* ImageUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D135DE29B4646C00CDC18C /* ImageUICollectionViewCell.swift */; };
 		04D135E129B4646C00CDC18C /* ImageUICollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D135DF29B4646C00CDC18C /* ImageUICollectionViewCell.xib */; };
 		04D135E729B59A8500CDC18C /* AddImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D135E529B59A8500CDC18C /* AddImageCollectionViewCell.swift */; };
 		04D135E829B59A8500CDC18C /* AddImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D135E629B59A8500CDC18C /* AddImageCollectionViewCell.xib */; };
 		04D42D8929A01ACC001BC259 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D42D8729A01ACC001BC259 /* ImageCollectionViewCell.swift */; };
 		04D42D8A29A01ACC001BC259 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D42D8829A01ACC001BC259 /* ImageCollectionViewCell.xib */; };
+		04E471FF29BEB8F500EA2A86 /* AccountInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E471FE29BEB8F500EA2A86 /* AccountInformationViewController.swift */; };
+		04E4720229BF7B9400EA2A86 /* AccountInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E4720129BF7B9400EA2A86 /* AccountInformation.storyboard */; };
+		04E4720529BF84F700EA2A86 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4720429BF84F700EA2A86 /* ChangePasswordViewController.swift */; };
+		04E4720A29BF852A00EA2A86 /* ChangePassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E4720929BF852A00EA2A86 /* ChangePassword.storyboard */; };
+		04E4720E29BF91F600EA2A86 /* MyPurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4720D29BF91F600EA2A86 /* MyPurchasesViewController.swift */; };
+		04E4721329BF96C300EA2A86 /* MyPurchases.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E4721229BF96C300EA2A86 /* MyPurchases.storyboard */; };
+		04E4721729BF979000EA2A86 /* MyPurchasesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4721529BF979000EA2A86 /* MyPurchasesTableViewCell.swift */; };
+		04E4721829BF979000EA2A86 /* MyPurchasesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E4721629BF979000EA2A86 /* MyPurchasesTableViewCell.xib */; };
 		04EBB1B029AF04D0009A176B /* ValidateVerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBB1AF29AF04D0009A176B /* ValidateVerificationCode.swift */; };
 		04EBB1B429AF0AC0009A176B /* AddImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBB1B229AF0AC0009A176B /* AddImageTableViewCell.swift */; };
 		04EBB1B529AF0AC0009A176B /* AddImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EBB1B329AF0AC0009A176B /* AddImageTableViewCell.xib */; };
@@ -141,6 +158,8 @@
 		045020FD29AE7D4E00DC627C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		045020FF29AE7E2D00DC627C /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		0450210129AE83B600DC627C /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		046A728A29C0C95D00854D74 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
+		046A728D29C0CCF100854D74 /* ContactUs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContactUs.storyboard; sourceTree = "<group>"; };
 		046E528D2988B8BB009E9F3F /* MKTFU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKTFU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046E52902988B8BB009E9F3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		046E52922988B8BB009E9F3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,12 +222,27 @@
 		04BDB0DF2990B4F800983D91 /* PrivacyPolicy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrivacyPolicy.storyboard; sourceTree = "<group>"; };
 		04BDB0E22990C6D600983D91 /* EmailVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewController.swift; sourceTree = "<group>"; };
 		04BDB0E62990C74400983D91 /* EmailVerification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmailVerification.storyboard; sourceTree = "<group>"; };
+		04CDE9E529C016A600F0E92C /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		04CDE9E829C0193100F0E92C /* MyListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListingsViewController.swift; sourceTree = "<group>"; };
+		04CDE9EB29C019CD00F0E92C /* MyListing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyListing.storyboard; sourceTree = "<group>"; };
+		04CDE9EE29C0234000F0E92C /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
+		04CDE9F129C0237300F0E92C /* FAQ.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQ.storyboard; sourceTree = "<group>"; };
+		04CDE9F429C02A4300F0E92C /* HowMKTFYWorksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowMKTFYWorksViewController.swift; sourceTree = "<group>"; };
+		04CDE9F729C02A5D00F0E92C /* HowMKTFYWorks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HowMKTFYWorks.storyboard; sourceTree = "<group>"; };
 		04D135DE29B4646C00CDC18C /* ImageUICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUICollectionViewCell.swift; sourceTree = "<group>"; };
 		04D135DF29B4646C00CDC18C /* ImageUICollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageUICollectionViewCell.xib; sourceTree = "<group>"; };
 		04D135E529B59A8500CDC18C /* AddImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		04D135E629B59A8500CDC18C /* AddImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		04D42D8729A01ACC001BC259 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		04D42D8829A01ACC001BC259 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		04E471FE29BEB8F500EA2A86 /* AccountInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInformationViewController.swift; sourceTree = "<group>"; };
+		04E4720129BF7B9400EA2A86 /* AccountInformation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountInformation.storyboard; sourceTree = "<group>"; };
+		04E4720429BF84F700EA2A86 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		04E4720929BF852A00EA2A86 /* ChangePassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangePassword.storyboard; sourceTree = "<group>"; };
+		04E4720D29BF91F600EA2A86 /* MyPurchasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPurchasesViewController.swift; sourceTree = "<group>"; };
+		04E4721229BF96C300EA2A86 /* MyPurchases.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPurchases.storyboard; sourceTree = "<group>"; };
+		04E4721529BF979000EA2A86 /* MyPurchasesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPurchasesTableViewCell.swift; sourceTree = "<group>"; };
+		04E4721629BF979000EA2A86 /* MyPurchasesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPurchasesTableViewCell.xib; sourceTree = "<group>"; };
 		04EBB1AF29AF04D0009A176B /* ValidateVerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateVerificationCode.swift; sourceTree = "<group>"; };
 		04EBB1B229AF0AC0009A176B /* AddImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageTableViewCell.swift; sourceTree = "<group>"; };
 		04EBB1B329AF0AC0009A176B /* AddImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageTableViewCell.xib; sourceTree = "<group>"; };
@@ -403,6 +437,22 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		046A728929C0C92300854D74 /* ContactUs */ = {
+			isa = PBXGroup;
+			children = (
+				046A728A29C0C95D00854D74 /* ContactUsViewController.swift */,
+			);
+			path = ContactUs;
+			sourceTree = "<group>";
+		};
+		046A728C29C0CCC800854D74 /* ContactUs */ = {
+			isa = PBXGroup;
+			children = (
+				046A728D29C0CCF100854D74 /* ContactUs.storyboard */,
+			);
+			path = ContactUs;
+			sourceTree = "<group>";
+		};
 		046E52842988B8BB009E9F3F = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +505,12 @@
 				047832B729BBACB5000F7F87 /* PickupInformation */,
 				045020E829A9391B00DC627C /* CreateOffer */,
 				049C8A5429BBDEA700E21348 /* Menu */,
+				04E471FD29BEB8D300EA2A86 /* Account Information */,
+				04E4720329BF84CD00EA2A86 /* ChangePassword */,
+				04E4720C29BF91C000EA2A86 /* MyPurchases */,
+				04CDE9E729C0190500F0E92C /* MyListings */,
+				04CDE9ED29C0231500F0E92C /* FAQ */,
+				046A728929C0C92300854D74 /* ContactUs */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -477,6 +533,12 @@
 				047832BA29BBACFD000F7F87 /* PickupInformation */,
 				045020EB29A949B900DC627C /* CreateOffer */,
 				049C8A5729BBDF7800E21348 /* Menu */,
+				04E4720029BEB90900EA2A86 /* AccountInformation */,
+				04E4720629BF84FF00EA2A86 /* ChangePassword */,
+				04E4720F29BF920500EA2A86 /* MyPurchases */,
+				04CDE9EA29C0194400F0E92C /* MyListing */,
+				04CDE9F029C0234F00F0E92C /* FAQ */,
+				046A728C29C0CCC800854D74 /* ContactUs */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -524,6 +586,7 @@
 				04BDB0D12990803C00983D91 /* UITextView+.swift */,
 				0431A64629931971004B5D05 /* UIFont+.swift */,
 				0431A64929935779004B5D05 /* UIButton+.swift */,
+				04CDE9E529C016A600F0E92C /* UIImageView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -815,6 +878,56 @@
 			path = EmailVerification;
 			sourceTree = "<group>";
 		};
+		04CDE9E729C0190500F0E92C /* MyListings */ = {
+			isa = PBXGroup;
+			children = (
+				04CDE9E829C0193100F0E92C /* MyListingsViewController.swift */,
+			);
+			path = MyListings;
+			sourceTree = "<group>";
+		};
+		04CDE9EA29C0194400F0E92C /* MyListing */ = {
+			isa = PBXGroup;
+			children = (
+				04CDE9EB29C019CD00F0E92C /* MyListing.storyboard */,
+			);
+			path = MyListing;
+			sourceTree = "<group>";
+		};
+		04CDE9ED29C0231500F0E92C /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				04CDE9EE29C0234000F0E92C /* FAQViewController.swift */,
+				04CDE9F329C029F600F0E92C /* HowMKTFYWorks */,
+			);
+			path = FAQ;
+			sourceTree = "<group>";
+		};
+		04CDE9F029C0234F00F0E92C /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				04CDE9F129C0237300F0E92C /* FAQ.storyboard */,
+				04CDE9F629C02A5100F0E92C /* HowMKTFYWorks */,
+			);
+			path = FAQ;
+			sourceTree = "<group>";
+		};
+		04CDE9F329C029F600F0E92C /* HowMKTFYWorks */ = {
+			isa = PBXGroup;
+			children = (
+				04CDE9F429C02A4300F0E92C /* HowMKTFYWorksViewController.swift */,
+			);
+			path = HowMKTFYWorks;
+			sourceTree = "<group>";
+		};
+		04CDE9F629C02A5100F0E92C /* HowMKTFYWorks */ = {
+			isa = PBXGroup;
+			children = (
+				04CDE9F729C02A5D00F0E92C /* HowMKTFYWorks.storyboard */,
+			);
+			path = HowMKTFYWorks;
+			sourceTree = "<group>";
+		};
 		04D135D629B4191900CDC18C /* CellWithButton&List */ = {
 			isa = PBXGroup;
 			children = (
@@ -849,6 +962,64 @@
 				04D42D8829A01ACC001BC259 /* ImageCollectionViewCell.xib */,
 			);
 			path = ImageCell;
+			sourceTree = "<group>";
+		};
+		04E471FD29BEB8D300EA2A86 /* Account Information */ = {
+			isa = PBXGroup;
+			children = (
+				04E471FE29BEB8F500EA2A86 /* AccountInformationViewController.swift */,
+			);
+			path = "Account Information";
+			sourceTree = "<group>";
+		};
+		04E4720029BEB90900EA2A86 /* AccountInformation */ = {
+			isa = PBXGroup;
+			children = (
+				04E4720129BF7B9400EA2A86 /* AccountInformation.storyboard */,
+			);
+			path = AccountInformation;
+			sourceTree = "<group>";
+		};
+		04E4720329BF84CD00EA2A86 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				04E4720429BF84F700EA2A86 /* ChangePasswordViewController.swift */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		04E4720629BF84FF00EA2A86 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				04E4720929BF852A00EA2A86 /* ChangePassword.storyboard */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		04E4720C29BF91C000EA2A86 /* MyPurchases */ = {
+			isa = PBXGroup;
+			children = (
+				04E4720D29BF91F600EA2A86 /* MyPurchasesViewController.swift */,
+			);
+			path = MyPurchases;
+			sourceTree = "<group>";
+		};
+		04E4720F29BF920500EA2A86 /* MyPurchases */ = {
+			isa = PBXGroup;
+			children = (
+				04E4721229BF96C300EA2A86 /* MyPurchases.storyboard */,
+				04E4721429BF975A00EA2A86 /* MyPurchasesCell */,
+			);
+			path = MyPurchases;
+			sourceTree = "<group>";
+		};
+		04E4721429BF975A00EA2A86 /* MyPurchasesCell */ = {
+			isa = PBXGroup;
+			children = (
+				04E4721529BF979000EA2A86 /* MyPurchasesTableViewCell.swift */,
+				04E4721629BF979000EA2A86 /* MyPurchasesTableViewCell.xib */,
+			);
+			path = MyPurchasesCell;
 			sourceTree = "<group>";
 		};
 		04EBB1B129AF0A56009A176B /* AddImageCell */ = {
@@ -957,6 +1128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04CDE9F829C02A5D00F0E92C /* HowMKTFYWorks.storyboard in Resources */,
 				047832A729BAEFE6000F7F87 /* animated checkmark.gif in Resources */,
 				04445EBC298AFB2200B13D5D /* OpenSans-Semibold.ttf in Resources */,
 				0479A65129B121FB004C1806 /* CancelTableViewCell.xib in Resources */,
@@ -965,11 +1137,14 @@
 				04445EBE298AFB2C00B13D5D /* OpenSans-Bold.ttf in Resources */,
 				04A0391E2996CC1700A12064 /* Home.storyboard in Resources */,
 				043FDF69298E2FA8003A7295 /* Success.storyboard in Resources */,
+				04E4721829BF979000EA2A86 /* MyPurchasesTableViewCell.xib in Resources */,
 				04D42D8A29A01ACC001BC259 /* ImageCollectionViewCell.xib in Resources */,
 				0489B7D529A5D8550008C1E3 /* Auth0.plist in Resources */,
 				04EBB1B529AF0AC0009A176B /* AddImageTableViewCell.xib in Resources */,
 				046E529D2988B8BD009E9F3F /* LaunchScreen.storyboard in Resources */,
 				0444FBA429958A24006073DF /* CreatePassword.storyboard in Resources */,
+				04E4720A29BF852A00EA2A86 /* ChangePassword.storyboard in Resources */,
+				04E4720229BF7B9400EA2A86 /* AccountInformation.storyboard in Resources */,
 				045020ED29A949E700DC627C /* CreateOffer.storyboard in Resources */,
 				04BA4A90299AC8D0004F731D /* OpenSans-Light.ttf in Resources */,
 				04D135E829B59A8500CDC18C /* AddImageCollectionViewCell.xib in Resources */,
@@ -978,11 +1153,15 @@
 				046E52BC2989B6E7009E9F3F /* CreateAccount.storyboard in Resources */,
 				047832B629BB03BD000F7F87 /* CheckoutTableViewCell.xib in Resources */,
 				046E52AB2988CAC2009E9F3F /* OpenSans-Regular.ttf in Resources */,
+				04CDE9EC29C019CD00F0E92C /* MyListing.storyboard in Resources */,
 				04BA4A8E299ABADB004F731D /* HomeHeaderCollectionViewCell.xib in Resources */,
+				04E4721329BF96C300EA2A86 /* MyPurchases.storyboard in Resources */,
 				04EBB1BA29AF0AF5009A176B /* MainTableViewCell.xib in Resources */,
 				04BDB0DE2990B4E700983D91 /* TermsOfService.storyboard in Resources */,
 				048680B52989D29300193579 /* Main.storyboard in Resources */,
+				046A728E29C0CCF100854D74 /* ContactUs.storyboard in Resources */,
 				04A172D529A85776004398F6 /* HomeTableViewCell.xib in Resources */,
+				04CDE9F229C0237300F0E92C /* FAQ.storyboard in Resources */,
 				04BDB0E72990C74400983D91 /* EmailVerification.storyboard in Resources */,
 				047832BC29BBAD1C000F7F87 /* PickupInformation.storyboard in Resources */,
 				04D135E129B4646C00CDC18C /* ImageUICollectionViewCell.xib in Resources */,
@@ -1010,12 +1189,15 @@
 				040B5E5B29916A4000CE1177 /* ForgotPasswordViewController.swift in Sources */,
 				047832AF29BB02BC000F7F87 /* Checkout.swift in Sources */,
 				04BDB0D52990B46600983D91 /* TermsOfServiceViewController.swift in Sources */,
+				046A728B29C0C95D00854D74 /* ContactUsViewController.swift in Sources */,
+				04CDE9E929C0193100F0E92C /* MyListingsViewController.swift in Sources */,
 				047832B529BB03BD000F7F87 /* CheckoutTableViewCell.swift in Sources */,
 				045020FE29AE7D4E00DC627C /* Coordinator.swift in Sources */,
 				048DB377299C292E007FDAB8 /* CompositionLayout.swift in Sources */,
 				0426DEFE29AFBE0B009F7226 /* LPCustomViewWithButton.swift in Sources */,
 				049C8A5629BBDF5B00E21348 /* MenuViewController.swift in Sources */,
 				04F7E3DF29B28C0700DBE4CC /* DetailListTableViewCell.swift in Sources */,
+				04CDE9E629C016A600F0E92C /* UIImageView+.swift in Sources */,
 				0479A63D29AFD4DE004C1806 /* CellWithTextViewTableViewCell.swift in Sources */,
 				045020EF29AC7CC100DC627C /* NetworkManager.swift in Sources */,
 				0450210029AE7E2D00DC627C /* MainCoordinator.swift in Sources */,
@@ -1023,6 +1205,7 @@
 				04BA4A8D299ABADB004F731D /* HomeHeaderCollectionViewCell.swift in Sources */,
 				0479A65029B121FB004C1806 /* CancelTableViewCell.swift in Sources */,
 				04EBB1B029AF04D0009A176B /* ValidateVerificationCode.swift in Sources */,
+				04CDE9EF29C0234000F0E92C /* FAQViewController.swift in Sources */,
 				0479A64829B11FC8004C1806 /* ConfirmTableViewCell.swift in Sources */,
 				048E58412995C61D00DCC3EA /* ValidateEmail.swift in Sources */,
 				04BDB0D72990B47D00983D91 /* PrivacyPolicyViewController.swift in Sources */,
@@ -1032,6 +1215,7 @@
 				045020FA29AE644100DC627C /* Constants.swift in Sources */,
 				0426DEF829AFBD23009F7226 /* LPCustomView.swift in Sources */,
 				04F7E3D929B26C1B00DBE4CC /* CreateOffer.swift in Sources */,
+				04CDE9F529C02A4300F0E92C /* HowMKTFYWorksViewController.swift in Sources */,
 				04A039232996F8E000A12064 /* HomeCollectionViewCell.swift in Sources */,
 				046E52B02988F6C6009E9F3F /* LPButton.swift in Sources */,
 				04A172D429A85776004398F6 /* HomeTableViewCell.swift in Sources */,
@@ -1045,8 +1229,10 @@
 				043FDF62298E2F33003A7295 /* SuccessViewController.swift in Sources */,
 				047832B129BB02E1000F7F87 /* ProoductDetail.swift in Sources */,
 				048E58472995D4FD00DCC3EA /* ValidateFirstName.swift in Sources */,
+				04E471FF29BEB8F500EA2A86 /* AccountInformationViewController.swift in Sources */,
 				04EBB1B429AF0AC0009A176B /* AddImageTableViewCell.swift in Sources */,
 				0420A7A92990C91E0044CDC1 /* LPTextView.swift in Sources */,
+				04E4720529BF84F700EA2A86 /* ChangePasswordViewController.swift in Sources */,
 				048E583A2995B80100DCC3EA /* Validate.swift in Sources */,
 				045020EA29A949B000DC627C /* CreateOfferViewController.swift in Sources */,
 				0489B7D729A69D710008C1E3 /* Pinterest.swift in Sources */,
@@ -1063,8 +1249,10 @@
 				048E583F2995BDE600DCC3EA /* ValidatePhoneNumber.swift in Sources */,
 				048DB37B299D9287007FDAB8 /* ProductDetailViewController.swift in Sources */,
 				046E52B52989906A009E9F3F /* UITextField+.swift in Sources */,
+				04E4721729BF979000EA2A86 /* MyPurchasesTableViewCell.swift in Sources */,
 				046E52912988B8BB009E9F3F /* AppDelegate.swift in Sources */,
 				047832AB29BB0114000F7F87 /* CheckoutViewController.swift in Sources */,
+				04E4720E29BF91F600EA2A86 /* MyPurchasesViewController.swift in Sources */,
 				046E52932988B8BB009E9F3F /* SceneDelegate.swift in Sources */,
 				04808D52298C57CA0018CB04 /* CreatePasswordViewController.swift in Sources */,
 				045020F129AC81AC00DC627C /* Auth0Manager.swift in Sources */,

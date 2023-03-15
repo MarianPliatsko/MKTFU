@@ -97,8 +97,9 @@ class HomeViewController: UIViewController, Storyboarded {
         citySearchView.isHidden = !citySearchView.isHidden
     }
     
-    
-    
+    @IBAction func menuButtonPressed(_ sender: UIButton) {
+        coordinator?.goToMenuViewController()
+    }
     
     // MARK: - Methods
     

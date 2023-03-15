@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Listings View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="MyListingsViewController" id="Y6W-OH-hqX" customClass="MyListingsViewController" customModule="MKTFU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nEZ-Yi-8q3" customClass="LPHeaderView" customModule="MKTFU" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="59" width="393" height="51"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="tfB-wM-686"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="My listings"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GAk-TB-bGv">
+                                <rect key="frame" x="0.0" y="110" width="393" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsZ-6B-OrI">
+                                        <rect key="frame" x="10" y="0.0" width="115" height="35"/>
+                                        <color key="tintColor" name="OccasionalPurple"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="ACTIVE ITEMS">
+                                            <fontDescription key="titleFontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xO-ZT-Bby">
+                                        <rect key="frame" x="278" y="0.0" width="105" height="35"/>
+                                        <color key="tintColor" name="TextGray"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="SOLD ITEMS">
+                                            <fontDescription key="titleFontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="AsZ-6B-OrI" firstAttribute="leading" secondItem="GAk-TB-bGv" secondAttribute="leading" constant="10" id="1it-9x-pVe"/>
+                                    <constraint firstItem="AsZ-6B-OrI" firstAttribute="top" secondItem="GAk-TB-bGv" secondAttribute="top" id="NeA-UU-bqm"/>
+                                    <constraint firstAttribute="height" constant="35" id="X8e-xG-sXI"/>
+                                    <constraint firstItem="1xO-ZT-Bby" firstAttribute="centerY" secondItem="GAk-TB-bGv" secondAttribute="centerY" id="dbz-uQ-nex"/>
+                                    <constraint firstAttribute="bottom" secondItem="AsZ-6B-OrI" secondAttribute="bottom" id="dvJ-BS-3lr"/>
+                                    <constraint firstItem="1xO-ZT-Bby" firstAttribute="top" secondItem="GAk-TB-bGv" secondAttribute="top" id="f8h-xb-i3G"/>
+                                    <constraint firstAttribute="trailing" secondItem="1xO-ZT-Bby" secondAttribute="trailing" constant="10" id="fny-TO-6JH"/>
+                                    <constraint firstAttribute="bottom" secondItem="1xO-ZT-Bby" secondAttribute="bottom" id="jWC-kN-2jP"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdZ-UU-IdO" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="145" width="393" height="707"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yQz-Dh-kFw" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="707"/>
+                                        <color key="backgroundColor">
+                                            <string key="name">
+VerySubtleGray</string>
+                                        </color>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="VoidWhite"/>
+                                <constraints>
+                                    <constraint firstItem="yQz-Dh-kFw" firstAttribute="leading" secondItem="tdZ-UU-IdO" secondAttribute="leading" id="0Fo-rG-Iu8"/>
+                                    <constraint firstItem="yQz-Dh-kFw" firstAttribute="top" secondItem="tdZ-UU-IdO" secondAttribute="top" id="ABx-BV-cvu"/>
+                                    <constraint firstAttribute="bottom" secondItem="yQz-Dh-kFw" secondAttribute="bottom" id="eAW-qA-wsa"/>
+                                    <constraint firstAttribute="trailing" secondItem="yQz-Dh-kFw" secondAttribute="trailing" id="fzK-XN-f5H"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor">
+                            <string key="name">
+VerySubtleGray</string>
+                        </color>
+                        <constraints>
+                            <constraint firstItem="GAk-TB-bGv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="D0r-SJ-jAJ"/>
+                            <constraint firstItem="GAk-TB-bGv" firstAttribute="top" secondItem="nEZ-Yi-8q3" secondAttribute="bottom" id="GPQ-Kp-OxG"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="nEZ-Yi-8q3" secondAttribute="trailing" id="HbQ-CV-Hvu"/>
+                            <constraint firstItem="tdZ-UU-IdO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="HuO-u6-9hh"/>
+                            <constraint firstItem="nEZ-Yi-8q3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="IFV-nb-PbW"/>
+                            <constraint firstItem="tdZ-UU-IdO" firstAttribute="top" secondItem="GAk-TB-bGv" secondAttribute="bottom" id="Z3M-ck-4ZI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tdZ-UU-IdO" secondAttribute="trailing" id="ZpR-4G-nag"/>
+                            <constraint firstAttribute="bottom" secondItem="tdZ-UU-IdO" secondAttribute="bottom" id="buy-Jw-GYO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GAk-TB-bGv" secondAttribute="trailing" id="eYv-hk-dLR"/>
+                            <constraint firstItem="nEZ-Yi-8q3" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="rFC-p4-8cz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lpHeaderView" destination="nEZ-Yi-8q3" id="WP0-3d-a0g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="125.95419847328243" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor>
+            <string key="name">
+VerySubtleGray</string>
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="OccasionalPurple">
+            <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextGray">
+            <color red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VoidWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

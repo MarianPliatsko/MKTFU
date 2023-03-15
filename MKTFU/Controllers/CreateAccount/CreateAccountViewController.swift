@@ -36,6 +36,7 @@ class CreateAccountViewController: UIViewController, Storyboarded {
     @IBOutlet weak var lpViewCityName: LpCustomView!
     @IBOutlet weak var loginButton: UIButton!
     
+    
     //MARK: - Life cycle
     
     override func viewDidLoad() {

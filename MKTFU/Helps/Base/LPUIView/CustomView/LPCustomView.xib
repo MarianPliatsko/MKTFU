@@ -76,6 +76,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="OLf-Sh-rb6" firstAttribute="top" secondItem="eNz-O1-Lc5" secondAttribute="bottom" constant="6" id="aLd-Fv-Rvn"/>
+                        <constraint firstItem="eNz-O1-Lc5" firstAttribute="top" secondItem="U7l-bw-IOZ" secondAttribute="bottom" constant="6" id="yeL-h3-zr1"/>
                     </constraints>
                 </stackView>
             </subviews>

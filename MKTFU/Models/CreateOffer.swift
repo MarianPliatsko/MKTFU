@@ -41,8 +41,6 @@ class CreateOffer {
         self.adress = adress
         self.city = city
         self.isShow = isShow
-        
-        
     }
 }
 

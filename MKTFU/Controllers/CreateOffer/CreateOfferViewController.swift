@@ -99,7 +99,8 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
                 cellwithImage?.onNeedUpdate = { [weak self] in
                     DispatchQueue.main.async {
                         self?.photoPicker()
-                        self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+                        self?.tableView.reloadData()
+//                        self?.tableView.reloadRows(at: [indexPath], with: .automatic)
                     }
                 }
                 cellwithImage?.stackViewWithImage.isHidden = true
@@ -112,7 +113,8 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
                 cellwithImage?.onNeedUpdate = {[weak self] in
                     DispatchQueue.main.async {
                         self?.photoPicker()
-                        self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+                        self?.tableView.reloadData()
+//                        self?.tableView.reloadRows(at: [indexPath], with: .automatic)
                     }
                 }
                 
@@ -131,6 +133,8 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
         }
         if indexPath.row == 3 {
             cellWithButton?.lpView.lblTitle.text = myDataSource.productName[indexPath.row - 1]
+            cellWithButton?.dataSource = myDataSource.category.categoryList
+            cellWithButton?.listTableView.reloadData()
             cellWithButton?.lpViewList.isHidden = !myDataSource.isShow
             cellWithButton?.lpView.isHidden = myDataSource.isShow
             
@@ -144,6 +148,8 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
         }
         if indexPath.row == 4 {
             cellWithButton?.lpView.lblTitle.text = myDataSource.productName[indexPath.row - 1]
+            cellWithButton?.dataSource = myDataSource.condition.conditionList
+            cellWithButton?.listTableView.reloadData()
             cellWithButton?.lpViewList.isHidden = !myDataSource.isShow
             cellWithButton?.lpView.isHidden = myDataSource.isShow
             
@@ -167,6 +173,8 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
         }
         if indexPath.row == 7 {
             cellWithButton?.lpView.lblTitle.text = myDataSource.productName[indexPath.row - 1]
+            cellWithButton?.dataSource = myDataSource.city.cityList
+            cellWithButton?.listTableView.reloadData()
             cellWithButton?.lpViewList.isHidden = !myDataSource.isShow
             cellWithButton?.lpView.isHidden = myDataSource.isShow
             

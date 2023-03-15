@@ -108,5 +108,60 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func goToMenuViewController() {
+        let vc = MenuViewController.instantiate(name: "Menu")
+        vc.coordinator = self
+        navigationController.navigationBar.isHidden = true
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToAccountInformationViewController() {
+        let vc = AccountInformationViewController.instantiate(name: "AccountInformation")
+        vc.coordinator = self
+        navigationController.navigationBar.isHidden = true
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToChangePasswordViewController() {
+        let vc = ChangePasswordViewController.instantiate(name: "ChangePassword")
+        vc.coordinator = self
+        navigationController.navigationBar.isHidden = true
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToMyPurchasesViewController() {
+        let vc = MyPurchasesViewController.instantiate(name: "MyPurchases")
+        vc.coordinator = self
+        navigationController.navigationBar.isHidden = true
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToMyListingsViewController() {
+        let vc = MyListingsViewController.instantiate(name: "MyListing")
+        vc.coordinator = self
+        navigationController.navigationBar.isHidden = true
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToFAQViewController() {
+        let vc = FAQViewController.instantiate(name: "FAQ")
+        vc.coordinator = self
+        navigationController.navigationBar.isHidden = true
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToHowMKTFYWorksViewController() {
+        let vc = HowMKTFYWorksViewController.instantiate(name: "HowMKTFYWorks")
+        vc.coordinator = self
+        navigationController.navigationBar.isHidden = true
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToContactUsViewController() {
+        let vc = ContactUsViewController.instantiate(name: "ContactUs")
+        vc.coordinator = self
+        navigationController.navigationBar.isHidden = true
+        navigationController.pushViewController(vc, animated: true)
+    }
     
 }

@@ -12,15 +12,7 @@ class CellWithButtonTableViewCell: UITableViewCell {
     //MARK: - Properties
     
     static let identifier = "MainWithButtonTableViewCell"
-    let model1 = Condition(conditionName: "Model1",
-                          conditionLblPlaceholder: "Model1",
-                          conditionList: ["1", "2", "3"])
-    let model2 = Condition(conditionName: "Model2",
-                          conditionLblPlaceholder: "Model2",
-                          conditionList: ["4", "5", "6"])
-    let model3 = Condition(conditionName: "Model3",
-                          conditionLblPlaceholder: "Model3",
-                          conditionList: ["7", "8", "9"])
+    var dataSource: [String] = []
     
     var isSelect: (() -> Void)?
     
@@ -59,15 +51,15 @@ class CellWithButtonTableViewCell: UITableViewCell {
 extension CellWithButtonTableViewCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return dataSource.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = listTableView.dequeueReusableCell(withIdentifier: DetailListTableViewCell.identifier, for: indexPath) as! DetailListTableViewCell
-            //cell.setupUI(text: dataSource.condition.conditionList[indexPath.row])
-            cell.setupUI(text: "yo")
-            return cell
-        }
+        let cell = listTableView.dequeueReusableCell(withIdentifier: DetailListTableViewCell.identifier, for: indexPath) as! DetailListTableViewCell
+        cell.setupUI(text: dataSource[indexPath.row])
+        self.listTableView.reloadRows(at: [indexPath], with: .automatic)
+        return cell
+    }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             self.isSelect?()

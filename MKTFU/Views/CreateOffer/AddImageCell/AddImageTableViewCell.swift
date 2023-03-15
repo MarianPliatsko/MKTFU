@@ -73,11 +73,12 @@ class AddImageTableViewCell: UITableViewCell {
     }
     
     func layoutConfig() -> UICollectionViewCompositionalLayout {
-        let item = CompositionLayout.createItem(width: .absolute(120),
+        let item = CompositionLayout.createItem(width: .fractionalWidth(1),
                                                 height: .fractionalHeight(1), spacing: 0)
-        let group = CompositionLayout.createGroup(alignment: .horizontal, width: .fractionalWidth(1/3), height: .fractionalHeight(1), item: item, count: 1)
+//        let group = CompositionLayout.createGroup(alignment: .horizontal, width: .fractionalWidth(1), height: .fractionalHeight(1), items: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
+        section.orthogonalScrollingBehavior = .continuous
         
         return UICollectionViewCompositionalLayout(section: section)
         
@@ -87,26 +88,57 @@ class AddImageTableViewCell: UITableViewCell {
 //MARK: - extension AddImageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource
 
 extension AddImageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count + 1
+//        if section == 0  {
+//            return images.count
+//        } else {
+//            return 1
+//        }
+        return section == 0 ? images.count : 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if indexPath.item == images.count && images.count < 3 {
-            guard let addImageCell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: AddImageCollectionViewCell.identifier, for: indexPath) as? AddImageCollectionViewCell else {return UICollectionViewCell()}
-            addImageCell.onNeedUpdate = { [weak self] in
-                self?.onNeedUpdate?()
-            }
-            return addImageCell
-        } else {
-            guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: ImageUICollectionViewCell.identifier, for: indexPath) as? ImageUICollectionViewCell else {return UICollectionViewCell()}
-            cell.uiImage.image = images[indexPath.item]
-            cell.onDeletePressed = { [weak self] in
+        let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: ImageUICollectionViewCell.identifier, for: indexPath) as? ImageUICollectionViewCell
+        
+        let addImageCell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: AddImageCollectionViewCell.identifier, for: indexPath) as? AddImageCollectionViewCell
+        
+        if indexPath.section == 0 {
+            cell?.uiImage.image = images[indexPath.item]
+            cell?.onDeletePressed = { [weak self] in
                 self?.images.remove(at: indexPath.item)
             }
-            return cell
+            return cell ?? UICollectionViewCell()
         }
+        
+        else {
+            addImageCell?.onNeedUpdate = { [weak self] in
+                self?.onNeedUpdate?()
+            }
+            return addImageCell ?? UICollectionViewCell()
+        }
+        
+        
+        return UICollectionViewCell()
+//        if indexPath.item == images.count && images.count < 3 {
+//            guard let addImageCell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: AddImageCollectionViewCell.identifier, for: indexPath) as? AddImageCollectionViewCell else {return UICollectionViewCell()}
+//            addImageCell.onNeedUpdate = { [weak self] in
+//                self?.onNeedUpdate?()
+//            }
+//            return addImageCell
+//        } else {
+//            guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: ImageUICollectionViewCell.identifier, for: indexPath) as? ImageUICollectionViewCell else {return UICollectionViewCell()}
+//            cell.uiImage.image = images[indexPath.item]
+//            cell.onDeletePressed = { [weak self] in
+//                self?.images.remove(at: indexPath.item)
+//            }
+//            return cell
+//        }
     }
     
     
