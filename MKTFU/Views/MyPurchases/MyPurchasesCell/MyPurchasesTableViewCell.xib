@@ -84,7 +84,6 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="zK9-2n-Jsu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="HmM-IT-LPu"/>
                     <constraint firstItem="zK9-2n-Jsu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="jM0-Pz-iXu"/>
@@ -96,7 +95,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" name="AccentColor"/>
             <connections>
-                <outlet property="cellImage" destination="gbv-Re-TqT" id="wPR-GH-EIt"/>
+                <outlet property="myListingImageView" destination="gbv-Re-TqT" id="wPR-GH-EIt"/>
             </connections>
             <point key="canvasLocation" x="161.83206106870227" y="78.521126760563391"/>
         </tableViewCell>

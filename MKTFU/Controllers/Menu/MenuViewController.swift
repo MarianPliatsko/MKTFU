@@ -48,4 +48,10 @@ class MenuViewController: UIViewController, Storyboarded {
     @IBAction func contactUsBtnPressed(_ sender: UIButton) {
         coordinator?.goToContactUsViewController()
     }
+    
+    @IBAction func logOut(_sendeer: UIButton) {
+        Auth0Manager.shared.logOut()
+        coordinator?.start()
+    }
+    
 }

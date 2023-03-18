@@ -31,7 +31,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rIm-mi-CeC">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
                                     </imageView>
-                                    <collectionView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ydR-0D-66c" customClass="ImageCollectionView" customModule="MKTFU" customModuleProvider="target">
+                                    <collectionView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ydR-0D-66c" customClass="ImageCollectionView" customModule="MKTFU" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="150" width="374" height="150"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wic-F3-g7y">

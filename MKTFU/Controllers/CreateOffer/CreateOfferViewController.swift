@@ -12,7 +12,7 @@ class CreateOfferViewController: UIViewController, Storyboarded {
     
     weak var coordinator: MainCoordinator?
     
-    let myDataSource = CreateOffer(images: [],
+    let createOfferDataSource = CreateOffer(images: [],
                                    productName: ["Product name" , "Description", "Category", "Condition", "Price", "Adress", "City"],
                                    description: "productName",
                                    category:
@@ -26,9 +26,7 @@ class CreateOfferViewController: UIViewController, Storyboarded {
                                    price: 100,
                                    adress: "category",
                                    city:
-                                    City(cityName: "cityName",
-                                         cityLblPlaceholder: "cityLblPlaceholder",
-                                         cityList: ["cityList"]),
+                                    City( cityList: ["cityList"]),
                                    isShow: false)
     
     @IBOutlet weak var lpHeaderView: LPHeaderView!
@@ -94,8 +92,8 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
         let cancelCell = tableView.dequeueReusableCell(withIdentifier: CancelTableViewCell.identifier, for: indexPath) as? CancelTableViewCell
         
         if indexPath.row == 0 {
-            if myDataSource.images.count == 0 {
-                cellwithImage?.images = myDataSource.images
+            if createOfferDataSource.images.count == 0 {
+                cellwithImage?.images = createOfferDataSource.images
                 cellwithImage?.onNeedUpdate = { [weak self] in
                     DispatchQueue.main.async {
                         self?.photoPicker()
@@ -109,7 +107,7 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
             else {
                 cellwithImage?.stackViewWithImage.isHidden = false
                 cellwithImage?.emptyStackView.isHidden = true
-                cellwithImage?.images = myDataSource.images
+                cellwithImage?.images = createOfferDataSource.images
                 cellwithImage?.onNeedUpdate = {[weak self] in
                     DispatchQueue.main.async {
                         self?.photoPicker()
@@ -123,23 +121,23 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
         }
         
         if indexPath.row == 1 {
-            cell?.lpUIView.lblTitle.text = myDataSource.productName[indexPath.row - 1]
+            cell?.lpUIView.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
             cell?.lpUIView.placeHolder = "Type your product name"
             return cell ?? UITableViewCell()
         }
         if indexPath.row == 2 {
-            cellWithTextView?.lblTitle.text = myDataSource.productName[indexPath.row - 1]
+            cellWithTextView?.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
             return cellWithTextView ?? UITableViewCell()
         }
         if indexPath.row == 3 {
-            cellWithButton?.lpView.lblTitle.text = myDataSource.productName[indexPath.row - 1]
-            cellWithButton?.dataSource = myDataSource.category.categoryList
+            cellWithButton?.lpView.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
+            cellWithButton?.dataSource = createOfferDataSource.category.categoryList
             cellWithButton?.listTableView.reloadData()
-            cellWithButton?.lpViewList.isHidden = !myDataSource.isShow
-            cellWithButton?.lpView.isHidden = myDataSource.isShow
+            cellWithButton?.lpViewList.isHidden = !createOfferDataSource.isShow
+            cellWithButton?.lpView.isHidden = createOfferDataSource.isShow
             
             cellWithButton?.isSelect = { [weak self] in
-                self?.myDataSource.isShow.toggle()
+                self?.createOfferDataSource.isShow.toggle()
                 self?.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
             cellWithButton?.lpView.placeHolder = "Choose your category"
@@ -147,14 +145,14 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
             return cellWithButton ?? UITableViewCell()
         }
         if indexPath.row == 4 {
-            cellWithButton?.lpView.lblTitle.text = myDataSource.productName[indexPath.row - 1]
-            cellWithButton?.dataSource = myDataSource.condition.conditionList
+            cellWithButton?.lpView.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
+            cellWithButton?.dataSource = createOfferDataSource.condition.conditionList
             cellWithButton?.listTableView.reloadData()
-            cellWithButton?.lpViewList.isHidden = !myDataSource.isShow
-            cellWithButton?.lpView.isHidden = myDataSource.isShow
+            cellWithButton?.lpViewList.isHidden = !createOfferDataSource.isShow
+            cellWithButton?.lpView.isHidden = createOfferDataSource.isShow
             
             cellWithButton?.isSelect = { [weak self] in
-                self?.myDataSource.isShow.toggle()
+                self?.createOfferDataSource.isShow.toggle()
                 self?.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
             cellWithButton?.lpView.placeHolder = "Choose the condotion"
@@ -162,24 +160,24 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
             return cellWithButton ?? UITableViewCell()
         }
         if indexPath.row == 5 {
-            cell?.lpUIView.lblTitle.text = myDataSource.productName[indexPath.row - 1]
+            cell?.lpUIView.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
             cell?.lpUIView.placeHolder = "Type your price"
             return cell ?? UITableViewCell()
         }
         if indexPath.row == 6 {
-            cell?.lpUIView.lblTitle.text = myDataSource.productName[indexPath.row - 1]
+            cell?.lpUIView.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
             cell?.lpUIView.placeHolder = "Type your address"
             return cell ?? UITableViewCell()
         }
         if indexPath.row == 7 {
-            cellWithButton?.lpView.lblTitle.text = myDataSource.productName[indexPath.row - 1]
-            cellWithButton?.dataSource = myDataSource.city.cityList
+            cellWithButton?.lpView.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
+            cellWithButton?.dataSource = createOfferDataSource.city.cityList
             cellWithButton?.listTableView.reloadData()
-            cellWithButton?.lpViewList.isHidden = !myDataSource.isShow
-            cellWithButton?.lpView.isHidden = myDataSource.isShow
+            cellWithButton?.lpViewList.isHidden = !createOfferDataSource.isShow
+            cellWithButton?.lpView.isHidden = createOfferDataSource.isShow
             
             cellWithButton?.isSelect = { [weak self] in
-                self?.myDataSource.isShow.toggle()
+                self?.createOfferDataSource.isShow.toggle()
                 self?.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
             cellWithButton?.lpView.lblTitle.text = "Choose your city"
@@ -215,11 +213,11 @@ extension CreateOfferViewController: PHPickerViewControllerDelegate {
                         group.leave()
                     }
                     guard let image = reading as? UIImage, error == nil else { return }
-                    self.myDataSource.images.append(image)
+                    self.createOfferDataSource.images.append(image)
             }
         }
         group.notify(queue: .main) {
-            print(self.myDataSource.images.count)
+            print(self.createOfferDataSource.images.count)
             let indexPath = IndexPath(row: 0, section: 0)
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
         }

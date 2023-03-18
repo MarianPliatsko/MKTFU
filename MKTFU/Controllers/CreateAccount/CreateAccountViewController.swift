@@ -16,9 +16,8 @@ class CreateAccountViewController: UIViewController, Storyboarded {
     
     let validate = Validate()
     
-    let cityNamesData = ["Calgary",
-                         "Edmonton",
-                         "Toronto"]
+    let cityDataSource = City()
+    
     let thePicker = UIPickerView()
     
     private var isValideCity: Bool = false
@@ -54,7 +53,6 @@ class CreateAccountViewController: UIViewController, Storyboarded {
         thePicker.delegate = self
         lpViewCityName.txtInputField.inputView = thePicker
         
-        
         lpViewFirstName.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
         lpViewLastName.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
         lpViewEmail.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
@@ -81,12 +79,13 @@ class CreateAccountViewController: UIViewController, Storyboarded {
         let address = lpViewPickupAddress.txtInputField.text
         let city = lpViewCityName.txtInputField.text
         
-        CreateAccountViewController.user = User(firstName: firstName ?? "",
-                        lastName: lastName ?? "",
-                        email: email ?? "",
-                        phone: phone ?? "",
-                        adress: address ?? "",
-                        city: city ?? "")
+        CreateAccountViewController.user = User(userID: "1",
+                                                firstName: firstName ?? "",
+                                                lastName: lastName ?? "",
+                                                email: email ?? "",
+                                                phone: phone ?? "",
+                                                adress: address ?? "",
+                                                city: city ?? "")
         print("User: \(String(describing: CreateAccountViewController.user))")
     }
         
@@ -116,7 +115,7 @@ class CreateAccountViewController: UIViewController, Storyboarded {
             print("Incorrect city")
         }
         if lpViewCityName.txtInputField.text == nil || lpViewCityName.txtInputField.text == "" {
-            lpViewCityName.txtInputField.text = cityNamesData[0]
+            lpViewCityName.txtInputField.text = cityDataSource.cityList[0]
         }
         if isValidateFirstName == true, isValidateLastName == true, isValidateEmail == true, lpViewPickupAddress.txtInputField.text?.isEmpty == false, isValideCity == true {
             loginButton.isEnabled = true
@@ -153,15 +152,15 @@ extension CreateAccountViewController: UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return cityNamesData.count
+        return cityDataSource.cityList.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return cityNamesData[row]
+        return cityDataSource.cityList[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        lpViewCityName.txtInputField.text = cityNamesData[row]
+        lpViewCityName.txtInputField.text = cityDataSource.cityList[row]
         if lpViewCityName.txtInputField.text != "" {
             isValideCity = true
             textFieldDidChange(lpViewCityName.txtInputField)

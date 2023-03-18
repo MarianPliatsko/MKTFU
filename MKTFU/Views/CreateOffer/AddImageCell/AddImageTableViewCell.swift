@@ -40,18 +40,12 @@ class AddImageTableViewCell: UITableViewCell {
         // Initialization code
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
+        
         imageCollectionView.register(ImageUICollectionViewCell.nib(),
                                      forCellWithReuseIdentifier: ImageUICollectionViewCell.identifier)
         imageCollectionView.register(AddImageCollectionViewCell.nib(),
                                      forCellWithReuseIdentifier: AddImageCollectionViewCell.identifier)
         
-        //        screenSize = imageCollectionView.bounds
-        //        screenWidth = screenSize.width
-        //        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        //               layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
-        //               layout.itemSize = CGSize(width: screenWidth/3, height: screenWidth/3)
-        //               layout.minimumInteritemSpacing = 0
-        //               layout.minimumLineSpacing = 10
         imageCollectionView.collectionViewLayout = layoutConfig()
         
         
@@ -72,16 +66,21 @@ class AddImageTableViewCell: UITableViewCell {
         return nib
     }
     
-    func layoutConfig() -> UICollectionViewCompositionalLayout {
-        let item = CompositionLayout.createItem(width: .fractionalWidth(1),
-                                                height: .fractionalHeight(1), spacing: 0)
-//        let group = CompositionLayout.createGroup(alignment: .horizontal, width: .fractionalWidth(1), height: .fractionalHeight(1), items: [item])
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
-        
-        return UICollectionViewCompositionalLayout(section: section)
-        
+    // flow layout configuration
+    func layoutConfig() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+            
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            
+            layout.scrollDirection = .horizontal
+            let width = UIScreen.main.bounds.width / 3
+            let height = imageCollectionView.frame.size.height
+            
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
+        layout.itemSize = CGSize(width: width, height: height)
+            
+            return layout
     }
 }
 
@@ -94,11 +93,6 @@ extension AddImageTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if section == 0  {
-//            return images.count
-//        } else {
-//            return 1
-//        }
         return section == 0 ? images.count : 1
     }
     
@@ -117,46 +111,22 @@ extension AddImageTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
         }
         
         else {
-            addImageCell?.onNeedUpdate = { [weak self] in
-                self?.onNeedUpdate?()
+            if images.count < 3 {
+                addImageCell?.onNeedUpdate = { [weak self] in
+                    self?.onNeedUpdate?()
+                }
+                return addImageCell ?? UICollectionViewCell()
             }
-            return addImageCell ?? UICollectionViewCell()
-        }
-        
-        
-        return UICollectionViewCell()
-//        if indexPath.item == images.count && images.count < 3 {
-//            guard let addImageCell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: AddImageCollectionViewCell.identifier, for: indexPath) as? AddImageCollectionViewCell else {return UICollectionViewCell()}
-//            addImageCell.onNeedUpdate = { [weak self] in
-//                self?.onNeedUpdate?()
-//            }
-//            return addImageCell
-//        } else {
-//            guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: ImageUICollectionViewCell.identifier, for: indexPath) as? ImageUICollectionViewCell else {return UICollectionViewCell()}
-//            cell.uiImage.image = images[indexPath.item]
-//            cell.onDeletePressed = { [weak self] in
-//                self?.images.remove(at: indexPath.item)
-//            }
-//            return cell
-//        }
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item != images.count {
-            mainImageView.image = images[indexPath.item]
+            else {
+                print("3 images is maximum for this screen")
+            }
+            return UICollectionViewCell()
         }
     }
-}
-//MARK: - extension AddImageTableViewCell: UICollectionViewDelegateFlowLayout
-
-//extension AddImageTableViewCell: UICollectionViewDelegateFlowLayout {
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if indexPath.row == 0
-//            {
-//            return CGSize(width: imageCollectionView.frame.width, height: screenWidth/3)
-//            }
-//            return CGSize(width: screenWidth/3, height: screenWidth/3)
-//    }
-//}
+        
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            if indexPath.item != images.count {
+                mainImageView.image = images[indexPath.item]
+            }
+        }
+    }

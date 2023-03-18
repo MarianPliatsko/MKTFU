@@ -13,6 +13,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var lblPrice: UILabel!
     
     
     override func awakeFromNib() {
@@ -29,9 +30,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     // setup cell
-    func setup(image: UIImage, text: String) {
+    func setup(image: UIImage, text: String, price: String) {
         cellImageView.image = image
         lblDescription.text = text
+        lblPrice.text = "$\(price)"
     }
     
     private func cellConfiguratin() {

@@ -91,7 +91,7 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
                             "lastName": user.lastName,
                             "email": user.email,
                             "phone": user.phone,
-                            "address": user.adress,
+                            "address": user.streetAdress,
                             "city": user.city]
         guard let password = lpViewPassword.txtInputField.text else {return}
         

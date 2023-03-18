@@ -187,13 +187,6 @@
                                                     <action selector="contactUsBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ywR-FY-B7s"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Path 38" translatesAutoresizingMaskIntoConstraints="NO" id="508-Qo-wpw">
-                                                <rect key="frame" x="348" y="741" width="20" height="20"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="jpW-Y0-tdZ"/>
-                                                    <constraint firstAttribute="width" constant="20" id="wTJ-1p-hSz"/>
-                                                </constraints>
-                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPL-zw-9LW">
                                                 <rect key="frame" x="15" y="739" width="323" height="22"/>
                                                 <constraints>
@@ -204,6 +197,21 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="Sign out">
                                                     <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="logOutWith_sendeer:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wM9-UN-uN5"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJ4-TA-Y6V" customClass="LPButton" customModule="MKTFU" customModuleProvider="target">
+                                                <rect key="frame" x="348" y="741" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="1Zm-iR-y7m"/>
+                                                    <constraint firstAttribute="width" constant="20" id="6Io-O0-80P"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="Path 38"/>
+                                                <connections>
+                                                    <action selector="logOutWith_sendeer:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5qt-kJ-cQJ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor">
@@ -214,14 +222,15 @@ VerySubtleGray</string>
                                             <constraint firstItem="QZH-Kh-fbg" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="0tQ-sc-pRg"/>
                                             <constraint firstItem="1nu-9b-FsS" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="2Ov-C4-2K5"/>
                                             <constraint firstAttribute="trailing" secondItem="bQ2-dk-wx3" secondAttribute="trailing" id="3sD-SK-wEy"/>
-                                            <constraint firstAttribute="bottom" secondItem="508-Qo-wpw" secondAttribute="bottom" constant="32" id="6Lf-3F-lBO"/>
+                                            <constraint firstAttribute="bottom" secondItem="wJ4-TA-Y6V" secondAttribute="bottom" constant="32" id="5wz-D0-aMi"/>
                                             <constraint firstItem="khZ-eY-jpY" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="9TF-4y-8St"/>
                                             <constraint firstItem="xPL-zw-9LW" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="AVv-kM-RMN"/>
+                                            <constraint firstAttribute="trailing" secondItem="wJ4-TA-Y6V" secondAttribute="trailing" constant="25" id="AkK-YZ-F1x"/>
                                             <constraint firstItem="XKL-NK-tse" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="DRl-E3-IMR"/>
                                             <constraint firstItem="khZ-eY-jpY" firstAttribute="top" secondItem="bQ2-dk-wx3" secondAttribute="bottom" constant="40" id="Dq4-j4-YHW"/>
                                             <constraint firstAttribute="trailing" secondItem="4o7-bm-cGi" secondAttribute="trailing" constant="15" id="EJH-wx-gxO"/>
                                             <constraint firstItem="1nu-9b-FsS" firstAttribute="top" secondItem="QZH-Kh-fbg" secondAttribute="bottom" constant="30" id="EoI-h0-3dd"/>
-                                            <constraint firstItem="508-Qo-wpw" firstAttribute="leading" secondItem="xPL-zw-9LW" secondAttribute="trailing" constant="10" id="FTI-IX-q6X"/>
+                                            <constraint firstItem="wJ4-TA-Y6V" firstAttribute="leading" secondItem="xPL-zw-9LW" secondAttribute="trailing" constant="10" id="KtF-Xw-Tdg"/>
                                             <constraint firstAttribute="trailing" secondItem="khZ-eY-jpY" secondAttribute="trailing" constant="15" id="LNg-53-7ns"/>
                                             <constraint firstAttribute="bottom" secondItem="xPL-zw-9LW" secondAttribute="bottom" constant="32" id="M1x-pg-c6s"/>
                                             <constraint firstItem="giC-Z3-Yy2" firstAttribute="top" secondItem="Nom-ID-bjd" secondAttribute="bottom" constant="30" id="NRT-9x-hE6"/>
@@ -234,7 +243,6 @@ VerySubtleGray</string>
                                             <constraint firstAttribute="trailing" secondItem="QZH-Kh-fbg" secondAttribute="trailing" constant="15" id="Ztk-aP-BYL"/>
                                             <constraint firstItem="Nom-ID-bjd" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="ca4-N3-Tzo"/>
                                             <constraint firstItem="4o7-bm-cGi" firstAttribute="top" secondItem="giC-Z3-Yy2" secondAttribute="bottom" constant="30" id="eP4-o8-eOc"/>
-                                            <constraint firstAttribute="trailing" secondItem="508-Qo-wpw" secondAttribute="trailing" constant="25" id="fqe-vS-k5v"/>
                                             <constraint firstItem="Nom-ID-bjd" firstAttribute="top" secondItem="aaN-je-4V8" secondAttribute="bottom" constant="30" id="g9r-32-HRP"/>
                                             <constraint firstItem="aaN-je-4V8" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="hn6-Nr-pOx"/>
                                             <constraint firstItem="5CS-AY-9wK" firstAttribute="top" secondItem="3oF-sl-vhy" secondAttribute="top" id="kKx-aB-YA2"/>

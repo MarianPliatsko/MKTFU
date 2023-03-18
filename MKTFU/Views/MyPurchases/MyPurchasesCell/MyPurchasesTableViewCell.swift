@@ -15,12 +15,11 @@ class MyPurchasesTableViewCell: UITableViewCell {
     
     //MARK: - Outlet
     
-    @IBOutlet weak var cellImage: UIImageView! {
+    @IBOutlet weak var myListingImageView: UIImageView! {
         didSet {
-            cellImage.round(corners: [.topLeft, .bottomLeft], cornerRadius: 15)
+            myListingImageView.round(corners: [.topLeft, .bottomLeft], cornerRadius: 15)
         }
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,7 +32,6 @@ class MyPurchasesTableViewCell: UITableViewCell {
     static func nib() -> UINib {
         let nib = UINib(nibName: identifier, bundle: nil)
         return nib
-        
     }
     
 }

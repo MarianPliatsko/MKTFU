@@ -79,21 +79,3 @@ class Condition {
         self.conditionList = conditionList
     }
 }
-
-class City {
-    let cityName: String
-    let cityLblPlaceholder: String
-    let cityList: [String]
-    
-    init() {
-        self.cityName = ""
-        self.cityLblPlaceholder = ""
-        self.cityList = []
-    }
-    
-    init(cityName: String, cityLblPlaceholder: String, cityList: [String]) {
-        self.cityName = cityName
-        self.cityLblPlaceholder = cityLblPlaceholder
-        self.cityList = cityList
-    }
-}

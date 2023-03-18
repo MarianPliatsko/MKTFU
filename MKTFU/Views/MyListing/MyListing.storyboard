@@ -37,6 +37,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="ACTIVE ITEMS">
                                             <fontDescription key="titleFontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="activeItemsBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Y76-86-pCQ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xO-ZT-Bby">
                                         <rect key="frame" x="278" y="0.0" width="105" height="35"/>
@@ -45,13 +48,29 @@
                                         <buttonConfiguration key="configuration" style="plain" title="SOLD ITEMS">
                                             <fontDescription key="titleFontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="soldItemsBtbPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pSC-5W-OKm"/>
+                                        </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPG-gA-txJ">
+                                        <rect key="frame" x="260" y="13.666666666666671" width="8" height="8"/>
+                                        <color key="backgroundColor" name="WarningYellow"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="dBr-tm-ixF"/>
+                                            <constraint firstAttribute="width" constant="8" id="vdw-k3-zHO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="1xO-ZT-Bby" firstAttribute="leading" secondItem="tPG-gA-txJ" secondAttribute="trailing" constant="10" id="16W-2N-XoJ"/>
                                     <constraint firstItem="AsZ-6B-OrI" firstAttribute="leading" secondItem="GAk-TB-bGv" secondAttribute="leading" constant="10" id="1it-9x-pVe"/>
                                     <constraint firstItem="AsZ-6B-OrI" firstAttribute="top" secondItem="GAk-TB-bGv" secondAttribute="top" id="NeA-UU-bqm"/>
                                     <constraint firstAttribute="height" constant="35" id="X8e-xG-sXI"/>
+                                    <constraint firstItem="tPG-gA-txJ" firstAttribute="centerY" secondItem="GAk-TB-bGv" secondAttribute="centerY" id="bFb-ix-bRD"/>
                                     <constraint firstItem="1xO-ZT-Bby" firstAttribute="centerY" secondItem="GAk-TB-bGv" secondAttribute="centerY" id="dbz-uQ-nex"/>
                                     <constraint firstAttribute="bottom" secondItem="AsZ-6B-OrI" secondAttribute="bottom" id="dvJ-BS-3lr"/>
                                     <constraint firstItem="1xO-ZT-Bby" firstAttribute="top" secondItem="GAk-TB-bGv" secondAttribute="top" id="f8h-xb-i3G"/>
@@ -64,10 +83,22 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yQz-Dh-kFw" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="707"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XXX-k6-DiP">
+                                                <rect key="frame" x="20" y="10" width="353" height="677"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableView>
+                                        </subviews>
                                         <color key="backgroundColor">
                                             <string key="name">
 VerySubtleGray</string>
                                         </color>
+                                        <constraints>
+                                            <constraint firstItem="XXX-k6-DiP" firstAttribute="leading" secondItem="yQz-Dh-kFw" secondAttribute="leading" constant="20" id="GcI-Pc-lML"/>
+                                            <constraint firstAttribute="bottom" secondItem="XXX-k6-DiP" secondAttribute="bottom" constant="20" id="t1A-c7-xSl"/>
+                                            <constraint firstAttribute="trailing" secondItem="XXX-k6-DiP" secondAttribute="trailing" constant="20" id="w8i-X3-v95"/>
+                                            <constraint firstItem="XXX-k6-DiP" firstAttribute="top" secondItem="yQz-Dh-kFw" secondAttribute="top" constant="10" id="xj5-lt-yuO"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="25"/>
@@ -109,6 +140,8 @@ VerySubtleGray</string>
                     </view>
                     <connections>
                         <outlet property="lpHeaderView" destination="nEZ-Yi-8q3" id="WP0-3d-a0g"/>
+                        <outlet property="myListingTableView" destination="XXX-k6-DiP" id="wjv-DR-hYR"/>
+                        <outlet property="soldItemsIndicator" destination="tPG-gA-txJ" id="web-Zq-sLF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -130,6 +163,9 @@ VerySubtleGray</string>
         </namedColor>
         <namedColor name="VoidWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WarningYellow">
+            <color red="1" green="0.72941176470588232" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

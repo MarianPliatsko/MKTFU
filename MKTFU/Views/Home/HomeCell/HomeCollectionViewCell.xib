@@ -62,6 +62,7 @@
             <connections>
                 <outlet property="cellImageView" destination="WVx-f4-FBa" id="Gdb-Tz-din"/>
                 <outlet property="lblDescription" destination="Ie3-3I-jWx" id="LcB-rK-a7d"/>
+                <outlet property="lblPrice" destination="Sjx-mr-DbY" id="Q4P-4B-cD1"/>
             </connections>
             <point key="canvasLocation" x="48.854961832061065" y="55.281690140845072"/>
         </collectionViewCell>
