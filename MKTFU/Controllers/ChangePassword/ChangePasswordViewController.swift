@@ -18,6 +18,7 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
     
     weak var coordinator: MainCoordinator?
     var model: Password?
+    var passwordAlert = ChangePasswordAlertView()
     
     //MARK: - Outlets
     
@@ -33,12 +34,12 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
         
         //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
+//            self?.view.addSubview(self?.passwordAlert ?? UIView())
+//            self?.setupPasswordAlertUI()
             self?.navigationController?.popViewController(animated: true)
         }
         
         newPasswordView.lblPasswordSecurityLevel.isHidden = true
-        
-        
     }
     
     //MARK: - IBAction
@@ -49,6 +50,17 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
     
     
     //MARK: - Methods
+    
+    func setupPasswordAlertUI() {
+        passwordAlert.view.translatesAutoresizingMaskIntoConstraints = false
+        passwordAlert.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        passwordAlert.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        passwordAlert.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        passwordAlert.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        passwordAlert.view.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        passwordAlert.view.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        passwordAlert.view.backgroundColor = UIColor.appColor(LPColor.TextGray40)
+    }
     
     func getManagermrntApiAccessToken() {
         let headers = ["content-type": "application/x-www-form-urlencoded"]

@@ -164,4 +164,10 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func goToNotificationsViewController() {
+        let vc = NotificationsViewController.instantiate(name: "Notifications")
+        vc.coordinator = self
+        navigationController.navigationBar.isHidden = true
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class LpCustomViewWithButton: LPView, UITextFieldDelegate {
+final class LpCustomViewWithButton: LPView, UITextFieldDelegate {
     
     
     let rightButton = UIButton(type: .custom)

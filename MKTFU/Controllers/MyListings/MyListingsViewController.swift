@@ -14,15 +14,14 @@ class MyListingsViewController: UIViewController, Storyboarded {
     weak var coordinator: MainCoordinator?
     
     var headreSoldItemsSection: [MyList] = []
+    var headerItemsSection : [MyList] = []
     var headerAvalilableItemsSection: [MyList] = [MyList(image: UIImage(named: "3") ?? UIImage(),
                                                          date: .now,
                                                          name: "Item 3",
                                                          price: "300",
                                                          usedCondition: false)]
-    var headerItemsSection : [MyList] = []
-    
+   
     var availableItemsSection: [MyList] = []
-    
     var activeItems: [MyList] = [MyList(image: UIImage(named: "4") ?? UIImage(),
                                         date: .now,
                                         name: "Veeeeeeery Looooooooong name of Item 4",

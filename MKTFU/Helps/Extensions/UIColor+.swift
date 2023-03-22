@@ -18,6 +18,9 @@ enum LPColor: String {
     case WarningYellow
     case DisabledGray
     case MistakeRed
+    case TextGray40 = "TextGray40%"
+    case VoidWhite
+    case VerySubtleGray
 }
 
 extension UIColor {

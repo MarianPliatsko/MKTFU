@@ -84,109 +84,105 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khZ-eY-jpY">
-                                                <rect key="frame" x="15" y="212" width="363" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="BAx-FN-hbY"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaN-je-4V8">
-                                                <rect key="frame" x="15" y="264" width="363" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="8zj-tR-KqB"/>
-                                                </constraints>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Account information">
-                                                    <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="accountInformationBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hwj-6G-lkp"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nom-ID-bjd">
-                                                <rect key="frame" x="15" y="316" width="363" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="M4g-q4-QBK"/>
-                                                </constraints>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Change password">
-                                                    <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="changePasswordBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9fz-6G-gZd"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giC-Z3-Yy2">
-                                                <rect key="frame" x="15" y="368" width="363" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="8Ut-id-bhc"/>
-                                                </constraints>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="My Purchases">
-                                                    <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="myPurchasesBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qDu-pR-yin"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4o7-bm-cGi">
-                                                <rect key="frame" x="15" y="420" width="363" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="AxE-8e-ENz"/>
-                                                </constraints>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="My Listing">
-                                                    <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="myListingBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NPQ-Tq-y7u"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKL-NK-tse">
-                                                <rect key="frame" x="15" y="472" width="363" height="22"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="I0C-wf-EUS"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZH-Kh-fbg">
-                                                <rect key="frame" x="15" y="524" width="363" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="Xjy-gt-7rK"/>
-                                                </constraints>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="FAQ">
-                                                    <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="faqBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fmC-cq-WjA"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nu-9b-FsS">
-                                                <rect key="frame" x="15" y="576" width="363" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="4WJ-CT-age"/>
-                                                </constraints>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Contact Us">
-                                                    <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="contactUsBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ywR-FY-B7s"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="maW-vY-ZMX">
+                                                <rect key="frame" x="0.0" y="212" width="393" height="411"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khZ-eY-jpY">
+                                                        <rect key="frame" x="15" y="0.0" width="363" height="19"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaN-je-4V8">
+                                                        <rect key="frame" x="15" y="49" width="363" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="19" id="X3J-3y-NyX"/>
+                                                        </constraints>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Account information">
+                                                            <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="accountInformationBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hwj-6G-lkp"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nom-ID-bjd">
+                                                        <rect key="frame" x="15" y="98" width="363" height="19"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Change password">
+                                                            <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="changePasswordBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9fz-6G-gZd"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giC-Z3-Yy2">
+                                                        <rect key="frame" x="15" y="147" width="363" height="19"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="My Purchases">
+                                                            <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="myPurchasesBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qDu-pR-yin"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4o7-bm-cGi">
+                                                        <rect key="frame" x="15" y="196" width="363" height="19"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="My Listing">
+                                                            <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="myListingBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NPQ-Tq-y7u"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZS-t3-h4D">
+                                                        <rect key="frame" x="15" y="245" width="363" height="19"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Notifications">
+                                                            <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="notificationBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="byS-ip-pHo"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKL-NK-tse">
+                                                        <rect key="frame" x="15" y="294" width="363" height="19"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZH-Kh-fbg">
+                                                        <rect key="frame" x="15" y="343" width="363" height="19"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="FAQ">
+                                                            <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="faqBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fmC-cq-WjA"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nu-9b-FsS">
+                                                        <rect key="frame" x="15" y="392" width="363" height="19"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Contact Us">
+                                                            <fontDescription key="titleFontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="contactUsBtnPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ywR-FY-B7s"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <edgeInsets key="layoutMargins" top="0.0" left="15" bottom="0.0" right="15"/>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPL-zw-9LW">
                                                 <rect key="frame" x="15" y="739" width="323" height="22"/>
                                                 <constraints>
@@ -219,40 +215,19 @@
 VerySubtleGray</string>
                                         </color>
                                         <constraints>
-                                            <constraint firstItem="QZH-Kh-fbg" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="0tQ-sc-pRg"/>
-                                            <constraint firstItem="1nu-9b-FsS" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="2Ov-C4-2K5"/>
                                             <constraint firstAttribute="trailing" secondItem="bQ2-dk-wx3" secondAttribute="trailing" id="3sD-SK-wEy"/>
                                             <constraint firstAttribute="bottom" secondItem="wJ4-TA-Y6V" secondAttribute="bottom" constant="32" id="5wz-D0-aMi"/>
-                                            <constraint firstItem="khZ-eY-jpY" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="9TF-4y-8St"/>
                                             <constraint firstItem="xPL-zw-9LW" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="AVv-kM-RMN"/>
                                             <constraint firstAttribute="trailing" secondItem="wJ4-TA-Y6V" secondAttribute="trailing" constant="25" id="AkK-YZ-F1x"/>
-                                            <constraint firstItem="XKL-NK-tse" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="DRl-E3-IMR"/>
-                                            <constraint firstItem="khZ-eY-jpY" firstAttribute="top" secondItem="bQ2-dk-wx3" secondAttribute="bottom" constant="40" id="Dq4-j4-YHW"/>
-                                            <constraint firstAttribute="trailing" secondItem="4o7-bm-cGi" secondAttribute="trailing" constant="15" id="EJH-wx-gxO"/>
-                                            <constraint firstItem="1nu-9b-FsS" firstAttribute="top" secondItem="QZH-Kh-fbg" secondAttribute="bottom" constant="30" id="EoI-h0-3dd"/>
+                                            <constraint firstItem="maW-vY-ZMX" firstAttribute="top" secondItem="bQ2-dk-wx3" secondAttribute="bottom" constant="40" id="F36-1B-1Br"/>
                                             <constraint firstItem="wJ4-TA-Y6V" firstAttribute="leading" secondItem="xPL-zw-9LW" secondAttribute="trailing" constant="10" id="KtF-Xw-Tdg"/>
-                                            <constraint firstAttribute="trailing" secondItem="khZ-eY-jpY" secondAttribute="trailing" constant="15" id="LNg-53-7ns"/>
                                             <constraint firstAttribute="bottom" secondItem="xPL-zw-9LW" secondAttribute="bottom" constant="32" id="M1x-pg-c6s"/>
-                                            <constraint firstItem="giC-Z3-Yy2" firstAttribute="top" secondItem="Nom-ID-bjd" secondAttribute="bottom" constant="30" id="NRT-9x-hE6"/>
-                                            <constraint firstAttribute="trailing" secondItem="Nom-ID-bjd" secondAttribute="trailing" constant="15" id="O62-ij-IVU"/>
+                                            <constraint firstItem="maW-vY-ZMX" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" id="Swx-Jc-3w6"/>
                                             <constraint firstAttribute="trailing" secondItem="5CS-AY-9wK" secondAttribute="trailing" id="TFY-17-Mwk"/>
-                                            <constraint firstAttribute="trailing" secondItem="aaN-je-4V8" secondAttribute="trailing" constant="15" id="WHP-e9-0yc"/>
                                             <constraint firstItem="bQ2-dk-wx3" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" id="WNg-wJ-CyN"/>
-                                            <constraint firstItem="XKL-NK-tse" firstAttribute="top" secondItem="4o7-bm-cGi" secondAttribute="bottom" constant="30" id="ZGn-we-N7p"/>
-                                            <constraint firstItem="giC-Z3-Yy2" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="ZrJ-jd-UpC"/>
-                                            <constraint firstAttribute="trailing" secondItem="QZH-Kh-fbg" secondAttribute="trailing" constant="15" id="Ztk-aP-BYL"/>
-                                            <constraint firstItem="Nom-ID-bjd" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="ca4-N3-Tzo"/>
-                                            <constraint firstItem="4o7-bm-cGi" firstAttribute="top" secondItem="giC-Z3-Yy2" secondAttribute="bottom" constant="30" id="eP4-o8-eOc"/>
-                                            <constraint firstItem="Nom-ID-bjd" firstAttribute="top" secondItem="aaN-je-4V8" secondAttribute="bottom" constant="30" id="g9r-32-HRP"/>
-                                            <constraint firstItem="aaN-je-4V8" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="hn6-Nr-pOx"/>
+                                            <constraint firstAttribute="trailing" secondItem="maW-vY-ZMX" secondAttribute="trailing" id="Wc1-de-CT9"/>
                                             <constraint firstItem="5CS-AY-9wK" firstAttribute="top" secondItem="3oF-sl-vhy" secondAttribute="top" id="kKx-aB-YA2"/>
-                                            <constraint firstItem="aaN-je-4V8" firstAttribute="top" secondItem="khZ-eY-jpY" secondAttribute="bottom" constant="30" id="mE6-TD-WVB"/>
-                                            <constraint firstAttribute="trailing" secondItem="XKL-NK-tse" secondAttribute="trailing" constant="15" id="nbQ-ul-mTS"/>
-                                            <constraint firstAttribute="trailing" secondItem="giC-Z3-Yy2" secondAttribute="trailing" constant="15" id="oyj-UW-FGT"/>
                                             <constraint firstItem="5CS-AY-9wK" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" id="tQf-8O-NWX"/>
-                                            <constraint firstItem="4o7-bm-cGi" firstAttribute="leading" secondItem="3oF-sl-vhy" secondAttribute="leading" constant="15" id="vUi-DI-NSp"/>
-                                            <constraint firstAttribute="trailing" secondItem="1nu-9b-FsS" secondAttribute="trailing" constant="15" id="xDv-8W-OAg"/>
-                                            <constraint firstItem="QZH-Kh-fbg" firstAttribute="top" secondItem="XKL-NK-tse" secondAttribute="bottom" constant="30" id="xzF-cg-AX5"/>
                                             <constraint firstItem="bQ2-dk-wx3" firstAttribute="top" secondItem="5CS-AY-9wK" secondAttribute="bottom" id="zJd-Gd-yCj"/>
                                         </constraints>
                                     </view>
@@ -289,6 +264,9 @@ VerySubtleGray</string>
         <designable name="OqO-h0-sRp">
             <size key="intrinsicContentSize" width="40" height="30"/>
         </designable>
+        <designable name="wJ4-TA-Y6V">
+            <size key="intrinsicContentSize" width="42" height="32"/>
+        </designable>
     </designables>
     <resources>
         <image name="Cross" width="16" height="16"/>
@@ -297,13 +275,13 @@ VerySubtleGray</string>
         <namedColor>
             <string key="name">
 VerySubtleGray</string>
-            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96899998188018799" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MistakeRed">
-            <color red="1" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17299999296665192" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SubtleGray">
-            <color red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.88599997758865356" green="0.88599997758865356" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

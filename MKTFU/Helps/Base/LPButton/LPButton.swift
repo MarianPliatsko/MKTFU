@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class LPButton: UIButton {
+final class LPButton: UIButton {
     
     private var _highlight: Bool = false
     

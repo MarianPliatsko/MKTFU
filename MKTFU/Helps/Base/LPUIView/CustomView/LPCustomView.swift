@@ -64,7 +64,7 @@ class LPView: UIView {
 
 //MARK: - LpCustomView
 
-class LpCustomView: LPView, UITextFieldDelegate {
+final class LpCustomView: LPView, UITextFieldDelegate {
     
     let validate = Validate()
     

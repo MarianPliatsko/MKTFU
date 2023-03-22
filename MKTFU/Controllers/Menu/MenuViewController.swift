@@ -41,6 +41,10 @@ class MenuViewController: UIViewController, Storyboarded {
         coordinator?.goToMyListingsViewController()
     }
     
+    @IBAction func notificationBtnPressed(_ sender: UIButton) {
+        coordinator?.goToNotificationsViewController()
+    }
+    
     @IBAction func faqBtnPressed(_ sender: UIButton) {
         coordinator?.goToFAQViewController()
     }

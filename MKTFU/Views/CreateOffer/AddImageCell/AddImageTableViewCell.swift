@@ -26,10 +26,6 @@ class AddImageTableViewCell: UITableViewCell {
     
     @IBOutlet weak var stackViewWithImage: UIStackView!
     @IBOutlet weak var emptyStackView: UIStackView!
-    
-    //    var screenSize: CGRect!
-    //    var screenWidth: CGFloat!
-    
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
@@ -47,12 +43,9 @@ class AddImageTableViewCell: UITableViewCell {
                                      forCellWithReuseIdentifier: AddImageCollectionViewCell.identifier)
         
         imageCollectionView.collectionViewLayout = layoutConfig()
-        
-        
     }
     
     //MARK: - IBAction
-    
     
     @IBAction func addImageButtonPressed(_ sender: UIButton) {
         onNeedUpdate?()
@@ -69,24 +62,24 @@ class AddImageTableViewCell: UITableViewCell {
     // flow layout configuration
     func layoutConfig() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-            
-            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            
-            layout.scrollDirection = .horizontal
-            let width = UIScreen.main.bounds.width / 3
-            let height = imageCollectionView.frame.size.height
-            
-            layout.minimumInteritemSpacing = 0
-            layout.minimumLineSpacing = 0
+        
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        layout.scrollDirection = .horizontal
+        let width = UIScreen.main.bounds.width / 3
+        let height = imageCollectionView.frame.size.height
+        
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: width, height: height)
-            
-            return layout
+        
+        return layout
     }
 }
 
 //MARK: - extension AddImageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource
 
-extension AddImageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension AddImageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -108,25 +101,22 @@ extension AddImageTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
                 self?.images.remove(at: indexPath.item)
             }
             return cell ?? UICollectionViewCell()
-        }
-        
-        else {
+        } else {
             if images.count < 3 {
                 addImageCell?.onNeedUpdate = { [weak self] in
                     self?.onNeedUpdate?()
                 }
                 return addImageCell ?? UICollectionViewCell()
-            }
-            else {
+            } else {
                 print("3 images is maximum for this screen")
             }
             return UICollectionViewCell()
         }
     }
-        
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            if indexPath.item != images.count {
-                mainImageView.image = images[indexPath.item]
-            }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item != images.count {
+            mainImageView.image = images[indexPath.item]
         }
     }
+}

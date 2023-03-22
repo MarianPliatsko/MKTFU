@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0407622C29CA2C8100E801C5 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407622A29CA2C8100E801C5 /* NotificationsTableViewCell.swift */; };
+		0407622D29CA2C8100E801C5 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0407622B29CA2C8100E801C5 /* NotificationsTableViewCell.xib */; };
+		0407623029CA332200E801C5 /* NotificationSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407622F29CA332200E801C5 /* NotificationSectionHeaderView.swift */; };
+		0407623229CA333300E801C5 /* NotificationSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0407623129CA333300E801C5 /* NotificationSectionHeaderView.xib */; };
 		040B5E5929916A0600CE1177 /* ForgotPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040B5E5829916A0600CE1177 /* ForgotPassword.storyboard */; };
 		040B5E5B29916A4000CE1177 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B5E5A29916A4000CE1177 /* ForgotPasswordViewController.swift */; };
 		040B5E5E2991716E00CE1177 /* ForgotPasswordCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B5E5D2991716E00CE1177 /* ForgotPasswordCompleteViewController.swift */; };
@@ -64,6 +68,10 @@
 		0479A64929B11FC8004C1806 /* ConfirmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0479A64729B11FC8004C1806 /* ConfirmTableViewCell.xib */; };
 		0479A65029B121FB004C1806 /* CancelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A64E29B121FB004C1806 /* CancelTableViewCell.swift */; };
 		0479A65129B121FB004C1806 /* CancelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0479A64F29B121FB004C1806 /* CancelTableViewCell.xib */; };
+		047D507B29C8C4F800EED8B5 /* ChahgePasswordAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047D507A29C8C4F800EED8B5 /* ChahgePasswordAlertView.xib */; };
+		047D507D29C8C50400EED8B5 /* ChangePasswordAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D507C29C8C50400EED8B5 /* ChangePasswordAlertView.swift */; };
+		047D508029CA231D00EED8B5 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D507F29CA231D00EED8B5 /* NotificationsViewController.swift */; };
+		047D508329CA234200EED8B5 /* Notifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047D508229CA234200EED8B5 /* Notifications.storyboard */; };
 		04808D52298C57CA0018CB04 /* CreatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04808D51298C57CA0018CB04 /* CreatePasswordViewController.swift */; };
 		048680B52989D29300193579 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048680B42989D29300193579 /* Main.storyboard */; };
 		0489B7D529A5D8550008C1E3 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0489B7D429A5D8550008C1E3 /* Auth0.plist */; };
@@ -138,6 +146,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0407622A29CA2C8100E801C5 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		0407622B29CA2C8100E801C5 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		0407622F29CA332200E801C5 /* NotificationSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSectionHeaderView.swift; sourceTree = "<group>"; };
+		0407623129CA333300E801C5 /* NotificationSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationSectionHeaderView.xib; sourceTree = "<group>"; };
 		040B5E5829916A0600CE1177 /* ForgotPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPassword.storyboard; sourceTree = "<group>"; };
 		040B5E5A29916A4000CE1177 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		040B5E5D2991716E00CE1177 /* ForgotPasswordCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordCompleteViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +206,10 @@
 		0479A64729B11FC8004C1806 /* ConfirmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewCell.xib; sourceTree = "<group>"; };
 		0479A64E29B121FB004C1806 /* CancelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTableViewCell.swift; sourceTree = "<group>"; };
 		0479A64F29B121FB004C1806 /* CancelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelTableViewCell.xib; sourceTree = "<group>"; };
+		047D507A29C8C4F800EED8B5 /* ChahgePasswordAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChahgePasswordAlertView.xib; sourceTree = "<group>"; };
+		047D507C29C8C50400EED8B5 /* ChangePasswordAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordAlertView.swift; sourceTree = "<group>"; };
+		047D507F29CA231D00EED8B5 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		047D508229CA234200EED8B5 /* Notifications.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notifications.storyboard; sourceTree = "<group>"; };
 		04808D51298C57CA0018CB04 /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
 		048680B42989D29300193579 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0489B7D429A5D8550008C1E3 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
@@ -281,6 +297,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0407622929CA2C3F00E801C5 /* NotificationsTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0407622A29CA2C8100E801C5 /* NotificationsTableViewCell.swift */,
+				0407622B29CA2C8100E801C5 /* NotificationsTableViewCell.xib */,
+			);
+			path = NotificationsTableViewCell;
+			sourceTree = "<group>";
+		};
+		0407622E29CA328600E801C5 /* NotificationSectionHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				0407622F29CA332200E801C5 /* NotificationSectionHeaderView.swift */,
+				0407623129CA333300E801C5 /* NotificationSectionHeaderView.xib */,
+			);
+			path = NotificationSectionHeaderView;
+			sourceTree = "<group>";
+		};
 		040B5E542991693000CE1177 /* EmailVerification */ = {
 			isa = PBXGroup;
 			children = (
@@ -519,6 +553,7 @@
 				04E4720329BF84CD00EA2A86 /* ChangePassword */,
 				04E4720C29BF91C000EA2A86 /* MyPurchases */,
 				04CDE9E729C0190500F0E92C /* MyListings */,
+				047D507E29CA223E00EED8B5 /* Notifications */,
 				04CDE9ED29C0231500F0E92C /* FAQ */,
 				046A728929C0C92300854D74 /* ContactUs */,
 			);
@@ -547,6 +582,7 @@
 				04E4720629BF84FF00EA2A86 /* ChangePassword */,
 				04E4720F29BF920500EA2A86 /* MyPurchases */,
 				04CDE9EA29C0194400F0E92C /* MyListing */,
+				047D508129CA232700EED8B5 /* Notifications */,
 				04CDE9F029C0234F00F0E92C /* FAQ */,
 				046A728C29C0CCC800854D74 /* ContactUs */,
 			);
@@ -714,6 +750,33 @@
 			path = MyTestModels;
 			sourceTree = "<group>";
 		};
+		047D507929C8C4BD00EED8B5 /* CustomAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				047D507C29C8C50400EED8B5 /* ChangePasswordAlertView.swift */,
+				047D507A29C8C4F800EED8B5 /* ChahgePasswordAlertView.xib */,
+			);
+			path = CustomAlertView;
+			sourceTree = "<group>";
+		};
+		047D507E29CA223E00EED8B5 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				047D507F29CA231D00EED8B5 /* NotificationsViewController.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		047D508129CA232700EED8B5 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				047D508229CA234200EED8B5 /* Notifications.storyboard */,
+				0407622929CA2C3F00E801C5 /* NotificationsTableViewCell */,
+				0407622E29CA328600E801C5 /* NotificationSectionHeaderView */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		04808D50298C57680018CB04 /* CreateAccount */ = {
 			isa = PBXGroup;
 			children = (
@@ -868,6 +931,7 @@
 		04B5D1672991D1C80037B44D /* LPUIView */ = {
 			isa = PBXGroup;
 			children = (
+				047D507929C8C4BD00EED8B5 /* CustomAlertView */,
 				0426DEFB29AFBDB2009F7226 /* CustomView */,
 				0426DEFC29AFBDC9009F7226 /* CustomViewWithButton */,
 			);
@@ -930,7 +994,6 @@
 			isa = PBXGroup;
 			children = (
 				04CDE9E829C0193100F0E92C /* MyListingsViewController.swift */,
-				04B4793329C3AFF3000C2BB0 /* MyListingSectionHeaderView */,
 			);
 			path = MyListings;
 			sourceTree = "<group>";
@@ -940,6 +1003,7 @@
 			children = (
 				04CDE9EB29C019CD00F0E92C /* MyListing.storyboard */,
 				04B4792829C3883F000C2BB0 /* MyListingCell */,
+				04B4793329C3AFF3000C2BB0 /* MyListingSectionHeaderView */,
 			);
 			path = MyListing;
 			sourceTree = "<group>";
@@ -1186,6 +1250,7 @@
 				04B5EFC529956AE4001807E7 /* LPHeaderView.xib in Resources */,
 				04445EBE298AFB2C00B13D5D /* OpenSans-Bold.ttf in Resources */,
 				04A0391E2996CC1700A12064 /* Home.storyboard in Resources */,
+				0407623229CA333300E801C5 /* NotificationSectionHeaderView.xib in Resources */,
 				043FDF69298E2FA8003A7295 /* Success.storyboard in Resources */,
 				04E4721829BF979000EA2A86 /* MyPurchasesTableViewCell.xib in Resources */,
 				04D42D8A29A01ACC001BC259 /* ImageCollectionViewCell.xib in Resources */,
@@ -1203,6 +1268,7 @@
 				046E52BC2989B6E7009E9F3F /* CreateAccount.storyboard in Resources */,
 				047832B629BB03BD000F7F87 /* CheckoutTableViewCell.xib in Resources */,
 				04B4792C29C3885E000C2BB0 /* MyListingTableViewCell.xib in Resources */,
+				047D508329CA234200EED8B5 /* Notifications.storyboard in Resources */,
 				046E52AB2988CAC2009E9F3F /* OpenSans-Regular.ttf in Resources */,
 				04CDE9EC29C019CD00F0E92C /* MyListing.storyboard in Resources */,
 				04BA4A8E299ABADB004F731D /* HomeHeaderCollectionViewCell.xib in Resources */,
@@ -1220,9 +1286,11 @@
 				0479A63E29AFD4DE004C1806 /* CellWithTextViewTableViewCell.xib in Resources */,
 				0426DEFA29AFBD30009F7226 /* LPCustomView.xib in Resources */,
 				048DB37F299D92CD007FDAB8 /* ProductDetail.storyboard in Resources */,
+				0407622D29CA2C8100E801C5 /* NotificationsTableViewCell.xib in Resources */,
 				04F7E3E029B28C0700DBE4CC /* DetailListTableViewCell.xib in Resources */,
 				04A039242996F8E000A12064 /* HomeCollectionViewCell.xib in Resources */,
 				04BDB0E02990B4F800983D91 /* PrivacyPolicy.storyboard in Resources */,
+				047D507B29C8C4F800EED8B5 /* ChahgePasswordAlertView.xib in Resources */,
 				049C8A5929BBDF8F00E21348 /* Menu.storyboard in Resources */,
 				0426DF0229AFC18A009F7226 /* LpCustomViewWithButton.xib in Resources */,
 				0479A64929B11FC8004C1806 /* ConfirmTableViewCell.xib in Resources */,
@@ -1257,9 +1325,11 @@
 				04BA4A8D299ABADB004F731D /* HomeHeaderCollectionViewCell.swift in Sources */,
 				0479A65029B121FB004C1806 /* CancelTableViewCell.swift in Sources */,
 				04EBB1B029AF04D0009A176B /* ValidateVerificationCode.swift in Sources */,
+				047D508029CA231D00EED8B5 /* NotificationsViewController.swift in Sources */,
 				04CDE9EF29C0234000F0E92C /* FAQViewController.swift in Sources */,
 				0479A64829B11FC8004C1806 /* ConfirmTableViewCell.swift in Sources */,
 				048E58412995C61D00DCC3EA /* ValidateEmail.swift in Sources */,
+				047D507D29C8C50400EED8B5 /* ChangePasswordAlertView.swift in Sources */,
 				04B4792529C24104000C2BB0 /* Home.swift in Sources */,
 				04BDB0D72990B47D00983D91 /* PrivacyPolicyViewController.swift in Sources */,
 				04A0391A2996CBC200A12064 /* HomeViewController.swift in Sources */,
@@ -1278,6 +1348,7 @@
 				04EBB1B929AF0AF5009A176B /* MainTableViewCell.swift in Sources */,
 				046E52952988B8BB009E9F3F /* LogInViewController.swift in Sources */,
 				045020F829AD421D00DC627C /* User.swift in Sources */,
+				0407623029CA332200E801C5 /* NotificationSectionHeaderView.swift in Sources */,
 				0478329C29B68233000F7F87 /* PhotoPicker.swift in Sources */,
 				043FDF62298E2F33003A7295 /* SuccessViewController.swift in Sources */,
 				047832B129BB02E1000F7F87 /* Product.swift in Sources */,
@@ -1296,6 +1367,7 @@
 				0450210229AE83B600DC627C /* Storyboarded.swift in Sources */,
 				04B4793B29C4DC47000C2BB0 /* MyListing.swift in Sources */,
 				047832B929BBACF2000F7F87 /* PickupInformationViewController.swift in Sources */,
+				0407622C29CA2C8100E801C5 /* NotificationsTableViewCell.swift in Sources */,
 				04D135E729B59A8500CDC18C /* AddImageCollectionViewCell.swift in Sources */,
 				043C26572995EFCF007CBC03 /* ValidatePassword.swift in Sources */,
 				046E52BA2989B6D0009E9F3F /* CreateAccountViewController.swift in Sources */,

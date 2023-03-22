@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Notifications View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="NotificationsViewController" id="Y6W-OH-hqX" customClass="NotificationsViewController" customModule="MKTFU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="80B-yW-sVI" customClass="LPHeaderView" customModule="MKTFU" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="59" width="393" height="54"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="tqF-Wk-HkS"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Notifications"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dG3-h1-dwE">
+                                <rect key="frame" x="0.0" y="113" width="393" height="739"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ic7-ZG-gTG" customClass="LPView" customModule="MKTFU" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="739"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Mjy-q9-Rpr">
+                                                <rect key="frame" x="0.0" y="30" width="393" height="709"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor">
+                                            <string key="name">
+VerySubtleGray</string>
+                                        </color>
+                                        <constraints>
+                                            <constraint firstItem="Mjy-q9-Rpr" firstAttribute="leading" secondItem="Ic7-ZG-gTG" secondAttribute="leading" id="TgW-LH-ffc"/>
+                                            <constraint firstAttribute="trailing" secondItem="Mjy-q9-Rpr" secondAttribute="trailing" id="Zdq-VB-hWm"/>
+                                            <constraint firstItem="Mjy-q9-Rpr" firstAttribute="top" secondItem="Ic7-ZG-gTG" secondAttribute="top" constant="30" id="d8f-zG-aTZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="Mjy-q9-Rpr" secondAttribute="bottom" id="w8B-s8-HvB"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="35"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="VoidWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Ic7-ZG-gTG" secondAttribute="bottom" id="NJS-tR-xb1"/>
+                                    <constraint firstItem="Ic7-ZG-gTG" firstAttribute="top" secondItem="dG3-h1-dwE" secondAttribute="top" id="Qa0-Bn-xV6"/>
+                                    <constraint firstItem="Ic7-ZG-gTG" firstAttribute="leading" secondItem="dG3-h1-dwE" secondAttribute="leading" id="fST-56-NqQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ic7-ZG-gTG" secondAttribute="trailing" id="nMF-dO-we3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor">
+                            <string key="name">
+VerySubtleGray</string>
+                        </color>
+                        <constraints>
+                            <constraint firstItem="dG3-h1-dwE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Hwt-My-eqV"/>
+                            <constraint firstItem="80B-yW-sVI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Ml2-0v-Hkm"/>
+                            <constraint firstItem="80B-yW-sVI" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Z9C-5M-RcR"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dG3-h1-dwE" secondAttribute="trailing" id="inc-R8-rJQ"/>
+                            <constraint firstAttribute="bottom" secondItem="dG3-h1-dwE" secondAttribute="bottom" id="nEy-BQ-cTf"/>
+                            <constraint firstItem="dG3-h1-dwE" firstAttribute="top" secondItem="80B-yW-sVI" secondAttribute="bottom" id="w5L-5D-gEX"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="80B-yW-sVI" secondAttribute="trailing" id="zLg-Ky-Tun"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lpHeaderView" destination="80B-yW-sVI" id="HpK-Jl-og2"/>
+                        <outlet property="notificationsTableView" destination="Mjy-q9-Rpr" id="4VC-44-U4y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="84.732824427480907" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor>
+            <string key="name">
+VerySubtleGray</string>
+            <color red="0.96899998188018799" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VoidWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

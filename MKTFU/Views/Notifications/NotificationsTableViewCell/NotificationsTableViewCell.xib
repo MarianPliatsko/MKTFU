@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="235" id="KGk-i7-Jjw" customClass="NotificationsTableViewCell" customModule="MKTFU" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="668" height="235"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="668" height="235"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FdI-hD-pBc">
+                        <rect key="frame" x="0.0" y="0.0" width="668" height="96"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle logo" translatesAutoresizingMaskIntoConstraints="NO" id="JSP-fT-T2J">
+                                <rect key="frame" x="15" y="18" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2pj-ks-YyR"/>
+                                    <constraint firstAttribute="width" constant="60" id="IEh-Ch-f3l"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xT7-To-XVy">
+                                <rect key="frame" x="92" y="21.666666666666671" width="576" height="53"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey Pearl, welcome to MKTFY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2t-eB-flL">
+                                        <rect key="frame" x="0.0" y="0.0" width="576" height="26.333333333333332"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                        <color key="textColor" name="TextGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="September 07 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GoK-hC-5dS">
+                                        <rect key="frame" x="0.0" y="26.333333333333329" width="576" height="26.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
+                                        <color key="textColor" name="TextGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="sQs-vt-cxa"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="JSP-fT-T2J" secondAttribute="bottom" constant="18" id="3tQ-pL-28C"/>
+                            <constraint firstItem="xT7-To-XVy" firstAttribute="leading" secondItem="JSP-fT-T2J" secondAttribute="trailing" constant="17" id="K3D-gv-sYi"/>
+                            <constraint firstItem="JSP-fT-T2J" firstAttribute="centerY" secondItem="FdI-hD-pBc" secondAttribute="centerY" id="mMT-aI-d6R"/>
+                            <constraint firstAttribute="trailing" secondItem="xT7-To-XVy" secondAttribute="trailing" id="pmK-hy-Js7"/>
+                            <constraint firstItem="xT7-To-XVy" firstAttribute="centerY" secondItem="FdI-hD-pBc" secondAttribute="centerY" id="rWC-r9-wV6"/>
+                            <constraint firstItem="JSP-fT-T2J" firstAttribute="top" secondItem="FdI-hD-pBc" secondAttribute="top" constant="18" id="sNa-dn-Bba"/>
+                            <constraint firstItem="JSP-fT-T2J" firstAttribute="leading" secondItem="FdI-hD-pBc" secondAttribute="leading" constant="15" id="zAS-hh-8aJ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="FdI-hD-pBc" secondAttribute="bottom" id="8hH-Jl-lr4"/>
+                    <constraint firstItem="FdI-hD-pBc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Lxk-Fm-m23"/>
+                    <constraint firstItem="FdI-hD-pBc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bXw-Pm-saP"/>
+                    <constraint firstAttribute="trailing" secondItem="FdI-hD-pBc" secondAttribute="trailing" id="ud3-N2-jHM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="126.71755725190839" y="54.577464788732399"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Circle logo" width="60" height="60"/>
+        <namedColor name="TextGray">
+            <color red="0.30199998617172241" green="0.30199998617172241" blue="0.30199998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
