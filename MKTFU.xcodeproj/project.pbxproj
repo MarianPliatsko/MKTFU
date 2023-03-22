@@ -443,8 +443,8 @@
 			isa = PBXGroup;
 			children = (
 				045020EC29A949E700DC627C /* CreateOffer.storyboard */,
-				0479A63A29AFD48B004C1806 /* CellwithTextViewTableViewCell */,
-				04EBB1B129AF0A56009A176B /* AddImageCell */,
+				0479A63A29AFD48B004C1806 /* CellForDescription */,
+				04EBB1B129AF0A56009A176B /* CellForCollectionOfImages */,
 				04EBB1B629AF0AD3009A176B /* Cell */,
 				04EBB1BB29AF0B58009A176B /* CellWithButton */,
 				0479A64429B11F59004C1806 /* ConfirmButtonCell */,
@@ -703,13 +703,13 @@
 			path = PickupInformation;
 			sourceTree = "<group>";
 		};
-		0479A63A29AFD48B004C1806 /* CellwithTextViewTableViewCell */ = {
+		0479A63A29AFD48B004C1806 /* CellForDescription */ = {
 			isa = PBXGroup;
 			children = (
 				0479A63B29AFD4DE004C1806 /* CellWithTextViewTableViewCell.swift */,
 				0479A63C29AFD4DE004C1806 /* CellWithTextViewTableViewCell.xib */,
 			);
-			path = CellwithTextViewTableViewCell;
+			path = CellForDescription;
 			sourceTree = "<group>";
 		};
 		0479A64429B11F59004C1806 /* ConfirmButtonCell */ = {
@@ -1051,13 +1051,13 @@
 			path = "CellWithButton&List";
 			sourceTree = "<group>";
 		};
-		04D135DD29B4643C00CDC18C /* CollectionViewCell */ = {
+		04D135DD29B4643C00CDC18C /* CellForEachImage */ = {
 			isa = PBXGroup;
 			children = (
 				04D135DE29B4646C00CDC18C /* ImageUICollectionViewCell.swift */,
 				04D135DF29B4646C00CDC18C /* ImageUICollectionViewCell.xib */,
 			);
-			path = CollectionViewCell;
+			path = CellForEachImage;
 			sourceTree = "<group>";
 		};
 		04D135E429B59A5800CDC18C /* AddImageCollectionViewCell */ = {
@@ -1136,15 +1136,15 @@
 			path = MyPurchasesCell;
 			sourceTree = "<group>";
 		};
-		04EBB1B129AF0A56009A176B /* AddImageCell */ = {
+		04EBB1B129AF0A56009A176B /* CellForCollectionOfImages */ = {
 			isa = PBXGroup;
 			children = (
 				04EBB1B229AF0AC0009A176B /* AddImageTableViewCell.swift */,
 				04EBB1B329AF0AC0009A176B /* AddImageTableViewCell.xib */,
-				04D135DD29B4643C00CDC18C /* CollectionViewCell */,
+				04D135DD29B4643C00CDC18C /* CellForEachImage */,
 				04D135E429B59A5800CDC18C /* AddImageCollectionViewCell */,
 			);
-			path = AddImageCell;
+			path = CellForCollectionOfImages;
 			sourceTree = "<group>";
 		};
 		04EBB1B629AF0AD3009A176B /* Cell */ = {

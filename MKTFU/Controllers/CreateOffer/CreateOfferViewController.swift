@@ -105,6 +105,9 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
                 cellwithImage?.emptyStackView.isHidden = false
             }
             else {
+                cellwithImage?.dataSourceUpdate = { [weak self] images in
+                    self?.createOfferDataSource.images = images
+                }
                 cellwithImage?.stackViewWithImage.isHidden = false
                 cellwithImage?.emptyStackView.isHidden = true
                 cellwithImage?.images = createOfferDataSource.images
@@ -116,6 +119,10 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
                     }
                 }
                 
+            }
+            // reload table view after delete image button pressed to change ui for table view
+            cellwithImage?.onDeletePressed = { [weak self] in
+                self?.tableView.reloadData()
             }
             return cellwithImage ?? UITableViewCell()
         }

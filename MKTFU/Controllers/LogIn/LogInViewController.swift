@@ -25,8 +25,6 @@ class LogInViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lpViewEmail.txtInputField.text = "marianpliatsko@icloud.com"
-        lpViewPassword.txtInputField.text = "Tani4kamarik!"
         
         // to hide error message when view did load
         lpViewEmail.showError = false

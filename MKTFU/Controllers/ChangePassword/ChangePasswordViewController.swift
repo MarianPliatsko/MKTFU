@@ -90,27 +90,27 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
         dataTask.resume()
     }
     
-    func getUserId() {
-        let headers = ["authorization": "Bearer \(Constants.access_token)"]
-
-        let request = NSMutableURLRequest(url: NSURL(string: "https://\(Constants.domain)/api/v2/users?q=email:%22\("marianpliatsko@gmail.com")%22&search_engine=v3")! as URL,
-                                                cachePolicy: .useProtocolCachePolicy,
-                                            timeoutInterval: 10.0)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
-
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-          if (error != nil) {
-            print(error)
-          } else {
-            let httpResponse = response as? HTTPURLResponse
-              print(httpResponse)
-          }
-        })
-
-        dataTask.resume()
-    }
+//    func getUserId() {
+//        let headers = ["authorization": "Bearer \(Constants.access_token)"]
+//
+//        let request = NSMutableURLRequest(url: NSURL(string: "https://\(Constants.domain)/api/v2/users?q=email:%22\("marianpliatsko@gmail.com")%22&search_engine=v3")! as URL,
+//                                                cachePolicy: .useProtocolCachePolicy,
+//                                            timeoutInterval: 10.0)
+//        request.httpMethod = "GET"
+//        request.allHTTPHeaderFields = headers
+//
+//        let session = URLSession.shared
+//        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+//          if (error != nil) {
+//            print(error)
+//          } else {
+//            let httpResponse = response as? HTTPURLResponse
+//              print(httpResponse)
+//          }
+//        })
+//
+//        dataTask.resume()
+//    }
 
     func changePassword(password: String) {
         let headers = [

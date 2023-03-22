@@ -21,6 +21,8 @@ class AddImageTableViewCell: UITableViewCell {
         }
     }
     var onNeedUpdate: (() -> Void)?
+    var dataSourceUpdate: (([UIImage]) -> Void)?
+    var onDeletePressed: (() -> Void)?
     
     
     
@@ -96,9 +98,12 @@ extension AddImageTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
         let addImageCell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: AddImageCollectionViewCell.identifier, for: indexPath) as? AddImageCollectionViewCell
         
         if indexPath.section == 0 {
+            mainImageView.image = images[0]
             cell?.uiImage.image = images[indexPath.item]
             cell?.onDeletePressed = { [weak self] in
                 self?.images.remove(at: indexPath.item)
+                self?.dataSourceUpdate?(self?.images ?? [UIImage]())
+                self?.onDeletePressed?()
             }
             return cell ?? UICollectionViewCell()
         } else {

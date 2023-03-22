@@ -10,18 +10,13 @@ import Auth0
 
 class CreateAccountViewController: UIViewController, Storyboarded {
     
-    weak var coordinator: MainCoordinator?
-    
     //MARK: - Properties
     
+    weak var coordinator: MainCoordinator?
     let validate = Validate()
-    
     let cityDataSource = City()
-    
     let thePicker = UIPickerView()
-    
     private var isValideCity: Bool = false
-    
     static var user: User?
     
     //MARK: - Outlets
@@ -35,19 +30,25 @@ class CreateAccountViewController: UIViewController, Storyboarded {
     @IBOutlet weak var lpViewCityName: LpCustomView!
     @IBOutlet weak var loginButton: UIButton!
     
-    
     //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //call text field delegate
+        lpViewPhone.txtInputField.delegate = self
+        
+        //call to keyboard handling function
+        initializeHideKeyboard()
+        
+        //make done button for phone input
+        setupToolbar()
+        
 //        loginButton.isEnabled = false
         //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
-        
-        //call text field delegate
-        lpViewPhone.txtInputField.delegate = self
         
         //call UIPickerView delegate
         thePicker.delegate = self
@@ -57,7 +58,6 @@ class CreateAccountViewController: UIViewController, Storyboarded {
         lpViewLastName.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
         lpViewEmail.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
         lpViewPhone.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
-        
         lpViewPickupAddress.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
         lpViewCityName.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingDidBegin)
         
@@ -69,6 +69,31 @@ class CreateAccountViewController: UIViewController, Storyboarded {
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         createUser()
         coordinator?.goToCreatePasswordVC()
+    }
+    
+    //MARK: - Methods
+    
+    // Toolbar for Number Pad
+    func setupToolbar() {
+        let bar = UIToolbar()
+        let doneBtn = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissMyKeyboard))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        bar.items = [flexSpace, flexSpace, doneBtn]
+        bar.sizeToFit()
+        lpViewPhone.txtInputField.inputAccessoryView = bar
+        lpViewPhone.txtInputField.keyboardType = .numberPad
+    }
+        
+    // make dismiss for keyboard
+    func initializeHideKeyboard() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissMyKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissMyKeyboard() {
+        view.endEditing(true)
     }
     
     func createUser() {
@@ -136,12 +161,25 @@ class CreateAccountViewController: UIViewController, Storyboarded {
 // MARK: - Extension CreateAccountViewController: UITextFieldDelegate
 
 extension CreateAccountViewController: UITextFieldDelegate {
-        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            guard let text = textField.text else { return false }
-            let newString = (text as NSString).replacingCharacters(in: range, with: string)
-            textField.text = validate.validatePhoneNumber.validatePhoneNumber(phone: newString)
-            return false
-        }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        let newString = (text as NSString).replacingCharacters(in: range, with: string)
+        textField.text = validate.validatePhoneNumber.validatePhoneNumber(phone: newString)
+        return false
+    }
+    
+    // make return button as next
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        let nextTag = textField.tag + 1
+//
+//        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+//            nextResponder.becomeFirstResponder()
+//        } else {
+//            textField.resignFirstResponder()
+//        }
+//
+//        return true
+//    }
 }
 
 // MARK: - Extension CreateAccountViewController: UIPickerViewDelegate, UIPickerViewDataSource
