@@ -73,8 +73,9 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToProductDetailVC() {
+    func goToProductDetailVC(dataSource: ItemsDataTest) {
         let vc = ProductDetailViewController.instantiate(name: "ProductDetail")
+        vc.dataSource = dataSource
         vc.coordinator = self
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
@@ -94,15 +95,17 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToCheckoutViewController() {
+    func goToCheckoutViewController(dataSource: ItemsDataTest) {
         let vc = CheckoutViewController.instantiate(name: "Checkout")
+        vc.dataSource.append(dataSource)
         vc.coordinator = self
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToPickupInformationViewController() {
+    func goToPickupInformationViewController(dataSource: ItemsDataTest) {
         let vc = PickupInformationViewController.instantiate(name: "PickupInformation")
+        vc.dataSource = dataSource
         vc.coordinator = self
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)

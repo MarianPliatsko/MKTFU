@@ -32,7 +32,7 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     // setup cell
-    func setupCell(city: String) {
-        cityNameLabel.text = city
-    }
+//    func setupCell(data: : String) {
+//        cityNameLabel.text = city
+//    }
 }

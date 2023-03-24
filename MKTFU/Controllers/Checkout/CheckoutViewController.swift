@@ -13,6 +13,8 @@ class CheckoutViewController: UIViewController, Storyboarded {
     
     weak var coordinator: MainCoordinator?
     
+    var dataSource = [ItemsDataTest]()
+    
     //MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
@@ -38,20 +40,23 @@ class CheckoutViewController: UIViewController, Storyboarded {
     
     
     @IBAction func confirmBtnPressed(_ sender: UIButton) {
-        self.coordinator?.goToPickupInformationViewController()
+        self.coordinator?.goToPickupInformationViewController(dataSource: dataSource[0])
     }
 }
 
-
-
 extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CheckoutTableViewCell.identifier, for: indexPath) as? CheckoutTableViewCell else {return UITableViewCell()}
+        cell.setupUI(dataSource: dataSource[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
     }
 }

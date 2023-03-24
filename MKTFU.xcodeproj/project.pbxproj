@@ -11,6 +11,7 @@
 		0407622D29CA2C8100E801C5 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0407622B29CA2C8100E801C5 /* NotificationsTableViewCell.xib */; };
 		0407623029CA332200E801C5 /* NotificationSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407622F29CA332200E801C5 /* NotificationSectionHeaderView.swift */; };
 		0407623229CA333300E801C5 /* NotificationSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0407623129CA333300E801C5 /* NotificationSectionHeaderView.xib */; };
+		0407623A29CBA5ED00E801C5 /* ItemsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407623929CBA5ED00E801C5 /* ItemsTest.swift */; };
 		040B5E5929916A0600CE1177 /* ForgotPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040B5E5829916A0600CE1177 /* ForgotPassword.storyboard */; };
 		040B5E5B29916A4000CE1177 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B5E5A29916A4000CE1177 /* ForgotPasswordViewController.swift */; };
 		040B5E5E2991716E00CE1177 /* ForgotPasswordCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B5E5D2991716E00CE1177 /* ForgotPasswordCompleteViewController.swift */; };
@@ -76,6 +77,9 @@
 		048680B52989D29300193579 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048680B42989D29300193579 /* Main.storyboard */; };
 		0489B7D529A5D8550008C1E3 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0489B7D429A5D8550008C1E3 /* Auth0.plist */; };
 		0489B7D729A69D710008C1E3 /* Pinterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489B7D629A69D710008C1E3 /* Pinterest.swift */; };
+		048D2FF529CCD7E500814285 /* CityListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D2FF429CCD7E500814285 /* CityListTest.swift */; };
+		048D2FF729CCDCC400814285 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D2FF629CCDCC400814285 /* City.swift */; };
+		048D2FF929CD087800814285 /* UserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D2FF829CD087800814285 /* UserTest.swift */; };
 		048DB377299C292E007FDAB8 /* CompositionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DB376299C292E007FDAB8 /* CompositionLayout.swift */; };
 		048DB37B299D9287007FDAB8 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DB37A299D9287007FDAB8 /* ProductDetailViewController.swift */; };
 		048DB37F299D92CD007FDAB8 /* ProductDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048DB37E299D92CD007FDAB8 /* ProductDetail.storyboard */; };
@@ -94,7 +98,6 @@
 		04A172D429A85776004398F6 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A172D229A85776004398F6 /* HomeTableViewCell.swift */; };
 		04A172D529A85776004398F6 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A172D329A85776004398F6 /* HomeTableViewCell.xib */; };
 		04B4792529C24104000C2BB0 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4792429C24104000C2BB0 /* Home.swift */; };
-		04B4792729C25C38000C2BB0 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4792629C25C38000C2BB0 /* City.swift */; };
 		04B4792B29C3885E000C2BB0 /* MyListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4792929C3885E000C2BB0 /* MyListingTableViewCell.swift */; };
 		04B4792C29C3885E000C2BB0 /* MyListingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B4792A29C3885E000C2BB0 /* MyListingTableViewCell.xib */; };
 		04B4792E29C39F7F000C2BB0 /* MyListingSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B4792D29C39F7F000C2BB0 /* MyListingSectionHeaderView.xib */; };
@@ -150,6 +153,7 @@
 		0407622B29CA2C8100E801C5 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
 		0407622F29CA332200E801C5 /* NotificationSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSectionHeaderView.swift; sourceTree = "<group>"; };
 		0407623129CA333300E801C5 /* NotificationSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationSectionHeaderView.xib; sourceTree = "<group>"; };
+		0407623929CBA5ED00E801C5 /* ItemsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTest.swift; sourceTree = "<group>"; };
 		040B5E5829916A0600CE1177 /* ForgotPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPassword.storyboard; sourceTree = "<group>"; };
 		040B5E5A29916A4000CE1177 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		040B5E5D2991716E00CE1177 /* ForgotPasswordCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordCompleteViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +218,9 @@
 		048680B42989D29300193579 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0489B7D429A5D8550008C1E3 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		0489B7D629A69D710008C1E3 /* Pinterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pinterest.swift; sourceTree = "<group>"; };
+		048D2FF429CCD7E500814285 /* CityListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTest.swift; sourceTree = "<group>"; };
+		048D2FF629CCDCC400814285 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		048D2FF829CD087800814285 /* UserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTest.swift; sourceTree = "<group>"; };
 		048DB376299C292E007FDAB8 /* CompositionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionLayout.swift; sourceTree = "<group>"; };
 		048DB37A299D9287007FDAB8 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		048DB37E299D92CD007FDAB8 /* ProductDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductDetail.storyboard; sourceTree = "<group>"; };
@@ -232,7 +239,6 @@
 		04A172D229A85776004398F6 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		04A172D329A85776004398F6 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		04B4792429C24104000C2BB0 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		04B4792629C25C38000C2BB0 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		04B4792929C3885E000C2BB0 /* MyListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListingTableViewCell.swift; sourceTree = "<group>"; };
 		04B4792A29C3885E000C2BB0 /* MyListingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyListingTableViewCell.xib; sourceTree = "<group>"; };
 		04B4792D29C39F7F000C2BB0 /* MyListingSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyListingSectionHeaderView.xib; sourceTree = "<group>"; };
@@ -313,6 +319,16 @@
 				0407623129CA333300E801C5 /* NotificationSectionHeaderView.xib */,
 			);
 			path = NotificationSectionHeaderView;
+			sourceTree = "<group>";
+		};
+		0407623829CBA5C000E801C5 /* TestBeckend */ = {
+			isa = PBXGroup;
+			children = (
+				048D2FF829CD087800814285 /* UserTest.swift */,
+				0407623929CBA5ED00E801C5 /* ItemsTest.swift */,
+				048D2FF429CCD7E500814285 /* CityListTest.swift */,
+			);
+			path = TestBeckend;
 			sourceTree = "<group>";
 		};
 		040B5E542991693000CE1177 /* EmailVerification */ = {
@@ -456,6 +472,7 @@
 		045020F629AD41E900DC627C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0407623829CBA5C000E801C5 /* TestBeckend */,
 				047D507629C5780600EED8B5 /* SwaggerModels */,
 				047D507829C5782600EED8B5 /* MyTestModels */,
 			);
@@ -743,8 +760,8 @@
 			isa = PBXGroup;
 			children = (
 				04F7E3D829B26C1B00DBE4CC /* CreateOffer.swift */,
+				048D2FF629CCDCC400814285 /* City.swift */,
 				04B4792429C24104000C2BB0 /* Home.swift */,
-				04B4792629C25C38000C2BB0 /* City.swift */,
 				04B4793A29C4DC47000C2BB0 /* MyListing.swift */,
 			);
 			path = MyTestModels;
@@ -1334,6 +1351,7 @@
 				04BDB0D72990B47D00983D91 /* PrivacyPolicyViewController.swift in Sources */,
 				04A0391A2996CBC200A12064 /* HomeViewController.swift in Sources */,
 				04B5EFC329956AD2001807E7 /* LPHeaderView.swift in Sources */,
+				048D2FF929CD087800814285 /* UserTest.swift in Sources */,
 				04BDB0D22990803C00983D91 /* UITextView+.swift in Sources */,
 				045020FA29AE644100DC627C /* Constants.swift in Sources */,
 				0426DEF829AFBD23009F7226 /* LPCustomView.swift in Sources */,
@@ -1362,6 +1380,9 @@
 				0489B7D729A69D710008C1E3 /* Pinterest.swift in Sources */,
 				04D42D8929A01ACC001BC259 /* ImageCollectionViewCell.swift in Sources */,
 				048E58432995D2F200DCC3EA /* ValidateString.swift in Sources */,
+				048D2FF729CCDCC400814285 /* City.swift in Sources */,
+				048D2FF529CCD7E500814285 /* CityListTest.swift in Sources */,
+				0407623A29CBA5ED00E801C5 /* ItemsTest.swift in Sources */,
 				046E52A82988BC24009E9F3F /* UIColor+.swift in Sources */,
 				0431A64729931971004B5D05 /* UIFont+.swift in Sources */,
 				0450210229AE83B600DC627C /* Storyboarded.swift in Sources */,
@@ -1373,7 +1394,6 @@
 				046E52BA2989B6D0009E9F3F /* CreateAccountViewController.swift in Sources */,
 				04BDB0E32990C6D600983D91 /* EmailVerificationViewController.swift in Sources */,
 				048E583F2995BDE600DCC3EA /* ValidatePhoneNumber.swift in Sources */,
-				04B4792729C25C38000C2BB0 /* City.swift in Sources */,
 				048DB37B299D9287007FDAB8 /* ProductDetailViewController.swift in Sources */,
 				046E52B52989906A009E9F3F /* UITextField+.swift in Sources */,
 				04E4721729BF979000EA2A86 /* MyPurchasesTableViewCell.swift in Sources */,

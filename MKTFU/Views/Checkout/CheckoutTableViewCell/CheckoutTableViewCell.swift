@@ -34,10 +34,9 @@ class CheckoutTableViewCell: UITableViewCell {
         return nib
     }
     
-    func setupUI (image: UIImage, title: String, price: Double) {
-        productImageView.image = image
-        productTitle.text = title
-        productPrice.text = "\(price)$"
+    func setupUI (dataSource: ItemsDataTest) {
+        productTitle.text = dataSource.name
+        productPrice.text = "\(dataSource.price)$"
     }
     
 }

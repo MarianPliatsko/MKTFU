@@ -274,6 +274,13 @@ VerySubtleGray</string>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="VpX-mG-Pl2" id="doo-ij-hBH"/>
+                        <outlet property="itemConditionStatusLabel" destination="WeX-Rr-IKt" id="TkS-9J-g8f"/>
+                        <outlet property="itemDetailTextView" destination="sJw-mP-uPx" id="U0O-db-Bjv"/>
+                        <outlet property="itemListingNumberLabel" destination="6Ne-ak-aAW" id="Qxj-5F-jD1"/>
+                        <outlet property="itemNameLabel" destination="k02-ey-ika" id="D2N-V0-ixT"/>
+                        <outlet property="itemPriceLabel" destination="mhx-Q2-hPF" id="3zY-I7-cVg"/>
+                        <outlet property="itemSellerImageView" destination="Mmr-SP-yW6" id="xca-jq-oN4"/>
+                        <outlet property="itemSellerName" destination="6Ne-ak-aAW" id="3XI-3E-rvN"/>
                         <outlet property="lpHeaderView" destination="5ey-Si-fja" id="who-KB-FI1"/>
                     </connections>
                 </viewController>
@@ -296,13 +303,13 @@ VerySubtleGray</string>
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="OccasionalPurple">
-            <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.3880000114440918" green="0.093999996781349182" blue="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SubtleGray">
-            <color red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.88599997758865356" green="0.88599997758865356" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TextGray">
-            <color red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.30199998617172241" green="0.30199998617172241" blue="0.30199998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VoidWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

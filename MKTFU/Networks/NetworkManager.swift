@@ -26,7 +26,7 @@ class NetworkManager {
     
     func request<T:Codable>(url: URL?,
                             type: T.Type,
-                            token: String,
+                            token: String?,
                             httpMethod: HTTPMethod,
                             parameters: [String: String]?,
                             complition: @escaping(Result<T, Error>) -> Void) {
@@ -34,7 +34,7 @@ class NetworkManager {
         
         var urlRequest = URLRequest(url: url)
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.addValue(token, forHTTPHeaderField: "Bearer")
+        urlRequest.addValue(token ?? "", forHTTPHeaderField: "Bearer")
         urlRequest.httpMethod = httpMethod.rawValue
         
         if parameters != nil {

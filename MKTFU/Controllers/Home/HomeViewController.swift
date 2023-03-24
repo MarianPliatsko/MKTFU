@@ -13,6 +13,7 @@ class HomeViewController: UIViewController, Storyboarded {
     
     weak var coordinator: MainCoordinator?
     private var filteredCityNameList: [String] = []
+    private var cities: [String] = []
     let homeDataSource = Home(city: City(),
                               productCategory: [ProductCategory(name: "Deals",
                                                                 image: UIImage(named: "Path 2") ?? UIImage()),
@@ -27,6 +28,9 @@ class HomeViewController: UIViewController, Storyboarded {
                               advertisementItems: [Items(image: UIImage(named: "1") ?? UIImage(),
                                                          name: "Iteme 1",
                                                          price: "100")])
+    
+    var dataSource = ItemsTest()
+    var citiesDataSorce = CityListTest()
     
     //MARK: - Outlets
     
@@ -54,7 +58,12 @@ class HomeViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        filteredCityNameList = homeDataSource.city.cityList
+        
+        fetchItems()
+        fetchCityList()
+        
+        self.cityButton.setTitle("", for: .normal)
+        self.cityNameLabel.text = ""
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -84,6 +93,7 @@ class HomeViewController: UIViewController, Storyboarded {
         
         // layout for header collection view
         headerCollectionView.collectionViewLayout = headerLayoutConfig()
+
     }
     
     //MARK: - IBActions
@@ -97,6 +107,49 @@ class HomeViewController: UIViewController, Storyboarded {
     }
     
     // MARK: - Methods
+    
+    // fetch the data
+    func fetchItems() {
+        NetworkManager.shared.request(url: URL(string: "https://duyphamsg.000webhostapp.com/index.php/item/list"),
+                                      type: ItemsTest.self,
+                                      token: nil,
+                                      httpMethod: .get,
+                                      parameters: nil) { result in
+            switch result {
+            case .success(let success):
+                self.dataSource = success
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func fetchCityList() {
+        NetworkManager.shared.request(url: URL(string: "https://duyphamsg.000webhostapp.com/index.php/city/list"),
+                                      type: CityListTest.self,
+                                      token: nil,
+                                      httpMethod: .get,
+                                      parameters: nil) { result in
+            switch result {
+            case .success(let success):
+                self.citiesDataSorce = success
+                for city in self.citiesDataSorce.data {
+                    self.cities.append(city.name)
+                    self.filteredCityNameList = self.cities
+                }
+                DispatchQueue.main.async {
+                    self.cityButton.setTitle(self.filteredCityNameList[0], for: .normal)
+                    self.cityNameLabel.text = self.filteredCityNameList[0]
+                    self.cityListTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     
     //create composition layout
     func headerLayoutConfig() -> UICollectionViewCompositionalLayout {
@@ -119,12 +172,15 @@ class HomeViewController: UIViewController, Storyboarded {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.goToProductDetailVC()
+        if collectionView == self.collectionView {
+            let dataSource = dataSource.data[indexPath.item]
+            coordinator?.goToProductDetailVC(dataSource: dataSource)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionView {
-            return homeDataSource.advertisementItems.count
+            return dataSource.data.count
         } else {
             return homeDataSource.productCategory.count
         }
@@ -134,8 +190,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == self.collectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else {return UICollectionViewCell()}
             cell.setup(image: homeDataSource.advertisementItems[indexPath.item].image,
-                       text: homeDataSource.advertisementItems[indexPath.item].name,
-                       price: homeDataSource.advertisementItems[indexPath.item].price)
+                       text: dataSource.data[indexPath.item].name,
+                       price: dataSource.data[indexPath.item].price)
             cell.backgroundColor = .lightGray
             return cell
         } else {
@@ -153,7 +209,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath, cellWidth: CGFloat) -> CGFloat {
         let imgHeight = calculateImageHeight(sourceImage: homeDataSource.advertisementItems[indexPath.item].image , scaledToWidth: cellWidth)
-        let textHeight = requiredHeight(text: homeDataSource.advertisementItems[indexPath.item].name, cellWidth: cellWidth)
+        let textHeight = requiredHeight(text: dataSource.data[indexPath.item].name, cellWidth: cellWidth)
         return (imgHeight + textHeight + 40)
     }
     
@@ -204,8 +260,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        cityButton.setTitle(homeDataSource.city.cityList[indexPath.row], for: .normal)
-        cityNameLabel.text = homeDataSource.city.cityList[indexPath.row]
+        cityButton.setTitle(filteredCityNameList[indexPath.row], for: .normal)
+        cityNameLabel.text = filteredCityNameList[indexPath.row]
+        
+        citySearchView.isHidden = true
     }
 }
 
@@ -215,9 +273,9 @@ extension HomeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredCityNameList = []
         if searchText == "" {
-            filteredCityNameList = homeDataSource.city.cityList
+            filteredCityNameList = cities
         }
-        for word in homeDataSource.city.cityList {
+        for word in cities {
             if word.contains(searchText) {
                 filteredCityNameList.append(word)
             }

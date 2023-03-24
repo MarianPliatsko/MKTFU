@@ -112,6 +112,13 @@ class CreateAccountViewController: UIViewController, Storyboarded {
                                                 adress: address ?? "",
                                                 city: city ?? "")
         print("User: \(String(describing: CreateAccountViewController.user))")
+        
+//        NetworkManager.shared.request(url: <#T##URL?#>,
+//                                      type: <#T##(Decodable & Encodable).Protocol#>,
+//                                      token: <#T##String?#>,
+//                                      httpMethod: <#T##HTTPMethod#>,
+//                                      parameters: <#T##[String : String]?#>,
+//                                      complition: <#T##(Result<Decodable & Encodable, Error>) -> Void#>)
     }
         
     // MARK: - Validation Methods

@@ -20,7 +20,7 @@ class MyListingsViewController: UIViewController, Storyboarded {
                                                          name: "Item 3",
                                                          price: "300",
                                                          usedCondition: false)]
-   
+    
     var availableItemsSection: [MyList] = []
     var activeItems: [MyList] = [MyList(image: UIImage(named: "4") ?? UIImage(),
                                         date: .now,
@@ -67,7 +67,7 @@ class MyListingsViewController: UIViewController, Storyboarded {
         
         myListingTableView.register(MyListingTableViewCell.nib(),
                                     forCellReuseIdentifier: MyListingTableViewCell.identifier)
-
+        
         //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)

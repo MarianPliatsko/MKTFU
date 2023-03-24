@@ -9,7 +9,12 @@ import UIKit
 
 class PickupInformationViewController: UIViewController, Storyboarded {
     
+    //MARK: - Properties
+    
     weak var coordinator: MainCoordinator?
+    var dataSource = ItemsDataTest()
+    
+    //MARK: - Outlets
     
     @IBOutlet weak var productImageView: UIImageView! {
         didSet {
@@ -17,8 +22,11 @@ class PickupInformationViewController: UIViewController, Storyboarded {
             productImageView.clipsToBounds = true
         }
     }
-    
     @IBOutlet weak var lpHeaderView: LPHeaderView!
+    @IBOutlet weak var productNameLabel: UILabel!
+    
+    
+    //MARK: View Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +35,8 @@ class PickupInformationViewController: UIViewController, Storyboarded {
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+        
+        setupUI(data: dataSource)
     }
     
     //MARK: - IBAction
@@ -35,14 +45,10 @@ class PickupInformationViewController: UIViewController, Storyboarded {
         coordinator?.goToSuccessVC()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: - Methods
+    
+    func setupUI(data: ItemsDataTest) {
+        productNameLabel.text = data.name
     }
-    */
 
 }

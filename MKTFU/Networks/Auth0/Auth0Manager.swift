@@ -60,7 +60,7 @@ class Auth0Manager {
         auth0.login(usernameOrEmail: email,
                     password: password,
                     realmOrConnection: Constants.connection,
-                    audience: "https://\(Constants.domain)/api/v2/",
+                    audience: "http://marketforyou.com",
                     scope: Constants.scope)
         .start { result in
             switch result {
