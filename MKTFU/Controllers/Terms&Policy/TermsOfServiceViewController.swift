@@ -14,6 +14,6 @@ class TermsOfServiceViewController: UIViewController, Storyboarded {
     //MARK: - Actions
     
     @IBAction func acceptButtonPressed(_ sender: UIButton) {
-        coordinator?.goToCreatePasswordVC()
+     
     }
 }

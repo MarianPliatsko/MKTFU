@@ -30,9 +30,9 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToCreatePasswordVC() {
+    func goToCreatePasswordVC(user: User) {
         let vc = CreatePasswordViewController.instantiate(name: "CreatePassword")
-        vc.user = CreateAccountViewController.user
+        vc.user = user
         vc.coordinator = self
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
@@ -59,9 +59,10 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToHomeVC() {
+    func goToHomeVC(user: User) {
         let vc = HomeViewController.instantiate(name: "Home")
         vc.coordinator = self
+        vc.user = user
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
@@ -108,16 +109,18 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToMenuViewController() {
+    func goToMenuViewController(user: User) {
         let vc = MenuViewController.instantiate(name: "Menu")
         vc.coordinator = self
+        vc.user = user
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToAccountInformationViewController() {
+    func goToAccountInformationViewController(user: User) {
         let vc = AccountInformationViewController.instantiate(name: "AccountInformation")
         vc.coordinator = self
+        vc.user = user
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }

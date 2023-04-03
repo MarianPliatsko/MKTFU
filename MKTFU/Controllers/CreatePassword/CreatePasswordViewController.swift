@@ -13,7 +13,7 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
     //MARK: - Properties
     weak var coordinator: MainCoordinator?
     
-    var user: User?
+    var user = User()
     
     let validate = Validate()
     let checkedImage = UIImage(named: "CheckedImage")
@@ -81,7 +81,7 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
     }
     
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
-        createAccount(user: user!)
+        createAccount(user: user)
         coordinator?.goToSuccessVC()
     }
 
@@ -91,18 +91,72 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
                             "lastName": user.lastName,
                             "email": user.email,
                             "phone": user.phone,
-                            "address": user.streetAdress,
+                            "streetAddress": user.address,
                             "city": user.city]
         guard let password = lpViewPassword.txtInputField.text else {return}
         
-        Auth0.authentication().signup(email: user.email,
-                                      password: password,
-                                      connection: Constants.connection,
-                                      userMetadata: userMetaData)
-        .start { result in
+        Auth0Manager.shared.createUser(email: user.email,
+                                       password: password,
+                                       connection: Auth0Constants.connection,
+                                       userMetaData: userMetaData) { result in
             switch result {
             case .success(let user):
-                print("User with passwrod: \(user)")
+                print(user)
+                if user != nil {
+                    self.getAccessToken(email: user!, password: password)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func getAccessToken(email: String, password: String) {
+        Auth0Manager.shared.loginWithEmail(email: email, password: password) { result in
+            switch result {
+            case .success(let accessToken):
+                print(accessToken)
+                if accessToken != nil {
+                    self.getUserID(accessString: accessToken!)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func getUserID(accessString: String) {
+        Auth0Manager.shared.getUserID(accessToken: accessString) { result in
+            switch result {
+            case .success(let userID):
+                if userID != nil {
+                    self.createUserOnBackend(userID: userID!, token: accessString)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func createUserOnBackend (userID: String, token: String){
+        
+        let userData = ["id": userID,
+                        "firstName": user.firstName,
+                        "lastName": user.lastName,
+                        "email": user.email,
+                        "phone": user.phone,
+                        "address": user.address,
+                        "city": user.city
+        ]
+        
+        NetworkManager.shared.request(endpoint: "api/User/register",
+                                      type: User.self,
+                                      token: token,
+                                      httpMethod: .post,
+                                      parameters: userData) { result in
+            switch result {
+            case .success(let user):
+                print(user)
             case .failure(let error):
                 print(error)
             }

@@ -43,7 +43,7 @@ extension Auth0Error: LocalizedError {
 
 class Auth0Manager {
     
-    let audience = "https://\(Constants.domain)/api/v2/"
+    //    let audience = "https://\(Auth0Constants.domain)/api/v2/"
     let auth0: Authentication!
     
     static let shared = Auth0Manager()
@@ -52,32 +52,68 @@ class Auth0Manager {
         auth0 = Auth0.authentication()
     }
     
-    func loginWithEmail(_ email: String, password: String, complition: @escaping(Result<String?, Auth0Error>) -> Void) {
+    func loginWithEmail(email: String,
+                        password: String,
+                        complition: @escaping(Result<String?, Auth0Error>) -> Void) {
         if email.isEmpty {
             complition (.failure(.missingEmail))
             return
         }
-        auth0.login(usernameOrEmail: email,
-                    password: password,
-                    realmOrConnection: Constants.connection,
-                    audience: "https://\(Constants.domain)/api/v2/",
-                    scope: Constants.scope)
+        
+        auth0
+            .login(usernameOrEmail: email,
+                   password: password,
+                   realmOrConnection: Auth0Constants.connection,
+                   audience: Auth0Constants.audience,
+                   scope: Auth0Constants.scope)
+            .start { result in
+                switch result {
+                case .success(let credentials):
+                    complition (.success(credentials.accessToken))
+                case .failure(let error):
+                    complition (.failure(.error(error)))
+                }
+                
+            }
+    }
+    
+    func createUser(email: String,
+                    password: String,
+                    connection: String,
+                    userMetaData: [String: Any],
+                    complition: @escaping(Result<String?, Auth0Error>) -> Void) {
+        auth0.signup(email: email,
+                     password: password,
+                     connection: connection,
+                     userMetadata: userMetaData)
         .start { result in
             switch result {
-            case .success(let credentials):
-                complition (.success(credentials.accessToken))
+            case .success(let user):
+                complition (.success(user.email))
             case .failure(let error):
                 complition (.failure(.error(error)))
             }
-            
         }
     }
     
+    func getUserID(accessToken: String,
+                   complition: @escaping(Result<String?, Auth0Error>) -> Void) {
+        auth0
+            .userInfo(withAccessToken: accessToken)
+            .start { result in
+                switch result {
+                case .success(let user):
+                    complition (.success(user.sub))
+                case .failure(let error):
+                    complition (.failure(.error(error)))
+                }
+            }
+    }
+    
     func resetPassword(_ email: String) {
-        Auth0
-            .authentication()
+        auth0
             .resetPassword(email: email,
-                           connection: Constants.connection)
+                           connection: Auth0Constants.connection)
             .start { result in
                 switch result {
                 case .success:

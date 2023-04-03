@@ -202,7 +202,13 @@ VerySubtleGray</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lpCityView" destination="ylu-Mp-2bw" id="rz5-j8-t01"/>
+                        <outlet property="lpEmailView" destination="2bY-aO-gvz" id="gdv-vR-eJO"/>
+                        <outlet property="lpFirstNameView" destination="fDL-5T-WcT" id="qTj-OP-nmK"/>
                         <outlet property="lpHeaderView" destination="aJ7-o8-iQe" id="ZMX-3Z-XjK"/>
+                        <outlet property="lpLastNameView" destination="42H-Uw-YIF" id="uoE-9q-oZP"/>
+                        <outlet property="lpPhoneView" destination="NnD-WL-JXP" id="85G-fl-E8P"/>
+                        <outlet property="lpPickupAddressView" destination="3F5-3Z-ne6" id="udA-xR-Bo7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F7E-TV-FRy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -214,7 +220,7 @@ VerySubtleGray</string>
         <namedColor>
             <string key="name">
 GrayButtonGray</string>
-            <color red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.58799999952316284" green="0.58799999952316284" blue="0.58799999952316284" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor>
             <string key="name">

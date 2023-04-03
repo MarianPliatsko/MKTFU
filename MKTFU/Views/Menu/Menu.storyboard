@@ -254,6 +254,9 @@ VerySubtleGray</string>
                             <constraint firstItem="3tr-jH-B72" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" id="c6i-PR-Oyx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userFullNameLabel" destination="aDs-Oj-WcV" id="uUC-4t-dBy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

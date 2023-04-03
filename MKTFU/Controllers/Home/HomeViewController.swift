@@ -12,6 +12,7 @@ class HomeViewController: UIViewController, Storyboarded {
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
+    var user = User()
     private var filteredCityNameList: [String] = []
     let homeDataSource = Home(city: City(),
                               productCategory: [ProductCategory(name: "Deals",
@@ -93,7 +94,7 @@ class HomeViewController: UIViewController, Storyboarded {
     }
     
     @IBAction func menuButtonPressed(_ sender: UIButton) {
-        coordinator?.goToMenuViewController()
+        coordinator?.goToMenuViewController(user: user)
     }
     
     // MARK: - Methods

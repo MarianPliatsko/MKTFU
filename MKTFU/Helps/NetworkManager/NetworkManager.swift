@@ -16,25 +16,31 @@ enum HTTPMethod: String {
 enum NetworkingError: Error {
     case invalidUrl
     case invalidData
+    case urlIsMissing
+    case notFound
+    case badResponse
+    case unknown
 }
 
 class NetworkManager {
     
     static let shared = NetworkManager()
+    private let baseURL = URL(string: "http://mktfy-proof.ca-central-1.elasticbeanstalk.com/")
     
     init() {}
     
-    func request<T:Codable>(url: URL?,
+    func request<T:Codable>(endpoint: String,
                             type: T.Type,
                             token: String,
                             httpMethod: HTTPMethod,
                             parameters: [String: String]?,
                             complition: @escaping(Result<T, Error>) -> Void) {
-        guard let url = url else{return complition(.failure(NetworkingError.invalidUrl))}
+        guard let url = self.baseURL else{return complition(.failure(NetworkingError.invalidUrl))}
         
-        var urlRequest = URLRequest(url: url)
+        var urlRequest = URLRequest(url: url.appendingPathComponent(endpoint))
+        urlRequest.addValue("text/plain", forHTTPHeaderField: "accept")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.addValue(token, forHTTPHeaderField: "Bearer")
+        urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         urlRequest.httpMethod = httpMethod.rawValue
         
         if parameters != nil {

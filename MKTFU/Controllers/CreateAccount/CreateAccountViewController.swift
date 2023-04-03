@@ -17,7 +17,7 @@ class CreateAccountViewController: UIViewController, Storyboarded {
     let cityDataSource = City()
     let thePicker = UIPickerView()
     private var isValideCity: Bool = false
-    static var user: User?
+    var user = User()
     
     //MARK: - Outlets
     
@@ -68,7 +68,7 @@ class CreateAccountViewController: UIViewController, Storyboarded {
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         createUser()
-        coordinator?.goToCreatePasswordVC()
+        coordinator?.goToCreatePasswordVC(user: user)
     }
     
     //MARK: - Methods
@@ -104,14 +104,14 @@ class CreateAccountViewController: UIViewController, Storyboarded {
         let address = lpViewPickupAddress.txtInputField.text
         let city = lpViewCityName.txtInputField.text
         
-        CreateAccountViewController.user = User(userID: "1",
-                                                firstName: firstName ?? "",
-                                                lastName: lastName ?? "",
-                                                email: email ?? "",
-                                                phone: phone ?? "",
-                                                adress: address ?? "",
-                                                city: city ?? "")
-        print("User: \(String(describing: CreateAccountViewController.user))")
+        user = User(userID: "",
+                    firstName: firstName ?? "",
+                    lastName: lastName ?? "",
+                    email: email ?? "",
+                    phone: phone ?? "",
+                    address: address ?? "",
+                    city: city ?? "")
+        print("User: \(String(describing: user))")
     }
         
     // MARK: - Validation Methods

@@ -119,12 +119,12 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
         ]
         let parameters = [
           "password": password,
-          "connection": Constants.connection
+          "connection": "Auth0Constants.connection"
         ] as [String : Any]
 
         guard let postData = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {return}
 
-        let request = NSMutableURLRequest(url: NSURL(string: "https://\(Constants.domain)/api/v2/users/%7BuserId%7D")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://Auth0Constants.domain/api/v2/users/%7BuserId%7D")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
         request.httpMethod = "PATCH"

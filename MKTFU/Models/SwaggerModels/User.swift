@@ -13,7 +13,7 @@ class User: Codable {
     let lastName: String
     let email: String
     let phone: String
-    let streetAdress: String
+    let address: String
     let city: String
     
     init() {
@@ -22,17 +22,17 @@ class User: Codable {
         self.lastName = ""
         self.email = ""
         self.phone = ""
-        self.streetAdress = ""
+        self.address = ""
         self.city = ""
     }
     
-    init(userID: String, firstName: String, lastName: String, email: String, phone: String, adress: String, city: String) {
+    init(userID: String, firstName: String, lastName: String, email: String, phone: String, address: String, city: String) {
         self.id = userID
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
         self.phone = phone
-        self.streetAdress = adress
+        self.address = address
         self.city = city
     }
 }
