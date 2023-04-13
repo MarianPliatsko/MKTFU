@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import Kingfisher
 
 enum HTTPMethod: String {
     case get = "GET"
@@ -33,9 +35,12 @@ class NetworkManager {
                             type: T.Type,
                             token: String,
                             httpMethod: HTTPMethod,
-                            parameters: [String: String]?,
+                            resultsLimit: Int?,
+                            parameters: [String: Any]?,
                             complition: @escaping(Result<T, Error>) -> Void) {
-        guard let url = self.baseURL else{return complition(.failure(NetworkingError.invalidUrl))}
+        guard var url = self.baseURL else{return complition(.failure(NetworkingError.invalidUrl))}
+        let resultsLimit = URLQueryItem(name: "maxResults", value: "\(resultsLimit ?? 100)")
+        url.append(queryItems: [resultsLimit])
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(endpoint))
         urlRequest.addValue("text/plain", forHTTPHeaderField: "accept")
@@ -50,13 +55,76 @@ class NetworkManager {
         let task = URLSession.shared.dataTask(with: urlRequest, completionHandler: {data, response, error in
             guard let data = data else {return complition(.failure(NetworkingError.invalidData))}
             do {
-                let json = try JSONDecoder().decode(type, from: data)
-                    complition(.success(json))
+                let jsonDecode = try JSONDecoder().decode(type, from: data)
+                complition(.success(jsonDecode))
             }
             catch {
                 complition(.failure(error))
             }
         })
         task.resume()
+    }
+    
+    func getImageId<T:Codable>(for image: UIImage,
+                               token: String,
+                               type: T.Type,
+                               endpoint: String,
+                               complition: @escaping (Result<T, Error>) -> Void) {
+        guard let url = self.baseURL else{return complition(.failure(NetworkingError.invalidUrl))}
+        guard let imageData = image.jpegData(compressionQuality: 0.2) else {
+            print("Error converting image to JPEG data")
+            return
+        }
+        var request = URLRequest(url: url.appendingPathComponent(endpoint))
+        request.httpMethod = "POST"
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let boundary = UUID().uuidString
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        var body = Data()
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"file\"; filename=\"image.jpg\"\r\n".data(using: .utf8)!)
+        body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+        body.append(imageData)
+        body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        
+        let task = URLSession.shared.uploadTask(with: request, from: body) { data, response, error in
+            guard let data = data else {return complition(.failure(NetworkingError.invalidData))}
+            do {
+                let json = try JSONDecoder().decode(type, from: data)
+                complition(.success(json))
+            }
+            catch {
+                complition(.failure(error))
+            }
+        }
+        task.resume()
+    }
+    
+    func getImage(from urlString: String, imageView: UIImageView, complition: @escaping (Result<UIImageView?,Error>) -> Void) {
+        let url = URL(string: urlString)
+        let processor = DownsamplingImageProcessor(size: imageView.bounds.size)
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "placeholderImage"),
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])
+        {
+            result in
+            switch result {
+            case .success(let value):
+                print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                complition (.success(UIImageView(image: value.image)))
+            case .failure(let error):
+                print("Job failed: \(error.localizedDescription)")
+                complition (.failure(error))
+            }
+        }
     }
 }

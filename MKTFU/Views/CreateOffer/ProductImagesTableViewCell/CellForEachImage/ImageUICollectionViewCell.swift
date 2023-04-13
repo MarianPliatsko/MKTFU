@@ -44,5 +44,17 @@ class ImageUICollectionViewCell: UICollectionViewCell {
         let nib = UINib(nibName: identifier, bundle: nil)
         return nib
     }
-
+    
+//    func setupUI(productImage: String) {
+//        NetworkManager.shared.getImage(from: productImage,
+//                                       imageView: uiImage) { result in
+//            switch result {
+//            case .success(let image):
+//                self.uiImage = image
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
 }
+

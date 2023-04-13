@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="51" id="Re3-vT-8Ma"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Pickup information"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Create offer"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFb-6C-Mbd">

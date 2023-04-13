@@ -12,6 +12,7 @@ class ProductDetailViewController: UIViewController, Storyboarded {
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
+    var product: Product?
     
     private let images: [UIImage] = Array(1...10).map { UIImage(named: String($0))!}
     
@@ -19,6 +20,12 @@ class ProductDetailViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var lpHeaderView: LPHeaderView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var productPriceLabel: UILabel!
+    @IBOutlet weak var productDescriptionTextView: UITextView!
+    @IBOutlet weak var usersAccountImageView: UIImageView!
+    @IBOutlet weak var usersNameLabel: UILabel!
+    @IBOutlet weak var productNumberOfListingLabel: UILabel!
     
     //MARK: - View life cycle
     
@@ -40,12 +47,15 @@ class ProductDetailViewController: UIViewController, Storyboarded {
         // register nib
         collectionView.register(ImageCollectionViewCell.nib(), forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
         
+        setupUI(data: product!)
     }
     
     //MARK: - IBAction
     
     @IBAction func iWantThisBtnPressed(_ sender: UIButton) {
-        coordinator?.goToCheckoutViewController()
+        if product != nil {
+            coordinator?.goToCheckoutViewController(with: product!)
+        }
     }
     
     
@@ -68,19 +78,24 @@ class ProductDetailViewController: UIViewController, Storyboarded {
         
         return UICollectionViewCompositionalLayout(section: section)
     }
+    
+    func setupUI(data: Product) {
+        productNameLabel.text = data.productName
+        productPriceLabel.text = "$\(data.price)"
+        productDescriptionTextView.text = data.description
+    }
 }
 
     //MARK: - extension ProductDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource
 
 extension ProductDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        images.count
+        product?.images.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier, for: indexPath) as? ImageCollectionViewCell else {return UICollectionViewCell()}
-        cell.setup(image: images[indexPath.row])
-        
+        cell.getImage(from: product?.images[indexPath.item] ?? "")
         return cell
     }
 }

@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MyListingTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
     static let identifier = "MyListingTableViewCell"
+    var images: ((UIImage) -> Void)?
     
     //MARK: - Outlet
     
@@ -23,28 +25,28 @@ class MyListingTableViewCell: UITableViewCell {
     @IBOutlet weak var myListingDateLabel: UILabel!
     @IBOutlet weak var myListingItemTitleLabel: UILabel!
     @IBOutlet weak var myListingItemPriceLabel: UILabel!
-    @IBOutlet weak var myListUsedConditionView: UIView!
+    @IBOutlet weak var myListUsedConditionView: UILabel!
     
     //MARK: - Life cycle
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     //MARK: - Methods
     
-    // create nib
     static func nib() -> UINib {
         let nib = UINib(nibName: identifier, bundle: nil)
         return nib
     }
     
-    func setup(item: MyList) {
-        myListingImageView.image = item.image
-        myListingDateLabel.text = item.date.description
-        myListingItemTitleLabel.text = item.title
-        myListingItemPriceLabel.text = "$\(item.price)"
-        myListUsedConditionView.isHidden = item.usedCondition
+    func setup(product: Product) {
+        myListingDateLabel.text = product.created.formatDate(from: "yyyy-MM-dd'T'HH:mm:ss.SSSSS'Z'", to: "MMMM dd yyyy")
+        myListingItemTitleLabel.text = product.productName
+        myListingItemPriceLabel.text = "$\(product.price)"
+        myListUsedConditionView.text = product.condition?.localizedTitle
+        if !product.images.isEmpty {
+            myListingImageView.kf.setImage(with: URL(string: product.images[0]))
+        }
     }
 }

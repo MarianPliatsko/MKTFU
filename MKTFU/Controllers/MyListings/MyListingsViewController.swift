@@ -6,42 +6,16 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class MyListingsViewController: UIViewController, Storyboarded {
     
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
-    
-    var headreSoldItemsSection: [MyList] = []
-    var headerItemsSection : [MyList] = []
-    var headerAvalilableItemsSection: [MyList] = [MyList(image: UIImage(named: "3") ?? UIImage(),
-                                                         date: .now,
-                                                         name: "Item 3",
-                                                         price: "300",
-                                                         usedCondition: false)]
-   
-    var availableItemsSection: [MyList] = []
-    var activeItems: [MyList] = [MyList(image: UIImage(named: "4") ?? UIImage(),
-                                        date: .now,
-                                        name: "Veeeeeeery Looooooooong name of Item 4",
-                                        price: "400",
-                                        usedCondition: true),
-                                 MyList(image: UIImage(named: "5") ?? UIImage(),
-                                        date: .now,
-                                        name: "Item 5",
-                                        price: "500",
-                                        usedCondition: false)]
-    var soldItems: [MyList] = [MyList(image: UIImage(named: "1") ?? UIImage(),
-                                      date: .now,
-                                      name: "Veeeeeeery Looooooooong name of Item 1",
-                                      price: "100",
-                                      usedCondition: false),
-                               MyList(image: UIImage(named: "2") ?? UIImage(),
-                                      date: .now,
-                                      name: "Item 2",
-                                      price: "200",
-                                      usedCondition: true)]
+    var products: [Product] = []
+    var userActiveListingProducts: [Product] = []
+    var userPendingListingProducts: [Product] = []
     
     //MARK: - Outlets
     
@@ -58,9 +32,6 @@ class MyListingsViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        availableItemsSection = activeItems
-        headerItemsSection = headerAvalilableItemsSection
-        
         
         myListingTableView.delegate = self
         myListingTableView.dataSource = self
@@ -72,21 +43,38 @@ class MyListingsViewController: UIViewController, Storyboarded {
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+        
+        filterUserListingsProducts(products: products)
     }
     
     //MARK: - IBAction
     
     @IBAction func activeItemsBtnPressed(_ sender: UIButton) {
-        availableItemsSection = activeItems
-        headerItemsSection = headerAvalilableItemsSection
+        
         self.myListingTableView.reloadData()
     }
     
     
     @IBAction func soldItemsBtbPressed(_ sender: UIButton) {
-        availableItemsSection = soldItems
-        headerItemsSection = headreSoldItemsSection
+        
         self.myListingTableView.reloadData()
+    }
+    
+    
+    //MARK: - Methods
+    
+    func filterUserListingsProducts(products: [Product]) {
+        let userId = KeychainSwift().get(KeychainConstants.userIDKey)
+        for element in products {
+            if element.userId == userId {
+                if element.status == "ACTIVE" {
+                    userActiveListingProducts.append(element)
+                }
+                if element.status == "PENDING" {
+                    userPendingListingProducts.append(element)
+                }
+            }
+        }
     }
 }
 
@@ -122,9 +110,9 @@ extension MyListingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return headerItemsSection.count
+            return userPendingListingProducts.count
         case 1:
-            return availableItemsSection.count
+            return userActiveListingProducts.count
         default:
             return 0
         }
@@ -135,12 +123,25 @@ extension MyListingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
-            cell.setup(item: headerItemsSection[indexPath.row])
+            cell.setup(product: userPendingListingProducts[indexPath.row])
         case 1:
-            cell.setup(item: availableItemsSection[indexPath.row])
+            cell.setup(product: userActiveListingProducts[indexPath.row])
         default:
             return UITableViewCell()
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch indexPath.section {
+        case 0:
+            coordinator?.goToCreateOfferVC(product: userPendingListingProducts[indexPath.row])
+        case 1:
+            coordinator?.goToCreateOfferVC(product: userActiveListingProducts[indexPath.row])
+        default:
+            break
+        }
+        
     }
 }

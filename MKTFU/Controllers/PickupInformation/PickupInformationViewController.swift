@@ -9,24 +9,33 @@ import UIKit
 
 class PickupInformationViewController: UIViewController, Storyboarded {
     
-    weak var coordinator: MainCoordinator?
+    //MARK: - Prooperties
     
+    weak var coordinator: MainCoordinator?
+    var product: Product?
+    
+    //MARK: - Outlet
+    
+    @IBOutlet weak var lpHeaderView: LPHeaderView!
     @IBOutlet weak var productImageView: UIImageView! {
         didSet {
             productImageView.layer.cornerRadius = productImageView.layer.bounds.width / 2
             productImageView.clipsToBounds = true
         }
     }
+    @IBOutlet weak var prooductNameLabel: UILabel!
+    @IBOutlet weak var productPickupInformationLabel: UILabel!
     
-    @IBOutlet weak var lpHeaderView: LPHeaderView!
+    //MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+        
+        setupUI(data: product!)
     }
     
     //MARK: - IBAction
@@ -35,14 +44,22 @@ class PickupInformationViewController: UIViewController, Storyboarded {
         coordinator?.goToSuccessVC()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: - Methods
+    
+    func setupUI(data: Product) {
+        prooductNameLabel.text = data.productName
+        productPickupInformationLabel.text = "\(data.address), \(data.city)"
+        
+        NetworkManager.shared.getImage(from: data.images[0],
+                                       imageView: productImageView) { result in
+            switch result {
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self.productImageView = image
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
-    */
-
 }

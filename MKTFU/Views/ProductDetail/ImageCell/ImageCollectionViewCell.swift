@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ImageCollectionViewCell: UICollectionViewCell {
     
@@ -19,20 +20,37 @@ class ImageCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
     
-    // Methods
+    //MARK: - Methods
     
-    // create nib
     static func nib() -> UINib {
         let nib = UINib(nibName: identifier, bundle: nil)
         return nib
     }
     
-    // setup cell
-    func setup(image: UIImage) {
-        cellImageView.image = image
+    func getImage(from urlString: String) {
+            let url = URL(string: urlString)
+            let processor = DownsamplingImageProcessor(size: cellImageView.bounds.size)
+            cellImageView.kf.indicatorType = .activity
+            cellImageView.kf.setImage(
+                with: url,
+                placeholder: UIImage(named: "placeholderImage"),
+                options: [
+                    .processor(processor),
+                    .scaleFactor(UIScreen.main.scale),
+                    .transition(.fade(1)),
+                    .cacheOriginalImage
+                ])
+            {
+                result in
+                switch result {
+                case .success(let value):
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
+                }
+            }
+        }
     }
-
-}

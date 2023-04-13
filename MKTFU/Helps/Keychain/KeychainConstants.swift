@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct keychainConstants {
-    
+struct KeychainConstants {
     static let accessTokenKey = "access_token"
+    static let encodedUserIDKey = "user_id_encoded"
     static let userIDKey = "user_id"
 }

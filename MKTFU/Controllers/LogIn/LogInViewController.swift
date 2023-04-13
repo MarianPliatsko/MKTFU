@@ -44,6 +44,7 @@ class LogInViewController: UIViewController, Storyboarded {
     
     @IBAction func logInButtonPressed(_ sender: UIButton) {
         //        lpViewEmail.checkEmail()
+        logInButton.isEnabled = false
         logInWithAuth0()
     }
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
@@ -63,7 +64,7 @@ class LogInViewController: UIViewController, Storyboarded {
             switch result {
             case .success(let accessToken):
                 if accessToken != nil {
-                    self.keyChain.set(accessToken!, forKey: keychainConstants.accessTokenKey)
+                    self.keyChain.set(accessToken!, forKey: KeychainConstants.accessTokenKey)
                     print("Access Token: \(String(describing: accessToken))")
                     self.getUserID(accessToken: accessToken!)
                 }
@@ -90,7 +91,9 @@ class LogInViewController: UIViewController, Storyboarded {
                         print("Error when encode the userID")
                         return
                     }
-                    self.keyChain.set(encodedUserId, forKey: keychainConstants.userIDKey)
+                    self.keyChain.set(userID ?? "", forKey: KeychainConstants.userIDKey)
+                    self.keyChain.set(encodedUserId, forKey: KeychainConstants.encodedUserIDKey)
+                    self.keyChain.set(accessToken, forKey: KeychainConstants.accessTokenKey)
                     print("Encoded User id: \(encodedUserId)")
                     self.getUserCredential(token: accessToken, userID: userID!)
                 }
@@ -105,6 +108,7 @@ class LogInViewController: UIViewController, Storyboarded {
                                       type: User.self,
                                       token: token,
                                       httpMethod: .get,
+                                      resultsLimit: nil,
                                       parameters: nil) { [self] result in
             switch result {
             case .success(let user):
@@ -115,10 +119,9 @@ class LogInViewController: UIViewController, Storyboarded {
             case .failure(let error):
                 print(error)
             }
+            logInButton.isEnabled = true
         }
     }
-    
-    
     
     //MARK: - Validation Methods
     

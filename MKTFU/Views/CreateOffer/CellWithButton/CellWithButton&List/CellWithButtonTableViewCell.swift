@@ -13,8 +13,9 @@ class CellWithButtonTableViewCell: UITableViewCell {
     
     static let identifier = "MainWithButtonTableViewCell"
     var dataSource: [String] = []
-    
-    var isSelect: (() -> Void)?
+    var isSelectCity: (() -> Void)?
+    var textInView: ((String) -> Void)?
+    var rawValue = ""
     
     //MARK: - Outlet
     
@@ -24,28 +25,34 @@ class CellWithButtonTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        lpViewList.isHidden = true
+        
         listTableView.delegate = self
         listTableView.dataSource = self
         
         listTableView.separatorStyle = .none
         
-        lpView.txtInputField.delegate = self
-        
         listTableView.register(DetailListTableViewCell.nib(), forCellReuseIdentifier: DetailListTableViewCell.identifier)
+        
+        lpView.txtInputField.addTarget(self,
+                                         action: #selector(NameTableViewCell.textFieldDidChange(_:)),
+                                         for: .editingChanged)
     }
 
     //MARK: - Methods
     
-    // create nib
     static func nib() -> UINib {
         let nib = UINib(nibName: identifier, bundle: nil)
         return nib
     }
     
-//    func setupUI(data: CreateOffer, indexPath: IndexPath) {
-//        lpView?.title = data.productName[indexPath.row]
-//    }
+    func setupUI(title: String, placeholder: String, text: String, rawValue: String) {
+        lpView?.title = title
+        lpView.placeHolder = placeholder
+        lpView.txtInputField.text = text
+        self.rawValue = rawValue
+    }
 }
 
 extension CellWithButtonTableViewCell: UITableViewDelegate, UITableViewDataSource {
@@ -62,12 +69,6 @@ extension CellWithButtonTableViewCell: UITableViewDelegate, UITableViewDataSourc
     }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            self.isSelect?()
+            self.textInView?(rawValue)
         }
     }
-
-extension CellWithButtonTableViewCell: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.isSelect?()
-    }
-}

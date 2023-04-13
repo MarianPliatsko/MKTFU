@@ -6,34 +6,64 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
+    //MARK: - Properties
+    
     static let identifier = "HomeCollectionViewCell"
+    
+    //MARK: - Outlet
     
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
     
+    //MARK: - Nib Life cycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
         cellConfiguratin()
     }
     
-    // Methods
+    //MARK: - Methods
     
-    // create nib
     static func nib() -> UINib {
         let nib = UINib(nibName: identifier, bundle: nil)
         return nib
     }
     
-    // setup cell
-    func setup(image: UIImage, text: String, price: String) {
-        cellImageView.image = image
+    func setup(text: String, price: Double) {
         lblDescription.text = text
         lblPrice.text = "$\(price)"
+    }
+    
+    func getImage(from url: [String]) {
+        cellImageView.image = nil
+        if url.last != nil {
+            let url = URL(string: url.last!)
+            let processor = DownsamplingImageProcessor(size: cellImageView.bounds.size)
+            cellImageView.kf.indicatorType = .activity
+            cellImageView.kf.setImage(
+                with: url,
+                placeholder: UIImage(named: "placeholderImage"),
+                options: [
+                    .processor(processor),
+                    .scaleFactor(UIScreen.main.scale),
+                    .transition(.fade(1)),
+                    .cacheOriginalImage
+                ])
+            {
+                result in
+                switch result {
+                case .success(let value):
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
+                }
+            }
+        }
     }
     
     private func cellConfiguratin() {

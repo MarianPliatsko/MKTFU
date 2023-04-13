@@ -153,6 +153,7 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
                                       type: User.self,
                                       token: token,
                                       httpMethod: .post,
+                                      resultsLimit: nil,
                                       parameters: userData) { result in
             switch result {
             case .success(let user):

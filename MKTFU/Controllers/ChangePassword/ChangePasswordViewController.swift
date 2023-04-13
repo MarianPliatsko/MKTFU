@@ -25,14 +25,13 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
     @IBOutlet weak var lpHeaderView: LPHeaderView!
     @IBOutlet weak var oldPasswordView: LpCustomView!
     @IBOutlet weak var newPasswordView: LpCustomView!
-    @IBOutlet weak var confirmNewPasswordView: LpCustomView!
+    @IBOutlet weak var confirwertmNewPasswordView: LpCustomView!
     
     //MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
 //            self?.view.addSubview(self?.passwordAlert ?? UIView())
 //            self?.setupPasswordAlertUI()

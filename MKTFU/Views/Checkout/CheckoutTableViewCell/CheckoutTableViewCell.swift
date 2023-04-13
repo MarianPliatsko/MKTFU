@@ -34,10 +34,20 @@ class CheckoutTableViewCell: UITableViewCell {
         return nib
     }
     
-    func setupUI (image: UIImage, title: String, price: Double) {
-        productImageView.image = image
+    func setupUI (image: String, title: String, price: Double) {
         productTitle.text = title
         productPrice.text = "\(price)$"
+        
+        NetworkManager.shared.getImage(from: image, imageView: productImageView) { result in
+            switch result {
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self.productImageView = image
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
 }

@@ -7,66 +7,143 @@
 
 import UIKit
 import PhotosUI
+import KeychainSwift
+
+struct ImageCellViewModel {
+    var images: [String]
+    var onAddImageButtonTapped: (() -> Void)
+    var onDeletePressed: ((String?) -> Void)
+}
+
+struct NameCellViewModel {
+    var title: String
+    var placeholder: String
+    var text: String
+    var nameTextInView: ((String) -> Void)
+}
+
+struct DescriptionCellViewModel {
+    var title: String
+    var text: String
+    var descriptionTextInView: ((String) -> Void)
+}
+
+enum CreateOfferTableViewCellType: Int, CaseIterable {
+    case productImagesCell = 0
+    case productNameCell = 1
+    case productDescriptionCell = 2
+}
 
 class CreateOfferViewController: UIViewController, Storyboarded {
     
     weak var coordinator: MainCoordinator?
+    let keyChain = KeychainSwift()
+    var imageId: [String] = []
+    var product = Product()
     
-    let createOfferDataSource = CreateOffer(images: [],
-                                   productName: ["Product name" , "Description", "Category", "Condition", "Price", "Adress", "City"],
-                                   description: "productName",
-                                   category:
-                                    Category(categoryName: "categoryName",
-                                             categotyLblPlaceholder: "categotyLblPlaceholder",
-                                             categoryList: ["New", "Used"]),
-                                   condition:
-                                    Condition(conditionName: "conditionName",
-                                              conditionLblPlaceholder: "conditionLblPlaceholder",
-                                              conditionList: ["conditionList"]),
-                                   price: 100,
-                                   adress: "category",
-                                   city:
-                                    City( cityList: ["cityList"]),
-                                   isShow: false)
+    var createOfferDataSource = CreateOffer(category:
+                                                Category(categoryList: ["Vehicles", "Furniture", "Electronics", "Real estate"]),
+                                            condition:
+                                                Condition(conditionList: ["New", "Used"]),
+                                            city:
+                                                City( cityList: ["Calgary", "Brook"]))
     
     @IBOutlet weak var lpHeaderView: LPHeaderView!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        cellWithButton.listStackView.isHidden = true
         
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.separatorStyle = .none
         
-        //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
         
-        tableView.register(AddImageTableViewCell.nib(),
-                           forCellReuseIdentifier: AddImageTableViewCell.identifier)
-        tableView.register(MainTableViewCell.nib(),
-                           forCellReuseIdentifier: MainTableViewCell.identifier)
+        tableView.register(ProductImagesTableViewCell.nib(),
+                           forCellReuseIdentifier: ProductImagesTableViewCell.identifier)
+        tableView.register(NameTableViewCell.nib(),
+                           forCellReuseIdentifier: NameTableViewCell.identifier)
         tableView.register(CellWithButtonTableViewCell.nib(),
                            forCellReuseIdentifier: CellWithButtonTableViewCell.identifier)
-        tableView.register(CellWithTextViewTableViewCell.nib(),
-                           forCellReuseIdentifier: CellWithTextViewTableViewCell.identifier)
+        tableView.register(ProductDescriptionTableViewCell.nib(),
+                           forCellReuseIdentifier: ProductDescriptionTableViewCell.identifier)
         tableView.register(ConfirmTableViewCell.nib(),
                            forCellReuseIdentifier: ConfirmTableViewCell.identifier)
         tableView.register(CancelTableViewCell.nib(),
                            forCellReuseIdentifier: CancelTableViewCell.identifier)
     }
     
-    func photoPicker() {
+    //MARK: - Methods
+    
+    private func presentPhotoPicker() {
         var config = PHPickerConfiguration(photoLibrary: .shared())
         config.selectionLimit = 3
         config.filter = .images
         let pickerVC  = PHPickerViewController(configuration: config)
         pickerVC.delegate = self
         self.present(pickerVC, animated: true)
+    }
+    
+    private func createOffer(data:Product) {
+        let parameters: [String:Any] = ["productName": data.productName,
+                                        "description": data.description,
+                                        "price": data.price,
+                                        "category": data.category ?? "",
+                                        "condition": data.condition ?? "",
+                                        "address": data.address,
+                                        "city": data.city,
+                                        "images": data.images.map {($0 as NSString).lastPathComponent}]
+        
+        NetworkManager.shared.request(endpoint: "api/Product",
+                                      type: Product.self,
+                                      token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
+                                      httpMethod: .post,
+                                      resultsLimit: nil,
+                                      parameters: parameters) { result in
+            switch result {
+            case .success(let success):
+                print(success)
+                DispatchQueue.main.async {
+                    self.coordinator?.goToSuccessVC()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func createImageCellViewModel() -> ImageCellViewModel {
+        ImageCellViewModel(images: product.images,
+                           onAddImageButtonTapped: { [weak self] in
+            self?.presentPhotoPicker()
+        },
+                           onDeletePressed: { [weak self] image in
+            if let image, let index = self?.product.images.firstIndex(of: image) {
+                self?.product.images.remove(at: index)
+                self?.tableView.reloadData()
+            }
+        })
+    }
+    
+    private func createNameViewModel() -> NameCellViewModel {
+        NameCellViewModel(title: "Product name",
+                          placeholder: "Type your product name",
+                          text: product.productName,
+                          nameTextInView: { [weak self] text in
+            self?.product.productName = text
+        })
+    }
+    
+    private func createDescriptionViewModel() -> DescriptionCellViewModel {
+        DescriptionCellViewModel(title: "Description",
+                                 text: product.description,
+                                 descriptionTextInView: { [weak self] description in
+            self?.product.description = description
+        })
     }
 }
 
@@ -75,15 +152,43 @@ class CreateOfferViewController: UIViewController, Storyboarded {
 extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return CreateOfferTableViewCellType.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellwithImage = tableView.dequeueReusableCell(withIdentifier: AddImageTableViewCell.identifier, for: indexPath) as? AddImageTableViewCell
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.identifier, for: indexPath) as? MainTableViewCell
+        let cellType = CreateOfferTableViewCellType.allCases[indexPath.item]
         
-        let cellWithTextView = tableView.dequeueReusableCell(withIdentifier: CellWithTextViewTableViewCell.identifier, for: indexPath) as? CellWithTextViewTableViewCell
+        switch cellType {
+        case .productImagesCell:
+            guard let productImagesCell = tableView.dequeueReusableCell(
+                withIdentifier: ProductImagesTableViewCell.identifier,
+                for: indexPath) as? ProductImagesTableViewCell else {return UITableViewCell()}
+            let imageCellViewModel = createImageCellViewModel()
+            productImagesCell.setup(model: imageCellViewModel)
+            return productImagesCell
+            
+        case .productNameCell:
+            guard let productNameCell = tableView.dequeueReusableCell(
+                withIdentifier: NameTableViewCell.identifier,
+                for: indexPath) as? NameTableViewCell else {return UITableViewCell()}
+            let productNameCellViewModel = createNameViewModel()
+            productNameCell.setup(model: productNameCellViewModel)
+            return productNameCell
+        
+        case .productDescriptionCell:
+            guard let descriptionCell = tableView.dequeueReusableCell(
+                withIdentifier: ProductDescriptionTableViewCell.identifier,
+                for: indexPath) as? ProductDescriptionTableViewCell else {return UITableViewCell()}
+            let descriptionCellViewModel = createDescriptionViewModel()
+            descriptionCell.setup(model: descriptionCellViewModel)
+            return descriptionCell
+            
+            
+        default:
+            return UITableViewCell()
+        }
+        
         
         let cellWithButton = tableView.dequeueReusableCell(withIdentifier: CellWithButtonTableViewCell.identifier, for: indexPath) as? CellWithButtonTableViewCell
         
@@ -91,109 +196,105 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
         
         let cancelCell = tableView.dequeueReusableCell(withIdentifier: CancelTableViewCell.identifier, for: indexPath) as? CancelTableViewCell
         
-        if indexPath.row == 0 {
-            if createOfferDataSource.images.count == 0 {
-                cellwithImage?.images = createOfferDataSource.images
-                cellwithImage?.onNeedUpdate = { [weak self] in
-                    DispatchQueue.main.async {
-                        self?.photoPicker()
-                        self?.tableView.reloadData()
-//                        self?.tableView.reloadRows(at: [indexPath], with: .automatic)
-                    }
-                }
-                cellwithImage?.stackViewWithImage.isHidden = true
-                cellwithImage?.emptyStackView.isHidden = false
-            }
-            else {
-                cellwithImage?.dataSourceUpdate = { [weak self] images in
-                    self?.createOfferDataSource.images = images
-                }
-                cellwithImage?.stackViewWithImage.isHidden = false
-                cellwithImage?.emptyStackView.isHidden = true
-                cellwithImage?.images = createOfferDataSource.images
-                cellwithImage?.onNeedUpdate = {[weak self] in
-                    DispatchQueue.main.async {
-                        self?.photoPicker()
-                        self?.tableView.reloadData()
-//                        self?.tableView.reloadRows(at: [indexPath], with: .automatic)
-                    }
-                }
-                
-            }
-            // reload table view after delete image button pressed to change ui for table view
-            cellwithImage?.onDeletePressed = { [weak self] in
+        if indexPath.row == 3 {
+            cellWithButton?.setupUI(title: "Category",
+                                    placeholder: "Choose your category",
+                                    text: product.category?.localizedTitle ?? "",
+                                    rawValue: product.category?.rawValue ?? "")
+            cellWithButton?.dataSource = createOfferDataSource.category.categoryList
+            
+            cellWithButton?.textInView = { [weak self] text in
+                self?.tableView.beginUpdates()
+                self?.product.category = Categories(rawValue: text)
+                cellWithButton?.lpViewList.isHidden = true
                 self?.tableView.reloadData()
+                self?.tableView.endUpdates()
             }
-            return cellwithImage ?? UITableViewCell()
+            
+            cellWithButton?.listTableView.reloadData()
+            
+            cellWithButton?.lpView.onButtonPressed = { [weak self] in
+                self?.tableView.beginUpdates()
+                cellWithButton?.lpViewList.isHidden.toggle()
+                self?.tableView.endUpdates()
+            }
+            return cellWithButton ?? UITableViewCell()
         }
         
-        if indexPath.row == 1 {
-            cell?.lpUIView.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
-            cell?.lpUIView.placeHolder = "Type your product name"
-            return cell ?? UITableViewCell()
-        }
-        if indexPath.row == 2 {
-            cellWithTextView?.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
-            return cellWithTextView ?? UITableViewCell()
-        }
-        if indexPath.row == 3 {
-            cellWithButton?.lpView.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
-            cellWithButton?.dataSource = createOfferDataSource.category.categoryList
-            cellWithButton?.listTableView.reloadData()
-            cellWithButton?.lpViewList.isHidden = !createOfferDataSource.isShow
-            cellWithButton?.lpView.isHidden = createOfferDataSource.isShow
-            
-            cellWithButton?.isSelect = { [weak self] in
-                self?.createOfferDataSource.isShow.toggle()
-                self?.tableView.reloadRows(at: [indexPath], with: .automatic)
-            }
-            cellWithButton?.lpView.placeHolder = "Choose your category"
-            
-            return cellWithButton ?? UITableViewCell()
-        }
         if indexPath.row == 4 {
-            cellWithButton?.lpView.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
+            cellWithButton?.setupUI(title: "Condition",
+                                    placeholder: "Choose the condotion",
+                                    text: product.condition?.localizedTitle ?? "",
+                                    rawValue: product.condition?.rawValue ?? "")
             cellWithButton?.dataSource = createOfferDataSource.condition.conditionList
-            cellWithButton?.listTableView.reloadData()
-            cellWithButton?.lpViewList.isHidden = !createOfferDataSource.isShow
-            cellWithButton?.lpView.isHidden = createOfferDataSource.isShow
             
-            cellWithButton?.isSelect = { [weak self] in
-                self?.createOfferDataSource.isShow.toggle()
-                self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+            cellWithButton?.textInView = { [weak self] text in
+                self?.tableView.beginUpdates()
+                self?.product.condition = Conditions(rawValue: text)
+                cellWithButton?.lpViewList.isHidden = true
+                self?.tableView.reloadData()
+                self?.tableView.endUpdates()
             }
-            cellWithButton?.lpView.placeHolder = "Choose the condotion"
             
+            cellWithButton?.listTableView.reloadData()
+            
+            cellWithButton?.lpView.onButtonPressed = { [weak self] in
+                self?.tableView.beginUpdates()
+                cellWithButton?.lpViewList.isHidden.toggle()
+                self?.tableView.endUpdates()
+            }
             return cellWithButton ?? UITableViewCell()
         }
-        if indexPath.row == 5 {
-            cell?.lpUIView.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
-            cell?.lpUIView.placeHolder = "Type your price"
-            return cell ?? UITableViewCell()
-        }
-        if indexPath.row == 6 {
-            cell?.lpUIView.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
-            cell?.lpUIView.placeHolder = "Type your address"
-            return cell ?? UITableViewCell()
-        }
+        
+//        if indexPath.row == 5 {
+//            cell?.setupUI(title: "Price",
+//                          placeholder: "Type your price",
+//                          text: product.price)
+//            cell?.textInView = { [weak self] text in
+//                self?.product.price = Double(text) ?? 0.0
+//            }
+//            return cell ?? UITableViewCell()
+//        }
+//        
+//        if indexPath.row == 6 {
+//            cell?.setupUI(title: "Address",
+//                          placeholder: "Type your address",
+//                          text: product.address)
+//            cell?.textInView = { [weak self] text in
+//                self?.product.address = text
+//            }
+//            return cell ?? UITableViewCell()
+//        }
+        
         if indexPath.row == 7 {
-            cellWithButton?.lpView.lblTitle.text = createOfferDataSource.productName[indexPath.row - 1]
+            cellWithButton?.setupUI(title: "City",
+                                    placeholder: "Choose your city",
+                                    text: product.city,
+                                    rawValue: "")
             cellWithButton?.dataSource = createOfferDataSource.city.cityList
-            cellWithButton?.listTableView.reloadData()
-            cellWithButton?.lpViewList.isHidden = !createOfferDataSource.isShow
-            cellWithButton?.lpView.isHidden = createOfferDataSource.isShow
-            
-            cellWithButton?.isSelect = { [weak self] in
-                self?.createOfferDataSource.isShow.toggle()
-                self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+            cellWithButton?.textInView = { [weak self] text in
+                self?.tableView.beginUpdates()
+                self?.product.city = text
+                cellWithButton?.lpViewList.isHidden = true
+                self?.tableView.reloadData()
+                self?.tableView.endUpdates()
             }
-            cellWithButton?.lpView.lblTitle.text = "Choose your city"
             
+            cellWithButton?.listTableView.reloadData()
+            
+            cellWithButton?.lpView.onButtonPressed = { [weak self] in
+                self?.tableView.beginUpdates()
+                cellWithButton?.lpViewList.isHidden.toggle()
+                self?.tableView.endUpdates()
+            }
             return cellWithButton ?? UITableViewCell()
         }
+        
         if indexPath.row == 8 {
             confirmCell?.onConfirmPressed = { [weak self] in
-                self?.coordinator?.goToSuccessVC()
+                if self?.product != nil {
+                    self?.createOffer(data: (self?.product)!)
+                }
             }
             return confirmCell ?? UITableViewCell()
         }
@@ -215,16 +316,33 @@ extension CreateOfferViewController: PHPickerViewControllerDelegate {
         
         results.forEach { result in
             group.enter()
-                result.itemProvider.loadObject(ofClass: UIImage.self) { reading, error in
-                    defer {
-                        group.leave()
+            result.itemProvider.loadObject(ofClass: UIImage.self) { reading, error in
+                defer {
+                    group.leave()
+                }
+                guard let image = reading as? UIImage, error == nil else { return }
+                guard let token = self.keyChain.get(KeychainConstants.accessTokenKey) else {return}
+                NetworkManager.shared.getImageId(for: image,
+                                                 token: token,
+                                                 type: [ImageId].self,
+                                                 endpoint: "api/Upload") { result in
+                    switch result {
+                    case .success(let imageId):
+                        print(imageId)
+                        DispatchQueue.main.async {
+                            for image in imageId {
+                                self.product.images.append(
+                                    "https://mktfy-proof-staging.s3.ca-central-1.amazonaws.com/\(image.id)")
+                                self.tableView.reloadData()
+                            }
+                        }
+                    case .failure(let error):
+                        print(error)
                     }
-                    guard let image = reading as? UIImage, error == nil else { return }
-                    self.createOfferDataSource.images.append(image)
+                }
             }
         }
         group.notify(queue: .main) {
-            print(self.createOfferDataSource.images.count)
             let indexPath = IndexPath(row: 0, section: 0)
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
         }

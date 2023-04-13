@@ -8,5 +8,5 @@
 import Foundation
 
 struct City {
-    var cityList: [String] = ["Edmontom", "Calgary", "Vancouver", "Toronto", "London"]
+    var cityList: [String] = ["Calgary", "Brook"]
 }

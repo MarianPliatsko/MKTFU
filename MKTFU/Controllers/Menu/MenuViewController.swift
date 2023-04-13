@@ -13,6 +13,7 @@ class MenuViewController: UIViewController, Storyboarded {
     
     weak var coordinator: MainCoordinator?
     var user = User()
+    var products: [Product] = []
     
     //MARK: - Outlet
     
@@ -44,7 +45,7 @@ class MenuViewController: UIViewController, Storyboarded {
     }
     
     @IBAction func myListingBtnPressed(_ sender: UIButton) {
-        coordinator?.goToMyListingsViewController()
+        coordinator?.goToMyListingsViewController(products: products)
     }
     
     @IBAction func notificationBtnPressed(_ sender: UIButton) {

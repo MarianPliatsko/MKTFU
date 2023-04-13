@@ -11,6 +11,7 @@ import UIKit
 final class LpCustomViewWithButton: LPView, UITextFieldDelegate {
     
     
+    var onButtonPressed: (() -> Void)?
     let rightButton = UIButton(type: .custom)
     
     var view: UIView!
@@ -63,7 +64,7 @@ final class LpCustomViewWithButton: LPView, UITextFieldDelegate {
         rightButton.frame = CGRect(x: 0, y: 0, width: 40, height: 20)
         rightButton.addTarget(
             self,
-            action: #selector(passwordVisibilityTogglePressed(_:)),
+            action: #selector(rightButtonPressed(_:)),
             for: .touchUpInside
         )
         rightButton.setImage(UIImage(named: named), for: .selected)
@@ -76,8 +77,8 @@ final class LpCustomViewWithButton: LPView, UITextFieldDelegate {
     }
     
     @objc
-    private func passwordVisibilityTogglePressed(_ sender: UIButton) {
-       print(sender)
+    private func rightButtonPressed(_ sender: UIButton) {
+        onButtonPressed?()
     }
 }
    

@@ -12,6 +12,7 @@ class CheckoutViewController: UIViewController, Storyboarded {
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
+    var product: Product?
     
     //MARK: - Outlets
     
@@ -38,7 +39,9 @@ class CheckoutViewController: UIViewController, Storyboarded {
     
     
     @IBAction func confirmBtnPressed(_ sender: UIButton) {
-        self.coordinator?.goToPickupInformationViewController()
+        if product != nil {
+            self.coordinator?.goToPickupInformationViewController(with: product!)
+        }
     }
 }
 
@@ -46,12 +49,18 @@ class CheckoutViewController: UIViewController, Storyboarded {
 
 extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CheckoutTableViewCell.identifier, for: indexPath) as? CheckoutTableViewCell else {return UITableViewCell()}
-        
+        cell.setupUI(image: product?.images[0] ?? "",
+                     title: product?.productName ?? "",
+                     price: product?.price ?? 0.0)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
     }
 }
