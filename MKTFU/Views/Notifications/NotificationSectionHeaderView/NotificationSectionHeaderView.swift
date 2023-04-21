@@ -8,19 +8,28 @@
 import Foundation
 import UIKit
 
-class NotificationSectionHeaderView: UIView {
+final class NotificationSectionHeaderView: UIView {
     
-    var view: UIView!
+    private var view: UIView!
     
-    @IBOutlet weak var sectionTextLabel: UILabel!
+    @IBOutlet private weak var sectionTextLabel: UILabel!
     
-    func loadViewFromNib() -> UIView {
+    func setup(isNew: Bool) {
+        switch isNew {
+        case true:
+            sectionTextLabel.text = "New for you"
+        case false:
+            sectionTextLabel.text = "Previously seen"
+        }
+    }
+    
+    private func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "NotificationSectionHeaderView", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         return view
     }
-    func xibSetup() {
+    private func xibSetup() {
         view = loadViewFromNib()
         view.frame = bounds
         view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth,
@@ -28,7 +37,7 @@ class NotificationSectionHeaderView: UIView {
         view.backgroundColor = .clear
         addSubview(view)
     }
-    override init(frame: CGRect) {
+    private override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
     }

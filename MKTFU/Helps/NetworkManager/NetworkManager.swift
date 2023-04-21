@@ -13,6 +13,7 @@ enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
     case patch = "PATCH"
+    case put = "PUT"
 }
 
 enum NetworkingError: Error {
@@ -30,6 +31,31 @@ class NetworkManager {
     private let baseURL = URL(string: "http://mktfy-proof.ca-central-1.elasticbeanstalk.com/")
     
     init() {}
+    
+    func changePasswordRequest(endPoint: String,
+                               token: String,
+                               parameters: [String: String],
+                               complition: @escaping (Result<URLResponse, Error>) -> Void) {
+        guard let url = self.baseURL else{return print("Wrong url")}
+        var request = URLRequest(url: url.appendingPathComponent(endPoint))
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+        request.addValue("*/*", forHTTPHeaderField: "accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                complition(.failure(error))
+            }
+            guard let response = response as? HTTPURLResponse else {
+                print("Error: Invalid response")
+                return
+            }
+            complition(.success(response))
+        }
+        task.resume()
+    }
     
     func request<T:Codable>(endpoint: String,
                             type: T.Type,

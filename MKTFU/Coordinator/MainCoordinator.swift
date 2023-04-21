@@ -16,7 +16,6 @@ class MainCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
-    
     func start() {
         let vc = LogInViewController.instantiate(name: "Main")
         vc.coordinator = self
@@ -59,20 +58,23 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToHomeVC(user: User) {
+    func goToHomeVC(user: User?) {
         let vc = HomeViewController.instantiate(name: "Home")
         vc.coordinator = self
-        vc.user = user
+        if user != nil {
+            vc.user = user!
+        }
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToCreateOfferVC(product: Product?) {
+    func goToCreateOfferVC(product: Product?, with mode: Mode) {
         let vc = CreateOfferViewController.instantiate(name: "CreateOffer")
         vc.coordinator = self
         if product != nil {
             vc.product = product!
         }
+        vc.mode = mode
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
@@ -115,19 +117,17 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToMenuViewController(user: User, products: [Product]) {
+    func goToMenuViewController(user: User) {
         let vc = MenuViewController.instantiate(name: "Menu")
         vc.coordinator = self
         vc.user = user
-        vc.products = products
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToAccountInformationViewController(user: User) {
+    func goToAccountInformationViewController() {
         let vc = AccountInformationViewController.instantiate(name: "AccountInformation")
         vc.coordinator = self
-        vc.user = user
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
@@ -146,10 +146,9 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToMyListingsViewController(products: [Product]) {
+    func goToMyListingsViewController() {
         let vc = MyListingsViewController.instantiate(name: "MyListing")
         vc.coordinator = self
-        vc.products = products
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }

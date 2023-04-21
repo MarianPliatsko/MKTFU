@@ -41,7 +41,8 @@ class MyListingTableViewCell: UITableViewCell {
     }
     
     func setup(product: Product) {
-        myListingDateLabel.text = product.created.formatDate(from: "yyyy-MM-dd'T'HH:mm:ss.SSSSS'Z'", to: "MMMM dd yyyy")
+        myListingDateLabel.text = product.created.formatDate(from: "yyyy-MM-dd'T'HH:mm:ss.SSSSS'Z'",
+                                                             to: "MMMM dd yyyy")
         myListingItemTitleLabel.text = product.productName
         myListingItemPriceLabel.text = "$\(product.price)"
         myListUsedConditionView.text = product.condition?.localizedTitle

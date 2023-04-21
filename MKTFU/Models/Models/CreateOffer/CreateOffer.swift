@@ -13,11 +13,3 @@ struct CreateOffer {
     let condition: Condition
     let city: City
 }
-
-struct Category {
-    let categoryList: [String]
-}
-
-struct Condition {
-    let conditionList: [String]
-}

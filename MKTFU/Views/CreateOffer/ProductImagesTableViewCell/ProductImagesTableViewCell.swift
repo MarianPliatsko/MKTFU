@@ -19,6 +19,8 @@ class ProductImagesTableViewCell: UITableViewCell {
     private var onNeedUpdate: (() -> Void)?
     private var onDeletePressed: ((String) -> Void)?
     
+    //MARK: - Outlet
+    
     @IBOutlet private weak var stackViewWithImage: UIStackView!
     @IBOutlet private weak var emptyStackView: UIStackView!
     @IBOutlet private weak var mainImageView: UIImageView!

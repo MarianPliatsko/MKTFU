@@ -21,7 +21,7 @@ class HomeViewController: UIViewController, Storyboarded {
     let homeDataSource = Home(city: City(),
                               productCategory: [ProductCategory(name: "Deals",
                                                                 image: UIImage(named: "Path 2") ?? UIImage()),
-                                                ProductCategory(name: "Cars and vehicles",
+                                                ProductCategory(name: "Vehicles",
                                                                 image: UIImage(named: "Path 4") ?? UIImage()),
                                                 ProductCategory(name: "Furniture",
                                                                 image: UIImage(named: "Path 7") ?? UIImage()),
@@ -32,15 +32,15 @@ class HomeViewController: UIViewController, Storyboarded {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var headerCollectionView: UICollectionView!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var cityButton: UIButton!
-    @IBOutlet weak var citySearchView: UIView!
-    @IBOutlet weak var citySearchBar: UISearchBar!
-    @IBOutlet weak var cityListTableView: UITableView!
-    @IBOutlet weak var cityNameLabel: UILabel!
-    @IBOutlet weak var createListingView: UIControl! {
+    @IBOutlet private weak var searchTextField: UITextField!
+    @IBOutlet private weak var headerCollectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var cityButton: UIButton!
+    @IBOutlet private weak var citySearchView: UIView!
+    @IBOutlet private weak var citySearchBar: UISearchBar!
+    @IBOutlet private weak var cityListTableView: UITableView!
+    @IBOutlet private weak var cityNameLabel: UILabel!
+    @IBOutlet private weak var createListingView: UIControl! {
         didSet {
             createListingView.layer.cornerRadius = 25
             createListingView.clipsToBounds = true
@@ -88,11 +88,11 @@ class HomeViewController: UIViewController, Storyboarded {
     
     //MARK: - IBActions
     
-    @IBAction func createListingViewPressed(_ sender: Any) {
-        coordinator?.goToCreateOfferVC(product: nil)
+    @IBAction private func createListingViewPressed(_ sender: Any) {
+        coordinator?.goToCreateOfferVC(product: nil, with: .createProduct)
     }
     
-    @IBAction func searchOnMktfyBtnPressed(_ sender: Any) {
+    @IBAction private func searchOnMktfyBtnPressed(_ sender: Any) {
         if searchTextField.text?.isEmpty == false {
             guard let searchText = searchTextField.text else {return}
             guard let city = cityNameLabel.text else {return}
@@ -100,38 +100,43 @@ class HomeViewController: UIViewController, Storyboarded {
         }
     }
     
-    @IBAction func cityButtonPressed(_ sender: UIButton) {
+    @IBAction private func cityButtonPressed(_ sender: UIButton) {
         citySearchView.isHidden = !citySearchView.isHidden
     }
     
-    @IBAction func menuButtonPressed(_ sender: UIButton) {
-        coordinator?.goToMenuViewController(user: user, products: products)
+    @IBAction private func menuButtonPressed(_ sender: UIButton) {
+        coordinator?.goToMenuViewController(user: user)
     }
     
     // MARK: - Methods
     
-    func headerLayoutConfig() -> UICollectionViewCompositionalLayout {
+    private func headerLayoutConfig() -> UICollectionViewCompositionalLayout {
         let item = CompositionLayout.createItem(width: .absolute(120),
-                                                height: .fractionalHeight(1), spacing: 0)
-        let group = CompositionLayout.createGroup(alignment: .horizontal, width: .absolute(100), height: .fractionalHeight(1), item: item, count: 1)
+                                                height: .fractionalHeight(1),
+                                                spacing: 0)
+        let group = CompositionLayout.createGroup(alignment: .horizontal,
+                                                  width: .absolute(100),
+                                                  height: .fractionalHeight(1),
+                                                  item: item,
+                                                  count: 1)
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
         
         return UICollectionViewCompositionalLayout(section: section)
     }
     
-    func cityViewUISetup() {
+    private func cityViewUISetup() {
         citySearchView.layer.cornerRadius = 20
         citySearchView.clipsToBounds = true
     }
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @objc private func textFieldDidChange(_ textField: UITextField) {
         if searchTextField.text?.isEmpty == true {
             getAllProducts()
         }
     }
     
-    func getAllProducts() {
+    private func getAllProducts() {
         NetworkManager.shared.request(endpoint: "api/Product",
                                       type: [Product].self,
                                       token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
@@ -150,7 +155,7 @@ class HomeViewController: UIViewController, Storyboarded {
         }
     }
     
-    func getDeals(query: Int?) {
+    private func getDeals(query: Int?) {
         NetworkManager.shared.request(endpoint: "api/Product/deals",
                                       type: [Product].self,
                                       token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
@@ -172,21 +177,22 @@ class HomeViewController: UIViewController, Storyboarded {
         }
     }
     
-    func getProductsByCategory(category: String, city: String) {
-        let parameters = ["category": category,
+    private func getProductsByCategory(category: String, city: String) {
+        guard let category = Categories(rawValue: category) else {return}
+        let parameters = ["category": category.localizedTitle,
                           "city": city]
         
         NetworkManager.shared.request(endpoint: "api/Product/category",
                                       type: [Product].self,
                                       token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
                                       httpMethod: .post,
-                                      resultsLimit: 30,
-                                      parameters: parameters) { result in
+                                      resultsLimit: 50,
+                                      parameters: parameters) { [weak self] result in
             switch result {
             case .success(let productsByCategory):
                 DispatchQueue.main.async {
-                    self.products = productsByCategory
-                    self.collectionView.reloadData()
+                    self?.products = productsByCategory
+                    self?.collectionView.reloadData()
                 }
             case .failure(let error):
                 print(error)
@@ -194,7 +200,7 @@ class HomeViewController: UIViewController, Storyboarded {
         }
     }
     
-    func searchProduct(searchKeyWords: String, city: String, category: String?) {
+    private func searchProduct(searchKeyWords: String, city: String, category: String?) {
         let parameters = ["search": searchKeyWords,
                           "city": city,
                           "category": category]
@@ -203,12 +209,12 @@ class HomeViewController: UIViewController, Storyboarded {
                                       token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
                                       httpMethod: .post,
                                       resultsLimit: nil,
-                                      parameters: parameters as [String : Any]) { result in
+                                      parameters: parameters as [String : Any]) { [weak self] result in
             switch result {
             case .success(let products):
                 DispatchQueue.main.async {
-                    self.products = products
-                    self.collectionView.reloadData()
+                    self?.products = products
+                    self?.collectionView.reloadData()
                 }
                 case .failure(let error):
                     print(error)

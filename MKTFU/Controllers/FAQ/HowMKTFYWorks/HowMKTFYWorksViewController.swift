@@ -34,12 +34,12 @@ class HowMKTFYWorksViewController: UIViewController, Storyboarded {
     
     //MARK: - Methods
     
+    func setup(faq: FAQ) {
+        self.faq = faq
+    }
+    
     private func setupUI() {
         faqQuestionLabel.text = faq.question
         faqAnswerTextView.text = faq.answer.removeHtmlTagsFromUrlEncodedString()
-    }
-    
-    func setup(faq: FAQ) {
-        self.faq = faq
     }
 }

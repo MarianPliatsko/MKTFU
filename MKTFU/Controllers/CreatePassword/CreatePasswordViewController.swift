@@ -12,31 +12,25 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
     
     //MARK: - Properties
     weak var coordinator: MainCoordinator?
-    
     var user = User()
-    
     let validate = Validate()
-    let checkedImage = UIImage(named: "CheckedImage")
-    let uncheckedImage = UIImage(named: "UncheckedImage")
-    var isChecked: Bool = false
-    let termsAndPolicyText = "By checking this box, you agree to our Terms of Service and our Privacy Policy"
+    private let checkedImage = UIImage(named: "CheckedImage")
+    private let uncheckedImage = UIImage(named: "UncheckedImage")
+    private var isChecked: Bool = false
+    private let termsAndPolicyText = "By checking this box, you agree to our Terms of Service and our Privacy Policy"
     
     //MARK: - Outlets
     
-    @IBOutlet weak var lpHeaderView: LPHeaderView!
-    @IBOutlet weak var lpViewPassword: LpCustomView!
-    @IBOutlet weak var lpViewConfirmPassword: LpCustomView!
-    
-    @IBOutlet weak var sixCharactersImage: UIImageView!
-    @IBOutlet weak var oneUppercaseImage: UIImageView!
-    @IBOutlet weak var oneNumberImage: UIImageView!
-    
-    @IBOutlet weak var checkMarkTermsAndPolicyButton: UIButton!
-    @IBOutlet weak var termsAndPolicyTextView: UITextView!
-    
-    @IBOutlet weak var createAccountButton: UIButton!
-    
-    @IBOutlet weak var agreementTextView: UITextView! {
+    @IBOutlet private weak var lpHeaderView: LPHeaderView!
+    @IBOutlet private weak var lpViewPassword: LpCustomView!
+    @IBOutlet private weak var lpViewConfirmPassword: LpCustomView!
+    @IBOutlet private weak var sixCharactersImage: UIImageView!
+    @IBOutlet private weak var oneUppercaseImage: UIImageView!
+    @IBOutlet private weak var oneNumberImage: UIImageView!
+    @IBOutlet private weak var checkMarkTermsAndPolicyButton: UIButton!
+    @IBOutlet private weak var termsAndPolicyTextView: UITextView!
+    @IBOutlet private weak var createAccountButton: UIButton!
+    @IBOutlet private weak var agreementTextView: UITextView! {
         didSet {
             agreementTextView.centerVertically()
         }
@@ -76,17 +70,17 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
     
     //MARK: - Actions
     
-    @IBAction func checkMarkButtonPressed(_ sender: UIButton) {
+    @IBAction private func checkMarkButtonPressed(_ sender: UIButton) {
         checkMarkTapped()
     }
     
-    @IBAction func createAccountButtonPressed(_ sender: UIButton) {
+    @IBAction private func createAccountButtonPressed(_ sender: UIButton) {
         createAccount(user: user)
         coordinator?.goToSuccessVC()
     }
 
 
-    func createAccount(user: User) {
+    private func createAccount(user: User) {
         let userMetaData = ["firstName": user.firstName,
                             "lastName": user.lastName,
                             "email": user.email,
@@ -101,7 +95,6 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
                                        userMetaData: userMetaData) { result in
             switch result {
             case .success(let user):
-                print(user)
                 if user != nil {
                     self.getAccessToken(email: user!, password: password)
                 }
@@ -111,11 +104,10 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
         }
     }
     
-    func getAccessToken(email: String, password: String) {
+    private func getAccessToken(email: String, password: String) {
         Auth0Manager.shared.loginWithEmail(email: email, password: password) { result in
             switch result {
             case .success(let accessToken):
-                print(accessToken)
                 if accessToken != nil {
                     self.getUserID(accessString: accessToken!)
                 }
@@ -125,7 +117,7 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
         }
     }
     
-    func getUserID(accessString: String) {
+    private func getUserID(accessString: String) {
         Auth0Manager.shared.getUserID(accessToken: accessString) { result in
             switch result {
             case .success(let userID):
@@ -138,16 +130,14 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
         }
     }
     
-    func createUserOnBackend (userID: String, token: String){
-        
+    private func createUserOnBackend (userID: String, token: String) {
         let userData = ["id": userID,
                         "firstName": user.firstName,
                         "lastName": user.lastName,
                         "email": user.email,
                         "phone": user.phone,
                         "address": user.address,
-                        "city": user.city
-        ]
+                        "city": user.city]
         
         NetworkManager.shared.request(endpoint: "api/User/register",
                                       type: User.self,
@@ -170,7 +160,7 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
         validating()
     }
     
-    func validating() {
+    private func validating() {
         
         guard let password = lpViewPassword.txtInputField.text,
               let confirmPassword = lpViewConfirmPassword.txtInputField.text else {return}
@@ -228,10 +218,7 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
         reloadInputViews()
     }
     
-    //MARK: - Change UI methods
-    
-    //Change image of check mark
-    func checkMarkTapped() {
+    private func checkMarkTapped() {
         isChecked.toggle()
         
         if isChecked == true {

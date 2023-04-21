@@ -36,10 +36,10 @@ class NameTableViewCell: UITableViewCell {
         return nib
     }
     
-    func setup(model: NameCellViewModel) {
+    func setup(model: NamePriceAddressCellViewModel) {
         lpUIView.title = model.title
         lpUIView.placeHolder = model.placeholder
-        lpUIView.txtInputField.text = model.text
+        lpUIView.txtInputField.text = "\(model.text)"
         textInView = model.nameTextInView
     }
     

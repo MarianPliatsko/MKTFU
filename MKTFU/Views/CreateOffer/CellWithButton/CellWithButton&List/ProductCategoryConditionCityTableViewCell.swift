@@ -1,5 +1,5 @@
 //
-//  MainWithButtonTableViewCell.swift
+//  ProductCategoryConditionCityTableViewCell.swift
 //  MKTFU
 //
 //  Created by mac on 2023-02-28.
@@ -7,21 +7,20 @@
 
 import UIKit
 
-class CellWithButtonTableViewCell: UITableViewCell {
+class ProductCategoryConditionCityTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    static let identifier = "MainWithButtonTableViewCell"
-    var dataSource: [String] = []
-    var isSelectCity: (() -> Void)?
-    var textInView: ((String) -> Void)?
-    var rawValue = ""
+    static let identifier = "ProductCategoryConditionCityTableViewCell"
+    private var categories: [String] = []
+    private var textInView: ((String) -> Void)?
+    private var rawValue = ""
     
     //MARK: - Outlet
     
-    @IBOutlet weak var lpView: LpCustomViewWithButton!
-    @IBOutlet weak var lpViewList: LPView!
-    @IBOutlet weak var listTableView: UITableView!
+    @IBOutlet private weak var lpView: LpCustomViewWithButton!
+    @IBOutlet private weak var lpViewList: LPView!
+    @IBOutlet private weak var listTableView: UITableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,10 +33,6 @@ class CellWithButtonTableViewCell: UITableViewCell {
         listTableView.separatorStyle = .none
         
         listTableView.register(DetailListTableViewCell.nib(), forCellReuseIdentifier: DetailListTableViewCell.identifier)
-        
-        lpView.txtInputField.addTarget(self,
-                                         action: #selector(NameTableViewCell.textFieldDidChange(_:)),
-                                         for: .editingChanged)
     }
 
     //MARK: - Methods
@@ -47,28 +42,35 @@ class CellWithButtonTableViewCell: UITableViewCell {
         return nib
     }
     
-    func setupUI(title: String, placeholder: String, text: String, rawValue: String) {
-        lpView?.title = title
-        lpView.placeHolder = placeholder
-        lpView.txtInputField.text = text
-        self.rawValue = rawValue
+    func setup(model: CategoryConditionCityCellViewModel) {
+        lpView?.title = model.title
+        lpView.placeHolder = model.placeholder
+        lpView.txtInputField.text = model.text
+        categories = model.categories
+        rawValue = model.rawValue
+        textInView = model.textInView
+        lpView.onButtonPressed = {
+            self.lpViewList.isHidden.toggle()
+            model.onButtonPressed()
+        }
+        listTableView.reloadData()
     }
 }
 
-extension CellWithButtonTableViewCell: UITableViewDelegate, UITableViewDataSource {
+extension ProductCategoryConditionCityTableViewCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return categories.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = listTableView.dequeueReusableCell(withIdentifier: DetailListTableViewCell.identifier, for: indexPath) as! DetailListTableViewCell
-        cell.setupUI(text: dataSource[indexPath.row])
-        self.listTableView.reloadRows(at: [indexPath], with: .automatic)
+        cell.setupUI(text: categories[indexPath.row])
         return cell
     }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             self.textInView?(rawValue)
+            lpViewList.isHidden = true
         }
     }

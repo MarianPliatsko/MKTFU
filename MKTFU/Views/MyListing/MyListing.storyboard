@@ -52,25 +52,12 @@
                                             <action selector="soldItemsBtbPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pSC-5W-OKm"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPG-gA-txJ">
-                                        <rect key="frame" x="260" y="13.666666666666671" width="8" height="8"/>
-                                        <color key="backgroundColor" name="WarningYellow"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="8" id="dBr-tm-ixF"/>
-                                            <constraint firstAttribute="width" constant="8" id="vdw-k3-zHO"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="1xO-ZT-Bby" firstAttribute="leading" secondItem="tPG-gA-txJ" secondAttribute="trailing" constant="10" id="16W-2N-XoJ"/>
                                     <constraint firstItem="AsZ-6B-OrI" firstAttribute="leading" secondItem="GAk-TB-bGv" secondAttribute="leading" constant="10" id="1it-9x-pVe"/>
                                     <constraint firstItem="AsZ-6B-OrI" firstAttribute="top" secondItem="GAk-TB-bGv" secondAttribute="top" id="NeA-UU-bqm"/>
                                     <constraint firstAttribute="height" constant="35" id="X8e-xG-sXI"/>
-                                    <constraint firstItem="tPG-gA-txJ" firstAttribute="centerY" secondItem="GAk-TB-bGv" secondAttribute="centerY" id="bFb-ix-bRD"/>
                                     <constraint firstItem="1xO-ZT-Bby" firstAttribute="centerY" secondItem="GAk-TB-bGv" secondAttribute="centerY" id="dbz-uQ-nex"/>
                                     <constraint firstAttribute="bottom" secondItem="AsZ-6B-OrI" secondAttribute="bottom" id="dvJ-BS-3lr"/>
                                     <constraint firstItem="1xO-ZT-Bby" firstAttribute="top" secondItem="GAk-TB-bGv" secondAttribute="top" id="f8h-xb-i3G"/>
@@ -139,9 +126,10 @@ VerySubtleGray</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activeItemsButton" destination="AsZ-6B-OrI" id="Tld-Hf-EPO"/>
                         <outlet property="lpHeaderView" destination="nEZ-Yi-8q3" id="WP0-3d-a0g"/>
                         <outlet property="myListingTableView" destination="XXX-k6-DiP" id="wjv-DR-hYR"/>
-                        <outlet property="soldItemsIndicator" destination="tPG-gA-txJ" id="web-Zq-sLF"/>
+                        <outlet property="soldItemsButton" destination="1xO-ZT-Bby" id="Gxp-fi-paR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -156,16 +144,13 @@ VerySubtleGray</string>
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="OccasionalPurple">
-            <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.3880000114440918" green="0.093999996781349182" blue="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TextGray">
-            <color red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.30199998617172241" green="0.30199998617172241" blue="0.30199998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VoidWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="WarningYellow">
-            <color red="1" green="0.72941176470588232" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -15,23 +15,32 @@ class MyPurchasesTableViewCell: UITableViewCell {
     
     //MARK: - Outlet
     
-    @IBOutlet weak var myListingImageView: UIImageView! {
+    @IBOutlet private weak var myPurchaseImageView: UIImageView! {
         didSet {
-            myListingImageView.round(corners: [.topLeft, .bottomLeft], cornerRadius: 15)
+            myPurchaseImageView.round(corners: [.topLeft, .bottomLeft], cornerRadius: 15)
         }
     }
+    @IBOutlet private weak var myPurchaseDateLabel: UILabel!
+    @IBOutlet private weak var myPurchaseNameLabel: UILabel!
+    @IBOutlet private weak var myPurchasePriceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     //MARK: - Methods
     
-    // create nib
     static func nib() -> UINib {
         let nib = UINib(nibName: identifier, bundle: nil)
         return nib
+    }
+    
+    func setup(product: Product) {
+        myPurchaseImageView.kf.setImage(with: URL(string: product.images[0]))
+        myPurchaseDateLabel.text = product.created.formatDate(from: "yyyy-MM-dd'T'HH:mm:ss.SSSSS'Z'",
+                                                              to: "MMMM dd yyyy")
+        myPurchaseNameLabel.text = product.productName
+        myPurchasePriceLabel.text = "\(product.price)$"
     }
     
 }

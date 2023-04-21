@@ -94,7 +94,10 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" name="AccentColor"/>
             <connections>
-                <outlet property="myListingImageView" destination="gbv-Re-TqT" id="wPR-GH-EIt"/>
+                <outlet property="myPurchaseDateLabel" destination="jGa-l8-DZ0" id="Y5R-cs-EhL"/>
+                <outlet property="myPurchaseImageView" destination="gbv-Re-TqT" id="wPR-GH-EIt"/>
+                <outlet property="myPurchaseNameLabel" destination="waV-In-SZp" id="bCv-bB-TiC"/>
+                <outlet property="myPurchasePriceLabel" destination="25T-9C-PDp" id="rMG-B7-25i"/>
             </connections>
             <point key="canvasLocation" x="161.83206106870227" y="78.521126760563391"/>
         </tableViewCell>

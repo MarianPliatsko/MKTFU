@@ -9,8 +9,14 @@ import UIKit
 
 class MyListingSectionHeaderView: UIView {
     
-    var view: UIView!
-
+    private var view: UIView!
+    
+    @IBOutlet private weak var titleTextLabel: UILabel!
+    
+    func setup(data: String) {
+        titleTextLabel.text = data
+    }
+    
     func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "MyListingSectionHeaderView", bundle: bundle)

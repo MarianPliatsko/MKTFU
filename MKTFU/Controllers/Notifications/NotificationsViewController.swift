@@ -6,60 +6,97 @@
 //
 
 import UIKit
+import KeychainSwift
+
+struct NotificationSection {
+    let isNew: Bool
+    var notifications: [Notification]
+}
 
 class NotificationsViewController: UIViewController, Storyboarded {
     
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
+    private var notificationSections: [NotificationSection]?
     
     //MARK: - Outlets
     
-    @IBOutlet weak var lpHeaderView: LPHeaderView!
-    @IBOutlet weak var notificationsTableView: UITableView!
+    @IBOutlet private weak var lpHeaderView: LPHeaderView!
+    @IBOutlet private weak var notificationsTableView: UITableView!
     
     //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        notificationsTableView.delegate = self
-        notificationsTableView.dataSource = self
+        setupTableView()
+        getAllNotifications()
         
-        notificationsTableView.register(NotificationsTableViewCell.nib(),
-                                        forCellReuseIdentifier: NotificationsTableViewCell.identifier)
-        
-        //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
     }
+    
+    //MARK: - Methods
+    
+    private func setupTableView() {
+        notificationsTableView.delegate = self
+        notificationsTableView.dataSource = self
+        notificationsTableView.register(NotificationsTableViewCell.nib(),
+                                        forCellReuseIdentifier: NotificationsTableViewCell.identifier)
+    }
+    
+    private func getAllNotifications() {
+        NetworkManager.shared.request(endpoint: EndpointConstants.notification,
+                                      type: Notifications.self,
+                                      token: KeychainSwift().get(KeychainConstants.accessTokenKey) ?? "",
+                                      httpMethod: .get,
+                                      resultsLimit: nil,
+                                      parameters: nil) { [weak self] result in
+            switch result {
+            case .success(let notification):
+                DispatchQueue.main.async {
+                    var new: NotificationSection?
+                    var seen: NotificationSection?
+                    self?.notificationSections = []
+                    if notification.new.count == 0 {
+                        new = nil
+                    } else {
+                        new = NotificationSection(isNew: true, notifications: notification.new)
+                        self?.notificationSections?.append(new!)
+                    }
+                    if notification.seen.count == 0 {
+                        seen = nil
+                    } else {
+                        seen = NotificationSection(isNew: false, notifications: notification.seen)
+                        self?.notificationSections?.append(seen!)
+                    }
+                    self?.notificationsTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
 
-    //MARK: - extension NotificationsViewController: UITableViewDelegate, UITableViewDataSource
+//MARK: - extension NotificationsViewController: UITableViewDelegate, UITableViewDataSource
 
 extension NotificationsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionText = NotificationSectionHeaderView()
-        switch section {
-        case 0:
-            sectionText.sectionTextLabel.text = "New for you"
-            return sectionText
-        case 1:
-            sectionText.sectionTextLabel.text = "Previously seen"
-            return sectionText
-        default:
-            return nil
-        }
+        let view = NotificationSectionHeaderView()
+        view.setup(isNew: notificationSections?[section].isNew ?? false)
+        return view
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return notificationSections?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return notificationSections?[section].notifications.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -68,15 +105,8 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = notificationsTableView.dequeueReusableCell(withIdentifier: NotificationsTableViewCell.identifier, for: indexPath) as? NotificationsTableViewCell else {return UITableViewCell()}
-        switch indexPath.section {
-        case 0:
-            cell.backgroundColor = UIColor.appColor(LPColor.VoidWhite)
-            return cell
-        case 1:
-            cell.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
-            return cell
-        default:
-            return UITableViewCell()
-        }
+        guard let notifications = notificationSections else {return UITableViewCell()}
+        cell.setup(model: notifications[indexPath.section].notifications[indexPath.row])
+        return cell
     }
 }

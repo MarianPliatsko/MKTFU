@@ -8,140 +8,178 @@
 import UIKit
 import KeychainSwift
 
+private enum Tab {
+    case active
+    case sold
+}
+
+struct ProductSection {
+    var sectionTitle: String?
+    var products: [Product]
+}
+
 class MyListingsViewController: UIViewController, Storyboarded {
     
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
     var products: [Product] = []
-    var userActiveListingProducts: [Product] = []
-    var userPendingListingProducts: [Product] = []
+    private var userActiveListingProducts: [Product] = []
+    private var userPendingListingProducts: [Product] = []
+    private var soldListingProducts: [Product] = []
+    private var dataSource: [ProductSection] = []
+    private var selectedTab: Tab = .active
     
     //MARK: - Outlets
     
-    @IBOutlet weak var lpHeaderView: LPHeaderView!
-    @IBOutlet weak var soldItemsIndicator: UILabel! {
+    @IBOutlet private weak var lpHeaderView: LPHeaderView!
+    @IBOutlet private weak var soldItemsIndicator: UILabel! {
         didSet {
             soldItemsIndicator.layer.cornerRadius = soldItemsIndicator.bounds.width / 2
             soldItemsIndicator.clipsToBounds = true
         }
     }
-    @IBOutlet weak var myListingTableView: UITableView!
+    @IBOutlet weak var activeItemsButton: UIButton!
+    @IBOutlet weak var soldItemsButton: UIButton!
+    @IBOutlet private weak var myListingTableView: UITableView!
     
     //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        myListingTableView.delegate = self
-        myListingTableView.dataSource = self
-        
-        myListingTableView.register(MyListingTableViewCell.nib(),
-                                    forCellReuseIdentifier: MyListingTableViewCell.identifier)
+        setupTableView()
 
-        //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
         
-        filterUserListingsProducts(products: products)
+        getMyListing()
     }
     
     //MARK: - IBAction
     
-    @IBAction func activeItemsBtnPressed(_ sender: UIButton) {
-        
-        self.myListingTableView.reloadData()
+    @IBAction private func activeItemsBtnPressed(_ sender: UIButton) {
+        selectedTab = .active
+        dataSource = []
+        reloadDataSource()
     }
     
-    
-    @IBAction func soldItemsBtbPressed(_ sender: UIButton) {
-        
-        self.myListingTableView.reloadData()
+    @IBAction private func soldItemsBtbPressed(_ sender: UIButton) {
+        selectedTab = .sold
+        dataSource = []
+        reloadDataSource()
     }
-    
     
     //MARK: - Methods
     
-    func filterUserListingsProducts(products: [Product]) {
-        let userId = KeychainSwift().get(KeychainConstants.userIDKey)
-        for element in products {
-            if element.userId == userId {
-                if element.status == "ACTIVE" {
-                    userActiveListingProducts.append(element)
+    private func setupTableView() {
+        myListingTableView.delegate = self
+        myListingTableView.dataSource = self
+        myListingTableView.register(MyListingTableViewCell.nib(),
+                                    forCellReuseIdentifier: MyListingTableViewCell.identifier)
+    }
+    
+    private func getMyListing() {
+        NetworkManager.shared.request(endpoint: EndpointConstants.myListing,
+                                      type: [Product].self,
+                                      token: KeychainSwift().get(KeychainConstants.accessTokenKey) ?? "",
+                                      httpMethod: .get,
+                                      resultsLimit: nil,
+                                      parameters: nil) { [weak self] result in
+            switch result {
+            case .success(let listing):
+                DispatchQueue.main.async {
+                    self?.products = listing
+                    guard self?.products != nil else {return}
+                    for element in self!.products {
+                        if element.status == "ACTIVE" {
+                            self?.userActiveListingProducts.append(element)
+                        }
+                        if element.status == "PENDING" {
+                            self?.userPendingListingProducts.append(element)
+                        }
+                        if element.status == "COMPLETE" {
+                            self?.soldListingProducts.append(element)
+                        }
+                    }
+                    self?.reloadDataSource()
                 }
-                if element.status == "PENDING" {
-                    userPendingListingProducts.append(element)
-                }
+            case .failure(let error):
+                print(error)
             }
         }
+    }
+    
+    private func reloadDataSource() {
+        switch selectedTab {
+        case .active:
+            activeItemsSelected()
+            if !userPendingListingProducts.isEmpty {
+                dataSource.append(ProductSection(sectionTitle: "Pending Items",
+                                                 products: userPendingListingProducts))
+            }
+            if !userActiveListingProducts.isEmpty {
+                dataSource.append(ProductSection(sectionTitle: "Available Items",
+                                                 products: userActiveListingProducts))
+            }
+        case .sold:
+            soldItemsSelected()
+            if !soldListingProducts.isEmpty {
+                dataSource.append(ProductSection(sectionTitle: nil, products: soldListingProducts))
+            }
+        }
+        myListingTableView.reloadData()
+    }
+    
+    private func activeItemsSelected() {
+        activeItemsButton.tintColor = UIColor.appColor(LPColor.OccasionalPurple)
+        soldItemsButton.tintColor = UIColor.appColor(LPColor.TextGray)
+    }
+    
+    private func soldItemsSelected() {
+        activeItemsButton.tintColor = UIColor.appColor(LPColor.TextGray)
+        soldItemsButton.tintColor = UIColor.appColor(LPColor.OccasionalPurple)
     }
 }
 
     //MARK: - extension MyListingsViewController: UITableViewDelegate, UITableViewDataSource
+
 extension MyListingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch section {
-        case 0:
-            return nil
-        case 1:
-            return MyListingSectionHeaderView()
-        default:
-            return nil
-        }
+        let view = MyListingSectionHeaderView()
+        view.setup(data: dataSource[section].sectionTitle ?? "")
+        return view
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 0:
-            return 0
-        case 1:
+        if dataSource[section].sectionTitle != nil {
             return 20
-        default:
+        } else {
             return 0
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return userPendingListingProducts.count
-        case 1:
-            return userActiveListingProducts.count
-        default:
-            return 0
-        }
+        return dataSource[section].products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = myListingTableView.dequeueReusableCell(withIdentifier: MyListingTableViewCell.identifier, for: indexPath) as? MyListingTableViewCell else {return UITableViewCell()}
-        
-        switch indexPath.section {
-        case 0:
-            cell.setup(product: userPendingListingProducts[indexPath.row])
-        case 1:
-            cell.setup(product: userActiveListingProducts[indexPath.row])
-        default:
-            return UITableViewCell()
-        }
+        cell.setup(product: dataSource[indexPath.section].products[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        switch indexPath.section {
-        case 0:
-            coordinator?.goToCreateOfferVC(product: userPendingListingProducts[indexPath.row])
-        case 1:
-            coordinator?.goToCreateOfferVC(product: userActiveListingProducts[indexPath.row])
-        default:
-            break
-        }
-        
+        coordinator?.goToCreateOfferVC(product: dataSource[indexPath.section].products[indexPath.row], with: .saveChanges)
     }
 }

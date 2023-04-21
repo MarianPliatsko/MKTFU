@@ -29,7 +29,7 @@ class LogInViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
         
         lpViewEmail.txtInputField.text = "marianpliatsko+4@gmail.com"
-        lpViewPassword.txtInputField.text = "Launchpad1!"
+        lpViewPassword.txtInputField.text = "Newpassword2!"
         lpViewEmail.showError = false
         iForgotMyPasswordButton.setupYellowButtonUI(text: "I forgot my password")
         
@@ -67,6 +67,7 @@ class LogInViewController: UIViewController, Storyboarded {
                     self.keyChain.set(accessToken!, forKey: KeychainConstants.accessTokenKey)
                     print("Access Token: \(String(describing: accessToken))")
                     self.getUserID(accessToken: accessToken!)
+                    self.keyChain.set(password, forKey: "Password")
                 }
             case .failure(let error):
                 
@@ -119,7 +120,9 @@ class LogInViewController: UIViewController, Storyboarded {
             case .failure(let error):
                 print(error)
             }
-            logInButton.isEnabled = true
+            DispatchQueue.main.async {
+                self.logInButton.isEnabled = true
+            }
         }
     }
     

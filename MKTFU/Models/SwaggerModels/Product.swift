@@ -8,36 +8,57 @@
 import Foundation
 
 enum Categories: String, Codable {
-    case deals = "DEALS"
-    case realEstate = "REAL_ESTATE"
-    case vehicles = "VEHICLES"
-    case furniture = "FURNITURE"
-    case electronics = "ELECTRONICS"
+    case dealsGET = "DEALS"
+    case realEstateGET = "REAL_ESTATE"
+    case vehiclesGET = "VEHICLES"
+    case furnitureGET = "FURNITURE"
+    case electronicsGET = "ELECTRONICS"
+    case dealsPOST = "Deals"
+    case realEstatePOST = "Real estate"
+    case vehiclesPOST = "Vehicles"
+    case furniturePOST = "Furniture"
+    case electronicsPOST = "Electronics"
     var localizedTitle: String {
         switch self {
-        case .deals:
+        case .dealsGET:
             return "Deals"
-        case .realEstate:
+        case .realEstateGET:
             return "Real estate"
-        case .vehicles:
+        case .vehiclesGET:
             return "Vehicles"
-        case .furniture:
+        case .furnitureGET:
             return "Furniture"
-        case .electronics:
+        case .electronicsGET:
             return "Electronics"
+        case .dealsPOST:
+            return "DEALS"
+        case .realEstatePOST:
+            return "REAL_ESTATE"
+        case .vehiclesPOST:
+            return "VEHICLES"
+        case .furniturePOST:
+            return "FURNITURE"
+        case .electronicsPOST:
+            return "ELECTRONICS"
         }
     }
 }
 
 enum Conditions: String, Codable {
-    case new = "NEW"
-    case used = "USED"
+    case newGET = "NEW"
+    case usedGET = "USED"
+    case newPOST = "New"
+    case usedPOST = "Used"
     var localizedTitle: String {
         switch self {
-        case .new:
+        case .newGET:
             return "New"
-        case .used:
+        case .usedGET:
             return "Used"
+        case .newPOST:
+            return "NEW"
+        case .usedPOST:
+            return "USED"
         }
     }
 }

@@ -15,21 +15,26 @@ class NotificationsTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
     
-    
+    @IBOutlet private weak var notificationMessageLabel: UILabel!
+    @IBOutlet private weak var notificationDateLabel: UILabel!
     
     //MARK: - Lifecycle
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     //MARK: - Methods
     
-    // create nib
     static func nib() -> UINib {
         let nib = UINib(nibName: identifier, bundle: nil)
         return nib
     }
     
+    func setup(model: Notification) {
+        notificationMessageLabel.text = model.message
+        notificationDateLabel.text = model.created.formatDate(
+            from: "yyyy-MM-dd'T'HH:mm:ss.SSSSS'Z'",
+            to: "MMMM dd yyyy")
+    }
 }
