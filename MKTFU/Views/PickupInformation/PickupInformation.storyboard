@@ -240,6 +240,8 @@ VerySubtleGray</string>
                         <outlet property="productImageView" destination="Qh2-dO-54G" id="Q1j-Kd-LHA"/>
                         <outlet property="productPickupInformationLabel" destination="XQr-5p-294" id="3Wi-uQ-luO"/>
                         <outlet property="prooductNameLabel" destination="fuP-W4-oyP" id="nK9-Tu-exy"/>
+                        <outlet property="sellerNameLabel" destination="wus-Z3-gdZ" id="GSh-dp-HNn"/>
+                        <outlet property="sellerNameSecondLabel" destination="8jG-bY-H8n" id="9Eu-57-AAx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

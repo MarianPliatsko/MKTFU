@@ -34,11 +34,11 @@ class CheckoutTableViewCell: UITableViewCell {
         return nib
     }
     
-    func setupUI (image: String, title: String, price: Double) {
-        productTitle.text = title
-        productPrice.text = "\(price)$"
+    func setupUI (product: Product) {
+        productTitle.text = product.productName
+        productPrice.text = "\(product.price)$"
         
-        NetworkManager.shared.getImage(from: image, imageView: productImageView) { result in
+        NetworkManager.shared.getImage(from: product.images[0], imageView: productImageView) { result in
             switch result {
             case .success(let image):
                 DispatchQueue.main.async {

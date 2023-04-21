@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class CheckoutViewController: UIViewController, Storyboarded {
     
@@ -16,36 +17,57 @@ class CheckoutViewController: UIViewController, Storyboarded {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var lpHeaderView: LPHeaderView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var lpHeaderView: LPHeaderView!
     
     //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
-        
+        setupTableView()
+    }
+    
+    //MARK: - IBAction
+    
+    @IBAction private func confirmBtnPressed(_ sender: UIButton) {
+        if product != nil {
+            purchaseListing(product: product!)
+        }
+    }
+    
+    //MARK: - Methods
+    
+    private func purchaseListing(product: Product) {
+        NetworkManager.shared.request(endpoint: "\(EndpointConstants.purchaseListing)\(product.id)",
+                                      type: Product.self,
+                                      token: KeychainSwift().get(KeychainConstants.accessTokenKey) ?? "",
+                                      httpMethod: .put,
+                                      resultsLimit: nil,
+                                      parameters: nil) { [weak self] result in
+            switch result {
+            case .success(let product):
+                DispatchQueue.main.async {
+                    self?.coordinator?.goToPickupInformationViewController(with: product)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CheckoutTableViewCell.nib(),
                            forCellReuseIdentifier: CheckoutTableViewCell.identifier)
     }
-    
-    //MARK: - IBAction
-    
-    
-    @IBAction func confirmBtnPressed(_ sender: UIButton) {
-        if product != nil {
-            self.coordinator?.goToPickupInformationViewController(with: product!)
-        }
-    }
 }
 
-
+//MARK: - extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource
 
 extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,9 +76,9 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CheckoutTableViewCell.identifier, for: indexPath) as? CheckoutTableViewCell else {return UITableViewCell()}
-        cell.setupUI(image: product?.images[0] ?? "",
-                     title: product?.productName ?? "",
-                     price: product?.price ?? 0.0)
+        if product != nil {
+            cell.setupUI(product: product!)
+        }
         return cell
     }
     

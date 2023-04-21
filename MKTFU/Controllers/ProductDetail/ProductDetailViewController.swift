@@ -14,39 +14,27 @@ class ProductDetailViewController: UIViewController, Storyboarded {
     weak var coordinator: MainCoordinator?
     var product: Product?
     
-    private let images: [UIImage] = Array(1...10).map { UIImage(named: String($0))!}
-    
     //MARK: - Outlets
     
-    @IBOutlet weak var lpHeaderView: LPHeaderView!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var productNameLabel: UILabel!
-    @IBOutlet weak var productPriceLabel: UILabel!
-    @IBOutlet weak var productDescriptionTextView: UITextView!
-    @IBOutlet weak var usersAccountImageView: UIImageView!
-    @IBOutlet weak var usersNameLabel: UILabel!
-    @IBOutlet weak var productNumberOfListingLabel: UILabel!
+    @IBOutlet private weak var lpHeaderView: LPHeaderView!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var productNameLabel: UILabel!
+    @IBOutlet private weak var productPriceLabel: UILabel!
+    @IBOutlet private weak var productDescriptionTextView: UITextView!
+    @IBOutlet private weak var usersAccountImageView: UIImageView!
+    @IBOutlet private weak var usersNameLabel: UILabel!
+    @IBOutlet private weak var productNumberOfListingLabel: UILabel!
     
     //MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
         
-        // collection view delegate and data source
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        //setup layout for collectionView
-        collectionView.collectionViewLayout = createLayout()
-        
-        // register nib
-        collectionView.register(ImageCollectionViewCell.nib(), forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
-        
+        setupCollectionView()
         setupUI(data: product!)
     }
     
@@ -61,8 +49,14 @@ class ProductDetailViewController: UIViewController, Storyboarded {
     
     //MARK: - Methods
     
-    //create layout for collectionView
-    func createLayout() -> UICollectionViewCompositionalLayout {
+    private func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.collectionViewLayout = createLayout()
+        collectionView.register(ImageCollectionViewCell.nib(), forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
+    }
+    
+    private func createLayout() -> UICollectionViewCompositionalLayout {
         
         let item = CompositionLayout.createItem(width: .fractionalWidth(1),
                                                 height: .fractionalHeight(1),
@@ -79,10 +73,14 @@ class ProductDetailViewController: UIViewController, Storyboarded {
         return UICollectionViewCompositionalLayout(section: section)
     }
     
-    func setupUI(data: Product) {
+    private func setupUI(data: Product) {
         productNameLabel.text = data.productName
         productPriceLabel.text = "$\(data.price)"
         productDescriptionTextView.text = data.description
+        productNumberOfListingLabel.text = "\(data.sellerListingCount ?? 0)"
+        if data.sellerProfile != nil {
+            usersNameLabel.text = "\(data.sellerProfile?.firstName ?? "") \(data.sellerProfile?.lastName ?? "")"
+        }
     }
 }
 

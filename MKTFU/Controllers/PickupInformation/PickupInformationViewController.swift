@@ -16,15 +16,17 @@ class PickupInformationViewController: UIViewController, Storyboarded {
     
     //MARK: - Outlet
     
-    @IBOutlet weak var lpHeaderView: LPHeaderView!
-    @IBOutlet weak var productImageView: UIImageView! {
+    @IBOutlet private weak var lpHeaderView: LPHeaderView!
+    @IBOutlet private weak var productImageView: UIImageView! {
         didSet {
             productImageView.layer.cornerRadius = productImageView.layer.bounds.width / 2
             productImageView.clipsToBounds = true
         }
     }
-    @IBOutlet weak var prooductNameLabel: UILabel!
-    @IBOutlet weak var productPickupInformationLabel: UILabel!
+    @IBOutlet private weak var prooductNameLabel: UILabel!
+    @IBOutlet private weak var productPickupInformationLabel: UILabel!
+    @IBOutlet private weak var sellerNameLabel: UILabel!
+    @IBOutlet private weak var sellerNameSecondLabel: UILabel!
     
     //MARK: - View life cycle
     
@@ -40,15 +42,17 @@ class PickupInformationViewController: UIViewController, Storyboarded {
     
     //MARK: - IBAction
     
-    @IBAction func closeBtnPressed(_ sender: UIButton) {
+    @IBAction private func closeBtnPressed(_ sender: UIButton) {
         coordinator?.goToSuccessVC()
     }
     
     //MARK: - Methods
     
-    func setupUI(data: Product) {
+    private func setupUI(data: Product) {
         prooductNameLabel.text = data.productName
         productPickupInformationLabel.text = "\(data.address), \(data.city)"
+        sellerNameLabel.text = "\(data.sellerProfile?.firstName ?? "") \(data.sellerProfile?.lastName ?? "")"
+        sellerNameSecondLabel.text = sellerNameLabel.text
         
         NetworkManager.shared.getImage(from: data.images[0],
                                        imageView: productImageView) { result in

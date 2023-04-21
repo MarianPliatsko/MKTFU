@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct c {
+struct ImageCellViewModel {
     var images: [String]
     var onAddImageButtonTapped: (() -> Void)
     var onDeletePressed: ((String?) -> Void)

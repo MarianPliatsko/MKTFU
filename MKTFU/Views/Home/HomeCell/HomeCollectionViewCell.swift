@@ -16,9 +16,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Outlet
     
-    @IBOutlet weak var cellImageView: UIImageView!
-    @IBOutlet weak var lblDescription: UILabel!
-    @IBOutlet weak var lblPrice: UILabel!
+    @IBOutlet private weak var cellImageView: UIImageView!
+    @IBOutlet private weak var lblDescription: UILabel!
+    @IBOutlet private weak var lblPrice: UILabel!
     
     //MARK: - Nib Life cycle
     

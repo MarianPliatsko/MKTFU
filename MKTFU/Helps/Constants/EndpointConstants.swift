@@ -17,4 +17,5 @@ enum EndpointConstants {
     static let updateUserProfile = "api/User"
     static let updateListing = "api/Product"
     static let confirmSold = "api/Product/complete/"
+    static let purchaseListing = "api/Product/checkout/"
 }
