@@ -32,31 +32,6 @@ class NetworkManager {
     
     init() {}
     
-    func changePasswordRequest(endPoint: String,
-                               token: String,
-                               parameters: [String: String],
-                               complition: @escaping (Result<URLResponse, Error>) -> Void) {
-        guard let url = self.baseURL else{return print("Wrong url")}
-        var request = URLRequest(url: url.appendingPathComponent(endPoint))
-        request.httpMethod = "POST"
-        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
-        request.addValue("*/*", forHTTPHeaderField: "accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask(with: request) { _, response, error in
-            if let error = error {
-                complition(.failure(error))
-            }
-            guard let response = response as? HTTPURLResponse else {
-                print("Error: Invalid response")
-                return
-            }
-            complition(.success(response))
-        }
-        task.resume()
-    }
-    
     func request<T:Codable>(endpoint: String,
                             type: T.Type,
                             token: String,
@@ -79,8 +54,17 @@ class NetworkManager {
         }
         
         let task = URLSession.shared.dataTask(with: urlRequest, completionHandler: {data, response, error in
+            var data = data
+            if data?.isEmpty == true {
+                data = "{}".data(using: .utf8)
+            }
+            if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                complition (.failure(NetworkingError.unknown))
+                return
+            }
             guard let data = data else {return complition(.failure(NetworkingError.invalidData))}
             do {
+                
                 let jsonDecode = try JSONDecoder().decode(type, from: data)
                 complition(.success(jsonDecode))
             }

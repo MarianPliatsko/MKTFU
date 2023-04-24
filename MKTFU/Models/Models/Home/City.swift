@@ -7,6 +7,11 @@
 
 import Foundation
 
-struct City {
-    var cityList: [String] = ["Calgary", "Brook"]
+struct City: PickerItem {
+    var rawValue: String
+    var localizedTitle: String { rawValue }
+}
+
+extension City {
+    static var cities = [City(rawValue: "Calgary"), City(rawValue: "Brook")]
 }

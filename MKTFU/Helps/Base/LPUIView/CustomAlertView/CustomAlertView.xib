@@ -17,7 +17,13 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChangePasswordAlertView" customModule="MKTFU" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomAlertView" customModule="MKTFU" customModuleProvider="target">
+            <connections>
+                <outlet property="alertTextLabel" destination="vFg-jk-MCo" id="fpn-Is-9Ah"/>
+                <outlet property="leftButton" destination="bhX-4R-im0" id="uPJ-Xc-VKo"/>
+                <outlet property="rightButton" destination="zxa-1Q-Fnj" id="AEl-Td-Dnl"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="418" height="282"/>
@@ -35,7 +41,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something happened and your password hasn’t been changed." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFg-jk-MCo">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFg-jk-MCo">
                                     <rect key="frame" x="25" y="66" width="328" height="39"/>
                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                     <nil key="textColor"/>
@@ -77,7 +83,7 @@ GrayButtonGray</string>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="cancelBtnPressed:" destination="-1" eventType="touchUpInside" id="SHU-hE-NrG"/>
+                                                        <action selector="cancelBtnPressed:" destination="-1" eventType="touchUpInside" id="bid-vQ-AXB"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -154,6 +160,9 @@ GrayButtonGray</string>
         <designable name="bhX-4R-im0">
             <size key="intrinsicContentSize" width="77" height="36"/>
         </designable>
+        <designable name="zxa-1Q-Fnj">
+            <size key="intrinsicContentSize" width="97" height="36"/>
+        </designable>
     </designables>
     <resources>
         <namedColor>
@@ -162,7 +171,7 @@ GrayButtonGray</string>
             <color red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="OccasionalPurple">
-            <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.3880000114440918" green="0.093999996781349182" blue="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VoidWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -7,12 +7,18 @@
 
 import UIKit
 
+enum PickupInformationMode {
+    case fromCheckout
+    case fromPurchases
+}
+
 class PickupInformationViewController: UIViewController, Storyboarded {
     
     //MARK: - Prooperties
     
     weak var coordinator: MainCoordinator?
     var product: Product?
+    var mode: PickupInformationMode!
     
     //MARK: - Outlet
     
@@ -27,6 +33,9 @@ class PickupInformationViewController: UIViewController, Storyboarded {
     @IBOutlet private weak var productPickupInformationLabel: UILabel!
     @IBOutlet private weak var sellerNameLabel: UILabel!
     @IBOutlet private weak var sellerNameSecondLabel: UILabel!
+    @IBOutlet private weak var closeButton: UIButton!
+    @IBOutlet private weak var contactSellerButton: UIButton!
+    
     
     //MARK: - View life cycle
     
@@ -37,7 +46,7 @@ class PickupInformationViewController: UIViewController, Storyboarded {
             self?.navigationController?.popViewController(animated: true)
         }
         
-        setupUI(data: product!)
+        setupUI(data: product!, mode: mode)
     }
     
     //MARK: - IBAction
@@ -48,7 +57,27 @@ class PickupInformationViewController: UIViewController, Storyboarded {
     
     //MARK: - Methods
     
-    private func setupUI(data: Product) {
+    func setupMode(mode: PickupInformationMode) {
+        self.mode = mode
+    }
+    
+    private func showCloseButtonAndContactSellerButton() {
+        closeButton.isHidden = false
+        contactSellerButton.isHidden = false
+    }
+    
+    private func hideCloseButtonAndContactSellerButton() {
+        closeButton.isHidden = true
+        contactSellerButton.isHidden = true
+    }
+    
+    private func setupUI(data: Product, mode: PickupInformationMode) {
+        switch mode {
+        case .fromCheckout:
+            showCloseButtonAndContactSellerButton()
+        case .fromPurchases:
+            hideCloseButtonAndContactSellerButton()
+        }
         prooductNameLabel.text = data.productName
         productPickupInformationLabel.text = "\(data.address), \(data.city)"
         sellerNameLabel.text = "\(data.sellerProfile?.firstName ?? "") \(data.sellerProfile?.lastName ?? "")"

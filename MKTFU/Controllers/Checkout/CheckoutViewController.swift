@@ -51,7 +51,7 @@ class CheckoutViewController: UIViewController, Storyboarded {
             switch result {
             case .success(let product):
                 DispatchQueue.main.async {
-                    self?.coordinator?.goToPickupInformationViewController(with: product)
+                    self?.coordinator?.goToPickupInformationViewController(with: product, with: .fromCheckout)
                 }
             case .failure(let error):
                 print(error)

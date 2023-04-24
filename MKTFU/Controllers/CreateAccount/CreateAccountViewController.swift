@@ -13,22 +13,22 @@ class CreateAccountViewController: UIViewController, Storyboarded {
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
-    let validate = Validate()
-    let cityDataSource = City()
-    let thePicker = UIPickerView()
+    private let validate = Validate()
+    private let cityDataSource = City.cities
+    private let thePicker = UIPickerView()
     private var isValideCity: Bool = false
     var user = User()
     
     //MARK: - Outlets
     
-    @IBOutlet weak var lpHeaderView: LPHeaderView!
-    @IBOutlet weak var lpViewFirstName: LpCustomView!
-    @IBOutlet weak var lpViewLastName: LpCustomView!
-    @IBOutlet weak var lpViewEmail: LpCustomView!
-    @IBOutlet weak var lpViewPhone: LpCustomView!
-    @IBOutlet weak var lpViewPickupAddress: LpCustomView!
-    @IBOutlet weak var lpViewCityName: LpCustomView!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet private weak var lpHeaderView: LPHeaderView!
+    @IBOutlet private weak var lpViewFirstName: LpCustomView!
+    @IBOutlet private weak var lpViewLastName: LpCustomView!
+    @IBOutlet private weak var lpViewEmail: LpCustomView!
+    @IBOutlet private weak var lpViewPhone: LpCustomView!
+    @IBOutlet private weak var lpViewPickupAddress: LpCustomView!
+    @IBOutlet private weak var lpViewCityName: LpCustomView!
+    @IBOutlet private weak var loginButton: UIButton!
     
     //MARK: - Life cycle
     
@@ -140,7 +140,7 @@ class CreateAccountViewController: UIViewController, Storyboarded {
             print("Incorrect city")
         }
         if lpViewCityName.txtInputField.text == nil || lpViewCityName.txtInputField.text == "" {
-            lpViewCityName.txtInputField.text = cityDataSource.cityList[0]
+            lpViewCityName.txtInputField.text = cityDataSource[0].localizedTitle
         }
         if isValidateFirstName == true, isValidateLastName == true, isValidateEmail == true, lpViewPickupAddress.txtInputField.text?.isEmpty == false, isValideCity == true {
             loginButton.isEnabled = true
@@ -167,19 +167,6 @@ extension CreateAccountViewController: UITextFieldDelegate {
         textField.text = validate.validatePhoneNumber.validatePhoneNumber(phone: newString)
         return false
     }
-    
-    // make return button as next
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        let nextTag = textField.tag + 1
-//
-//        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
-//            nextResponder.becomeFirstResponder()
-//        } else {
-//            textField.resignFirstResponder()
-//        }
-//
-//        return true
-//    }
 }
 
 // MARK: - Extension CreateAccountViewController: UIPickerViewDelegate, UIPickerViewDataSource
@@ -190,15 +177,15 @@ extension CreateAccountViewController: UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return cityDataSource.cityList.count
+        return cityDataSource.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return cityDataSource.cityList[row]
+        return cityDataSource[row].localizedTitle
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        lpViewCityName.txtInputField.text = cityDataSource.cityList[row]
+        lpViewCityName.txtInputField.text = cityDataSource[row].localizedTitle
         if lpViewCityName.txtInputField.text != "" {
             isValideCity = true
             textFieldDidChange(lpViewCityName.txtInputField)

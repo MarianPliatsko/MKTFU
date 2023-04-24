@@ -42,7 +42,7 @@ class ConfirmTableViewCell: UITableViewCell {
         return nib
     }
     
-    func setupUI(mode: Mode) {
+    func setupUI(mode: CreateOfferMode) {
         switch mode {
         case .createProduct:
             confirmButton.setTitle("Create product", for: .normal)

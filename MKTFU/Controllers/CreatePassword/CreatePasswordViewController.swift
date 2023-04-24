@@ -13,10 +13,10 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
     //MARK: - Properties
     weak var coordinator: MainCoordinator?
     var user = User()
-    let validate = Validate()
+    private var isChecked: Bool = false
+    private let validation = Validate()
     private let checkedImage = UIImage(named: "CheckedImage")
     private let uncheckedImage = UIImage(named: "UncheckedImage")
-    private var isChecked: Bool = false
     private let termsAndPolicyText = "By checking this box, you agree to our Terms of Service and our Privacy Policy"
     
     //MARK: - Outlets
@@ -24,23 +24,19 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
     @IBOutlet private weak var lpHeaderView: LPHeaderView!
     @IBOutlet private weak var lpViewPassword: LpCustomView!
     @IBOutlet private weak var lpViewConfirmPassword: LpCustomView!
-    @IBOutlet private weak var sixCharactersImage: UIImageView!
-    @IBOutlet private weak var oneUppercaseImage: UIImageView!
-    @IBOutlet private weak var oneNumberImage: UIImageView!
+    @IBOutlet private weak var numberOfCharactersImageView: UIImageView!
+    @IBOutlet private weak var oneUppercaseImageView: UIImageView!
+    @IBOutlet private weak var oneNumberImageView: UIImageView!
     @IBOutlet private weak var checkMarkTermsAndPolicyButton: UIButton!
     @IBOutlet private weak var termsAndPolicyTextView: UITextView!
     @IBOutlet private weak var createAccountButton: UIButton!
-    @IBOutlet private weak var agreementTextView: UITextView! {
-        didSet {
-            agreementTextView.centerVertically()
-        }
-    }
+    @IBOutlet private weak var agreementTextView: UITextView!
     
     //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         //createAccountButton.isEnabled = false
         
         
@@ -78,8 +74,13 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
         createAccount(user: user)
         coordinator?.goToSuccessVC()
     }
-
-
+    
+    //MARK: - Methods
+    
+    private func setupUI () {
+        agreementTextView.centerVertically()
+    }
+    
     private func createAccount(user: User) {
         let userMetaData = ["firstName": user.firstName,
                             "lastName": user.lastName,
@@ -157,76 +158,58 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
     // MARK: - Validation methods
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        validating()
+        validatePassword(with: validation.validate(
+            password: lpViewPassword.txtInputField.text ?? ""))
     }
     
-    private func validating() {
-        
-        guard let password = lpViewPassword.txtInputField.text,
-              let confirmPassword = lpViewConfirmPassword.txtInputField.text else {return}
-        
-        let validPassword = validate.validatePassword.validatePassword(password: password)
-        if validPassword == false {
+    private func validatePassword(with validationResult: PasswordValidationResult) {
+        let validPasswordImageCheckmark = UIImage(named: "Icon awesome-check-circle-fill")
+        switch validationResult {
+        case .valid:
+            numberOfCharactersImageView.image = validPasswordImageCheckmark
+            oneUppercaseImageView.image = validPasswordImageCheckmark
+            oneNumberImageView.image = validPasswordImageCheckmark
+            
+            if lpViewPassword.txtInputField.text == lpViewConfirmPassword.txtInputField.text && isChecked {
+                createPasswordButtonIsActive()
+            } else {
+                createPasswordButtoniSNotActive()
+            }
+        case .invalid(let passedValidationChecks):
+            if passedValidationChecks.contains(.enoughCharacters) {
+                numberOfCharactersImageView.image = validPasswordImageCheckmark
+            }
+            if passedValidationChecks.contains(.hasOneDigit) {
+                oneNumberImageView.image = validPasswordImageCheckmark
+            }
+            if passedValidationChecks.contains(.hasOneUppercase) {
+                oneUppercaseImageView.image = validPasswordImageCheckmark
+            }
+            createPasswordButtoniSNotActive()
         }
-        
-        let sixCharacters = validate.validateString.validateString(regEX: "^.{6,}$",
-                                                                   password: password)
-        if sixCharacters == false {
-            sixCharactersImage.image = UIImage(named: "Icon awesome-check-circle")
-            lpViewPassword.lblPasswordSecurityLevel.isHidden = true
-            reloadInputViews()
-        } else {
-            sixCharactersImage.image = UIImage(named: "Icon awesome-check-circle-fill")
-            lpViewPassword.lblPasswordSecurityLevel.isHidden = false
-            lpViewPassword.lblPasswordSecurityLevel.textColor = UIColor.appColor(LPColor.WarningYellow)
-            lpViewPassword.lblPasswordSecurityLevel.text = "Weak"
-            reloadInputViews()
-        }
-        
-        let oneUppercase = validate.validateString.validateString(regEX: ".*[A-Z]+.*",
-                                                                  password: password)
-        if oneUppercase == false {
-            oneUppercaseImage.image = UIImage(named: "Icon awesome-check-circle")
-        } else {
-            oneUppercaseImage.image = UIImage(named: "Icon awesome-check-circle-fill")
-        }
-        
-        let oneNumber = validate.validateString.validateString(regEX: ".*[0-9]+.*",
-                                                               password: password)
-        if oneNumber == false {
-            oneNumberImage.image = UIImage(named: "Icon awesome-check-circle")
-        } else {
-            oneNumberImage.image = UIImage(named: "Icon awesome-check-circle-fill")
-        }
-        
-        if sixCharacters == true, oneUppercase == true, oneNumber == true {
-            lpViewPassword.lblPasswordSecurityLevel.isHidden = false
-            lpViewPassword.lblPasswordSecurityLevel.textColor = UIColor.appColor(LPColor.GoodJobGreen)
-            lpViewPassword.lblPasswordSecurityLevel.text = "Strong"
-            reloadInputViews()
-        }
-        
-        if validPassword == true, password == confirmPassword, sixCharacters == true, oneUppercase == true, oneNumber == true, isChecked == true {
-            createAccountButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
-            createAccountButton.isEnabled = true
-            reloadInputViews()
-        } else {
-            createAccountButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
-            createAccountButton.isEnabled = false
-            reloadInputViews()
-        }
-        reloadInputViews()
     }
     
-    private func checkMarkTapped() {
+    private func createPasswordButtonIsActive() {
+        createAccountButton.isEnabled = true
+        createAccountButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
+    }
+    private func createPasswordButtoniSNotActive() {
+        createAccountButton.isEnabled = false
+        createAccountButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
+    }
+    
+    private func checkMarkTapped(){
         isChecked.toggle()
-        
-        if isChecked == true {
-            checkMarkTermsAndPolicyButton.setImage(checkedImage, for: UIControl.State.normal)
-            validating()
-        } else {
-            checkMarkTermsAndPolicyButton.setImage(uncheckedImage, for: UIControl.State.normal)
-            validating()
+        switch isChecked {
+        case true :
+            checkMarkTermsAndPolicyButton.setImage(checkedImage,
+                                                   for: UIControl.State.normal)
+            validatePassword(with: validation.validate(
+                password: lpViewPassword.txtInputField.text ?? ""))
+        case false :
+            checkMarkTermsAndPolicyButton.setImage(uncheckedImage,
+                                                   for: UIControl.State.normal)
+            createPasswordButtoniSNotActive()
         }
     }
 }
@@ -234,18 +217,15 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
 extension CreatePasswordViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        
         if URL.scheme == "terms" {
             coordinator?.goToTermsOfServiceVC()
             return false
-        } else  if URL.scheme == "privacy"{
+        } else if URL.scheme == "privacy"{
             coordinator?.goToPrivacyPolicyVC()
             return false
         }
         return true
-        // let the system open this URL
     }
-    
 }
 
 

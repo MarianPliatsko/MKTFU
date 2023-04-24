@@ -74,4 +74,8 @@ extension MyPurchasesViewController : UITableViewDelegate, UITableViewDataSource
         cell.setup(product: product[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coordinator?.goToPickupInformationViewController(with: product[indexPath.row], with: .fromPurchases)
+    }
 }

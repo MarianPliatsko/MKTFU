@@ -14,7 +14,7 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
-    private var passwordAlert = ChangePasswordAlertView()
+    private var alert = CustomAlertView()
     private let validation = Validate()
     private let keyChain = KeychainSwift()
     
@@ -24,6 +24,10 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
     @IBOutlet private weak var oldPasswordView: LpCustomView!
     @IBOutlet private weak var newPasswordView: LpCustomView!
     @IBOutlet private weak var confirmNewPasswordView: LpCustomView!
+    @IBOutlet private weak var numberOfCharactersImageView: UIImageView!
+    @IBOutlet private weak var oneUppercaseImageView: UIImageView!
+    @IBOutlet private weak var oneNumberImageView: UIImageView!
+    @IBOutlet private weak var updatePasswordButton: UIButton!
     
     //MARK: - Life cycle
     
@@ -33,6 +37,17 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+        
+        newPasswordView.txtInputField.addTarget(
+            self,
+            action: #selector(ChangePasswordViewController.textFieldDidChange(_:)),
+            for: .editingChanged
+        )
+        confirmNewPasswordView.txtInputField.addTarget(
+            self,
+            action: #selector(ChangePasswordViewController.textFieldDidChange(_:)),
+            for: .editingChanged
+        )
         
         newPasswordView.lblPasswordSecurityLevel.isHidden = true
     }
@@ -44,17 +59,6 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
     }
     
     //MARK: - Methods
-    
-    private func setupPasswordAlertUI() {
-        passwordAlert.view.translatesAutoresizingMaskIntoConstraints = false
-        passwordAlert.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        passwordAlert.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        passwordAlert.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        passwordAlert.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        passwordAlert.view.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        passwordAlert.view.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        passwordAlert.view.backgroundColor = UIColor.appColor(LPColor.TextGray40)
-    }
     
     private func updatePassword() {
         let oldPasswordFromKeyChain = keyChain.get(KeychainConstants.password)
@@ -74,16 +78,74 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
     private func changePasswordRequest(newPassword: String, confirmedNewPassword: String) {
         let parameters = ["newPassword": newPassword,
                           "confirmPassword": confirmedNewPassword]
-        NetworkManager.shared.changePasswordRequest(endPoint: EndpointConstants.changePassword,
-                                                    token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
-                                                    parameters: parameters) { [weak self] result in
+        NetworkManager.shared.request(endpoint: EndpointConstants.changePassword,
+                                      type: Empty.self,
+                                      token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
+                                      httpMethod: .post,
+                                      resultsLimit: nil,
+                                      parameters: parameters) { [weak self] result in
             switch result {
-            case .success(let response):
-                print(response)
-            case .failure(_):
-                self?.view.addSubview(self?.passwordAlert ?? UIView())
-                self?.setupPasswordAlertUI()
+            case .success(_):
+                DispatchQueue.main.async {
+                    self?.coordinator?.goToSuccessVC()
+                }
+            case .failure(let error):
+                print(error)
+                DispatchQueue.main.async {
+                    self?.alert.showAlert(view: self?.view ?? UIView(),
+                                          alertText: AlertMessageConstants.wrongPassword,
+                                          leftButtonText: "Cancel",
+                                          rightButtonText: "Try again",
+                                          onRightButton: {
+                        self?.alert.hideAlert()
+                    },
+                                          onLeftButton: {
+                        self?.navigationController?.popViewController(animated: true)
+                    })
+                }
             }
         }
+    }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        validatePassword(with: validation.validate(
+            password: newPasswordView.txtInputField.text ?? ""))
+    }
+    
+    private func validatePassword(with validationResult: PasswordValidationResult) {
+        let validPasswordImageCheckmark = UIImage(named: "Icon awesome-check-circle-fill")
+        let oldPasswordFromKeyChain = keyChain.get(KeychainConstants.password)
+        switch validationResult {
+        case .valid:
+            numberOfCharactersImageView.image = validPasswordImageCheckmark
+            oneUppercaseImageView.image = validPasswordImageCheckmark
+            oneNumberImageView.image = validPasswordImageCheckmark
+            
+            if newPasswordView.txtInputField.text == confirmNewPasswordView.txtInputField.text && oldPasswordView.txtInputField.text == oldPasswordFromKeyChain {
+                updatePasswordButtonIsActive()
+            } else {
+                updatePasswordButtoniSNotActive()
+            }
+        case .invalid(let passedValidationChecks):
+            if passedValidationChecks.contains(.enoughCharacters) {
+                numberOfCharactersImageView.image = validPasswordImageCheckmark
+            }
+            if passedValidationChecks.contains(.hasOneDigit) {
+                oneNumberImageView.image = validPasswordImageCheckmark
+            }
+            if passedValidationChecks.contains(.hasOneUppercase) {
+                oneUppercaseImageView.image = validPasswordImageCheckmark
+            }
+            updatePasswordButtoniSNotActive()
+        }
+    }
+    
+    private func updatePasswordButtonIsActive() {
+        updatePasswordButton.isEnabled = true
+        updatePasswordButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
+    }
+    private func updatePasswordButtoniSNotActive() {
+        updatePasswordButton.isEnabled = false
+        updatePasswordButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
     }
 }

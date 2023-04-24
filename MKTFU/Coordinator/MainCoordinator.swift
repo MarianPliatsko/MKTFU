@@ -68,13 +68,13 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToCreateOfferVC(product: Product?, with mode: Mode) {
+    func goToCreateOfferVC(product: Product?, with mode: CreateOfferMode) {
         let vc = CreateOfferViewController.instantiate(name: "CreateOffer")
         vc.coordinator = self
         if product != nil {
             vc.product = product!
         }
-        vc.mode = mode
+        vc.setupMode(mode: mode)
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
@@ -109,10 +109,11 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToPickupInformationViewController(with product: Product) {
+    func goToPickupInformationViewController(with product: Product, with mode: PickupInformationMode) {
         let vc = PickupInformationViewController.instantiate(name: "PickupInformation")
         vc.coordinator = self
         vc.product = product
+        vc.setupMode(mode: mode)
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }

@@ -126,7 +126,8 @@ class MyListingsViewController: UIViewController, Storyboarded {
         case .sold:
             soldItemsSelected()
             if !soldListingProducts.isEmpty {
-                dataSource.append(ProductSection(sectionTitle: nil, products: soldListingProducts))
+                dataSource.append(ProductSection(sectionTitle: nil,
+                                                 products: soldListingProducts))
             }
         }
         myListingTableView.reloadData()
@@ -180,6 +181,11 @@ extension MyListingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.goToCreateOfferVC(product: dataSource[indexPath.section].products[indexPath.row], with: .saveChanges)
+        if dataSource[indexPath.section].products[indexPath.row].status == "ACTIVE" {
+            coordinator?.goToCreateOfferVC(product: dataSource[indexPath.section].products[indexPath.row], with: .saveChanges)
+        }
+        if dataSource[indexPath.section].products[indexPath.row].status == "PENDING" {
+            coordinator?.goToCreateOfferVC(product: dataSource[indexPath.section].products[indexPath.row], with: .confirmSold)
+        }
     }
 }

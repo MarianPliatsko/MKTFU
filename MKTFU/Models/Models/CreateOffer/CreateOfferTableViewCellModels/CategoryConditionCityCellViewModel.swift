@@ -8,11 +8,12 @@
 import Foundation
 
 struct CategoryConditionCityCellViewModel {
-    var title: String
-    var placeholder: String
-    var text: String
-    var rawValue: String
-    var categories: [String]
-    var textInView: ((String) -> Void)
-    var onButtonPressed: (() -> Void)
+    let title: String
+    let placeholder: String
+    let text: String
+    let rawValue: String
+    let pickerItems: [PickerItem]
+    let isDisabled: Bool
+    let textInView: ((String) -> Void)
+    let onButtonPressed: (() -> Void)
 }

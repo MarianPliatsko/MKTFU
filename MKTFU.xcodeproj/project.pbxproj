@@ -78,9 +78,8 @@
 		0479A64829B11FC8004C1806 /* ConfirmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A64629B11FC8004C1806 /* ConfirmTableViewCell.swift */; };
 		0479A64929B11FC8004C1806 /* ConfirmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0479A64729B11FC8004C1806 /* ConfirmTableViewCell.xib */; };
 		0479A65029B121FB004C1806 /* CancelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A64E29B121FB004C1806 /* CancelTableViewCell.swift */; };
-		0479A65129B121FB004C1806 /* CancelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0479A64F29B121FB004C1806 /* CancelTableViewCell.xib */; };
-		047D507B29C8C4F800EED8B5 /* ChahgePasswordAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047D507A29C8C4F800EED8B5 /* ChahgePasswordAlertView.xib */; };
-		047D507D29C8C50400EED8B5 /* ChangePasswordAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D507C29C8C50400EED8B5 /* ChangePasswordAlertView.swift */; };
+		047D507B29C8C4F800EED8B5 /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047D507A29C8C4F800EED8B5 /* CustomAlertView.xib */; };
+		047D507D29C8C50400EED8B5 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D507C29C8C50400EED8B5 /* CustomAlertView.swift */; };
 		047D508029CA231D00EED8B5 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D507F29CA231D00EED8B5 /* NotificationsViewController.swift */; };
 		047D508329CA234200EED8B5 /* Notifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047D508229CA234200EED8B5 /* Notifications.storyboard */; };
 		04808D52298C57CA0018CB04 /* CreatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04808D51298C57CA0018CB04 /* CreatePasswordViewController.swift */; };
@@ -158,6 +157,14 @@
 		04EBB1BF29AF0BB9009A176B /* ProductCategoryConditionCityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EBB1BD29AF0BB9009A176B /* ProductCategoryConditionCityTableViewCell.xib */; };
 		04EE24DD29F0D7D20069DE62 /* NotificationCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE24DC29F0D7D20069DE62 /* NotificationCount.swift */; };
 		04EE24DF29F0D8000069DE62 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE24DE29F0D8000069DE62 /* Notifications.swift */; };
+		04EE24E529F386240069DE62 /* CancelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EE24E329F386240069DE62 /* CancelTableViewCell.xib */; };
+		04EE24E729F5BCE20069DE62 /* AlertMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE24E629F5BCE20069DE62 /* AlertMessages.swift */; };
+		04EE24EB29F5D69A0069DE62 /* ImagesPreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE24E929F5D69A0069DE62 /* ImagesPreviewTableViewCell.swift */; };
+		04EE24EC29F5D69A0069DE62 /* ImagesPreviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EE24EA29F5D69A0069DE62 /* ImagesPreviewTableViewCell.xib */; };
+		04EE24F029F5DB990069DE62 /* ImagesPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE24EE29F5DB990069DE62 /* ImagesPreviewCollectionViewCell.swift */; };
+		04EE24F129F5DB990069DE62 /* ImagesPreviewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EE24EF29F5DB990069DE62 /* ImagesPreviewCollectionViewCell.xib */; };
+		04EE24F329F5E52D0069DE62 /* UICollectionViewLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE24F229F5E52D0069DE62 /* UICollectionViewLayout+.swift */; };
+		04EE24F529F6FBE60069DE62 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE24F429F6FBE60069DE62 /* Empty.swift */; };
 		04F7E3D929B26C1B00DBE4CC /* CreateOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7E3D829B26C1B00DBE4CC /* CreateOffer.swift */; };
 		04F7E3DF29B28C0700DBE4CC /* DetailListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7E3DD29B28C0700DBE4CC /* DetailListTableViewCell.swift */; };
 		04F7E3E029B28C0700DBE4CC /* DetailListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7E3DE29B28C0700DBE4CC /* DetailListTableViewCell.xib */; };
@@ -234,9 +241,8 @@
 		0479A64629B11FC8004C1806 /* ConfirmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewCell.swift; sourceTree = "<group>"; };
 		0479A64729B11FC8004C1806 /* ConfirmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewCell.xib; sourceTree = "<group>"; };
 		0479A64E29B121FB004C1806 /* CancelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTableViewCell.swift; sourceTree = "<group>"; };
-		0479A64F29B121FB004C1806 /* CancelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelTableViewCell.xib; sourceTree = "<group>"; };
-		047D507A29C8C4F800EED8B5 /* ChahgePasswordAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChahgePasswordAlertView.xib; sourceTree = "<group>"; };
-		047D507C29C8C50400EED8B5 /* ChangePasswordAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordAlertView.swift; sourceTree = "<group>"; };
+		047D507A29C8C4F800EED8B5 /* CustomAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
+		047D507C29C8C50400EED8B5 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		047D507F29CA231D00EED8B5 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		047D508229CA234200EED8B5 /* Notifications.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notifications.storyboard; sourceTree = "<group>"; };
 		04808D51298C57CA0018CB04 /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
@@ -312,6 +318,14 @@
 		04EBB1BD29AF0BB9009A176B /* ProductCategoryConditionCityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCategoryConditionCityTableViewCell.xib; sourceTree = "<group>"; };
 		04EE24DC29F0D7D20069DE62 /* NotificationCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCount.swift; sourceTree = "<group>"; };
 		04EE24DE29F0D8000069DE62 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		04EE24E329F386240069DE62 /* CancelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelTableViewCell.xib; sourceTree = "<group>"; };
+		04EE24E629F5BCE20069DE62 /* AlertMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessages.swift; sourceTree = "<group>"; };
+		04EE24E929F5D69A0069DE62 /* ImagesPreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesPreviewTableViewCell.swift; sourceTree = "<group>"; };
+		04EE24EA29F5D69A0069DE62 /* ImagesPreviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesPreviewTableViewCell.xib; sourceTree = "<group>"; };
+		04EE24EE29F5DB990069DE62 /* ImagesPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		04EE24EF29F5DB990069DE62 /* ImagesPreviewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesPreviewCollectionViewCell.xib; sourceTree = "<group>"; };
+		04EE24F229F5E52D0069DE62 /* UICollectionViewLayout+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayout+.swift"; sourceTree = "<group>"; };
+		04EE24F429F6FBE60069DE62 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		04F7E3D829B26C1B00DBE4CC /* CreateOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOffer.swift; sourceTree = "<group>"; };
 		04F7E3DD29B28C0700DBE4CC /* DetailListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListTableViewCell.swift; sourceTree = "<group>"; };
 		04F7E3DE29B28C0700DBE4CC /* DetailListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailListTableViewCell.xib; sourceTree = "<group>"; };
@@ -528,6 +542,7 @@
 			children = (
 				045020EC29A949E700DC627C /* CreateOffer.storyboard */,
 				0410706E29E8905F007B8257 /* ProductDescriptionTableViewCell */,
+				04EE24E829F5D65F0069DE62 /* ImagesPreviewTableViewCell */,
 				04EBB1B129AF0A56009A176B /* ProductImagesTableViewCell */,
 				04EBB1B629AF0AD3009A176B /* NameTableViewCell */,
 				04EBB1BB29AF0B58009A176B /* CellWithButton */,
@@ -552,6 +567,7 @@
 				045020F929AE644100DC627C /* Auth0Constants.swift */,
 				048D300129CE2BF200814285 /* KeychainConstants.swift */,
 				0410708229E8CAF0007B8257 /* EndpointConstants.swift */,
+				04EE24E629F5BCE20069DE62 /* AlertMessages.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -730,6 +746,7 @@
 				0431A64929935779004B5D05 /* UIButton+.swift */,
 				04CDE9E529C016A600F0E92C /* UIImageView+.swift */,
 				04B6AA8329E1FE0C00BBE04F /* String+.swift */,
+				04EE24F229F5E52D0069DE62 /* UICollectionViewLayout+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -813,7 +830,7 @@
 			isa = PBXGroup;
 			children = (
 				0479A64E29B121FB004C1806 /* CancelTableViewCell.swift */,
-				0479A64F29B121FB004C1806 /* CancelTableViewCell.xib */,
+				04EE24E329F386240069DE62 /* CancelTableViewCell.xib */,
 			);
 			path = CancelButtonCell;
 			sourceTree = "<group>";
@@ -838,6 +855,7 @@
 			children = (
 				0410706F29E8B444007B8257 /* CreateOffer */,
 				0410707F29E8B657007B8257 /* Home */,
+				04EE24F429F6FBE60069DE62 /* Empty.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -845,8 +863,8 @@
 		047D507929C8C4BD00EED8B5 /* CustomAlertView */ = {
 			isa = PBXGroup;
 			children = (
-				047D507C29C8C50400EED8B5 /* ChangePasswordAlertView.swift */,
-				047D507A29C8C4F800EED8B5 /* ChahgePasswordAlertView.xib */,
+				047D507C29C8C50400EED8B5 /* CustomAlertView.swift */,
+				047D507A29C8C4F800EED8B5 /* CustomAlertView.xib */,
 			);
 			path = CustomAlertView;
 			sourceTree = "<group>";
@@ -1265,6 +1283,25 @@
 			path = CellWithButton;
 			sourceTree = "<group>";
 		};
+		04EE24E829F5D65F0069DE62 /* ImagesPreviewTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				04EE24E929F5D69A0069DE62 /* ImagesPreviewTableViewCell.swift */,
+				04EE24EA29F5D69A0069DE62 /* ImagesPreviewTableViewCell.xib */,
+				04EE24ED29F5DB450069DE62 /* ImagesPreviewCollevtionViewCell */,
+			);
+			path = ImagesPreviewTableViewCell;
+			sourceTree = "<group>";
+		};
+		04EE24ED29F5DB450069DE62 /* ImagesPreviewCollevtionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				04EE24EE29F5DB990069DE62 /* ImagesPreviewCollectionViewCell.swift */,
+				04EE24EF29F5DB990069DE62 /* ImagesPreviewCollectionViewCell.xib */,
+			);
+			path = ImagesPreviewCollevtionViewCell;
+			sourceTree = "<group>";
+		};
 		04F7E3DB29B28BD600DBE4CC /* DetailListCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1349,9 +1386,9 @@
 				04CDE9F829C02A5D00F0E92C /* HowMKTFYWorks.storyboard in Resources */,
 				047832A729BAEFE6000F7F87 /* animated checkmark.gif in Resources */,
 				04445EBC298AFB2200B13D5D /* OpenSans-Semibold.ttf in Resources */,
-				0479A65129B121FB004C1806 /* CancelTableViewCell.xib in Resources */,
 				047832AD29BB012C000F7F87 /* Checkout.storyboard in Resources */,
 				04B5EFC529956AE4001807E7 /* LPHeaderView.xib in Resources */,
+				04EE24E529F386240069DE62 /* CancelTableViewCell.xib in Resources */,
 				04445EBE298AFB2C00B13D5D /* OpenSans-Bold.ttf in Resources */,
 				04A0391E2996CC1700A12064 /* Home.storyboard in Resources */,
 				0407623229CA333300E801C5 /* NotificationSectionHeaderView.xib in Resources */,
@@ -1368,6 +1405,7 @@
 				04BA4A90299AC8D0004F731D /* OpenSans-Light.ttf in Resources */,
 				04D135E829B59A8500CDC18C /* AddImageCollectionViewCell.xib in Resources */,
 				046E529A2988B8BD009E9F3F /* Assets.xcassets in Resources */,
+				04EE24F129F5DB990069DE62 /* ImagesPreviewCollectionViewCell.xib in Resources */,
 				04EBB1BF29AF0BB9009A176B /* ProductCategoryConditionCityTableViewCell.xib in Resources */,
 				046E52BC2989B6E7009E9F3F /* CreateAccount.storyboard in Resources */,
 				047832B629BB03BD000F7F87 /* CheckoutTableViewCell.xib in Resources */,
@@ -1388,6 +1426,7 @@
 				04B4792E29C39F7F000C2BB0 /* MyListingSectionHeaderView.xib in Resources */,
 				047832BC29BBAD1C000F7F87 /* PickupInformation.storyboard in Resources */,
 				0410706C29E89054007B8257 /* ProductDescriptionTableViewCell.xib in Resources */,
+				04EE24EC29F5D69A0069DE62 /* ImagesPreviewTableViewCell.xib in Resources */,
 				04D135E129B4646C00CDC18C /* ImageUICollectionViewCell.xib in Resources */,
 				0426DEFA29AFBD30009F7226 /* LPCustomView.xib in Resources */,
 				048DB37F299D92CD007FDAB8 /* ProductDetail.storyboard in Resources */,
@@ -1395,7 +1434,7 @@
 				04F7E3E029B28C0700DBE4CC /* DetailListTableViewCell.xib in Resources */,
 				04A039242996F8E000A12064 /* HomeCollectionViewCell.xib in Resources */,
 				04BDB0E02990B4F800983D91 /* PrivacyPolicy.storyboard in Resources */,
-				047D507B29C8C4F800EED8B5 /* ChahgePasswordAlertView.xib in Resources */,
+				047D507B29C8C4F800EED8B5 /* CustomAlertView.xib in Resources */,
 				049C8A5929BBDF8F00E21348 /* Menu.storyboard in Resources */,
 				0426DF0229AFC18A009F7226 /* LpCustomViewWithButton.xib in Resources */,
 				0479A64929B11FC8004C1806 /* ConfirmTableViewCell.xib in Resources */,
@@ -1417,11 +1456,14 @@
 				046A728B29C0C95D00854D74 /* ContactUsViewController.swift in Sources */,
 				0410707D29E8B56A007B8257 /* CategoryConditionCityCellViewModel.swift in Sources */,
 				04CDE9E929C0193100F0E92C /* MyListingsViewController.swift in Sources */,
+				04EE24F029F5DB990069DE62 /* ImagesPreviewCollectionViewCell.swift in Sources */,
 				0410707529E8B4AF007B8257 /* ImageCellViewModel.swift in Sources */,
 				0410707329E8B483007B8257 /* Condition.swift in Sources */,
 				047832B529BB03BD000F7F87 /* CheckoutTableViewCell.swift in Sources */,
+				04EE24E729F5BCE20069DE62 /* AlertMessages.swift in Sources */,
 				045020FE29AE7D4E00DC627C /* Coordinator.swift in Sources */,
 				048DB377299C292E007FDAB8 /* CompositionLayout.swift in Sources */,
+				04EE24EB29F5D69A0069DE62 /* ImagesPreviewTableViewCell.swift in Sources */,
 				0426DEFE29AFBE0B009F7226 /* LPCustomViewWithButton.swift in Sources */,
 				049C8A5629BBDF5B00E21348 /* MenuViewController.swift in Sources */,
 				04B4792B29C3885E000C2BB0 /* MyListingTableViewCell.swift in Sources */,
@@ -1436,9 +1478,10 @@
 				047D508029CA231D00EED8B5 /* NotificationsViewController.swift in Sources */,
 				04CDE9EF29C0234000F0E92C /* FAQViewController.swift in Sources */,
 				0479A64829B11FC8004C1806 /* ConfirmTableViewCell.swift in Sources */,
+				04EE24F329F5E52D0069DE62 /* UICollectionViewLayout+.swift in Sources */,
 				048E58412995C61D00DCC3EA /* ValidateEmail.swift in Sources */,
 				04B6AA7F29DC8C5200BBE04F /* ProductRequest.swift in Sources */,
-				047D507D29C8C50400EED8B5 /* ChangePasswordAlertView.swift in Sources */,
+				047D507D29C8C50400EED8B5 /* CustomAlertView.swift in Sources */,
 				04B4792529C24104000C2BB0 /* Home.swift in Sources */,
 				04BDB0D72990B47D00983D91 /* PrivacyPolicyViewController.swift in Sources */,
 				04A0391A2996CBC200A12064 /* HomeViewController.swift in Sources */,
@@ -1502,6 +1545,7 @@
 				04B4793229C3A345000C2BB0 /* MyListingSectionHeaderView.swift in Sources */,
 				046E52932988B8BB009E9F3F /* SceneDelegate.swift in Sources */,
 				04808D52298C57CA0018CB04 /* CreatePasswordViewController.swift in Sources */,
+				04EE24F529F6FBE60069DE62 /* Empty.swift in Sources */,
 				045020F129AC81AC00DC627C /* Auth0Manager.swift in Sources */,
 				0431A64A29935779004B5D05 /* UIButton+.swift in Sources */,
 				0410707129E8B469007B8257 /* Category.swift in Sources */,

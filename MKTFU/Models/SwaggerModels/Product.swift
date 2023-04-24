@@ -7,58 +7,37 @@
 
 import Foundation
 
-enum Categories: String, Codable {
-    case dealsGET = "DEALS"
-    case realEstateGET = "REAL_ESTATE"
-    case vehiclesGET = "VEHICLES"
-    case furnitureGET = "FURNITURE"
-    case electronicsGET = "ELECTRONICS"
-    case dealsPOST = "Deals"
-    case realEstatePOST = "Real estate"
-    case vehiclesPOST = "Vehicles"
-    case furniturePOST = "Furniture"
-    case electronicsPOST = "Electronics"
+enum Categories: String, Codable, CaseIterable, PickerItem {
+    case deals = "DEALS"
+    case realEstate = "REAL_ESTATE"
+    case vehicles = "VEHICLES"
+    case furniture = "FURNITURE"
+    case electronics = "ELECTRONICS"
     var localizedTitle: String {
         switch self {
-        case .dealsGET:
+        case .deals:
             return "Deals"
-        case .realEstateGET:
+        case .realEstate:
             return "Real estate"
-        case .vehiclesGET:
+        case .vehicles:
             return "Vehicles"
-        case .furnitureGET:
+        case .furniture:
             return "Furniture"
-        case .electronicsGET:
+        case .electronics:
             return "Electronics"
-        case .dealsPOST:
-            return "DEALS"
-        case .realEstatePOST:
-            return "REAL_ESTATE"
-        case .vehiclesPOST:
-            return "VEHICLES"
-        case .furniturePOST:
-            return "FURNITURE"
-        case .electronicsPOST:
-            return "ELECTRONICS"
         }
     }
 }
 
-enum Conditions: String, Codable {
-    case newGET = "NEW"
-    case usedGET = "USED"
-    case newPOST = "New"
-    case usedPOST = "Used"
+enum Conditions: String, Codable, CaseIterable, PickerItem {
+    case new = "NEW"
+    case used = "USED"
     var localizedTitle: String {
         switch self {
-        case .newGET:
+        case .new:
             return "New"
-        case .usedGET:
+        case .used:
             return "Used"
-        case .newPOST:
-            return "NEW"
-        case .usedPOST:
-            return "USED"
         }
     }
 }

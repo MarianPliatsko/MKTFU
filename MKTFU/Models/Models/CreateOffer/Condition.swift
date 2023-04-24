@@ -8,5 +8,11 @@
 import Foundation
 
 struct Condition {
-    let conditionList: [String]
+    var rawValue: String
+    var localizedTitle: String { rawValue }
+}
+
+extension Condition {
+    static var conditions = [Conditions(rawValue: "New"),
+                             Conditions(rawValue: "Used")]
 }

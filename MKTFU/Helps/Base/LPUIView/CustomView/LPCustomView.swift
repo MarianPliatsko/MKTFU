@@ -193,16 +193,15 @@ final class LpCustomView: LPView, UITextFieldDelegate {
         
     }
     
-    @objc
-    private func passwordVisibilityTogglePressed(_ sender: UIButton) {
+    @objc private func passwordVisibilityTogglePressed(_ sender: UIButton) {
         sender.isSelected.toggle()
         txtInputField.isSecureTextEntry = sender.isSelected
         if sender.isSelected {
             rightButton.setImage(UIImage(named: "Icon awesome-eye-slash"), for: .selected)
             rightButton.setImage(UIImage(named: "Icon awesome-eye-slash"), for: .normal)
         } else {
-            rightButton.setImage(UIImage(named: "Icon awesome-eye"), for: .selected)
-            rightButton.setImage(UIImage(named: "Icon awesome-eye"), for: .normal)
+            rightButton.setImage(UIImage(named: "Icon awesome-eye 1"), for: .selected)
+            rightButton.setImage(UIImage(named: "Icon awesome-eye 1"), for: .normal)
         }
     }
 }

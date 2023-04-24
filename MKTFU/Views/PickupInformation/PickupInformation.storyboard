@@ -236,6 +236,8 @@ VerySubtleGray</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="wpb-cW-cwm" id="VVC-c3-oaf"/>
+                        <outlet property="contactSellerButton" destination="Zek-Wz-SLe" id="GS8-kd-9tT"/>
                         <outlet property="lpHeaderView" destination="MSL-dA-dvt" id="GXL-qL-9xS"/>
                         <outlet property="productImageView" destination="Qh2-dO-54G" id="Q1j-Kd-LHA"/>
                         <outlet property="productPickupInformationLabel" destination="XQr-5p-294" id="3Wi-uQ-luO"/>

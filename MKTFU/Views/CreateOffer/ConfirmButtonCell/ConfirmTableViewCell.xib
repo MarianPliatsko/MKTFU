@@ -21,7 +21,7 @@
                         <rect key="frame" x="20" y="20" width="280" height="52"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3LY-O5-iAI">
-                                <rect key="frame" x="0.0" y="19" width="280" height="14"/>
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="52"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
@@ -33,7 +33,8 @@
                         <color key="backgroundColor" name="OccasionalPurple"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="52" id="9TR-bZ-VHG"/>
-                            <constraint firstItem="3LY-O5-iAI" firstAttribute="centerY" secondItem="wUc-hk-nmr" secondAttribute="centerY" id="I6a-LJ-Vp8"/>
+                            <constraint firstItem="3LY-O5-iAI" firstAttribute="top" secondItem="wUc-hk-nmr" secondAttribute="top" id="Yep-8l-khH"/>
+                            <constraint firstAttribute="bottom" secondItem="3LY-O5-iAI" secondAttribute="bottom" id="pE1-hw-xde"/>
                             <constraint firstAttribute="trailing" secondItem="3LY-O5-iAI" secondAttribute="trailing" id="pxb-rn-zxG"/>
                             <constraint firstItem="3LY-O5-iAI" firstAttribute="leading" secondItem="wUc-hk-nmr" secondAttribute="leading" id="y3u-M8-rXe"/>
                         </constraints>

@@ -8,6 +8,10 @@
 import Foundation
 
 enum EndpointConstants {
+    static let searchProduct = "api/Product/search"
+    static let productsByCategory = "api/Product/category"
+    static let getDeals = "api/Product/deals"
+    static let getAllProducts = "api/Product"
     static let changePassword = "api/Auth/changepassword"
     static let notification = "api/User/notifications"
     static let myListing = "api/User/products"
@@ -18,4 +22,7 @@ enum EndpointConstants {
     static let updateListing = "api/Product"
     static let confirmSold = "api/Product/complete/"
     static let purchaseListing = "api/Product/checkout/"
+    static let createOffer = "api/Product"
+    static let cancelSale = "api/Product/cancelsale/"
+    static let cancelAndRemove = "api/Product/cancel/"
 }

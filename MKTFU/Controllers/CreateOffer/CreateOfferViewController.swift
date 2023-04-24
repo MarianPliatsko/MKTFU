@@ -22,10 +22,15 @@ private enum CreateOfferTableViewCellType: Int, CaseIterable {
     case cancelButtonCell = 9
 }
 
-enum Mode {
+ enum CreateOfferMode {
     case createProduct
     case saveChanges
     case confirmSold
+}
+
+protocol PickerItem {
+var rawValue: String { get }
+var localizedTitle: String { get }
 }
 
 class CreateOfferViewController: UIViewController, Storyboarded {
@@ -35,13 +40,11 @@ class CreateOfferViewController: UIViewController, Storyboarded {
     weak var coordinator: MainCoordinator?
     private let keyChain = KeychainSwift()
     var product = Product()
-    var mode: Mode!
-    private var createOfferDataSource = CreateOffer(category:
-                                                        Category(categoryList: ["Vehicles", "Furniture", "Electronics", "Real estate"]),
-                                                    condition:
-                                                        Condition(conditionList: ["New", "Used"]),
-                                                    city:
-                                                        City( cityList: ["Calgary", "Brook"]))
+    var mode: CreateOfferMode!
+    let alert = CustomAlertView()
+    private var createOfferDataSource = CreateOffer(category: nil,
+                                                    condition: nil,
+                                                    city: nil)
     
     //MARK: - Outlet
     
@@ -61,7 +64,7 @@ class CreateOfferViewController: UIViewController, Storyboarded {
     
     //MARK: - Methods
     
-    private func setupMode(mode: Mode) {
+    func setupMode(mode: CreateOfferMode) {
         self.mode = mode
     }
     
@@ -81,6 +84,8 @@ class CreateOfferViewController: UIViewController, Storyboarded {
                            forCellReuseIdentifier: ConfirmTableViewCell.identifier)
         tableView.register(CancelTableViewCell.nib(),
                            forCellReuseIdentifier: CancelTableViewCell.identifier)
+        tableView.register(ImagesPreviewTableViewCell.nib(),
+                           forCellReuseIdentifier: ImagesPreviewTableViewCell.identifier)
     }
     
     private func presentPhotoPicker() {
@@ -143,26 +148,25 @@ class CreateOfferViewController: UIViewController, Storyboarded {
     }
     
     private func createOffer(data:Product) {
-        guard let category = data.category?.localizedTitle else {return}
-        guard let condition = data.condition?.localizedTitle else {return}
+        guard let category = data.category?.rawValue else {return}
+        guard let condition = data.condition?.rawValue else {return}
         let parameters: [String:Any] = ["productName": data.productName,
                                         "description": data.description,
-                                        "price": data.price,
+                                        "price": 100,
                                         "category": category,
                                         "condition": condition,
                                         "address": data.address,
                                         "city": data.city,
                                         "images": data.images.map {($0 as NSString).lastPathComponent}]
         
-        NetworkManager.shared.request(endpoint: "api/Product",
+        NetworkManager.shared.request(endpoint: EndpointConstants.createOffer,
                                       type: Product.self,
                                       token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
                                       httpMethod: .post,
                                       resultsLimit: nil,
                                       parameters: parameters) { [weak self] result in
             switch result {
-            case .success(let success):
-                print(success)
+            case .success(_):
                 DispatchQueue.main.async {
                     self?.coordinator?.goToSuccessVC()
                 }
@@ -172,6 +176,42 @@ class CreateOfferViewController: UIViewController, Storyboarded {
         }
     }
     
+    private func cancelSale(data: Product) {
+        NetworkManager.shared.request(endpoint: "\(EndpointConstants.cancelSale)\(data.id)",
+                                      type: Product.self,
+                                      token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
+                                      httpMethod: .put,
+                                      resultsLimit: nil,
+                                      parameters: nil) { [weak self] result in
+            switch result {
+            case .success(_):
+                DispatchQueue.main.async {
+                    self?.coordinator?.goToMyListingsViewController()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func cancelListingAndRemoveFromSale(data: Product) {
+        NetworkManager.shared.request(endpoint: "\(EndpointConstants.cancelAndRemove)\(data.id)",
+                                      type: Product.self,
+                                      token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
+                                      httpMethod: .put,
+                                      resultsLimit: nil,
+                                      parameters: nil) { [weak self] result in
+            switch result {
+            case .success(_):
+                DispatchQueue.main.async {
+                    self?.coordinator?.goToMyListingsViewController()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+        
     private func createImageCellViewModel() -> ImageCellViewModel {
         ImageCellViewModel(images: product.images,
                            onAddImageButtonTapped: { [weak self] in
@@ -189,6 +229,7 @@ class CreateOfferViewController: UIViewController, Storyboarded {
         NamePriceAddressCellViewModel(title: "Product name",
                                       placeholder: "Type your product name",
                                       text: product.productName,
+                                      isDisabled: mode == .confirmSold,
                                       nameTextInView: { [weak self] text in
             self?.product.productName = text as? String ?? ""
         })
@@ -197,6 +238,7 @@ class CreateOfferViewController: UIViewController, Storyboarded {
     private func createDescriptionViewModel() -> DescriptionCellViewModel {
         DescriptionCellViewModel(title: "Description",
                                  text: product.description,
+                                 isDisabled: mode == .confirmSold,
                                  descriptionTextInView: { [weak self] description in
             self?.product.description = description
         })
@@ -206,6 +248,7 @@ class CreateOfferViewController: UIViewController, Storyboarded {
         NamePriceAddressCellViewModel(title: "Price",
                                       placeholder: "Type the price",
                                       text: product.price,
+                                      isDisabled: mode == .confirmSold,
                                       nameTextInView: { [weak self] text in
             self?.product.price = text as? Double ?? 0.0
         })
@@ -215,6 +258,7 @@ class CreateOfferViewController: UIViewController, Storyboarded {
         NamePriceAddressCellViewModel(title: "Address",
                                       placeholder: "Type the address",
                                       text: product.address,
+                                      isDisabled: mode == .confirmSold,
                                       nameTextInView: { [weak self] text in
             self?.product.address = text as? String ?? ""
         })
@@ -225,7 +269,8 @@ class CreateOfferViewController: UIViewController, Storyboarded {
                                            placeholder: "Choose the category",
                                            text: product.category?.localizedTitle ?? "",
                                            rawValue: product.category?.rawValue ?? "",
-                                           categories: createOfferDataSource.category.categoryList,
+                                           pickerItems: Categories.allCases,
+                                           isDisabled: mode == .confirmSold,
                                            textInView: { [weak self] text in
             self?.tableView.beginUpdates()
             self?.product.category = Categories(rawValue: text)
@@ -242,7 +287,8 @@ class CreateOfferViewController: UIViewController, Storyboarded {
                                            placeholder: "Choose the condition",
                                            text: product.condition?.localizedTitle ?? "",
                                            rawValue: product.condition?.rawValue ?? "",
-                                           categories: createOfferDataSource.condition.conditionList,
+                                           pickerItems: Conditions.allCases,
+                                           isDisabled: mode == .confirmSold,
                                            textInView: { [weak self] text in
             self?.tableView.beginUpdates()
             self?.product.condition = Conditions(rawValue: text)
@@ -260,7 +306,8 @@ class CreateOfferViewController: UIViewController, Storyboarded {
                                            placeholder: "Choose the city",
                                            text: product.city,
                                            rawValue: "",
-                                           categories: createOfferDataSource.city.cityList,
+                                           pickerItems: City.cities,
+                                           isDisabled: mode == .confirmSold,
                                            textInView: { [weak self] text in
             self?.tableView.beginUpdates()
             self?.product.city = text
@@ -288,6 +335,24 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
         
         switch cellType {
         case .productImagesCell:
+            switch mode {
+            case.confirmSold:
+                guard let imagesPreviewCell = tableView.dequeueReusableCell(
+                    withIdentifier: ImagesPreviewTableViewCell.identifier,
+                    for: indexPath) as? ImagesPreviewTableViewCell else {return UITableViewCell()}
+                let imageCellViewModel = createImageCellViewModel()
+                imagesPreviewCell.setup(model: imageCellViewModel.images)
+                return imagesPreviewCell
+            case .createProduct, .saveChanges:
+                guard let productImagesCell = tableView.dequeueReusableCell(
+                    withIdentifier: ProductImagesTableViewCell.identifier,
+                    for: indexPath) as? ProductImagesTableViewCell else {return UITableViewCell()}
+                let imageCellViewModel = createImageCellViewModel()
+                productImagesCell.setup(model: imageCellViewModel)
+                return productImagesCell
+            case .none:
+                break
+            }
             guard let productImagesCell = tableView.dequeueReusableCell(
                 withIdentifier: ProductImagesTableViewCell.identifier,
                 for: indexPath) as? ProductImagesTableViewCell else {return UITableViewCell()}
@@ -360,11 +425,11 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
                 if self?.product != nil {
                     switch self?.mode {
                     case .createProduct:
-                        self?.createOffer(data: (self?.product)!)
+                        self?.createOffer(data: self!.product)
                     case .confirmSold:
-                        self?.confirmSold(data: (self?.product)!)
+                        self?.confirmSold(data: self!.product)
                     case .saveChanges:
-                        self?.updateOffer(data: (self?.product)!)
+                        self?.updateOffer(data: self!.product)
                     case .none:
                         break
                     }
@@ -376,6 +441,49 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
             guard let cancelCell = tableView.dequeueReusableCell(
                 withIdentifier: CancelTableViewCell.identifier,
                 for: indexPath) as? CancelTableViewCell else {return UITableViewCell()}
+            cancelCell.setupUI(mode: mode)
+            cancelCell.onCancelPressed = { [weak self] in
+                if self?.product != nil {
+                    switch self?.mode {
+                    case .createProduct:
+                        self?.alert.showAlert(view: self?.view ?? UIView(),
+                                              alertText: AlertMessageConstants.changeListing,
+                                              leftButtonText: "No",
+                                              rightButtonText: "Yes",
+                                              onRightButton: {
+                            self?.navigationController?.popViewController(animated: true)
+                        },
+                                              onLeftButton: {
+                            self?.alert.hideAlert()
+                        })
+                    case .confirmSold:
+                        self?.alert.showAlert(view: self?.view ?? UIView(),
+                                              alertText: AlertMessageConstants.cancelSold,
+                                              leftButtonText: "No",
+                                              rightButtonText: "Yes",
+                                              onRightButton: {
+                            self?.cancelSale(data: self!.product)
+                        },
+                                              onLeftButton: {
+                            self?.alert.hideAlert()
+                        })
+                        
+                    case .saveChanges:
+                        self?.alert.showAlert(view: self?.view ?? UIView(),
+                                              alertText: AlertMessageConstants.cancelListing,
+                                              leftButtonText: "No",
+                                              rightButtonText: "Yes",
+                                              onRightButton: {
+                            self?.cancelListingAndRemoveFromSale(data: self!.product)
+                        },
+                                              onLeftButton: {
+                            self?.alert.hideAlert()
+                        })
+                    case .none:
+                        break
+                    }
+                }
+            }
             return cancelCell
         }
     }

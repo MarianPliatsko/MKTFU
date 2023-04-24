@@ -110,16 +110,17 @@ class Auth0Manager {
             }
     }
     
-    func resetPassword(_ email: String) {
+    func resetPassword(_ email: String,
+                       complition: @escaping(Result<Any?, Auth0Error>) -> Void) {
         auth0
             .resetPassword(email: email,
                            connection: Auth0Constants.connection)
             .start { result in
                 switch result {
                 case .success:
-                    print("Sent link to reset password")
+                    complition (.success(result))
                 case .failure(let error):
-                    print(error)
+                    complition (.failure(.error(error)))
                 }
             }
     }

@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 class Home {
-    var city: City
+    var city: [City]
     var productCategory: [ProductCategory]
     
-    init(city: City, productCategory: [ProductCategory]) {
+    init(city: [City], productCategory: [ProductCategory]) {
         self.city = city
         self.productCategory = productCategory
     }

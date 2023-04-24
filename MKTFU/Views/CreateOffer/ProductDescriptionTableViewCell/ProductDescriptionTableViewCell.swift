@@ -13,6 +13,7 @@ class ProductDescriptionTableViewCell: UITableViewCell {
     
     static let identifier = "ProductDescriptionTableViewCell"
     var textInView: ((String) -> Void)?
+    
     //MARK: - Outlet
     
     @IBOutlet weak var lblTitle: UILabel!
@@ -36,6 +37,10 @@ class ProductDescriptionTableViewCell: UITableViewCell {
         lblTitle.text = model.title
         textView.text = model.text
         textInView = model.descriptionTextInView
+        if model.isDisabled {
+            textView.textColor = UIColor.appColor(LPColor.TextGray40)
+            textView.isEditable = false
+        }
     }
 }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductDetailViewController: UIViewController, Storyboarded {
+class `ProductDetailViewController`: UIViewController, Storyboarded {
     
     //MARK: - Properties
     
@@ -50,27 +50,10 @@ class ProductDetailViewController: UIViewController, Storyboarded {
     //MARK: - Methods
     
     private func setupCollectionView() {
-        collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.collectionViewLayout = createLayout()
+        collectionView.setCollectionViewLayout(
+            UICollectionViewCompositionalLayout.createLayout(), animated: false)
         collectionView.register(ImageCollectionViewCell.nib(), forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
-    }
-    
-    private func createLayout() -> UICollectionViewCompositionalLayout {
-        
-        let item = CompositionLayout.createItem(width: .fractionalWidth(1),
-                                                height: .fractionalHeight(1),
-                                                spacing: 0)
-        
-        let group = CompositionLayout.createGroup(alignment: .horizontal,
-                                                  width: .fractionalWidth(1),
-                                                  height: .fractionalHeight(1),
-                                                  item: item, count: 1)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
-        
-        return UICollectionViewCompositionalLayout(section: section)
     }
     
     private func setupUI(data: Product) {
@@ -86,7 +69,7 @@ class ProductDetailViewController: UIViewController, Storyboarded {
 
     //MARK: - extension ProductDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource
 
-extension ProductDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ProductDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         product?.images.count ?? 0
     }

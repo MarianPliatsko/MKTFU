@@ -12,7 +12,7 @@ class ProductCategoryConditionCityTableViewCell: UITableViewCell {
     //MARK: - Properties
     
     static let identifier = "ProductCategoryConditionCityTableViewCell"
-    private var categories: [String] = []
+    private var categories: [PickerItem] = []
     private var textInView: ((String) -> Void)?
     private var rawValue = ""
     
@@ -46,12 +46,16 @@ class ProductCategoryConditionCityTableViewCell: UITableViewCell {
         lpView?.title = model.title
         lpView.placeHolder = model.placeholder
         lpView.txtInputField.text = model.text
-        categories = model.categories
+        categories = model.pickerItems
         rawValue = model.rawValue
         textInView = model.textInView
         lpView.onButtonPressed = {
             self.lpViewList.isHidden.toggle()
             model.onButtonPressed()
+        }
+        if model.isDisabled {
+            lpView.txtInputField.textColor = UIColor.appColor(LPColor.TextGray40)
+            lpView.txtInputField.isEnabled = false
         }
         listTableView.reloadData()
     }
@@ -65,12 +69,12 @@ extension ProductCategoryConditionCityTableViewCell: UITableViewDelegate, UITabl
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = listTableView.dequeueReusableCell(withIdentifier: DetailListTableViewCell.identifier, for: indexPath) as! DetailListTableViewCell
-        cell.setupUI(text: categories[indexPath.row])
+        cell.setupUI(data: categories[indexPath.row])
         return cell
     }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            self.textInView?(rawValue)
+            self.textInView?(categories[indexPath.row].rawValue)
             lpViewList.isHidden = true
         }
     }

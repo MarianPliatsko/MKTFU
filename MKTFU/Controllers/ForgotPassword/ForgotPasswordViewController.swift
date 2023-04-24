@@ -13,19 +13,17 @@ class ForgotPasswordViewController: UIViewController, Storyboarded {
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
-    
-    let validate = Validate()
+    private let validate = Validate()
     
     //MARK: - Outlets
     
-    @IBOutlet weak var lpHeaderView: LPHeaderView!
-    @IBOutlet weak var lpViewEmail: LpCustomView!
-    @IBOutlet weak var sentButton: UIButton!
+    @IBOutlet private weak var lpHeaderView: LPHeaderView!
+    @IBOutlet private weak var lpViewEmail: LpCustomView!
+    @IBOutlet private weak var sentButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
@@ -36,25 +34,32 @@ class ForgotPasswordViewController: UIViewController, Storyboarded {
     
     //MARK: - IBActions
     
-    @IBAction func sendButtonPressed(_ sender: UIButton) {
-        coordinator?.goToForgotPasswordCompleteVC()
+    @IBAction private func sendButtonPressed(_ sender: UIButton) {
+        resetPassword()
     }
     
     //MARK: - Methods
     
-    func resetPassword() {
+    private func resetPassword() {
         guard let email = lpViewEmail.txtInputField.text else {return}
-        Auth0Manager().resetPassword(email)
+        Auth0Manager().resetPassword(email) { [weak self] result in
+            switch result {
+            case .success(_):
+                DispatchQueue.main.async {
+                    self?.coordinator?.goToForgotPasswordCompleteVC()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
-
 }
 
-    
 extension ForgotPasswordViewController: UITextFieldDelegate {
     
     //MARK: - Validation methods
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @objc private func textFieldDidChange(_ textField: UITextField) {
         guard let email = lpViewEmail.txtInputField.text else {return}
         
         let isValidateEmail = validate.validateEmail.validateEmailId(emailID: email)

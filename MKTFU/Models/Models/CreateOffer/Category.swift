@@ -8,5 +8,13 @@
 import Foundation
 
 struct Category {
-    let categoryList: [String]
+    var rawValue: String
+    var localizedTitle: String { rawValue }
+}
+
+extension Category {
+    static var categories = [Categories(rawValue: "Vehicles"),
+                             Categories(rawValue: "Furniture"),
+                             Categories(rawValue: "Electronics"),
+                             Categories(rawValue: "Real estate")]
 }

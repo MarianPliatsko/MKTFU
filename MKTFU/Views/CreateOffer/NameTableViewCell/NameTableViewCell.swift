@@ -41,6 +41,10 @@ class NameTableViewCell: UITableViewCell {
         lpUIView.placeHolder = model.placeholder
         lpUIView.txtInputField.text = "\(model.text)"
         textInView = model.nameTextInView
+        if model.isDisabled {
+            lpUIView.txtInputField.textColor = UIColor.appColor(LPColor.TextGray40)
+            lpUIView.txtInputField.isEnabled = false
+        }
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

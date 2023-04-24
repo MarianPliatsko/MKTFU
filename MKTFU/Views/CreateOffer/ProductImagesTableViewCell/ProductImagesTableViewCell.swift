@@ -30,8 +30,6 @@ class ProductImagesTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        setupCollectionView()
     }
     
     //MARK: - IBAction
@@ -74,6 +72,7 @@ class ProductImagesTableViewCell: UITableViewCell {
     }
     
     func setup(model: ImageCellViewModel) {
+        setupCollectionView()
         toggleImagesUI(model: model)
         images = model.images
         onNeedUpdate = model.onAddImageButtonTapped

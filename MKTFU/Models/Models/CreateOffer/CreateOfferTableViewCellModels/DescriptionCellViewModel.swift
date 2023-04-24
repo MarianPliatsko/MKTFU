@@ -8,7 +8,8 @@
 import Foundation
 
 struct DescriptionCellViewModel {
-    var title: String
-    var text: String
-    var descriptionTextInView: ((String) -> Void)
+    let title: String
+    let text: String
+    let isDisabled: Bool
+    let descriptionTextInView: ((String) -> Void)
 }

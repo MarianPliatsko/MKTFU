@@ -18,7 +18,7 @@ class HomeViewController: UIViewController, Storyboarded {
     var user = User()
     var products: [Product] = []
     
-    let homeDataSource = Home(city: City(),
+    let homeDataSource = Home(city: City.cities,
                               productCategory: [ProductCategory(name: "Deals",
                                                                 image: UIImage(named: "Path 2") ?? UIImage()),
                                                 ProductCategory(name: "Vehicles",
@@ -54,11 +54,13 @@ class HomeViewController: UIViewController, Storyboarded {
         
         getAllProducts()
         
-        cityButton.setTitle(homeDataSource.city.cityList[0], for: .normal)
+        cityButton.setTitle(homeDataSource.city[0].localizedTitle, for: .normal)
         cityNameLabel.text = cityButton.currentTitle
         
-        filteredCityNameList = homeDataSource.city.cityList
-        
+        for city in homeDataSource.city {
+            filteredCityNameList.append(city.localizedTitle)
+        }
+//        filteredCityNameList = homeDataSource.city
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -137,7 +139,7 @@ class HomeViewController: UIViewController, Storyboarded {
     }
     
     private func getAllProducts() {
-        NetworkManager.shared.request(endpoint: "api/Product",
+        NetworkManager.shared.request(endpoint: EndpointConstants.getAllProducts,
                                       type: [Product].self,
                                       token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
                                       httpMethod: .get,
@@ -146,7 +148,11 @@ class HomeViewController: UIViewController, Storyboarded {
             switch result {
             case .success(let products):
                 DispatchQueue.main.async {
-                    self.products = products
+                    for products in products {
+                        if products.status == "ACTIVE" {
+                            self.products.append(products)
+                        }
+                    }
                     self.collectionView.reloadData()
                 }
             case .failure(let error):
@@ -156,7 +162,7 @@ class HomeViewController: UIViewController, Storyboarded {
     }
     
     private func getDeals(query: Int?) {
-        NetworkManager.shared.request(endpoint: "api/Product/deals",
+        NetworkManager.shared.request(endpoint: EndpointConstants.getDeals,
                                       type: [Product].self,
                                       token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
                                       httpMethod: .get,
@@ -182,7 +188,7 @@ class HomeViewController: UIViewController, Storyboarded {
         let parameters = ["category": category.localizedTitle,
                           "city": city]
         
-        NetworkManager.shared.request(endpoint: "api/Product/category",
+        NetworkManager.shared.request(endpoint: EndpointConstants.productsByCategory,
                                       type: [Product].self,
                                       token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
                                       httpMethod: .post,
@@ -203,8 +209,8 @@ class HomeViewController: UIViewController, Storyboarded {
     private func searchProduct(searchKeyWords: String, city: String, category: String?) {
         let parameters = ["search": searchKeyWords,
                           "city": city,
-                          "category": category]
-        NetworkManager.shared.request(endpoint: "api/Product/search",
+                          "category": nil]
+        NetworkManager.shared.request(endpoint: EndpointConstants.searchProduct,
                                       type: [Product].self,
                                       token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
                                       httpMethod: .post,
@@ -269,9 +275,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath, cellWidth: CGFloat) -> CGFloat {
-//        let imgHeight = calculateImageHeight(sourceImage: UIImage(named: "Path 2") ?? UIImage() , scaledToWidth: cellWidth)
+        let imgHeight = calculateImageHeight(sourceImage: UIImage(named: "Path 2") ?? UIImage() , scaledToWidth: cellWidth)
         let textHeight = requiredHeight(text: products[indexPath.item].productName, cellWidth: cellWidth)
-        return (172 + textHeight + 40)
+        return (imgHeight + textHeight + 5)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -320,8 +326,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        cityButton.setTitle(homeDataSource.city.cityList[indexPath.row], for: .normal)
-        cityNameLabel.text = homeDataSource.city.cityList[indexPath.row]
+        cityButton.setTitle(homeDataSource.city[indexPath.row].localizedTitle, for: .normal)
+        cityNameLabel.text = homeDataSource.city[indexPath.row].localizedTitle
         getProductsByCategory(category: homeDataSource.productCategory[indexPath.item].name, city: cityButton.currentTitle ?? "")
         citySearchView.isHidden = true
     }
@@ -333,11 +339,13 @@ extension HomeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredCityNameList = []
         if searchText == "" {
-            filteredCityNameList = homeDataSource.city.cityList
+            for city in homeDataSource.city {
+                filteredCityNameList.append(city.localizedTitle)
+            }
         }
-        for word in homeDataSource.city.cityList {
-            if word.contains(searchText) {
-                filteredCityNameList.append(word)
+        for word in homeDataSource.city {
+            if word.localizedTitle.contains(searchText) {
+                filteredCityNameList.append(word.localizedTitle)
             }
         }
         self.cityListTableView.reloadData()

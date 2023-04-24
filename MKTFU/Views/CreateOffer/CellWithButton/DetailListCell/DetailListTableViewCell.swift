@@ -26,8 +26,8 @@ class DetailListTableViewCell: UITableViewCell {
         return nib
     }
     
-    func setupUI(text: String) {
-        lblText.text = text
+    func setupUI(data: PickerItem) {
+        lblText.text = data.localizedTitle
     }
     
 }

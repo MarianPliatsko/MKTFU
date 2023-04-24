@@ -22,6 +22,7 @@ enum LPColor: String {
     case VoidWhite
     case VerySubtleGray
     case TextGray
+    case GrayButtonGray
 }
 
 extension UIColor {
