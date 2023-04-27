@@ -36,7 +36,7 @@ class ConfirmTableViewCell: UITableViewCell {
     }
     
     //MARK: - Methods
-      // create nib
+    
     static func nib() -> UINib {
         let nib = UINib(nibName: identifier, bundle: nil)
         return nib

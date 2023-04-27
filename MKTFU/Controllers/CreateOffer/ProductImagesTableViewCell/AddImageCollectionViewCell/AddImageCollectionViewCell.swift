@@ -18,18 +18,11 @@ class AddImageCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var addImageView: LPView!
-    
-    //MARK: - Life cycle
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet private weak var addImageView: LPView!
     
     //MARK: - IBAction
     
-    @IBAction func addImageButtonPressed(_ sender: UIButton) {
+    @IBAction private func addImageButtonPressed(_ sender: UIButton) {
         onNeedUpdate?()
     }
     
@@ -40,7 +33,6 @@ class AddImageCollectionViewCell: UICollectionViewCell {
         let nib = UINib(nibName: identifier, bundle: nil)
         return nib
     }
-    
 }
 
 

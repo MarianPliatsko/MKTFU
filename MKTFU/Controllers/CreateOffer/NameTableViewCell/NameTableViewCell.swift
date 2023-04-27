@@ -23,14 +23,17 @@ class NameTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        lpUIView.txtInputField.addTarget(self,
-                                        action: #selector(NameTableViewCell.textFieldDidChange(_:)),
-                                         for: .editingChanged)
+        setup()
     }
 
     //MARK: - Methods
     
-    // create nib
+    private func setup() {
+        lpUIView.txtInputField.addTarget(self,
+                                        action: #selector(NameTableViewCell.textFieldDidChange(_:)),
+                                         for: .editingChanged)
+    }
+    
     static func nib() -> UINib {
         let nib = UINib(nibName: identifier, bundle: nil)
         return nib
@@ -50,6 +53,5 @@ class NameTableViewCell: UITableViewCell {
     @objc func textFieldDidChange(_ textField: UITextField) {
         textInView?(lpUIView.txtInputField.text ?? "")
     }
-    
 }
 

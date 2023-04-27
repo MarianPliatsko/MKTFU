@@ -11,12 +11,7 @@ class DetailListTableViewCell: UITableViewCell {
     
     static let identifier = "DetailListTableViewCell"
 
-    @IBOutlet weak var lblText: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet private weak var lblText: UILabel!
 
     //MARK: - Methods
     

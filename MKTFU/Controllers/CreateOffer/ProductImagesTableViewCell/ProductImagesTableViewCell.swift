@@ -115,28 +115,29 @@ extension ProductImagesTableViewCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: ImageUICollectionViewCell.identifier, for: indexPath) as? ImageUICollectionViewCell
-        
-        let addImageCell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: AddImageCollectionViewCell.identifier, for: indexPath) as? AddImageCollectionViewCell
-        
-        if indexPath.section == 0 {
+        switch indexPath.item {
+        case 0:
+            guard let cell = imageCollectionView.dequeueReusableCell(
+                withReuseIdentifier: ImageUICollectionViewCell.identifier,
+                for: indexPath) as? ImageUICollectionViewCell else {return UICollectionViewCell()}
             mainImageView.kf.setImage(with: URL(string: images[0]))
-            cell?.uiImage.kf.setImage(with: URL(string: images[indexPath.item]))
-            cell?.onDeletePressed = { [weak self] in
+            cell.uiImage.kf.setImage(with: URL(string: images[indexPath.item]))
+            cell.onDeletePressed = { [weak self] in
                 self?.onDeletePressed?(self?.images[indexPath.item] ?? "")
             }
-            return cell ?? UICollectionViewCell()
-        } else {
+            return cell
+        default:
+            guard let addImageCell = imageCollectionView.dequeueReusableCell(
+                withReuseIdentifier: AddImageCollectionViewCell.identifier,
+                for: indexPath) as? AddImageCollectionViewCell else {return UICollectionViewCell()}
             if images.count < 3 {
-                addImageCell?.onNeedUpdate = { [weak self] in
+                addImageCell.onNeedUpdate = { [weak self] in
                     self?.onNeedUpdate?()
                 }
-                return addImageCell ?? UICollectionViewCell()
-            } else {
-                print("3 images is maximum for this screen")
+                return addImageCell
             }
-            return UICollectionViewCell()
         }
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -16,9 +16,9 @@ class ImageUICollectionViewCell: UICollectionViewCell {
     
     //MARK: - Outlet
     
-    @IBOutlet weak var uiImage: UIImageView!
+    @IBOutlet private weak var uiImage: UIImageView!
     
-    @IBOutlet weak var deleteImgBtn: UIButton! {
+    @IBOutlet private weak var deleteImgBtn: UIButton! {
         didSet {
             deleteImgBtn.setImage(UIImage(named: "Icon ionic-md-close-circle"), for: .normal)
             deleteImgBtn.layer.cornerRadius = deleteImgBtn.layer.bounds.width / 2
@@ -26,14 +26,9 @@ class ImageUICollectionViewCell: UICollectionViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     //MARK: - IBAction
     
-    @IBAction func deleteImgBtnPressed(_ sender: UIButton) {
+    @IBAction private func deleteImgBtnPressed(_ sender: UIButton) {
         onDeletePressed?()
     }
     
@@ -44,17 +39,5 @@ class ImageUICollectionViewCell: UICollectionViewCell {
         let nib = UINib(nibName: identifier, bundle: nil)
         return nib
     }
-    
-//    func setupUI(productImage: String) {
-//        NetworkManager.shared.getImage(from: productImage,
-//                                       imageView: uiImage) { result in
-//            switch result {
-//            case .success(let image):
-//                self.uiImage = image
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
 }
 

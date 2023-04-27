@@ -130,7 +130,7 @@ VerySubtleGray</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="lpHeaderView" destination="a63-6x-FtF" id="wYi-Yy-x7c"/>
+                        <outlet property="lpHeaderView" destination="a63-6x-FtF" id="6eG-O0-Rvp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goX-QV-2G5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

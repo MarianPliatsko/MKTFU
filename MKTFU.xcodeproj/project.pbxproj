@@ -35,7 +35,6 @@
 		0431A64729931971004B5D05 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431A64629931971004B5D05 /* UIFont+.swift */; };
 		0431A64A29935779004B5D05 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431A64929935779004B5D05 /* UIButton+.swift */; };
 		043FDF62298E2F33003A7295 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043FDF61298E2F33003A7295 /* SuccessViewController.swift */; };
-		043FDF69298E2FA8003A7295 /* Success.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 043FDF68298E2FA8003A7295 /* Success.storyboard */; };
 		04445EBC298AFB2200B13D5D /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04445EBB298AFB2200B13D5D /* OpenSans-Semibold.ttf */; };
 		04445EBE298AFB2C00B13D5D /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04445EBD298AFB2C00B13D5D /* OpenSans-Bold.ttf */; };
 		0444FBA429958A24006073DF /* CreatePassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0444FBA329958A24006073DF /* CreatePassword.storyboard */; };
@@ -134,6 +133,7 @@
 		04D135E129B4646C00CDC18C /* ImageUICollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D135DF29B4646C00CDC18C /* ImageUICollectionViewCell.xib */; };
 		04D135E729B59A8500CDC18C /* AddImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D135E529B59A8500CDC18C /* AddImageCollectionViewCell.swift */; };
 		04D135E829B59A8500CDC18C /* AddImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D135E629B59A8500CDC18C /* AddImageCollectionViewCell.xib */; };
+		04D3FB2D29FA31D900D95AE4 /* Success.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D3FB2C29FA31D900D95AE4 /* Success.storyboard */; };
 		04D42D8929A01ACC001BC259 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D42D8729A01ACC001BC259 /* ImageCollectionViewCell.swift */; };
 		04D42D8A29A01ACC001BC259 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D42D8829A01ACC001BC259 /* ImageCollectionViewCell.xib */; };
 		04E471FF29BEB8F500EA2A86 /* AccountInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E471FE29BEB8F500EA2A86 /* AccountInformationViewController.swift */; };
@@ -200,7 +200,6 @@
 		0431A64629931971004B5D05 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		0431A64929935779004B5D05 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		043FDF61298E2F33003A7295 /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
-		043FDF68298E2FA8003A7295 /* Success.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Success.storyboard; sourceTree = "<group>"; };
 		04445EBB298AFB2200B13D5D /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		04445EBD298AFB2C00B13D5D /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		0444FBA329958A24006073DF /* CreatePassword.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreatePassword.storyboard; sourceTree = "<group>"; };
@@ -296,6 +295,7 @@
 		04D135DF29B4646C00CDC18C /* ImageUICollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageUICollectionViewCell.xib; sourceTree = "<group>"; };
 		04D135E529B59A8500CDC18C /* AddImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		04D135E629B59A8500CDC18C /* AddImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		04D3FB2C29FA31D900D95AE4 /* Success.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Success.storyboard; sourceTree = "<group>"; };
 		04D42D8729A01ACC001BC259 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		04D42D8829A01ACC001BC259 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		04E471FE29BEB8F500EA2A86 /* AccountInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInformationViewController.swift; sourceTree = "<group>"; };
@@ -371,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				04BDB0E22990C6D600983D91 /* EmailVerificationViewController.swift */,
+				04BDB0E62990C74400983D91 /* EmailVerification.storyboard */,
 			);
 			path = EmailVerification;
 			sourceTree = "<group>";
@@ -379,13 +380,6 @@
 			isa = PBXGroup;
 			children = (
 				040B5E5A29916A4000CE1177 /* ForgotPasswordViewController.swift */,
-			);
-			path = ForgotPassword;
-			sourceTree = "<group>";
-		};
-		040B5E57299169E400CE1177 /* ForgotPassword */ = {
-			isa = PBXGroup;
-			children = (
 				040B5E5829916A0600CE1177 /* ForgotPassword.storyboard */,
 			);
 			path = ForgotPassword;
@@ -395,13 +389,6 @@
 			isa = PBXGroup;
 			children = (
 				040B5E5D2991716E00CE1177 /* ForgotPasswordCompleteViewController.swift */,
-			);
-			path = ForgotPasswordComplete;
-			sourceTree = "<group>";
-		};
-		040B5E5F2991717600CE1177 /* ForgotPasswordComplete */ = {
-			isa = PBXGroup;
-			children = (
 				040B5E602991719300CE1177 /* ForgotPasswordComplete.storyboard */,
 			);
 			path = ForgotPasswordComplete;
@@ -486,47 +473,16 @@
 			isa = PBXGroup;
 			children = (
 				043FDF61298E2F33003A7295 /* SuccessViewController.swift */,
+				04D3FB2C29FA31D900D95AE4 /* Success.storyboard */,
 			);
 			path = Success;
-			sourceTree = "<group>";
-		};
-		043FDF63298E2F3D003A7295 /* Success */ = {
-			isa = PBXGroup;
-			children = (
-				043FDF68298E2FA8003A7295 /* Success.storyboard */,
-				047832A329BAEF8C000F7F87 /* gif */,
-			);
-			path = Success;
-			sourceTree = "<group>";
-		};
-		043FDF64298E2F40003A7295 /* CreatePassword */ = {
-			isa = PBXGroup;
-			children = (
-				0444FBA329958A24006073DF /* CreatePassword.storyboard */,
-			);
-			path = CreatePassword;
-			sourceTree = "<group>";
-		};
-		043FDF65298E2F42003A7295 /* CreateAccount */ = {
-			isa = PBXGroup;
-			children = (
-				046E52BB2989B6E7009E9F3F /* CreateAccount.storyboard */,
-			);
-			path = CreateAccount;
-			sourceTree = "<group>";
-		};
-		043FDF66298E2F45003A7295 /* LogIn */ = {
-			isa = PBXGroup;
-			children = (
-				048680B42989D29300193579 /* Main.storyboard */,
-			);
-			path = LogIn;
 			sourceTree = "<group>";
 		};
 		043FDF67298E2F75003A7295 /* CreatePassword */ = {
 			isa = PBXGroup;
 			children = (
 				04808D51298C57CA0018CB04 /* CreatePasswordViewController.swift */,
+				0444FBA329958A24006073DF /* CreatePassword.storyboard */,
 			);
 			path = CreatePassword;
 			sourceTree = "<group>";
@@ -535,13 +491,6 @@
 			isa = PBXGroup;
 			children = (
 				045020E929A949B000DC627C /* CreateOfferViewController.swift */,
-			);
-			path = CreateOffer;
-			sourceTree = "<group>";
-		};
-		045020EB29A949B900DC627C /* CreateOffer */ = {
-			isa = PBXGroup;
-			children = (
 				045020EC29A949E700DC627C /* CreateOffer.storyboard */,
 				0410706E29E8905F007B8257 /* ProductDescriptionTableViewCell */,
 				04EE24E829F5D65F0069DE62 /* ImagesPreviewTableViewCell */,
@@ -600,13 +549,6 @@
 			isa = PBXGroup;
 			children = (
 				046A728A29C0C95D00854D74 /* ContactUsViewController.swift */,
-			);
-			path = ContactUs;
-			sourceTree = "<group>";
-		};
-		046A728C29C0CCC800854D74 /* ContactUs */ = {
-			isa = PBXGroup;
-			children = (
 				046A728D29C0CCF100854D74 /* ContactUs.storyboard */,
 			);
 			path = ContactUs;
@@ -652,7 +594,8 @@
 				04808D50298C57680018CB04 /* CreateAccount */,
 				043FDF67298E2F75003A7295 /* CreatePassword */,
 				040B5E542991693000CE1177 /* EmailVerification */,
-				04BDB0D32990B43200983D91 /* Terms&Policy */,
+				04BDB0D32990B43200983D91 /* Terms */,
+				048CA36B29FA300F00B0D657 /* Privacy */,
 				040B5E56299169B800CE1177 /* ForgotPassword */,
 				040B5E5C2991714500CE1177 /* ForgotPasswordComplete */,
 				043FDF60298E2E72003A7295 /* Success */,
@@ -678,27 +621,6 @@
 			isa = PBXGroup;
 			children = (
 				04BDB0E42990C70F00983D91 /* LaunchScreen */,
-				043FDF66298E2F45003A7295 /* LogIn */,
-				043FDF65298E2F42003A7295 /* CreateAccount */,
-				043FDF64298E2F40003A7295 /* CreatePassword */,
-				04BDB0E52990C72100983D91 /* EmailVerification */,
-				04BDB0D82990B49200983D91 /* Terms&Policy */,
-				040B5E57299169E400CE1177 /* ForgotPassword */,
-				040B5E5F2991717600CE1177 /* ForgotPasswordComplete */,
-				043FDF63298E2F3D003A7295 /* Success */,
-				04A0391C2996CBFC00A12064 /* Home */,
-				048DB37C299D928F007FDAB8 /* ProductDetail */,
-				047832A929BB00E4000F7F87 /* Checkout */,
-				047832BA29BBACFD000F7F87 /* PickupInformation */,
-				045020EB29A949B900DC627C /* CreateOffer */,
-				049C8A5729BBDF7800E21348 /* Menu */,
-				04E4720029BEB90900EA2A86 /* AccountInformation */,
-				04E4720629BF84FF00EA2A86 /* ChangePassword */,
-				04E4720F29BF920500EA2A86 /* MyPurchases */,
-				04CDE9EA29C0194400F0E92C /* MyListing */,
-				047D508129CA232700EED8B5 /* Notifications */,
-				04CDE9F029C0234F00F0E92C /* FAQ */,
-				046A728C29C0CCC800854D74 /* ContactUs */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -736,6 +658,7 @@
 				04B5D1672991D1C80037B44D /* LPUIView */,
 				04B5EFC129956AAE001807E7 /* LPHeaderView */,
 				048E58442995D4AB00DCC3EA /* LPTextView */,
+				047832A329BAEF8C000F7F87 /* GifSuccess */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -759,29 +682,23 @@
 			isa = PBXGroup;
 			children = (
 				046E52942988B8BB009E9F3F /* LogInViewController.swift */,
+				048680B42989D29300193579 /* Main.storyboard */,
 			);
 			path = LogIn;
 			sourceTree = "<group>";
 		};
-		047832A329BAEF8C000F7F87 /* gif */ = {
+		047832A329BAEF8C000F7F87 /* GifSuccess */ = {
 			isa = PBXGroup;
 			children = (
 				047832A629BAEFE6000F7F87 /* animated checkmark.gif */,
 			);
-			path = gif;
+			path = GifSuccess;
 			sourceTree = "<group>";
 		};
 		047832A829BB00B9000F7F87 /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
 				047832AA29BB0114000F7F87 /* CheckoutViewController.swift */,
-			);
-			path = Checkout;
-			sourceTree = "<group>";
-		};
-		047832A929BB00E4000F7F87 /* Checkout */ = {
-			isa = PBXGroup;
-			children = (
 				047832AC29BB012C000F7F87 /* Checkout.storyboard */,
 				047832B229BB0361000F7F87 /* CheckoutTableViewCell */,
 			);
@@ -801,13 +718,6 @@
 			isa = PBXGroup;
 			children = (
 				047832B829BBACF2000F7F87 /* PickupInformationViewController.swift */,
-			);
-			path = PickupInformation;
-			sourceTree = "<group>";
-		};
-		047832BA29BBACFD000F7F87 /* PickupInformation */ = {
-			isa = PBXGroup;
-			children = (
 				047832BB29BBAD1C000F7F87 /* PickupInformation.storyboard */,
 			);
 			path = PickupInformation;
@@ -870,13 +780,6 @@
 			isa = PBXGroup;
 			children = (
 				047D507F29CA231D00EED8B5 /* NotificationsViewController.swift */,
-			);
-			path = Notifications;
-			sourceTree = "<group>";
-		};
-		047D508129CA232700EED8B5 /* Notifications */ = {
-			isa = PBXGroup;
-			children = (
 				047D508229CA234200EED8B5 /* Notifications.storyboard */,
 				0407622929CA2C3F00E801C5 /* NotificationsTableViewCell */,
 				0407622E29CA328600E801C5 /* NotificationSectionHeaderView */,
@@ -888,8 +791,18 @@
 			isa = PBXGroup;
 			children = (
 				046E52B92989B6D0009E9F3F /* CreateAccountViewController.swift */,
+				046E52BB2989B6E7009E9F3F /* CreateAccount.storyboard */,
 			);
 			path = CreateAccount;
+			sourceTree = "<group>";
+		};
+		048CA36B29FA300F00B0D657 /* Privacy */ = {
+			isa = PBXGroup;
+			children = (
+				04BDB0D62990B47D00983D91 /* PrivacyPolicyViewController.swift */,
+				04BDB0DF2990B4F800983D91 /* PrivacyPolicy.storyboard */,
+			);
+			path = Privacy;
 			sourceTree = "<group>";
 		};
 		048DB375299C2914007FDAB8 /* CompositionLayout */ = {
@@ -905,13 +818,6 @@
 			isa = PBXGroup;
 			children = (
 				048DB37A299D9287007FDAB8 /* ProductDetailViewController.swift */,
-			);
-			path = ProductDetail;
-			sourceTree = "<group>";
-		};
-		048DB37C299D928F007FDAB8 /* ProductDetail */ = {
-			isa = PBXGroup;
-			children = (
 				048DB37E299D92CD007FDAB8 /* ProductDetail.storyboard */,
 				04D42D8629A01A9C001BC259 /* ImageCell */,
 			);
@@ -947,13 +853,6 @@
 			isa = PBXGroup;
 			children = (
 				049C8A5529BBDF5B00E21348 /* MenuViewController.swift */,
-			);
-			path = Menu;
-			sourceTree = "<group>";
-		};
-		049C8A5729BBDF7800E21348 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
 				049C8A5829BBDF8F00E21348 /* Menu.storyboard */,
 			);
 			path = Menu;
@@ -963,16 +862,9 @@
 			isa = PBXGroup;
 			children = (
 				04A039192996CBC200A12064 /* HomeViewController.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		04A0391C2996CBFC00A12064 /* Home */ = {
-			isa = PBXGroup;
-			children = (
 				04A0391D2996CC1700A12064 /* Home.storyboard */,
-				04112053299AB0EF000F2BF3 /* HomeHeaderCell */,
 				04A039202996F85F00A12064 /* HomeCell */,
+				04112053299AB0EF000F2BF3 /* HomeHeaderCell */,
 				04A172D629A8577E004398F6 /* HomeTableViewCell */,
 			);
 			path = Home;
@@ -1053,22 +945,13 @@
 			path = NetworkManager;
 			sourceTree = "<group>";
 		};
-		04BDB0D32990B43200983D91 /* Terms&Policy */ = {
+		04BDB0D32990B43200983D91 /* Terms */ = {
 			isa = PBXGroup;
 			children = (
 				04BDB0D42990B46600983D91 /* TermsOfServiceViewController.swift */,
-				04BDB0D62990B47D00983D91 /* PrivacyPolicyViewController.swift */,
-			);
-			path = "Terms&Policy";
-			sourceTree = "<group>";
-		};
-		04BDB0D82990B49200983D91 /* Terms&Policy */ = {
-			isa = PBXGroup;
-			children = (
 				04BDB0DD2990B4E700983D91 /* TermsOfService.storyboard */,
-				04BDB0DF2990B4F800983D91 /* PrivacyPolicy.storyboard */,
 			);
-			path = "Terms&Policy";
+			path = Terms;
 			sourceTree = "<group>";
 		};
 		04BDB0E42990C70F00983D91 /* LaunchScreen */ = {
@@ -1079,46 +962,23 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
-		04BDB0E52990C72100983D91 /* EmailVerification */ = {
-			isa = PBXGroup;
-			children = (
-				04BDB0E62990C74400983D91 /* EmailVerification.storyboard */,
-			);
-			path = EmailVerification;
-			sourceTree = "<group>";
-		};
 		04CDE9E729C0190500F0E92C /* MyListings */ = {
 			isa = PBXGroup;
 			children = (
 				04CDE9E829C0193100F0E92C /* MyListingsViewController.swift */,
-			);
-			path = MyListings;
-			sourceTree = "<group>";
-		};
-		04CDE9EA29C0194400F0E92C /* MyListing */ = {
-			isa = PBXGroup;
-			children = (
 				04CDE9EB29C019CD00F0E92C /* MyListing.storyboard */,
 				04B4792829C3883F000C2BB0 /* MyListingCell */,
 				04B4793329C3AFF3000C2BB0 /* MyListingSectionHeaderView */,
 			);
-			path = MyListing;
+			path = MyListings;
 			sourceTree = "<group>";
 		};
 		04CDE9ED29C0231500F0E92C /* FAQ */ = {
 			isa = PBXGroup;
 			children = (
 				04CDE9EE29C0234000F0E92C /* FAQViewController.swift */,
-			);
-			path = FAQ;
-			sourceTree = "<group>";
-		};
-		04CDE9F029C0234F00F0E92C /* FAQ */ = {
-			isa = PBXGroup;
-			children = (
 				04CDE9F129C0237300F0E92C /* FAQ.storyboard */,
 				0462C30D29E63C89002D5A3A /* FAQCell */,
-				04CDE9F629C02A5100F0E92C /* HowMKTFYWorks */,
 			);
 			path = FAQ;
 			sourceTree = "<group>";
@@ -1127,13 +987,6 @@
 			isa = PBXGroup;
 			children = (
 				04CDE9F429C02A4300F0E92C /* HowMKTFYWorksViewController.swift */,
-			);
-			path = HowMKTFYWorks;
-			sourceTree = "<group>";
-		};
-		04CDE9F629C02A5100F0E92C /* HowMKTFYWorks */ = {
-			isa = PBXGroup;
-			children = (
 				04CDE9F729C02A5D00F0E92C /* HowMKTFYWorks.storyboard */,
 			);
 			path = HowMKTFYWorks;
@@ -1179,29 +1032,15 @@
 			isa = PBXGroup;
 			children = (
 				04E471FE29BEB8F500EA2A86 /* AccountInformationViewController.swift */,
-			);
-			path = "Account Information";
-			sourceTree = "<group>";
-		};
-		04E4720029BEB90900EA2A86 /* AccountInformation */ = {
-			isa = PBXGroup;
-			children = (
 				04E4720129BF7B9400EA2A86 /* AccountInformation.storyboard */,
 			);
-			path = AccountInformation;
+			path = "Account Information";
 			sourceTree = "<group>";
 		};
 		04E4720329BF84CD00EA2A86 /* ChangePassword */ = {
 			isa = PBXGroup;
 			children = (
 				04E4720429BF84F700EA2A86 /* ChangePasswordViewController.swift */,
-			);
-			path = ChangePassword;
-			sourceTree = "<group>";
-		};
-		04E4720629BF84FF00EA2A86 /* ChangePassword */ = {
-			isa = PBXGroup;
-			children = (
 				04E4720929BF852A00EA2A86 /* ChangePassword.storyboard */,
 			);
 			path = ChangePassword;
@@ -1211,13 +1050,6 @@
 			isa = PBXGroup;
 			children = (
 				04E4720D29BF91F600EA2A86 /* MyPurchasesViewController.swift */,
-			);
-			path = MyPurchases;
-			sourceTree = "<group>";
-		};
-		04E4720F29BF920500EA2A86 /* MyPurchases */ = {
-			isa = PBXGroup;
-			children = (
 				04E4721229BF96C300EA2A86 /* MyPurchases.storyboard */,
 				04E4721429BF975A00EA2A86 /* MyPurchasesCell */,
 			);
@@ -1371,7 +1203,6 @@
 				04445EBE298AFB2C00B13D5D /* OpenSans-Bold.ttf in Resources */,
 				04A0391E2996CC1700A12064 /* Home.storyboard in Resources */,
 				0407623229CA333300E801C5 /* NotificationSectionHeaderView.xib in Resources */,
-				043FDF69298E2FA8003A7295 /* Success.storyboard in Resources */,
 				04E4721829BF979000EA2A86 /* MyPurchasesTableViewCell.xib in Resources */,
 				04D42D8A29A01ACC001BC259 /* ImageCollectionViewCell.xib in Resources */,
 				0489B7D529A5D8550008C1E3 /* Auth0.plist in Resources */,
@@ -1386,6 +1217,7 @@
 				046E529A2988B8BD009E9F3F /* Assets.xcassets in Resources */,
 				04EE24F129F5DB990069DE62 /* ImagesPreviewCollectionViewCell.xib in Resources */,
 				04EBB1BF29AF0BB9009A176B /* ProductCategoryConditionCityTableViewCell.xib in Resources */,
+				04D3FB2D29FA31D900D95AE4 /* Success.storyboard in Resources */,
 				046E52BC2989B6E7009E9F3F /* CreateAccount.storyboard in Resources */,
 				047832B629BB03BD000F7F87 /* CheckoutTableViewCell.xib in Resources */,
 				04B4792C29C3885E000C2BB0 /* MyListingTableViewCell.xib in Resources */,
