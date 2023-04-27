@@ -202,5 +202,10 @@ final class LpCustomView: LPView, UITextFieldDelegate {
             rightButton.setImage(UIImage(named: "Icon awesome-eye 1"), for: .normal)
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
    

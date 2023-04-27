@@ -26,6 +26,7 @@ class ForgotPasswordViewController: UIViewController {
         
         setup()
         setupTextField()
+        setupDismissKeyboardTapGesture()
     }
     
     //MARK: - IBActions
@@ -75,5 +76,10 @@ extension ForgotPasswordViewController: UITextFieldDelegate {
         } else {
             sentButton.isEnabled = true
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

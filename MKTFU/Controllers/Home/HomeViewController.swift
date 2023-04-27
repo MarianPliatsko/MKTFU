@@ -92,6 +92,7 @@ class HomeViewController: UIViewController {
     }
     
     private func setupTextField() {
+        searchTextField.delegate = self
         searchTextField.addTarget(
             self, action: #selector(HomeViewController.textFieldDidChange(_:)), for: .editingChanged)
     }
@@ -322,5 +323,12 @@ extension HomeViewController: UISearchBarDelegate {
             }
         }
         self.cityListTableView.reloadData()
+    }
+}
+
+extension HomeViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

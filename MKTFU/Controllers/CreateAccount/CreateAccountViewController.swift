@@ -40,8 +40,7 @@ class CreateAccountViewController: UIViewController {
         setupLPView()
         setupButtons()
         setupPickerView()
-        initializeHideKeyboard()
-        setupToolbar()
+        setupDismissKeyboardTapGesture()
     }
     
     //MARK: - Actions
@@ -54,8 +53,12 @@ class CreateAccountViewController: UIViewController {
     //MARK: - Methods
     
     private func setupLPView() {
+        lpViewFirstName.txtInputField.delegate = self
+        lpViewLastName.txtInputField.delegate = self
         lpViewPhone.txtInputField.delegate = self
         lpViewCityName.txtInputField.delegate = self
+        lpViewEmail.txtInputField.delegate = self
+        lpViewPickupAddress.txtInputField.delegate = self
         lpViewFirstName.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
         lpViewLastName.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
         lpViewEmail.txtInputField.addTarget(self, action: #selector(CreateAccountViewController.textFieldDidChange(_:)), for: .editingChanged)
@@ -80,27 +83,6 @@ class CreateAccountViewController: UIViewController {
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
-    }
-    
-    private func setupToolbar() {
-        let bar = UIToolbar()
-        let doneBtn = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissMyKeyboard))
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        bar.items = [flexSpace, flexSpace, doneBtn]
-        bar.sizeToFit()
-        lpViewPhone.txtInputField.inputAccessoryView = bar
-        lpViewPhone.txtInputField.keyboardType = .numberPad
-    }
-        
-    private func initializeHideKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(dismissMyKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissMyKeyboard() {
-        view.endEditing(true)
     }
     
     private func createUser() {
@@ -185,6 +167,11 @@ extension CreateAccountViewController: UITextFieldDelegate {
         if lpViewCityName.txtInputField.text?.isEmpty == true {
             setCity(cityDataSource[0])
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

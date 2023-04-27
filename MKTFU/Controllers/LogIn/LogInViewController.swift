@@ -27,7 +27,7 @@ class LogInViewController: UIViewController {
         
         setupUI()
         setupTextField()
-        dismissKeyBoard()
+        setupDismissKeyboardTapGesture()
     }
     
     //MARK: - Actions
@@ -44,12 +44,7 @@ class LogInViewController: UIViewController {
     }
     
     //MARK: - Methods
-    
-    private func dismissKeyBoard() {
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
-    }
-    
+
     private func setupTextField() {
         lpViewEmail.txtInputField.delegate = self
         lpViewPassword.txtInputField.delegate = self

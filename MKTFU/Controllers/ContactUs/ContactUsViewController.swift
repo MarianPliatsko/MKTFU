@@ -25,6 +25,7 @@ class ContactUsViewController: UIViewController {
         
         setup()
         setupUI()
+        setupDismissKeyboardTapGesture()
     }
     
     //MARK: - Methods

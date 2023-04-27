@@ -17,7 +17,7 @@ class HomeHeaderCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        setupUI()
+//        setupUI()
     }
     
     //MARK: - Methods

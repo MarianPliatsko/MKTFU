@@ -31,22 +31,36 @@ class AccountInformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lpHeaderView.onBackPressed = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
-        
+        setup()
+        setupTextField()
         getUserProfile()
+        setupDismissKeyboardTapGesture()
     }
     
     //MARK: - IBAction
 
-    @IBAction func saveBtnPressed(_ sender: UIButton) {
+    @IBAction private func saveBtnPressed(_ sender: UIButton) {
        updateUserProfile()
     }
     
     //MARK: - Methods
     
-    func setupUI() {
+    private func setup() {
+        lpHeaderView.onBackPressed = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func setupTextField() {
+        lpFirstNameView.txtInputField.delegate = self
+        lpLastNameView.txtInputField.delegate = self
+        lpCityView.txtInputField.delegate = self
+        lpEmailView.txtInputField.delegate = self
+        lpPhoneView.txtInputField.delegate = self
+        lpPickupAddressView.txtInputField.delegate = self
+    }
+    
+    private func setupUI() {
         lpFirstNameView.txtInputField.text = user.firstName
         lpLastNameView.txtInputField.text = user.lastName
         lpEmailView.txtInputField.text = user.email
@@ -108,5 +122,12 @@ class AccountInformationViewController: UIViewController {
             }
         }
     }
-
 }
+
+extension AccountInformationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+

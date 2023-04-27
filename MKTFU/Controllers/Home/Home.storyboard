@@ -173,7 +173,7 @@ VerySubtleGray</string>
                                             <constraint firstAttribute="height" constant="44" id="ny7-AO-hif"/>
                                         </constraints>
                                     </view>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ol7-Pc-sTa">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ol7-Pc-sTa">
                                         <rect key="frame" x="0.0" y="288" width="393" height="505"/>
                                         <color key="backgroundColor">
                                             <string key="name">

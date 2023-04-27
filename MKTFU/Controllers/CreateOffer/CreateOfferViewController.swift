@@ -56,6 +56,7 @@ class CreateOfferViewController: UIViewController {
         
         setupTableView()
         setup()
+        setupDismissKeyboardTapGesture()
     }
     
     //MARK: - Methods

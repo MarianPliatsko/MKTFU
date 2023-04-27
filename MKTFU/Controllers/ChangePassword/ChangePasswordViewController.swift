@@ -36,24 +36,30 @@ class ChangePasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lpHeaderView.onBackPressed = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
-        
+        setup()
         setupTextFields()
-        
-        newPasswordView.lblPasswordSecurityLevel.isHidden = true
+        setupDismissKeyboardTapGesture()
     }
     
     //MARK: - IBAction
     
-    @IBAction func updatePasswordButtonPressed(_ sender: UIButton) {
+    @IBAction private func updatePasswordButtonPressed(_ sender: UIButton) {
         updatePassword()
     }
     
     //MARK: - Methods
     
+    private func setup() {
+        lpHeaderView.onBackPressed = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        newPasswordView.lblPasswordSecurityLevel.isHidden = true
+    }
+    
     private func setupTextFields() {
+        oldPasswordView.txtInputField.delegate = self
+        newPasswordView.txtInputField.delegate = self
+        confirmNewPasswordView.txtInputField.delegate = self
         newPasswordView.txtInputField.addTarget(
             self,
             action: #selector(ChangePasswordViewController.textFieldDidChange(_:)),
@@ -189,3 +195,11 @@ class ChangePasswordViewController: UIViewController {
         updatePasswordButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
     }
 }
+
+extension ChangePasswordViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+

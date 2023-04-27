@@ -41,6 +41,7 @@ class CreatePasswordViewController: UIViewController {
         setupTextView()
         setupTextViewUI()
         setupTextField()
+        setupDismissKeyboardTapGesture()
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,6 +62,8 @@ class CreatePasswordViewController: UIViewController {
     //MARK: - Methods
     
     private func setupTextField() {
+        lpViewPassword.txtInputField.delegate = self
+        lpViewConfirmPassword.txtInputField.delegate = self
         lpViewPassword.txtInputField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
         lpViewConfirmPassword.txtInputField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
     }
@@ -233,7 +236,12 @@ extension CreatePasswordViewController: UITextViewDelegate {
     }
 }
 
-
+extension CreatePasswordViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
 
 
 
