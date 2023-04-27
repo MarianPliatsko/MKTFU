@@ -9,7 +9,7 @@ import UIKit
 import Auth0
 import KeychainSwift
 
-class ChangePasswordViewController: UIViewController, Storyboarded {
+class ChangePasswordViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -27,6 +27,7 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
     @IBOutlet private weak var numberOfCharactersImageView: UIImageView!
     @IBOutlet private weak var oneUppercaseImageView: UIImageView!
     @IBOutlet private weak var oneNumberImageView: UIImageView!
+    @IBOutlet private weak var oneSpecialCharacterImageView: UIImageView!
     @IBOutlet private weak var updatePasswordButton: UIButton!
     
     //MARK: - Life cycle
@@ -38,6 +39,20 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
             self?.navigationController?.popViewController(animated: true)
         }
         
+        setupTextFields()
+        
+        newPasswordView.lblPasswordSecurityLevel.isHidden = true
+    }
+    
+    //MARK: - IBAction
+    
+    @IBAction func updatePasswordButtonPressed(_ sender: UIButton) {
+        updatePassword()
+    }
+    
+    //MARK: - Methods
+    
+    private func setupTextFields() {
         newPasswordView.txtInputField.addTarget(
             self,
             action: #selector(ChangePasswordViewController.textFieldDidChange(_:)),
@@ -48,28 +63,17 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
             action: #selector(ChangePasswordViewController.textFieldDidChange(_:)),
             for: .editingChanged
         )
-        
-        newPasswordView.lblPasswordSecurityLevel.isHidden = true
     }
-    
-    //MARK: - IBAction
-    
-    @IBAction private func updatePasswordBtnPressed(_ sender: UIButton) {
-        updatePassword()
-    }
-    
-    //MARK: - Methods
     
     private func updatePassword() {
-        let oldPasswordFromKeyChain = keyChain.get(KeychainConstants.password)
+        let oldPasswordFromKeyChain = keyChain.get(KeychainConstants.passwordKey)
         let oldPassword = oldPasswordView.txtInputField.text
         let newPassword = newPasswordView.txtInputField.text
         let confirnNewPassword = confirmNewPasswordView.txtInputField.text
-        let validNewPassword = validation.validatePassword.validatePassword(password: newPassword ?? "")
-        let validConfirmNewPassword = validation.validatePassword.validatePassword(
-            password: confirnNewPassword ?? "")
+        let validNewPassword = newPassword?.validate(regEX: ValidationConstants.password)
+        let validConfirmNewPassword = confirnNewPassword?.validate(regEX: ValidationConstants.password)
         guard oldPassword == oldPasswordFromKeyChain else {return}
-        if validNewPassword, validConfirmNewPassword, newPassword == confirnNewPassword {
+        if validNewPassword == true, validConfirmNewPassword == true, newPassword == confirnNewPassword {
             changePasswordRequest(newPassword: newPassword ?? "",
                                   confirmedNewPassword: confirnNewPassword ?? "")
         }
@@ -107,21 +111,27 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
         }
     }
     
-    @objc private func textFieldDidChange(_ textField: UITextField) {
-        validatePassword(with: validation.validate(
+    @objc private func textFieldDidChange(_ textField: UITextField) {        validatePassword(with: validation.validatePassword(
             password: newPasswordView.txtInputField.text ?? ""))
     }
     
     private func validatePassword(with validationResult: PasswordValidationResult) {
-        let validPasswordImageCheckmark = UIImage(named: "Icon awesome-check-circle-fill")
-        let oldPasswordFromKeyChain = keyChain.get(KeychainConstants.password)
+        let validPasswordImageCheckmark = UIImage(named: ImageNameConstrants.validePasswordCheckmark)
+        let invalidPasswordImageCheckmark = UIImage(
+            named: ImageNameConstrants.invalidPasswordCheckmark)
+        let newPassword = newPasswordView.txtInputField.text
+        let confirmPassword = confirmNewPasswordView.txtInputField.text
+        let oldPassword = oldPasswordView.txtInputField.text
+        let oldPasswordFromKeyChain = keyChain.get(KeychainConstants.passwordKey)
         switch validationResult {
         case .valid:
             numberOfCharactersImageView.image = validPasswordImageCheckmark
             oneUppercaseImageView.image = validPasswordImageCheckmark
             oneNumberImageView.image = validPasswordImageCheckmark
+            oneSpecialCharacterImageView.image = validPasswordImageCheckmark
+            passwordIsStrongShow()
             
-            if newPasswordView.txtInputField.text == confirmNewPasswordView.txtInputField.text && oldPasswordView.txtInputField.text == oldPasswordFromKeyChain {
+            if newPassword == confirmPassword, oldPassword == oldPasswordFromKeyChain {
                 updatePasswordButtonIsActive()
             } else {
                 updatePasswordButtoniSNotActive()
@@ -129,15 +139,44 @@ class ChangePasswordViewController: UIViewController, Storyboarded {
         case .invalid(let passedValidationChecks):
             if passedValidationChecks.contains(.enoughCharacters) {
                 numberOfCharactersImageView.image = validPasswordImageCheckmark
+                passwordIsWeakShow()
+            } else {
+                hidePasswordSecurityLevelLabel()
+                numberOfCharactersImageView.image = invalidPasswordImageCheckmark
             }
             if passedValidationChecks.contains(.hasOneDigit) {
                 oneNumberImageView.image = validPasswordImageCheckmark
+            } else {
+                oneNumberImageView.image = invalidPasswordImageCheckmark
             }
             if passedValidationChecks.contains(.hasOneUppercase) {
                 oneUppercaseImageView.image = validPasswordImageCheckmark
+            } else {
+                oneUppercaseImageView.image = invalidPasswordImageCheckmark
+            }
+            if passedValidationChecks.contains(.hasOneSymbol) {
+                oneSpecialCharacterImageView.image = validPasswordImageCheckmark
+            } else {
+                oneSpecialCharacterImageView.image = invalidPasswordImageCheckmark
             }
             updatePasswordButtoniSNotActive()
         }
+    }
+    
+    private func hidePasswordSecurityLevelLabel() {
+        newPasswordView.showSecurityLevel = false
+    }
+    
+    private func passwordIsWeakShow() {
+        newPasswordView.showSecurityLevel = true
+        newPasswordView.lblPasswordSecurityLevel.textColor = UIColor.appColor(LPColor.WarningYellow)
+        newPasswordView.lblPasswordSecurityLevel.text = "Weak"
+    }
+    
+    private func passwordIsStrongShow() {
+        newPasswordView.showSecurityLevel = true
+        newPasswordView.lblPasswordSecurityLevel.textColor = UIColor.appColor(LPColor.GoodJobGreen)
+        newPasswordView.lblPasswordSecurityLevel.text = "Strong"
     }
     
     private func updatePasswordButtonIsActive() {

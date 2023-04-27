@@ -18,7 +18,7 @@ struct ProductSection {
     var products: [Product]
 }
 
-class MyListingsViewController: UIViewController, Storyboarded {
+class MyListingsViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -33,15 +33,15 @@ class MyListingsViewController: UIViewController, Storyboarded {
     //MARK: - Outlets
     
     @IBOutlet private weak var lpHeaderView: LPHeaderView!
-    @IBOutlet private weak var soldItemsIndicator: UILabel! {
-        didSet {
-            soldItemsIndicator.layer.cornerRadius = soldItemsIndicator.bounds.width / 2
-            soldItemsIndicator.clipsToBounds = true
-        }
-    }
     @IBOutlet weak var activeItemsButton: UIButton!
     @IBOutlet weak var soldItemsButton: UIButton!
     @IBOutlet private weak var myListingTableView: UITableView!
+    @IBOutlet weak var createListingView: UIControl!{
+        didSet {
+            createListingView.layer.cornerRadius = 25
+            createListingView.clipsToBounds = true
+        }
+    }
     
     //MARK: - Life cycle
     
@@ -58,6 +58,10 @@ class MyListingsViewController: UIViewController, Storyboarded {
     }
     
     //MARK: - IBAction
+    
+    @IBAction private func createListingViewPressed(_ sender: Any) {
+        coordinator?.goToCreateOfferVC(product: nil, with: .createProduct)
+    }
     
     @IBAction private func activeItemsBtnPressed(_ sender: UIButton) {
         selectedTab = .active

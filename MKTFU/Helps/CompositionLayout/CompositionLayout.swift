@@ -5,22 +5,16 @@
 //  Created by mac on 2023-02-14.
 //
 
-import Foundation
 import UIKit
 
-enum CompositionalGroupAlignment {
-    case vertical
-    case horizontal
-}
-
 class CompositionLayout {
-    
     static func createItem(width: NSCollectionLayoutDimension,
                            height: NSCollectionLayoutDimension,
                            spacing: CGFloat) -> NSCollectionLayoutItem {
         
-        let item = NSCollectionLayoutItem(layoutSize:NSCollectionLayoutSize(widthDimension: width,
-                                                                            heightDimension: height))
+        let item = NSCollectionLayoutItem(layoutSize:NSCollectionLayoutSize(
+            widthDimension: width,
+            heightDimension: height))
         item.contentInsets = NSDirectionalEdgeInsets(top: spacing,
                                                      leading: spacing,
                                                      bottom: spacing,
@@ -34,15 +28,15 @@ class CompositionLayout {
                             items: [NSCollectionLayoutItem]) -> NSCollectionLayoutGroup {
         switch alignment {
         case .vertical:
-            return NSCollectionLayoutGroup.vertical(layoutSize:
-                                                        NSCollectionLayoutSize(widthDimension: width,
-                                                                               heightDimension: height),
-                                                    subitems: items)
+            return NSCollectionLayoutGroup.vertical(
+                layoutSize: NSCollectionLayoutSize(widthDimension: width,
+                                                   heightDimension: height),
+                subitems: items)
         case .horizontal:
-            return NSCollectionLayoutGroup.horizontal(layoutSize:
-                                                        NSCollectionLayoutSize(widthDimension: width,
-                                                                               heightDimension: height),
-                                                      subitems: items)
+            return NSCollectionLayoutGroup.horizontal(
+                layoutSize: NSCollectionLayoutSize(widthDimension: width,
+                                                   heightDimension: height),
+                subitems: items)
         }
     }
     
@@ -53,17 +47,18 @@ class CompositionLayout {
                             count: Int) -> NSCollectionLayoutGroup {
         switch alignment {
         case .vertical:
-            return NSCollectionLayoutGroup.vertical(layoutSize:
-                                                        NSCollectionLayoutSize(widthDimension: width,
-                                                                               heightDimension: height),
-                                                    repeatingSubitem: item,
-                                                    count: count)
+            return NSCollectionLayoutGroup.vertical(
+                layoutSize:
+                    NSCollectionLayoutSize(widthDimension: width,
+                                           heightDimension: height),
+                repeatingSubitem: item,
+                count: count)
         case .horizontal:
-            return NSCollectionLayoutGroup.horizontal(layoutSize:
-                                                        NSCollectionLayoutSize(widthDimension: width,
-                                                                               heightDimension: height),
-                                                      repeatingSubitem: item,
-                                                      count: count)
+            return NSCollectionLayoutGroup.horizontal(
+                layoutSize: NSCollectionLayoutSize(widthDimension: width,
+                                                   heightDimension: height),
+                repeatingSubitem: item,
+                count: count)
         }
     }
 }

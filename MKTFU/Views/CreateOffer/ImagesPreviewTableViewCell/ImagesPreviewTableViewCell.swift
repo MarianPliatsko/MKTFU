@@ -32,7 +32,10 @@ class ImagesPreviewTableViewCell: UITableViewCell {
     private func setupCollectionView() {
         imagesPreviewCollectionView.dataSource = self
         imagesPreviewCollectionView.setCollectionViewLayout(
-            UICollectionViewCompositionalLayout.createLayout(), animated: false)
+            UICollectionViewCompositionalLayout.createLayout(itemWidth: .fractionalWidth(1),
+                                                             itemHeight: .fractionalHeight(1),
+                                                             groupWidth: .fractionalWidth(1),
+                                                             groupHeight: .fractionalHeight(1)), animated: false)
         imagesPreviewCollectionView.register(ImagesPreviewCollectionViewCell.nib(),
                                              forCellWithReuseIdentifier: ImagesPreviewCollectionViewCell.identifier)
     }

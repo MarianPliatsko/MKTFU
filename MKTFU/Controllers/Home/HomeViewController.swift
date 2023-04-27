@@ -7,8 +7,9 @@
 
 import UIKit
 import KeychainSwift
+import Kingfisher
 
-class HomeViewController: UIViewController, Storyboarded {
+class HomeViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -17,18 +18,9 @@ class HomeViewController: UIViewController, Storyboarded {
     private var filteredCityNameList: [String] = []
     var user = User()
     var products: [Product] = []
-    
-    let homeDataSource = Home(city: City.cities,
-                              productCategory: [ProductCategory(name: "Deals",
-                                                                image: UIImage(named: "Path 2") ?? UIImage()),
-                                                ProductCategory(name: "Vehicles",
-                                                                image: UIImage(named: "Path 4") ?? UIImage()),
-                                                ProductCategory(name: "Furniture",
-                                                                image: UIImage(named: "Path 7") ?? UIImage()),
-                                                ProductCategory(name: "Electronics",
-                                                                image: UIImage(named: "Path 9") ?? UIImage()),
-                                                ProductCategory(name: "Real estate",
-                                                                image: UIImage(named: "Path 5") ?? UIImage())])
+    private var categories: [Categories] = []
+    private let homeDataSource = Home(city: City.cities,
+                                      productImage: ProductImage.images)
     
     //MARK: - Outlets
     
@@ -40,52 +32,20 @@ class HomeViewController: UIViewController, Storyboarded {
     @IBOutlet private weak var citySearchBar: UISearchBar!
     @IBOutlet private weak var cityListTableView: UITableView!
     @IBOutlet private weak var cityNameLabel: UILabel!
-    @IBOutlet private weak var createListingView: UIControl! {
-        didSet {
-            createListingView.layer.cornerRadius = 25
-            createListingView.clipsToBounds = true
-        }
-    }
+    @IBOutlet private weak var createListingView: UIControl!
     
     //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
         getAllProducts()
-        
-        cityButton.setTitle(homeDataSource.city[0].localizedTitle, for: .normal)
-        cityNameLabel.text = cityButton.currentTitle
-        
-        for city in homeDataSource.city {
-            filteredCityNameList.append(city.localizedTitle)
-        }
-//        filteredCityNameList = homeDataSource.city
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        headerCollectionView.delegate = self
-        headerCollectionView.dataSource = self
-        
-        cityListTableView.delegate = self
-        cityListTableView.dataSource = self
-        
-        citySearchView.isHidden = true
-        cityViewUISetup()
-        
-        cityListTableView.register(HomeTableViewCell.nib(), forCellReuseIdentifier: HomeTableViewCell.identifier)
-        
-        headerCollectionView.register(HomeHeaderCollectionViewCell.nib(),forCellWithReuseIdentifier: HomeHeaderCollectionViewCell.identifier)
-        
-        collectionView.register(HomeCollectionViewCell.nib(), forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
-        
-        searchTextField.addTarget(self, action: #selector(HomeViewController.textFieldDidChange(_:)), for: .editingChanged)
-        
-        let layout = PinterestLayout()
-        layout.delegate = self
-        collectionView.collectionViewLayout = layout
-        
-        headerCollectionView.collectionViewLayout = headerLayoutConfig()
+        setupCollectionViews()
+        setupTableView()
+        setupSearchCityViewUI()
+        setupTextField()
+        setupFilteredCitiesArray()
     }
     
     //MARK: - IBActions
@@ -103,7 +63,7 @@ class HomeViewController: UIViewController, Storyboarded {
     }
     
     @IBAction private func cityButtonPressed(_ sender: UIButton) {
-        citySearchView.isHidden = !citySearchView.isHidden
+        citySearchView.isHidden.toggle()
     }
     
     @IBAction private func menuButtonPressed(_ sender: UIButton) {
@@ -112,24 +72,53 @@ class HomeViewController: UIViewController, Storyboarded {
     
     // MARK: - Methods
     
-    private func headerLayoutConfig() -> UICollectionViewCompositionalLayout {
-        let item = CompositionLayout.createItem(width: .absolute(120),
-                                                height: .fractionalHeight(1),
-                                                spacing: 0)
-        let group = CompositionLayout.createGroup(alignment: .horizontal,
-                                                  width: .absolute(100),
-                                                  height: .fractionalHeight(1),
-                                                  item: item,
-                                                  count: 1)
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
-        
-        return UICollectionViewCompositionalLayout(section: section)
+    private func setupFilteredCitiesArray() {
+        for city in homeDataSource.city {
+            filteredCityNameList.append(city.localizedTitle)
+        }
     }
     
-    private func cityViewUISetup() {
+    private func setupUI() {
+        createListingView.layer.cornerRadius = 25
+        createListingView.clipsToBounds = true
+        cityButton.setTitle(homeDataSource.city[0].localizedTitle, for: .normal)
+        cityNameLabel.text = cityButton.currentTitle
+    }
+    
+    private func setupSearchCityViewUI() {
+        citySearchView.isHidden = true
         citySearchView.layer.cornerRadius = 20
         citySearchView.clipsToBounds = true
+    }
+    
+    private func setupTextField() {
+        searchTextField.addTarget(
+            self, action: #selector(HomeViewController.textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    private func setupCollectionViews() {
+        //        let layout = PinterestLayout()
+        //        layout.delegate = self
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(HomeCollectionViewCell.nib(),
+                                forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
+        headerCollectionView.delegate = self
+        headerCollectionView.dataSource = self
+        headerCollectionView.setCollectionViewLayout(
+            UICollectionViewCompositionalLayout.createLayout(itemWidth: .absolute(120),
+                                                             itemHeight: .fractionalHeight(1),
+                                                             groupWidth: .absolute(100),
+                                                             groupHeight: .fractionalHeight(1)), animated: false)
+        headerCollectionView.register(HomeHeaderCollectionViewCell.nib(),
+                                      forCellWithReuseIdentifier: HomeHeaderCollectionViewCell.identifier)
+    }
+    
+    private func setupTableView() {
+        cityListTableView.delegate = self
+        cityListTableView.dataSource = self
+        cityListTableView.register(HomeTableViewCell.nib(), forCellReuseIdentifier: HomeTableViewCell.identifier)
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
@@ -144,16 +133,16 @@ class HomeViewController: UIViewController, Storyboarded {
                                       token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
                                       httpMethod: .get,
                                       resultsLimit: nil,
-                                      parameters: nil) { result in
+                                      parameters: nil) { [weak self] result in
             switch result {
             case .success(let products):
                 DispatchQueue.main.async {
                     for products in products {
                         if products.status == "ACTIVE" {
-                            self.products.append(products)
+                            self?.products.append(products)
                         }
                     }
-                    self.collectionView.reloadData()
+                    self?.collectionView.reloadData()
                 }
             case .failure(let error):
                 print(error)
@@ -167,15 +156,15 @@ class HomeViewController: UIViewController, Storyboarded {
                                       token: keyChain.get(KeychainConstants.accessTokenKey) ?? "",
                                       httpMethod: .get,
                                       resultsLimit: 20,
-                                      parameters: nil) { result in
+                                      parameters: nil) { [weak self] result in
             switch result {
             case .success(let deals):
                 DispatchQueue.main.async {
-                    self.products = deals
-                    self.products.sort {
+                    self?.products = deals
+                    self?.products.sort {
                         $0.price < $1.price
                     }
-                    self.collectionView.reloadData()
+                    self?.collectionView.reloadData()
                 }
             case .failure(let error):
                 print(error)
@@ -183,9 +172,9 @@ class HomeViewController: UIViewController, Storyboarded {
         }
     }
     
-    private func getProductsByCategory(category: String, city: String) {
-        guard let category = Categories(rawValue: category) else {return}
-        let parameters = ["category": category.localizedTitle,
+    private func getProductsByCategory(category: Categories, city: String) {
+        let category = category.rawValue
+        let parameters = ["category": category,
                           "city": city]
         
         NetworkManager.shared.request(endpoint: EndpointConstants.productsByCategory,
@@ -222,10 +211,10 @@ class HomeViewController: UIViewController, Storyboarded {
                     self?.products = products
                     self?.collectionView.reloadData()
                 }
-                case .failure(let error):
-                    print(error)
-                }
+            case .failure(let error):
+                print(error)
             }
+        }
     }
 }
 
@@ -234,22 +223,27 @@ class HomeViewController: UIViewController, Storyboarded {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == self.collectionView {
+        switch collectionView == self.collectionView {
+        case true:
             coordinator?.goToProductDetailVC(with: products[indexPath.item])
-        } else {
-            if indexPath.item == 0 {
+        case false:
+            switch indexPath.item {
+            case 0:
                 getDeals(query: 3)
-            } else {
-                getProductsByCategory(category: homeDataSource.productCategory[indexPath.item].name, city: cityButton.currentTitle ?? "")
+            default:
+                categories = Categories.allCases
+                getProductsByCategory(category: categories[indexPath.item - 1],
+                                      city: cityButton.currentTitle ?? "")
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.collectionView {
+        switch collectionView == self.collectionView {
+        case true:
             return products.count
-        } else {
-            return homeDataSource.productCategory.count
+        case false:
+            return Categories.allCases.count + 1
         }
     }
     
@@ -263,8 +257,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeHeaderCollectionViewCell.identifier, for: indexPath) as? HomeHeaderCollectionViewCell else {return UICollectionViewCell()}
-            cell.setupHeader(image: homeDataSource.productCategory[indexPath.item].image,
-                             text: homeDataSource.productCategory[indexPath.item].name)
+            switch indexPath.item {
+            case 0:
+                cell.setupHeader(image: homeDataSource.productImage[indexPath.item].image,
+                                 text: "Deals")
+            default:
+                cell.setupHeader(image: homeDataSource.productImage[indexPath.item].image,
+                                 text: Categories.allCases[indexPath.item - 1].localizedTitle)
+            }
             return cell
         }
     }
@@ -273,42 +273,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //MARK: - extension HomeViewController: UICollectionViewDelegateFlowLayout
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath, cellWidth: CGFloat) -> CGFloat {
-        let imgHeight = calculateImageHeight(sourceImage: UIImage(named: "Path 2") ?? UIImage() , scaledToWidth: cellWidth)
-        let textHeight = requiredHeight(text: products[indexPath.item].productName, cellWidth: cellWidth)
-        return (imgHeight + textHeight + 5)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == self.headerCollectionView {
-            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-        } else {
-            return CGSize(width: 100, height: 100)
-        }
-    }
-}
-
-//MARK: - extension HomeViewController: PinterestLayoutDelegate
-
-extension HomeViewController: PinterestLayoutDelegate {
-    
-    func calculateImageHeight (sourceImage: UIImage, scaledToWidth: CGFloat) -> CGFloat {
-        let oldWidth = CGFloat(sourceImage.size.width)
-        let scaleFactor = scaledToWidth / oldWidth
-        let newHeight = CGFloat(sourceImage.size.height) * scaleFactor
-        return newHeight
-    }
-    
-    func requiredHeight(text:String , cellWidth : CGFloat) -> CGFloat {
-        let font = UIFont(name: UIFont.appFont(.OpenSansRegular), size: 14.0)
-        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: cellWidth, height: .greatestFiniteMagnitude))
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.font = font
-        label.text = text
-        label.sizeToFit()
-        return label.frame.height
+        let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
+        let spacing = flowLayout?.minimumInteritemSpacing ?? 0
+        let sectionInset = flowLayout?.sectionInset ?? .zero
+        return CGSize(width: (self.collectionView.frame.width - spacing) / 2 - sectionInset.left - sectionInset.right,
+                      height: 220)
     }
 }
 
@@ -321,14 +291,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else {return UITableViewCell()}
-        cell.cityNameLabel.text = filteredCityNameList[indexPath.row]
+        cell.setupUI(city: filteredCityNameList[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cityButton.setTitle(homeDataSource.city[indexPath.row].localizedTitle, for: .normal)
         cityNameLabel.text = homeDataSource.city[indexPath.row].localizedTitle
-        getProductsByCategory(category: homeDataSource.productCategory[indexPath.item].name, city: cityButton.currentTitle ?? "")
+        getProductsByCategory(category: Categories.allCases[indexPath.item],
+                              city: cityButton.currentTitle ?? "")
         citySearchView.isHidden = true
     }
 }

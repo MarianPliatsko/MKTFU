@@ -20,3 +20,5 @@ extension Storyboarded where Self: UIViewController {
         return storyboard.instantiateViewController(withIdentifier: id) as! Self
     }
 }
+
+extension UIViewController: Storyboarded {}

@@ -7,14 +7,3 @@
 
 import Foundation
 
-struct Category {
-    var rawValue: String
-    var localizedTitle: String { rawValue }
-}
-
-extension Category {
-    static var categories = [Categories(rawValue: "Vehicles"),
-                             Categories(rawValue: "Furniture"),
-                             Categories(rawValue: "Electronics"),
-                             Categories(rawValue: "Real estate")]
-}

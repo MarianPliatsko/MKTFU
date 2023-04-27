@@ -8,7 +8,7 @@
 import UIKit
 import KeychainSwift
 
-class FAQViewController: UIViewController, Storyboarded {
+class FAQViewController: UIViewController {
 
     //MARK: - Properties
     
@@ -17,36 +17,40 @@ class FAQViewController: UIViewController, Storyboarded {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var lpHeaderView: LPHeaderView!
-    @IBOutlet weak var faqTableView: UITableView!
+    @IBOutlet private weak var lpHeaderView: LPHeaderView!
+    @IBOutlet private weak var faqTableView: UITableView!
     
     //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTableView()
         getFAQs()
-        
-        //setuptableviewMetrhod
-        faqTableView.delegate = self
-        faqTableView.dataSource = self
-        
-        lpHeaderView.onBackPressed = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
-        faqTableView.register(FAQTableViewCell.nib(),
-                              forCellReuseIdentifier: FAQTableViewCell.identifier)
     }
     
     //MARK: - IBAction
     
-    @IBAction func howMKTFYWorksBtnPressed(_ sender: UIButton) {
+    @IBAction private func howMKTFYWorksBtnPressed(_ sender: UIButton) {
     }
     
     //MARK: - Methods
     
+    private func setup() {
+        lpHeaderView.onBackPressed = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func setupTableView() {
+        faqTableView.delegate = self
+        faqTableView.dataSource = self
+        faqTableView.register(FAQTableViewCell.nib(),
+                              forCellReuseIdentifier: FAQTableViewCell.identifier)
+    }
+    
     private func getFAQs() {
-        NetworkManager.shared.request(endpoint: "api/FAQ",
+        NetworkManager.shared.request(endpoint: EndpointConstants.getFAQ,
                                       type: [FAQ].self,
                                       token: KeychainSwift().get(KeychainConstants.accessTokenKey) ?? "",
                                       httpMethod: .get,

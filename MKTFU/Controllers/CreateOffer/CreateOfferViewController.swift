@@ -22,29 +22,26 @@ private enum CreateOfferTableViewCellType: Int, CaseIterable {
     case cancelButtonCell = 9
 }
 
- enum CreateOfferMode {
+enum CreateOfferMode {
     case createProduct
     case saveChanges
     case confirmSold
 }
 
 protocol PickerItem {
-var rawValue: String { get }
-var localizedTitle: String { get }
+    var rawValue: String { get }
+    var localizedTitle: String { get }
 }
 
-class CreateOfferViewController: UIViewController, Storyboarded {
+class CreateOfferViewController: UIViewController {
     
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
-    private let keyChain = KeychainSwift()
     var product = Product()
-    var mode: CreateOfferMode!
-    let alert = CustomAlertView()
-    private var createOfferDataSource = CreateOffer(category: nil,
-                                                    condition: nil,
-                                                    city: nil)
+    var mode: CreateOfferMode?
+    private let keyChain = KeychainSwift()
+    private let alert = CustomAlertView()
     
     //MARK: - Outlet
     
@@ -57,15 +54,28 @@ class CreateOfferViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
         
         setupTableView()
-        lpHeaderView.onBackPressed = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
+        setup()
     }
     
     //MARK: - Methods
     
     func setupMode(mode: CreateOfferMode) {
         self.mode = mode
+    }
+    
+    private func setup() {
+        lpHeaderView.onBackPressed = { [weak self] in
+            self?.alert.showAlert(view: self?.view ?? UIView(),
+                                  alertText: AlertMessageConstants.cancelChanges,
+                                  leftButtonText: "No",
+                                  rightButtonText: "Yes",
+                                  onRightButton: {
+                self?.navigationController?.popViewController(animated: true)
+            },
+                                  onLeftButton: {
+                self?.alert.hideAlert()
+            })
+        }
     }
     
     private func setupTableView() {
@@ -211,7 +221,7 @@ class CreateOfferViewController: UIViewController, Storyboarded {
             }
         }
     }
-        
+    
     private func createImageCellViewModel() -> ImageCellViewModel {
         ImageCellViewModel(images: product.images,
                            onAddImageButtonTapped: { [weak self] in
@@ -419,7 +429,8 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
         case .confirmButtonCell:
             guard let confirmCell = tableView.dequeueReusableCell(
                 withIdentifier: ConfirmTableViewCell.identifier,
-                for: indexPath) as? ConfirmTableViewCell else {return UITableViewCell()}
+                for: indexPath) as? ConfirmTableViewCell,
+                  let mode = mode else {return UITableViewCell()}
             confirmCell.setupUI(mode: mode)
             confirmCell.onConfirmPressed = { [weak self] in
                 if self?.product != nil {
@@ -440,7 +451,8 @@ extension CreateOfferViewController: UITableViewDelegate, UITableViewDataSource 
         case .cancelButtonCell:
             guard let cancelCell = tableView.dequeueReusableCell(
                 withIdentifier: CancelTableViewCell.identifier,
-                for: indexPath) as? CancelTableViewCell else {return UITableViewCell()}
+                for: indexPath) as? CancelTableViewCell,
+                  let mode = mode else {return UITableViewCell()}
             cancelCell.setupUI(mode: mode)
             cancelCell.onCancelPressed = { [weak self] in
                 if self?.product != nil {

@@ -57,10 +57,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
             {
                 result in
                 switch result {
-                case .success(let value):
-                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                case .failure(let error):
-                    print("Job failed: \(error.localizedDescription)")
+                case .success(_):
+                    break
+                case .failure(_):
+                    break
                 }
             }
         }

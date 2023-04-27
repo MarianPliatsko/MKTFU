@@ -7,9 +7,3 @@
 
 import Foundation
 import UIKit
-
-struct CreateOffer {
-    let category: Category?
-    let condition: Condition?
-    let city: City?
-}

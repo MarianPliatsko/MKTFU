@@ -6,15 +6,12 @@
 //
 
 import UIKit
-import Auth0
-import JWTDecode
-import KeychainSwift
 
-class LogInViewController: UIViewController, Storyboarded {
+class LogInViewController: UIViewController {
     
     weak var coordinator: MainCoordinator?
-    private let validate = Validate()
-    private let keyChain = KeychainSwift()
+    private let alert = CustomAlertView()
+    private let logInService = LoginService()
     
     //MARK: - Outlets
     
@@ -29,17 +26,13 @@ class LogInViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
         
         setupUI()
-        
-        // get any changes in text fields
-        lpViewEmail.txtInputField.addTarget(self, action: #selector(LogInViewController.textFieldDidChange(_:)), for: .editingChanged)
-        lpViewPassword.txtInputField.addTarget(self, action: #selector(LogInViewController.textFieldDidChange(_:)), for: .editingChanged)
+        setupTextField()
     }
     
     //MARK: - Actions
     
     @IBAction private func logInButtonPressed(_ sender: UIButton) {
-        lpViewEmail.checkEmail()
-        loginButtonIsNotActive()
+        disableLoginButton()
         logInWithAuth0()
     }
     @IBAction private func createAccountButtonPressed(_ sender: UIButton) {
@@ -51,22 +44,19 @@ class LogInViewController: UIViewController, Storyboarded {
     
     //MARK: - Methods
     
+    private func setupTextField() {
+        lpViewEmail.txtInputField.addTarget(
+            self, action: #selector(LogInViewController.textFieldDidChange(_:)), for: .editingChanged)
+        lpViewPassword.txtInputField.addTarget(
+            self, action: #selector(LogInViewController.textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
     private func setupUI() {
         lpViewEmail.txtInputField.text = "marianpliatsko+4@gmail.com"
         lpViewPassword.txtInputField.text = "Newpassword2!"
         lpViewEmail.showError = false
         iForgotMyPasswordButton.setupYellowButtonUI(text: "I forgot my password")
-        loginButtonIsNotActive()
-    }
-    
-    private func loginButtonIsActive() {
-        logInButton.isEnabled = true
-        self.logInButton.backgroundColor = UIColor.appColor(LPColor.WarningYellow)
-    }
-    
-    private func loginButtonIsNotActive() {
-        logInButton.isEnabled = false
-        self.logInButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
+        disableLoginButton()
     }
     
     //MARK: - Log In Methods
@@ -75,71 +65,36 @@ class LogInViewController: UIViewController, Storyboarded {
         guard let email = lpViewEmail.txtInputField.text,
               let password = lpViewPassword.txtInputField.text else {return}
         
-        Auth0Manager.shared.loginWithEmail(email: email, password: password) { [weak self] result in
-            switch result {
-            case .success(let accessToken):
-                if accessToken != nil {
-                    self?.keyChain.set(accessToken!, forKey: KeychainConstants.accessTokenKey)
-                    print("Access Token: \(String(describing: accessToken))")
-                    self?.keyChain.set(password, forKey: "Password")
-                    DispatchQueue.main.async {
-                        self?.getUserID(accessToken: accessToken!)
-                    }
-                }
-            case .failure(let error):
-                switch error {
-                case .missingEmail:
-                    print(error.localizedDescription)
-                case .missingPassword:
-                    print(error.localizedDescription)
-                case .error(let error):
-                    print(error.localizedDescription)
-                }
-            }
-        }
-    }
-    
-    private func getUserID(accessToken: String) {
-        Auth0Manager.shared.getUserID(accessToken: accessToken) { [weak self] result in
-            switch result {
-            case .success(let userID):
-                if userID != nil {
-                    guard let encodedUserId = userID?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
-                        print("Error when encode the userID")
-                        return
-                    }
-                    self?.keyChain.set(userID ?? "", forKey: KeychainConstants.userIDKey)
-                    self?.keyChain.set(encodedUserId, forKey: KeychainConstants.encodedUserIDKey)
-                    self?.keyChain.set(accessToken, forKey: KeychainConstants.accessTokenKey)
-                    print("Encoded User id: \(encodedUserId)")
-                    DispatchQueue.main.async {
-                        self?.getUserCredential(token: accessToken, userID: userID!)
-                    }
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    private func getUserCredential(token: String, userID: String) {
-        NetworkManager.shared.request(endpoint: "api/User/\(userID)",
-                                      type: User.self,
-                                      token: token,
-                                      httpMethod: .get,
-                                      resultsLimit: nil,
-                                      parameters: nil) { [weak self] result in
+        logInService.login(email: email, password: password) { [weak self] result in
             switch result {
             case .success(let user):
                 DispatchQueue.main.async {
+                    self?.enableLoginButton()
                     self?.coordinator?.goToHomeVC(user: user)
                 }
             case .failure(let error):
-                print(error)
+                self?.handleLoginError(error: error)
             }
-            DispatchQueue.main.async {
-                self?.loginButtonIsActive()
-            }
+        }
+    }
+    
+    private func showAlert(message: String, tryAgain: @escaping() ->()) {
+        alert.showAlert(view: self.view,
+                        alertText: message,
+                        leftButtonText: "Cancel",
+                        rightButtonText: "Try again") {
+            tryAgain()
+        } onLeftButton: { [weak self] in
+            self?.alert.hideAlert()
+        }
+    }
+    
+    private func handleLoginError(error: Error) {
+        DispatchQueue.main.async { [weak self] in
+            self?.enableLoginButton()
+            self?.showAlert(message: error.localizedDescription, tryAgain: {
+                self?.logInWithAuth0()
+            })
         }
     }
     
@@ -147,18 +102,26 @@ class LogInViewController: UIViewController, Storyboarded {
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
         checkEmailAndPassword()
-        reloadInputViews()
     }
     
     private func checkEmailAndPassword() {
-        guard let email = lpViewEmail.txtInputField.text,
-              let password = lpViewPassword.txtInputField.text else {return}
-        
-        if validate.validateEmail.validateEmailId(emailID: email) == true, password.count >= 6 {
-            self.loginButtonIsActive()
+        if let email = lpViewEmail.txtInputField.text,
+           let password = lpViewPassword.txtInputField.text,
+           email.validate(regEX: ValidationConstants.email),
+           password.count >= 6 {
+            self.enableLoginButton()
+        } else {
+            self.disableLoginButton()
         }
-        else {
-            self.loginButtonIsNotActive()
-        }
+    }
+    
+    private func enableLoginButton() {
+        logInButton.isEnabled = true
+        self.logInButton.backgroundColor = UIColor.appColor(LPColor.WarningYellow)
+    }
+    
+    private func disableLoginButton() {
+        logInButton.isEnabled = false
+        self.logInButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
     }
 }

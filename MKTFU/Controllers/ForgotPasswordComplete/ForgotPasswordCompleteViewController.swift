@@ -7,28 +7,35 @@
 
 import UIKit
 
-class ForgotPasswordCompleteViewController: UIViewController, Storyboarded {
+class ForgotPasswordCompleteViewController: UIViewController {
+    
+    //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
 
     //MARK: - Outlets
     
-    @IBOutlet weak var lpHeaderView: LPHeaderView!
+    @IBOutlet private weak var lpHeaderView: LPHeaderView!
     
     //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //make back button useful in custom header view
-        lpHeaderView.onBackPressed = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
+        setup()
     }
     
     //MARK: - Actions
     
     @IBAction func returnToLoginScreenBtnPressed(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    //MARK: - Methods
+    
+    private func setup() {
+        lpHeaderView.onBackPressed = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
     }
 }

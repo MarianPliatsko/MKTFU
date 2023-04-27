@@ -29,23 +29,21 @@ extension Auth0Error: CustomStringConvertible {
 }
 
 extension Auth0Error: LocalizedError {
-    public var localizedDescription: String {
+    var errorDescription: String? {
         switch self {
         case .missingEmail:
             return "Missing Email"
         case .missingPassword:
             return "Missing Password"
         case .error(let error):
-            return error.errorDescription ?? error.localizedDescription
+            return error.errorDescription
         }
     }
 }
 
 class Auth0Manager {
     
-    //    let audience = "https://\(Auth0Constants.domain)/api/v2/"
     let auth0: Authentication!
-    
     static let shared = Auth0Manager()
     
     init() {
@@ -54,7 +52,7 @@ class Auth0Manager {
     
     func loginWithEmail(email: String,
                         password: String,
-                        complition: @escaping(Result<String?, Auth0Error>) -> Void) {
+                        complition: @escaping(Result<String, Auth0Error>) -> Void) {
         if email.isEmpty {
             complition (.failure(.missingEmail))
             return
@@ -97,7 +95,7 @@ class Auth0Manager {
     }
     
     func getUserID(accessToken: String,
-                   complition: @escaping(Result<String?, Auth0Error>) -> Void) {
+                   complition: @escaping(Result<String, Auth0Error>) -> Void) {
         auth0
             .userInfo(withAccessToken: accessToken)
             .start { result in

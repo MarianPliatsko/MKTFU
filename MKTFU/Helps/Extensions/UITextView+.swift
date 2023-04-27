@@ -23,7 +23,7 @@ extension UITextView {
         
         
         textView.linkTextAttributes = [ NSAttributedString.Key.foregroundColor:
-                                            UIColor.appColor(LPColor.OccasionalPurple)!,
+                                            UIColor.appColor(LPColor.OccasionalPurple) ?? UIColor(.black),
                                         .underlineStyle: NSUnderlineStyle.single.rawValue]
         textView.font = UIFont(name: "OpenSans-Regular", size: 14)
         textView.attributedText = attributedString

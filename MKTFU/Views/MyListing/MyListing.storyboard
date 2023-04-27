@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--My Listings View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -106,6 +111,39 @@ VerySubtleGray</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgp-Ve-0zq" customClass="UIControl">
+                                <rect key="frame" x="120.66666666666669" y="748" width="152" height="50"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="h5a-86-JVv">
+                                        <rect key="frame" x="11.999999999999986" y="1" width="30" height="48.666666666666671"/>
+                                        <color key="tintColor" name="VoidWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="H1Q-3i-2MY"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create listing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UG3-tf-Hj4">
+                                        <rect key="frame" x="41.999999999999986" y="0.0" width="110.00000000000001" height="50"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                        <color key="textColor" name="VoidWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="OccasionalPurple"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="h5a-86-JVv" secondAttribute="bottom" id="Nvh-FW-f0o"/>
+                                    <constraint firstItem="UG3-tf-Hj4" firstAttribute="leading" secondItem="h5a-86-JVv" secondAttribute="trailing" id="Sgj-aB-c5F"/>
+                                    <constraint firstAttribute="bottom" secondItem="UG3-tf-Hj4" secondAttribute="bottom" id="VcY-Mg-OnD"/>
+                                    <constraint firstAttribute="height" constant="50" id="ZQq-5d-IUH"/>
+                                    <constraint firstItem="UG3-tf-Hj4" firstAttribute="top" secondItem="kgp-Ve-0zq" secondAttribute="top" id="hdK-1H-6GQ"/>
+                                    <constraint firstItem="h5a-86-JVv" firstAttribute="top" secondItem="kgp-Ve-0zq" secondAttribute="top" id="ice-eL-TGE"/>
+                                    <constraint firstAttribute="trailing" secondItem="UG3-tf-Hj4" secondAttribute="trailing" id="oaU-Xk-jxx"/>
+                                    <constraint firstItem="h5a-86-JVv" firstAttribute="leading" secondItem="kgp-Ve-0zq" secondAttribute="leading" constant="12" id="tB4-A7-nqs"/>
+                                    <constraint firstAttribute="width" constant="152" id="yOC-6R-ASH"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="createListingViewPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Uej-iC-e6A"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor">
@@ -114,6 +152,7 @@ VerySubtleGray</string>
                         </color>
                         <constraints>
                             <constraint firstItem="GAk-TB-bGv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="D0r-SJ-jAJ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="kgp-Ve-0zq" secondAttribute="bottom" constant="20" id="EkZ-lG-zNo"/>
                             <constraint firstItem="GAk-TB-bGv" firstAttribute="top" secondItem="nEZ-Yi-8q3" secondAttribute="bottom" id="GPQ-Kp-OxG"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="nEZ-Yi-8q3" secondAttribute="trailing" id="HbQ-CV-Hvu"/>
                             <constraint firstItem="tdZ-UU-IdO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="HuO-u6-9hh"/>
@@ -122,11 +161,13 @@ VerySubtleGray</string>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tdZ-UU-IdO" secondAttribute="trailing" id="ZpR-4G-nag"/>
                             <constraint firstAttribute="bottom" secondItem="tdZ-UU-IdO" secondAttribute="bottom" id="buy-Jw-GYO"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GAk-TB-bGv" secondAttribute="trailing" id="eYv-hk-dLR"/>
+                            <constraint firstItem="kgp-Ve-0zq" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="nKL-ep-mis"/>
                             <constraint firstItem="nEZ-Yi-8q3" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="rFC-p4-8cz"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activeItemsButton" destination="AsZ-6B-OrI" id="Tld-Hf-EPO"/>
+                        <outlet property="createListingView" destination="kgp-Ve-0zq" id="Umg-Qd-x7c"/>
                         <outlet property="lpHeaderView" destination="nEZ-Yi-8q3" id="WP0-3d-a0g"/>
                         <outlet property="myListingTableView" destination="XXX-k6-DiP" id="wjv-DR-hYR"/>
                         <outlet property="soldItemsButton" destination="1xO-ZT-Bby" id="Gxp-fi-paR"/>
@@ -138,6 +179,7 @@ VerySubtleGray</string>
         </scene>
     </scenes>
     <resources>
+        <image name="plus.circle" catalog="system" width="128" height="123"/>
         <namedColor>
             <string key="name">
 VerySubtleGray</string>

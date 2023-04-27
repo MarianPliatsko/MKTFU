@@ -19,7 +19,6 @@ class EmailVerificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }

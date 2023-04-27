@@ -47,7 +47,7 @@ class CancelTableViewCell: UITableViewCell {
         case .createProduct:
             cancelButton.setTitle("Cancel", for: .normal)
         case .saveChanges:
-            cancelButton.setTitle("Cancel changes", for: .normal)
+            cancelButton.setTitle("Delete listing", for: .normal)
         case .confirmSold:
             cancelButton.setTitle("Cancel listing", for: .normal)
         }

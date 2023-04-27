@@ -7,7 +7,7 @@
 
 import UIKit
 
-class `ProductDetailViewController`: UIViewController, Storyboarded {
+class ProductDetailViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -30,29 +30,34 @@ class `ProductDetailViewController`: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lpHeaderView.onBackPressed = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
-        
+        setup()
         setupCollectionView()
         setupUI(data: product!)
     }
     
     //MARK: - IBAction
     
-    @IBAction func iWantThisBtnPressed(_ sender: UIButton) {
+    @IBAction private func iWantThisBtnPressed(_ sender: UIButton) {
         if product != nil {
             coordinator?.goToCheckoutViewController(with: product!)
         }
     }
     
-    
     //MARK: - Methods
+    
+    private func setup() {
+        lpHeaderView.onBackPressed = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+    }
     
     private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.setCollectionViewLayout(
-            UICollectionViewCompositionalLayout.createLayout(), animated: false)
+            UICollectionViewCompositionalLayout.createLayout(itemWidth: .fractionalWidth(1),
+                                                             itemHeight: .fractionalHeight(1),
+                                                             groupWidth: .fractionalWidth(1),
+                                                             groupHeight: .fractionalHeight(1)), animated: false)
         collectionView.register(ImageCollectionViewCell.nib(), forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
     }
     

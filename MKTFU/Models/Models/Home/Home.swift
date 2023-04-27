@@ -8,22 +8,19 @@
 import Foundation
 import UIKit
 
-class Home {
+struct Home {
     var city: [City]
-    var productCategory: [ProductCategory]
-    
-    init(city: [City], productCategory: [ProductCategory]) {
-        self.city = city
-        self.productCategory = productCategory
-    }
+    var productImage: [ProductImage]
 }
 
-class ProductCategory {
-    var name: String
+struct ProductImage {
     var image: UIImage
-    
-    init(name: String, image: UIImage) {
-        self.name = name
-        self.image = image
-    }
+}
+
+extension ProductImage {
+    static var images = [ProductImage(image: UIImage(named: "Path 2") ?? UIImage()),
+                         ProductImage(image: UIImage(named: "Path 4") ?? UIImage()),
+                         ProductImage(image: UIImage(named: "Path 7") ?? UIImage()),
+                         ProductImage(image: UIImage(named: "Path 9") ?? UIImage()),
+                         ProductImage(image: UIImage(named: "Path 5") ?? UIImage())]
 }

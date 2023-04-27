@@ -8,7 +8,7 @@
 import UIKit
 import KeychainSwift
 
-class MenuViewController: UIViewController, Storyboarded {
+class MenuViewController: UIViewController {
     
     //MARK: - Properties
     

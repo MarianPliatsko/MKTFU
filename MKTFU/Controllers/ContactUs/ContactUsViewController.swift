@@ -7,34 +7,39 @@
 
 import UIKit
 
-class ContactUsViewController: UIViewController, Storyboarded {
+class ContactUsViewController: UIViewController {
 
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
-    let messagePlaceholder = "Your message"
     
     //MARK: - Outlets
     
-    @IBOutlet weak var lpHeaderView: LPHeaderView!
-    @IBOutlet weak var messageTextView: UITextView! {
-        didSet {
-            messageTextView.layer.cornerRadius = 15
-            messageTextView.textColor = .lightGray
-            messageTextView.text = messagePlaceholder
-        }
-    }
+    @IBOutlet private weak var lpHeaderView: LPHeaderView!
+    @IBOutlet private weak var messageTextView: UITextView!
     
     //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setup()
+        setupUI()
+    }
+    
+    //MARK: - Methods
+    
+    private func setup() {
         messageTextView.delegate = self
-
-        //make back button useful in custom header view
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    private func setupUI() {
+        messageTextView.layer.cornerRadius = 15
+        messageTextView.textColor = .lightGray
+        messageTextView.text = OtherTextConstants.contactUsVCMessagePlaceholder
     }
 }
 
@@ -51,7 +56,7 @@ extension ContactUsViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = messagePlaceholder
+            textView.text = OtherTextConstants.contactUsVCMessagePlaceholder
             textView.textColor = UIColor.lightGray
         }
     }

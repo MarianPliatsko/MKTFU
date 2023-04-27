@@ -15,24 +15,22 @@ class HomeTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet private weak var cityNameLabel: UILabel!
     
     //MARK: - Nib Lifecycle
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     //MARK: - Methods
     
-    // create nib
     static func nib() -> UINib {
         let nib = UINib(nibName: identifier, bundle: nil)
         return nib
     }
     
-    // setup cell
-    func setupCell(city: String) {
+    func setupUI(city: String) {
         cityNameLabel.text = city
     }
 }

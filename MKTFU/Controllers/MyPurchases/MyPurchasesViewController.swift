@@ -8,7 +8,7 @@
 import UIKit
 import KeychainSwift
 
-class MyPurchasesViewController: UIViewController, Storyboarded {
+class MyPurchasesViewController: UIViewController {
     
     //MARK: - Properties
     

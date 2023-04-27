@@ -9,15 +9,18 @@ import Foundation
 import UIKit
 
 extension UICollectionViewCompositionalLayout {
-     static func createLayout() -> UICollectionViewCompositionalLayout {
+    static func createLayout(itemWidth: NSCollectionLayoutDimension,
+                             itemHeight: NSCollectionLayoutDimension,
+                             groupWidth: NSCollectionLayoutDimension,
+                             groupHeight: NSCollectionLayoutDimension) -> UICollectionViewCompositionalLayout {
         
-        let item = CompositionLayout.createItem(width: .fractionalWidth(1),
-                                                height: .fractionalHeight(1),
+        let item = CompositionLayout.createItem(width: itemWidth,
+                                                height: itemHeight,
                                                 spacing: 0)
         
         let group = CompositionLayout.createGroup(alignment: .horizontal,
-                                                  width: .fractionalWidth(1),
-                                                  height: .fractionalHeight(1),
+                                                  width: groupWidth,
+                                                  height: groupHeight,
                                                   item: item, count: 1)
         
         let section = NSCollectionLayoutSection(group: group)
@@ -26,3 +29,5 @@ extension UICollectionViewCompositionalLayout {
          return UICollectionViewCompositionalLayout(section: section)
     }
 }
+
+

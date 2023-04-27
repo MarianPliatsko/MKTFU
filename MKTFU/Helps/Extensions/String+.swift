@@ -24,5 +24,30 @@ extension String {
         let plainString = regex.stringByReplacingMatches(in: attributedString?.string ?? "", options: [], range: range, withTemplate: "")
         return plainString
     }
+    
+    func validate(regEX: String) -> Bool {
+        let passRegEx = regEX
+        let trimmedString = self.trimmingCharacters(in: .whitespaces)
+        let validatePassord = NSPredicate(format:"SELF MATCHES %@", passRegEx)
+        let isvalidatePass = validatePassord.evaluate(with: trimmedString)
+        return isvalidatePass
+    }
+    
+    func validatePhoneNumber() -> String {
+        let numbers = self.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        let mask = "+X (XXX) XXX-XXXX"
+        var index = numbers.startIndex
+        
+        for ch in mask where index < numbers.endIndex {
+            if ch == "X" {
+                result.append(numbers[index])
+                index = numbers.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        return result
+    }
 }
 

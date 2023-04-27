@@ -8,7 +8,7 @@
 import UIKit
 import SwiftyGif
 
-class SuccessViewController: UIViewController, Storyboarded {
+class SuccessViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -31,11 +31,10 @@ class SuccessViewController: UIViewController, Storyboarded {
     
     private func showSuccessImage() {
         do {
-            let gif = try UIImage(gifName: "animated checkmark.gif")
+            let gif = try UIImage(gifName: ImageNameConstrants.animatedCheckmark)
             self.imageView.setGifImage(gif)
             Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { [weak self] _ in
-// ----------> Why self?.coordinator.goToHomeVC(user: nil) doesnt work ????? <----------
-                self?.navigationController?.popToRootViewController(animated: true)
+                self?.coordinator?.start()
             }
         } catch {
             print(error)

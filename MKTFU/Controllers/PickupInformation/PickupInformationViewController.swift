@@ -12,7 +12,7 @@ enum PickupInformationMode {
     case fromPurchases
 }
 
-class PickupInformationViewController: UIViewController, Storyboarded {
+class PickupInformationViewController: UIViewController {
     
     //MARK: - Prooperties
     
@@ -23,12 +23,7 @@ class PickupInformationViewController: UIViewController, Storyboarded {
     //MARK: - Outlet
     
     @IBOutlet private weak var lpHeaderView: LPHeaderView!
-    @IBOutlet private weak var productImageView: UIImageView! {
-        didSet {
-            productImageView.layer.cornerRadius = productImageView.layer.bounds.width / 2
-            productImageView.clipsToBounds = true
-        }
-    }
+    @IBOutlet private weak var productImageView: UIImageView!
     @IBOutlet private weak var prooductNameLabel: UILabel!
     @IBOutlet private weak var productPickupInformationLabel: UILabel!
     @IBOutlet private weak var sellerNameLabel: UILabel!
@@ -42,10 +37,7 @@ class PickupInformationViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lpHeaderView.onBackPressed = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
-        
+        setup()
         setupUI(data: product!, mode: mode)
     }
     
@@ -59,6 +51,14 @@ class PickupInformationViewController: UIViewController, Storyboarded {
     
     func setupMode(mode: PickupInformationMode) {
         self.mode = mode
+    }
+    
+    private func setup() {
+        lpHeaderView.onBackPressed = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        productImageView.layer.cornerRadius = productImageView.layer.bounds.width / 2
+        productImageView.clipsToBounds = true
     }
     
     private func showCloseButtonAndContactSellerButton() {
@@ -84,14 +84,14 @@ class PickupInformationViewController: UIViewController, Storyboarded {
         sellerNameSecondLabel.text = sellerNameLabel.text
         
         NetworkManager.shared.getImage(from: data.images[0],
-                                       imageView: productImageView) { result in
+                                       imageView: productImageView) { [weak self] result in
             switch result {
             case .success(let image):
                 DispatchQueue.main.async {
-                    self.productImageView = image
+                    self?.productImageView = image
                 }
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                break
             }
         }
     }

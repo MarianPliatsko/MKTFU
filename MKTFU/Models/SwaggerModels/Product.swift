@@ -8,15 +8,12 @@
 import Foundation
 
 enum Categories: String, Codable, CaseIterable, PickerItem {
-    case deals = "DEALS"
-    case realEstate = "REAL_ESTATE"
     case vehicles = "VEHICLES"
     case furniture = "FURNITURE"
     case electronics = "ELECTRONICS"
+    case realEstate = "REAL_ESTATE"
     var localizedTitle: String {
         switch self {
-        case .deals:
-            return "Deals"
         case .realEstate:
             return "Real estate"
         case .vehicles:

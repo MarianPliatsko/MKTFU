@@ -5,7 +5,6 @@
 //  Created by mac on 2023-02-09.
 //
 
-import Foundation
 import UIKit
 
 @IBDesignable
@@ -18,7 +17,6 @@ class LPHeaderView: LPView {
     
     @IBAction func backButtonPressed(_ sender: Any) {
         onBackPressed?()
-//        navigationController?.popViewController(animated: true)
     }
 
     @IBInspectable var title: String = "Title" {

@@ -5,7 +5,6 @@
 //  Created by mac on 2023-02-07.
 //
 
-import Foundation
 import UIKit
 
 @IBDesignable
@@ -135,10 +134,9 @@ final class LpCustomView: LPView, UITextFieldDelegate {
     
     //MARK: - Validation methods
     
-    //Check email validation after button pressed
     func checkEmail() {
         if let email = txtInputField.text, email != "" {
-            if validate.validateEmail.validateEmailId(emailID: email) == false {
+            if !email.validate(regEX: ValidationConstants.email) {
                 showError = true
             } else {
                 showError = false

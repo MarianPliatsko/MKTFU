@@ -131,6 +131,9 @@ VerySubtleGray</string>
                             <constraint firstAttribute="bottom" secondItem="8Iu-Xf-8fD" secondAttribute="bottom" id="u6y-Yr-Jzu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lpHeaderView" destination="jQj-fd-Rix" id="qiL-zv-Fgf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yi-NR-x1p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -149,7 +152,7 @@ VerySubtleGray</string>
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="OccasionalPurple">
-            <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.3880000114440918" green="0.093999996781349182" blue="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VoidWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

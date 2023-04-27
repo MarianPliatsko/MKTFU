@@ -8,7 +8,7 @@
 import UIKit
 import KeychainSwift
 
-class CheckoutViewController: UIViewController, Storyboarded {
+class CheckoutViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -25,9 +25,7 @@ class CheckoutViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lpHeaderView.onBackPressed = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
+        setup()
         setupTableView()
     }
     
@@ -40,6 +38,19 @@ class CheckoutViewController: UIViewController, Storyboarded {
     }
     
     //MARK: - Methods
+    
+    private func setup() {
+        lpHeaderView.onBackPressed = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CheckoutTableViewCell.nib(),
+                           forCellReuseIdentifier: CheckoutTableViewCell.identifier)
+    }
     
     private func purchaseListing(product: Product) {
         NetworkManager.shared.request(endpoint: "\(EndpointConstants.purchaseListing)\(product.id)",
@@ -57,13 +68,6 @@ class CheckoutViewController: UIViewController, Storyboarded {
                 print(error)
             }
         }
-    }
-    
-    private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(CheckoutTableViewCell.nib(),
-                           forCellReuseIdentifier: CheckoutTableViewCell.identifier)
     }
 }
 

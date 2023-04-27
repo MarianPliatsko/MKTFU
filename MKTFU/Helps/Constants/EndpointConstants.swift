@@ -25,4 +25,6 @@ enum EndpointConstants {
     static let createOffer = "api/Product"
     static let cancelSale = "api/Product/cancelsale/"
     static let cancelAndRemove = "api/Product/cancel/"
+    static let userRegistration = "api/User/register"
+    static let getFAQ = "api/FAQ"
 }

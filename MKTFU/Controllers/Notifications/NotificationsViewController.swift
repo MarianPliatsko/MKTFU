@@ -8,12 +8,7 @@
 import UIKit
 import KeychainSwift
 
-struct NotificationSection {
-    let isNew: Bool
-    var notifications: [Notification]
-}
-
-class NotificationsViewController: UIViewController, Storyboarded {
+class NotificationsViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -30,15 +25,18 @@ class NotificationsViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setup()
         setupTableView()
         getAllNotifications()
-        
+    }
+    
+    //MARK: - Methods
+    
+    private func setup() {
         lpHeaderView.onBackPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
     }
-    
-    //MARK: - Methods
     
     private func setupTableView() {
         notificationsTableView.delegate = self

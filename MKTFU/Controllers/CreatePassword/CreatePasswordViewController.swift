@@ -8,16 +8,15 @@
 import UIKit
 import Auth0
 
-class CreatePasswordViewController: UIViewController, Storyboarded {
+class CreatePasswordViewController: UIViewController {
     
     //MARK: - Properties
     weak var coordinator: MainCoordinator?
     var user = User()
     private var isChecked: Bool = false
     private let validation = Validate()
-    private let checkedImage = UIImage(named: "CheckedImage")
-    private let uncheckedImage = UIImage(named: "UncheckedImage")
-    private let termsAndPolicyText = "By checking this box, you agree to our Terms of Service and our Privacy Policy"
+    private let alert = CustomAlertView()
+    private let createUserService = CreateUserService()
     
     //MARK: - Outlets
     
@@ -27,6 +26,7 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
     @IBOutlet private weak var numberOfCharactersImageView: UIImageView!
     @IBOutlet private weak var oneUppercaseImageView: UIImageView!
     @IBOutlet private weak var oneNumberImageView: UIImageView!
+    @IBOutlet private weak var oneSpecialCharacterImageView: UIImageView!
     @IBOutlet private weak var checkMarkTermsAndPolicyButton: UIButton!
     @IBOutlet private weak var termsAndPolicyTextView: UITextView!
     @IBOutlet private weak var createAccountButton: UIButton!
@@ -37,31 +37,15 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //createAccountButton.isEnabled = false
-        
-        
-        //make back button useful in custom header view
-        lpHeaderView.onBackPressed = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
-        
-        //call text view delegate
-        termsAndPolicyTextView.delegate = self
-        
-        //call clickable links in text view
-        termsAndPolicyTextView.addHyperLinksToText(text: termsAndPolicyText, textView: termsAndPolicyTextView)
-        
-        // Set default image for check mark
-        checkMarkTermsAndPolicyButton.setImage(uncheckedImage, for: UIControl.State.normal)
-        
-        lpViewPassword.txtInputField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
-        lpViewConfirmPassword.txtInputField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
-        lpViewPassword.lblPasswordSecurityLevel.isHidden = true
+        setupUI()
+        setupTextView()
+        setupTextViewUI()
+        setupTextField()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        agreementTextView.centerVertically()
+        setupTextViewUI()
     }
     
     //MARK: - Actions
@@ -71,106 +55,94 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
     }
     
     @IBAction private func createAccountButtonPressed(_ sender: UIButton) {
-        createAccount(user: user)
-        coordinator?.goToSuccessVC()
+        createAccount()
     }
     
     //MARK: - Methods
     
-    private func setupUI () {
+    private func setupTextField() {
+        lpViewPassword.txtInputField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
+        lpViewConfirmPassword.txtInputField.addTarget(self, action: #selector(CreatePasswordViewController.textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    private func setupUI() {
+        createAccountButton.isEnabled = false
+        checkMarkTermsAndPolicyButton.setImage(UIImage(named: ImageNameConstrants.uncheckedImage),
+                                               for: UIControl.State.normal)
+        lpViewPassword.lblPasswordSecurityLevel.isHidden = true
+        lpHeaderView.onBackPressed = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func setupTextViewUI () {
         agreementTextView.centerVertically()
     }
     
-    private func createAccount(user: User) {
-        let userMetaData = ["firstName": user.firstName,
-                            "lastName": user.lastName,
-                            "email": user.email,
-                            "phone": user.phone,
-                            "streetAddress": user.address,
-                            "city": user.city]
+    private func setupTextView() {
+        termsAndPolicyTextView.delegate = self
+        termsAndPolicyTextView.addHyperLinksToText(text: OtherTextConstants.termsAndPolicyText,
+                                                   textView: termsAndPolicyTextView)
+    }
+    
+    private func createAccount() {
         guard let password = lpViewPassword.txtInputField.text else {return}
         
-        Auth0Manager.shared.createUser(email: user.email,
-                                       password: password,
-                                       connection: Auth0Constants.connection,
-                                       userMetaData: userMetaData) { result in
+        createUserService.createUser(user: user,
+                                     password: password) { [weak self] result in
             switch result {
-            case .success(let user):
-                if user != nil {
-                    self.getAccessToken(email: user!, password: password)
+            case .success(_):
+                DispatchQueue.main.async {
+                    self?.coordinator?.goToSuccessVC()
                 }
             case .failure(let error):
-                print(error)
+                self?.handleLoginError(error: error)
             }
         }
     }
     
-    private func getAccessToken(email: String, password: String) {
-        Auth0Manager.shared.loginWithEmail(email: email, password: password) { result in
-            switch result {
-            case .success(let accessToken):
-                if accessToken != nil {
-                    self.getUserID(accessString: accessToken!)
-                }
-            case .failure(let error):
-                print(error)
-            }
+    private func handleLoginError(error: Error) {
+        DispatchQueue.main.async { [weak self] in
+            self?.showAlert(message: error.localizedDescription, tryAgain: {
+                self?.createAccount()
+            })
         }
     }
     
-    private func getUserID(accessString: String) {
-        Auth0Manager.shared.getUserID(accessToken: accessString) { result in
-            switch result {
-            case .success(let userID):
-                if userID != nil {
-                    self.createUserOnBackend(userID: userID!, token: accessString)
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    private func createUserOnBackend (userID: String, token: String) {
-        let userData = ["id": userID,
-                        "firstName": user.firstName,
-                        "lastName": user.lastName,
-                        "email": user.email,
-                        "phone": user.phone,
-                        "address": user.address,
-                        "city": user.city]
-        
-        NetworkManager.shared.request(endpoint: "api/User/register",
-                                      type: User.self,
-                                      token: token,
-                                      httpMethod: .post,
-                                      resultsLimit: nil,
-                                      parameters: userData) { result in
-            switch result {
-            case .success(let user):
-                print(user)
-            case .failure(let error):
-                print(error)
-            }
+    private func showAlert(message: String, tryAgain: @escaping() ->()) {
+        alert.showAlert(view: self.view,
+                        alertText: message,
+                        leftButtonText: "Cancel",
+                        rightButtonText: "Try again") {
+            tryAgain()
+        } onLeftButton: { [weak self] in
+            self?.alert.hideAlert()
         }
     }
     
     // MARK: - Validation methods
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        validatePassword(with: validation.validate(
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        validatePassword(with: validation.validatePassword(
             password: lpViewPassword.txtInputField.text ?? ""))
     }
     
     private func validatePassword(with validationResult: PasswordValidationResult) {
-        let validPasswordImageCheckmark = UIImage(named: "Icon awesome-check-circle-fill")
+        let validPasswordImageCheckmark = UIImage(
+            named: ImageNameConstrants.validePasswordCheckmark)
+        let invalidPasswordImageCheckmar = UIImage(
+            named: ImageNameConstrants.invalidPasswordCheckmark)
+        let password = lpViewPassword.txtInputField.text
+        let confirmPassword = lpViewConfirmPassword.txtInputField.text
         switch validationResult {
         case .valid:
             numberOfCharactersImageView.image = validPasswordImageCheckmark
             oneUppercaseImageView.image = validPasswordImageCheckmark
             oneNumberImageView.image = validPasswordImageCheckmark
+            oneSpecialCharacterImageView.image = validPasswordImageCheckmark
+            passwordIsStrongShow()
             
-            if lpViewPassword.txtInputField.text == lpViewConfirmPassword.txtInputField.text && isChecked {
+            if password == confirmPassword && isChecked {
                 createPasswordButtonIsActive()
             } else {
                 createPasswordButtoniSNotActive()
@@ -178,15 +150,44 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
         case .invalid(let passedValidationChecks):
             if passedValidationChecks.contains(.enoughCharacters) {
                 numberOfCharactersImageView.image = validPasswordImageCheckmark
+                passwordIsWeakShow()
+            } else {
+                hidePasswordSecurityLevelLabel()
+                numberOfCharactersImageView.image = invalidPasswordImageCheckmar
             }
             if passedValidationChecks.contains(.hasOneDigit) {
                 oneNumberImageView.image = validPasswordImageCheckmark
+            } else {
+                oneNumberImageView.image = invalidPasswordImageCheckmar
             }
             if passedValidationChecks.contains(.hasOneUppercase) {
                 oneUppercaseImageView.image = validPasswordImageCheckmark
+            } else {
+                oneUppercaseImageView.image = invalidPasswordImageCheckmar
+            }
+            if passedValidationChecks.contains(.hasOneSymbol) {
+                oneSpecialCharacterImageView.image = validPasswordImageCheckmark
+            } else {
+                oneSpecialCharacterImageView.image = invalidPasswordImageCheckmar
             }
             createPasswordButtoniSNotActive()
         }
+    }
+    
+    private func passwordIsWeakShow() {
+        lpViewPassword.showSecurityLevel = true
+        lpViewPassword.lblPasswordSecurityLevel.textColor = UIColor.appColor(LPColor.WarningYellow)
+        lpViewPassword.lblPasswordSecurityLevel.text = "Weak"
+    }
+    
+    private func passwordIsStrongShow() {
+        lpViewPassword.showSecurityLevel = true
+        lpViewPassword.lblPasswordSecurityLevel.textColor = UIColor.appColor(LPColor.GoodJobGreen)
+        lpViewPassword.lblPasswordSecurityLevel.text = "Strong"
+    }
+    
+    private func hidePasswordSecurityLevelLabel() {
+        lpViewPassword.showSecurityLevel = false
     }
     
     private func createPasswordButtonIsActive() {
@@ -202,17 +203,21 @@ class CreatePasswordViewController: UIViewController, Storyboarded {
         isChecked.toggle()
         switch isChecked {
         case true :
-            checkMarkTermsAndPolicyButton.setImage(checkedImage,
-                                                   for: UIControl.State.normal)
-            validatePassword(with: validation.validate(
+            checkMarkTermsAndPolicyButton.setImage(
+                UIImage(named: ImageNameConstrants.checkedImage),
+                for: UIControl.State.normal)
+            validatePassword(with: validation.validatePassword(
                 password: lpViewPassword.txtInputField.text ?? ""))
         case false :
-            checkMarkTermsAndPolicyButton.setImage(uncheckedImage,
-                                                   for: UIControl.State.normal)
+            checkMarkTermsAndPolicyButton.setImage(
+                UIImage(named: ImageNameConstrants.uncheckedImage),
+                for: UIControl.State.normal)
             createPasswordButtoniSNotActive()
         }
     }
 }
+
+//MARK: - extension CreatePasswordViewController: UITextViewDelegate
 
 extension CreatePasswordViewController: UITextViewDelegate {
     

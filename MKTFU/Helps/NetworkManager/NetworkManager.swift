@@ -9,22 +9,6 @@ import Foundation
 import UIKit
 import Kingfisher
 
-enum HTTPMethod: String {
-    case get = "GET"
-    case post = "POST"
-    case patch = "PATCH"
-    case put = "PUT"
-}
-
-enum NetworkingError: Error {
-    case invalidUrl
-    case invalidData
-    case urlIsMissing
-    case notFound
-    case badResponse
-    case unknown
-}
-
 class NetworkManager {
     
     static let shared = NetworkManager()
@@ -38,8 +22,8 @@ class NetworkManager {
                             httpMethod: HTTPMethod,
                             resultsLimit: Int?,
                             parameters: [String: Any]?,
-                            complition: @escaping(Result<T, Error>) -> Void) {
-        guard var url = self.baseURL else{return complition(.failure(NetworkingError.invalidUrl))}
+                            completion: @escaping(Result<T, Error>) -> Void) {
+        guard var url = self.baseURL else{return completion(.failure(NetworkingError.invalidUrl))}
         let resultsLimit = URLQueryItem(name: "maxResults", value: "\(resultsLimit ?? 100)")
         url.append(queryItems: [resultsLimit])
         
@@ -49,8 +33,8 @@ class NetworkManager {
         urlRequest.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         urlRequest.httpMethod = httpMethod.rawValue
         
-        if parameters != nil {
-            urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: parameters!, options: .prettyPrinted)
+        if let parameters = parameters {
+            urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         }
         
         let task = URLSession.shared.dataTask(with: urlRequest, completionHandler: {data, response, error in
@@ -59,17 +43,17 @@ class NetworkManager {
                 data = "{}".data(using: .utf8)
             }
             if let response = response as? HTTPURLResponse, response.statusCode != 200 {
-                complition (.failure(NetworkingError.unknown))
+                completion (.failure(NetworkingError.unknown))
                 return
             }
-            guard let data = data else {return complition(.failure(NetworkingError.invalidData))}
+            guard let data = data else {return completion(.failure(NetworkingError.invalidData))}
             do {
                 
                 let jsonDecode = try JSONDecoder().decode(type, from: data)
-                complition(.success(jsonDecode))
+                completion(.success(jsonDecode))
             }
             catch {
-                complition(.failure(error))
+                completion(.failure(error))
             }
         })
         task.resume()
@@ -129,10 +113,8 @@ class NetworkManager {
             result in
             switch result {
             case .success(let value):
-                print("Task done for: \(value.source.url?.absoluteString ?? "")")
                 complition (.success(UIImageView(image: value.image)))
             case .failure(let error):
-                print("Job failed: \(error.localizedDescription)")
                 complition (.failure(error))
             }
         }

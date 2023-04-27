@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HowMKTFYWorksViewController: UIViewController, Storyboarded {
+class HowMKTFYWorksViewController: UIViewController {
 
     //MARK: - Properties
     
@@ -16,9 +16,9 @@ class HowMKTFYWorksViewController: UIViewController, Storyboarded {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var lpHeaderView: LPHeaderView!
-    @IBOutlet weak var faqQuestionLabel: UILabel!
-    @IBOutlet weak var faqAnswerTextView: UITextView!
+    @IBOutlet private weak var lpHeaderView: LPHeaderView!
+    @IBOutlet private weak var faqQuestionLabel: UILabel!
+    @IBOutlet private weak var faqAnswerTextView: UITextView!
     
     //MARK: - Life cycle
     
@@ -26,16 +26,20 @@ class HowMKTFYWorksViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
         
         setupUI()
+        setup()
         
-        lpHeaderView.onBackPressed = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
     }
     
     //MARK: - Methods
     
     func setup(faq: FAQ) {
         self.faq = faq
+    }
+    
+    private func setup() {
+        lpHeaderView.onBackPressed = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
     }
     
     private func setupUI() {

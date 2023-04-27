@@ -15,7 +15,7 @@ class FAQTableViewCell: UITableViewCell {
     
     //MARK: - Outlet
     
-    @IBOutlet weak var faqQuestionLabel: UILabel!
+    @IBOutlet private weak var faqQuestionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

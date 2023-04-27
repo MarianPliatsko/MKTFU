@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h68-ls-w4N">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -19,37 +19,37 @@
             <objects>
                 <viewController storyboardIdentifier="LogInViewController" id="h68-ls-w4N" customClass="LogInViewController" customModule="MKTFU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T57-p7-oPi">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clouds" translatesAutoresizingMaskIntoConstraints="NO" id="Nln-Dp-7I4">
-                                <rect key="frame" x="0.0" y="592" width="393" height="260"/>
+                                <rect key="frame" x="0.0" y="407" width="375" height="260"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="ToO-NL-51S"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="aAW-ku-9Oe">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aAW-ku-9Oe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rna-vU-Bzs">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="82"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="82" id="4FO-eN-yxi"/>
+                                            <constraint firstAttribute="height" constant="120" id="4FO-eN-yxi"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ieX-bE-1Fv">
-                                        <rect key="frame" x="0.0" y="136.66666666666666" width="393" height="80"/>
+                                        <rect key="frame" x="0.0" y="120" width="375" height="80"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Path 73761" translatesAutoresizingMaskIntoConstraints="NO" id="bC5-Y2-4h8">
-                                                <rect key="frame" x="79" y="0.0" width="235" height="52"/>
+                                                <rect key="frame" x="70" y="0.0" width="235" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="235" id="FQl-4h-zcj"/>
                                                     <constraint firstAttribute="height" constant="52" id="cv1-iM-efa"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy and sell stuff!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqz-qO-PQE">
-                                                <rect key="frame" x="130.33333333333331" y="58" width="132.33333333333331" height="22"/>
+                                                <rect key="frame" x="121.5" y="58" width="132.5" height="22"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                                 <color key="textColor" name="LighestPurple"/>
                                                 <nil key="highlightedColor"/>
@@ -57,13 +57,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ykj-u8-cMr">
-                                        <rect key="frame" x="0.0" y="271.33333333333331" width="393" height="275.99999999999994"/>
+                                        <rect key="frame" x="0.0" y="200" width="375" height="335"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="wH5-X6-WNl">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="226"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="wH5-X6-WNl">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HcI-EN-eeD" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="0.0" width="353" height="105"/>
+                                                        <rect key="frame" x="20" y="0.0" width="335" height="105"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email"/>
@@ -75,7 +75,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3r-ym-zST" customClass="LpCustomView" customModule="MKTFU" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="121" width="353" height="105"/>
+                                                        <rect key="frame" x="20" y="121" width="335" height="80"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
@@ -88,15 +88,16 @@
                                                 </subviews>
                                                 <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="3QP-Ha-fQH">
-                                                <rect key="frame" x="0.0" y="226.00000000000006" width="393" height="50"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="3QP-Ha-fQH">
+                                                <rect key="frame" x="0.0" y="201" width="375" height="134"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7w-oT-nTK">
-                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGH-gW-dNj">
-                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="34.333333333333336"/>
+                                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="34.5"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" name="HoverYellow"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="I forgot my password"/>
@@ -105,20 +106,17 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="R7w-oT-nTK" firstAttribute="width" secondItem="EGH-gW-dNj" secondAttribute="width" id="BPN-YY-UNE"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="1yl-1J-gwt">
-                                        <rect key="frame" x="0.0" y="602" width="393" height="157"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1yl-1J-gwt">
+                                        <rect key="frame" x="0.0" y="535" width="375" height="112"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mao-fZ-J7k" customClass="LPButton" customModule="MKTFU" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="0.0" width="353" height="64"/>
+                                                <rect key="frame" x="20" y="0.0" width="335" height="52"/>
                                                 <color key="backgroundColor" name="DisabledGray"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="64" id="VA4-Ad-W39"/>
+                                                    <constraint firstAttribute="height" constant="52" id="VA4-Ad-W39"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Login">
@@ -127,7 +125,7 @@
                                                 </buttonConfiguration>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="32"/>
+                                                        <real key="value" value="25"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
@@ -135,10 +133,10 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6on-Ba-nMo" customClass="LPButton" customModule="MKTFU" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="113" width="353" height="44"/>
+                                                <rect key="frame" x="20" y="72" width="335" height="40"/>
                                                 <color key="backgroundColor" name="VoidWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="NNl-2T-PDj"/>
+                                                    <constraint firstAttribute="height" constant="40" id="NNl-2T-PDj"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -147,7 +145,7 @@
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="22"/>
+                                                        <real key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
@@ -158,9 +156,6 @@
                                         <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
                                     </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="ieX-bE-1Fv" firstAttribute="top" secondItem="rna-vU-Bzs" secondAttribute="bottom" constant="54.666666666666657" id="eZp-JD-6ww"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="z4T-k4-pRv"/>
@@ -171,7 +166,7 @@
                             <constraint firstItem="Nln-Dp-7I4" firstAttribute="leading" secondItem="z4T-k4-pRv" secondAttribute="leading" id="LbE-fk-dL6"/>
                             <constraint firstAttribute="bottom" secondItem="Nln-Dp-7I4" secondAttribute="bottom" id="QMg-J0-4lV"/>
                             <constraint firstItem="aAW-ku-9Oe" firstAttribute="leading" secondItem="z4T-k4-pRv" secondAttribute="leading" id="cXf-An-uBg"/>
-                            <constraint firstItem="z4T-k4-pRv" firstAttribute="bottom" secondItem="aAW-ku-9Oe" secondAttribute="bottom" id="mx0-Rh-AQg"/>
+                            <constraint firstItem="z4T-k4-pRv" firstAttribute="bottom" secondItem="aAW-ku-9Oe" secondAttribute="bottom" constant="20" id="mx0-Rh-AQg"/>
                             <constraint firstItem="z4T-k4-pRv" firstAttribute="trailing" secondItem="aAW-ku-9Oe" secondAttribute="trailing" id="smD-9e-WaL"/>
                         </constraints>
                     </view>
@@ -192,7 +187,7 @@
             <size key="intrinsicContentSize" width="277" height="32"/>
         </designable>
         <designable name="mao-fZ-J7k">
-            <size key="intrinsicContentSize" width="67.666666666666671" height="36"/>
+            <size key="intrinsicContentSize" width="67.5" height="36"/>
         </designable>
     </designables>
     <resources>

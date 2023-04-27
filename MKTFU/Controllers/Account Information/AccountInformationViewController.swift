@@ -8,7 +8,7 @@
 import UIKit
 import KeychainSwift
 
-class AccountInformationViewController: UIViewController, Storyboarded {
+class AccountInformationViewController: UIViewController {
     
     //MARK: - Properties
     

@@ -39,6 +39,7 @@ class MainCoordinator: Coordinator {
     
     func goToSuccessVC() {
         let vc = SuccessViewController.instantiate(name: "Success")
+        vc.coordinator = self
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
@@ -71,8 +72,8 @@ class MainCoordinator: Coordinator {
     func goToCreateOfferVC(product: Product?, with mode: CreateOfferMode) {
         let vc = CreateOfferViewController.instantiate(name: "CreateOffer")
         vc.coordinator = self
-        if product != nil {
-            vc.product = product!
+        if let product = product {
+            vc.product = product
         }
         vc.setupMode(mode: mode)
         navigationController.navigationBar.isHidden = true

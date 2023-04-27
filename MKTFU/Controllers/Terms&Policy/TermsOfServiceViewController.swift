@@ -7,13 +7,35 @@
 
 import UIKit
 
-class TermsOfServiceViewController: UIViewController, Storyboarded {
+class TermsOfServiceViewController: UIViewController {
+    
+    //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
     
+    //MARK: - Outlet
+    
+    @IBOutlet private weak var lpHeaderView: LPHeaderView!
+    
+    //MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setup()
+    }
+    
     //MARK: - Actions
     
-    @IBAction func acceptButtonPressed(_ sender: UIButton) {
-     
+    @IBAction private func acceptButtonPressed(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    //MARK: - Methods
+    
+    private func setup() {
+        lpHeaderView.onBackPressed = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
     }
 }

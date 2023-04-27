@@ -7,12 +7,3 @@
 
 import Foundation
 
-struct Condition {
-    var rawValue: String
-    var localizedTitle: String { rawValue }
-}
-
-extension Condition {
-    static var conditions = [Conditions(rawValue: "New"),
-                             Conditions(rawValue: "Used")]
-}
