@@ -13,6 +13,7 @@ class SuccessViewController: UIViewController {
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
+    var user = User()
     
     //MARK: - Outlet
     
@@ -34,7 +35,7 @@ class SuccessViewController: UIViewController {
             let gif = try UIImage(gifName: ImageNameConstrants.animatedCheckmark)
             self.imageView.setGifImage(gif)
             Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { [weak self] _ in
-                self?.coordinator?.start()
+                self?.coordinator?.goToHomeVC(user: self?.user)
             }
         } catch {
             print(error)

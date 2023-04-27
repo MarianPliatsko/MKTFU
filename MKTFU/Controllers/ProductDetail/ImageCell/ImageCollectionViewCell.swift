@@ -30,6 +30,10 @@ class ImageCollectionViewCell: UICollectionViewCell {
         return nib
     }
     
+    func getImage(image: (UIImage)) {
+        cellImageView.image = image
+    }
+    
     func getImage(from urlString: String) {
             let url = URL(string: urlString)
             let processor = DownsamplingImageProcessor(size: cellImageView.bounds.size)

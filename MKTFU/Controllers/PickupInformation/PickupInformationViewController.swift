@@ -17,6 +17,7 @@ class PickupInformationViewController: UIViewController {
     //MARK: - Prooperties
     
     weak var coordinator: MainCoordinator?
+    var user = User()
     var product: Product?
     var mode: PickupInformationMode!
     
@@ -44,7 +45,7 @@ class PickupInformationViewController: UIViewController {
     //MARK: - IBAction
     
     @IBAction private func closeBtnPressed(_ sender: UIButton) {
-        coordinator?.goToSuccessVC()
+        coordinator?.goToSuccessVC(user: user)
     }
     
     //MARK: - Methods

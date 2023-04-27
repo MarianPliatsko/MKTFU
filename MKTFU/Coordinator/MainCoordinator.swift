@@ -37,9 +37,10 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToSuccessVC() {
+    func goToSuccessVC(user: User) {
         let vc = SuccessViewController.instantiate(name: "Success")
         vc.coordinator = self
+        vc.user = user
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
@@ -69,21 +70,23 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToCreateOfferVC(product: Product?, with mode: CreateOfferMode) {
+    func goToCreateOfferVC(user: User, product: Product?, with mode: CreateOfferMode) {
         let vc = CreateOfferViewController.instantiate(name: "CreateOffer")
         vc.coordinator = self
         if let product = product {
             vc.product = product
         }
         vc.setupMode(mode: mode)
+        vc.user = user
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToProductDetailVC(with products: Product) {
+    func goToProductDetailVC(user: User, with products: Product) {
         let vc = ProductDetailViewController.instantiate(name: "ProductDetail")
         vc.coordinator = self
         vc.product = products
+        vc.user = user
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
@@ -102,7 +105,7 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToCheckoutViewController(with product: Product) {
+    func goToCheckoutViewController(user: User, with product: Product) {
         let vc = CheckoutViewController.instantiate(name: "Checkout")
         vc.coordinator = self
         vc.product = product
@@ -110,11 +113,12 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToPickupInformationViewController(with product: Product, with mode: PickupInformationMode) {
+    func goToPickupInformationViewController(user: User, with product: Product, with mode: PickupInformationMode) {
         let vc = PickupInformationViewController.instantiate(name: "PickupInformation")
         vc.coordinator = self
         vc.product = product
         vc.setupMode(mode: mode)
+        vc.user = user
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
@@ -134,23 +138,26 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToChangePasswordViewController() {
+    func goToChangePasswordViewController(user: User) {
         let vc = ChangePasswordViewController.instantiate(name: "ChangePassword")
         vc.coordinator = self
+        vc.user = user
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToMyPurchasesViewController() {
+    func goToMyPurchasesViewController(user: User) {
         let vc = MyPurchasesViewController.instantiate(name: "MyPurchases")
         vc.coordinator = self
+        vc.user = user
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToMyListingsViewController() {
+    func goToMyListingsViewController(user: User) {
         let vc = MyListingsViewController.instantiate(name: "MyListing")
         vc.coordinator = self
+        vc.user = user
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: true)
     }

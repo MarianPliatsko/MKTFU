@@ -51,7 +51,7 @@ class HomeViewController: UIViewController {
     //MARK: - IBActions
     
     @IBAction private func createListingViewPressed(_ sender: Any) {
-        coordinator?.goToCreateOfferVC(product: nil, with: .createProduct)
+        coordinator?.goToCreateOfferVC(user: user, product: nil, with: .createProduct)
     }
     
     @IBAction private func searchOnMktfyBtnPressed(_ sender: Any) {
@@ -97,9 +97,6 @@ class HomeViewController: UIViewController {
     }
     
     private func setupCollectionViews() {
-        //        let layout = PinterestLayout()
-        //        layout.delegate = self
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(HomeCollectionViewCell.nib(),
@@ -124,6 +121,12 @@ class HomeViewController: UIViewController {
     @objc private func textFieldDidChange(_ textField: UITextField) {
         if searchTextField.text?.isEmpty == true {
             getAllProducts()
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                guard let searchText = self?.searchTextField.text else {return}
+                guard let city = self?.cityNameLabel.text else {return}
+                self?.searchProduct(searchKeyWords: searchText, city: city, category: nil)
+            }
         }
     }
     
@@ -225,7 +228,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView == self.collectionView {
         case true:
-            coordinator?.goToProductDetailVC(with: products[indexPath.item])
+            coordinator?.goToProductDetailVC(user: user, with: products[indexPath.item])
         case false:
             switch indexPath.item {
             case 0:
@@ -253,7 +256,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.getImage(from: products[indexPath.item].images)
             cell.setup(text: products[indexPath.item].productName,
                        price: products[indexPath.item].price)
-            cell.backgroundColor = .lightGray
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeHeaderCollectionViewCell.identifier, for: indexPath) as? HomeHeaderCollectionViewCell else {return UICollectionViewCell()}

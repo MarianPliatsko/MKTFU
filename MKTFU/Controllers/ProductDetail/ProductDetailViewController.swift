@@ -13,6 +13,7 @@ class ProductDetailViewController: UIViewController {
     
     weak var coordinator: MainCoordinator?
     var product: Product?
+    var user = User()
     
     //MARK: - Outlets
     
@@ -39,7 +40,7 @@ class ProductDetailViewController: UIViewController {
     
     @IBAction private func iWantThisBtnPressed(_ sender: UIButton) {
         if product != nil {
-            coordinator?.goToCheckoutViewController(with: product!)
+            coordinator?.goToCheckoutViewController(user: user, with: product!)
         }
     }
     
@@ -76,12 +77,22 @@ class ProductDetailViewController: UIViewController {
 
 extension ProductDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        product?.images.count ?? 0
+        switch product?.images.count {
+        case 0:
+            return 1
+        default:
+            return product?.images.count ?? 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier, for: indexPath) as? ImageCollectionViewCell else {return UICollectionViewCell()}
-        cell.getImage(from: product?.images[indexPath.item] ?? "")
+        switch product?.images.count {
+        case 0:
+            cell.getImage(image: UIImage(named: ImageNameConstrants.imagePlaceholder) ?? UIImage())
+        default:
+            cell.getImage(from: product?.images[indexPath.item] ?? "")
+        }
         return cell
     }
 }

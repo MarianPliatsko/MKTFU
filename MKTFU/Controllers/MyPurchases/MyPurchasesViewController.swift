@@ -14,6 +14,7 @@ class MyPurchasesViewController: UIViewController {
     
     weak var coordinator: MainCoordinator?
     private var product: [Product] = []
+    var user = User()
     
     //MARK: - Outlets
     
@@ -76,6 +77,6 @@ extension MyPurchasesViewController : UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.goToPickupInformationViewController(with: product[indexPath.row], with: .fromPurchases)
+        coordinator?.goToPickupInformationViewController(user: user, with: product[indexPath.row], with: .fromPurchases)
     }
 }

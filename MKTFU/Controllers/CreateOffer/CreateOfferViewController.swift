@@ -38,6 +38,7 @@ class CreateOfferViewController: UIViewController {
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
+    var user = User()
     var product = Product()
     var mode: CreateOfferMode?
     private let keyChain = KeychainSwift()
@@ -118,7 +119,7 @@ class CreateOfferViewController: UIViewController {
             case .success(let product):
                 print(product)
                 DispatchQueue.main.async {
-                    self?.coordinator?.goToSuccessVC()
+                    self?.coordinator?.goToSuccessVC(user: self?.user ?? User())
                 }
             case .failure(let error):
                 print(error)
@@ -149,7 +150,7 @@ class CreateOfferViewController: UIViewController {
             case .success(_):
                 print("Product was successfuly updated")
                 DispatchQueue.main.async {
-                    self?.coordinator?.goToMyListingsViewController()
+                    self?.coordinator?.goToMyListingsViewController(user: self?.user ?? User())
                 }
             case .failure(let error):
                 print(error)
@@ -178,7 +179,7 @@ class CreateOfferViewController: UIViewController {
             switch result {
             case .success(_):
                 DispatchQueue.main.async {
-                    self?.coordinator?.goToSuccessVC()
+                    self?.coordinator?.goToSuccessVC(user: self?.user ?? User())
                 }
             case .failure(let error):
                 print(error)
@@ -196,7 +197,7 @@ class CreateOfferViewController: UIViewController {
             switch result {
             case .success(_):
                 DispatchQueue.main.async {
-                    self?.coordinator?.goToMyListingsViewController()
+                    self?.coordinator?.goToMyListingsViewController(user: self?.user ?? User())
                 }
             case .failure(let error):
                 print(error)
@@ -214,7 +215,7 @@ class CreateOfferViewController: UIViewController {
             switch result {
             case .success(_):
                 DispatchQueue.main.async {
-                    self?.coordinator?.goToMyListingsViewController()
+                    self?.coordinator?.goToMyListingsViewController(user: self?.user ?? User())
                 }
             case .failure(let error):
                 print(error)

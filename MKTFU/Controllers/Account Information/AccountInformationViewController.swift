@@ -101,7 +101,7 @@ class AccountInformationViewController: UIViewController {
             case .success(let user):
                 DispatchQueue.main.async { [self] in
                     self?.user = user
-                    self?.coordinator?.goToSuccessVC()
+                    self?.coordinator?.goToSuccessVC(user: self?.user ?? User())
                 }
             case .failure(let error):
                 print(error)

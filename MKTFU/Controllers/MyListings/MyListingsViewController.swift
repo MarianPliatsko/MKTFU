@@ -23,6 +23,7 @@ class MyListingsViewController: UIViewController {
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
+    var user = User()
     var products: [Product] = []
     private var userActiveListingProducts: [Product] = []
     private var userPendingListingProducts: [Product] = []
@@ -60,7 +61,7 @@ class MyListingsViewController: UIViewController {
     //MARK: - IBAction
     
     @IBAction private func createListingViewPressed(_ sender: Any) {
-        coordinator?.goToCreateOfferVC(product: nil, with: .createProduct)
+        coordinator?.goToCreateOfferVC(user: user,product: nil, with: .createProduct)
     }
     
     @IBAction private func activeItemsBtnPressed(_ sender: UIButton) {
@@ -186,10 +187,10 @@ extension MyListingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if dataSource[indexPath.section].products[indexPath.row].status == "ACTIVE" {
-            coordinator?.goToCreateOfferVC(product: dataSource[indexPath.section].products[indexPath.row], with: .saveChanges)
+            coordinator?.goToCreateOfferVC(user: user, product: dataSource[indexPath.section].products[indexPath.row], with: .saveChanges)
         }
         if dataSource[indexPath.section].products[indexPath.row].status == "PENDING" {
-            coordinator?.goToCreateOfferVC(product: dataSource[indexPath.section].products[indexPath.row], with: .confirmSold)
+            coordinator?.goToCreateOfferVC(user: user, product: dataSource[indexPath.section].products[indexPath.row], with: .confirmSold)
         }
     }
 }

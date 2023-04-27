@@ -36,7 +36,7 @@ class MenuViewController: UIViewController {
     //MARK: - IBAction
     
     @IBAction private func closeMenuBtnPressed(_ sender: UIButton) {
-        coordinator?.goToHomeVC(user: user)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction private func accountInformationBtnPressed(_ sender: UIButton) {
@@ -44,15 +44,15 @@ class MenuViewController: UIViewController {
     }
     
     @IBAction private func changePasswordBtnPressed(_ sender: UIButton) {
-        coordinator?.goToChangePasswordViewController()
+        coordinator?.goToChangePasswordViewController(user: user)
     }
     
     @IBAction private func myPurchasesBtnPressed(_ sender: UIButton) {
-        coordinator?.goToMyPurchasesViewController()
+        coordinator?.goToMyPurchasesViewController(user: user)
     }
     
     @IBAction private func myListingBtnPressed(_ sender: UIButton) {
-        coordinator?.goToMyListingsViewController()
+        coordinator?.goToMyListingsViewController(user: user)
     }
     
     @IBAction private func notificationBtnPressed(_ sender: UIButton) {

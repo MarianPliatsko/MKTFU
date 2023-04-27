@@ -27,6 +27,7 @@ class LogInViewController: UIViewController {
         
         setupUI()
         setupTextField()
+        dismissKeyBoard()
     }
     
     //MARK: - Actions
@@ -44,7 +45,14 @@ class LogInViewController: UIViewController {
     
     //MARK: - Methods
     
+    private func dismissKeyBoard() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
+    
     private func setupTextField() {
+        lpViewEmail.txtInputField.delegate = self
+        lpViewPassword.txtInputField.delegate = self
         lpViewEmail.txtInputField.addTarget(
             self, action: #selector(LogInViewController.textFieldDidChange(_:)), for: .editingChanged)
         lpViewPassword.txtInputField.addTarget(
@@ -53,7 +61,7 @@ class LogInViewController: UIViewController {
     
     private func setupUI() {
         lpViewEmail.txtInputField.text = "marianpliatsko+4@gmail.com"
-        lpViewPassword.txtInputField.text = "Newpassword2!"
+        lpViewPassword.txtInputField.text = "Newpassword1!"
         lpViewEmail.showError = false
         iForgotMyPasswordButton.setupYellowButtonUI(text: "I forgot my password")
         disableLoginButton()
@@ -123,5 +131,12 @@ class LogInViewController: UIViewController {
     private func disableLoginButton() {
         logInButton.isEnabled = false
         self.logInButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
+    }
+}
+
+extension LogInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

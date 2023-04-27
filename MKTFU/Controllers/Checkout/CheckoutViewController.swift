@@ -14,6 +14,7 @@ class CheckoutViewController: UIViewController {
     
     weak var coordinator: MainCoordinator?
     var product: Product?
+    var user = User()
     
     //MARK: - Outlets
     
@@ -62,7 +63,7 @@ class CheckoutViewController: UIViewController {
             switch result {
             case .success(let product):
                 DispatchQueue.main.async {
-                    self?.coordinator?.goToPickupInformationViewController(with: product, with: .fromCheckout)
+                    self?.coordinator?.goToPickupInformationViewController(user: self?.user ?? User(), with: product, with: .fromCheckout)
                 }
             case .failure(let error):
                 print(error)

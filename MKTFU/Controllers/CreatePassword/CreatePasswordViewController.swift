@@ -93,7 +93,7 @@ class CreatePasswordViewController: UIViewController {
             switch result {
             case .success(_):
                 DispatchQueue.main.async {
-                    self?.coordinator?.goToSuccessVC()
+                    self?.coordinator?.goToSuccessVC(user: self?.user ?? User())
                 }
             case .failure(let error):
                 self?.handleLoginError(error: error)

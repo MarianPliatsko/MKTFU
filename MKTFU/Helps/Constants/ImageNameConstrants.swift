@@ -14,4 +14,5 @@ struct ImageNameConstrants {
     static let invalidPasswordCheckmark = "Icon awesome-check-circle"
     static let dropDown = "Path 123"
     static let animatedCheckmark = "animated checkmark.gif"
+    static let imagePlaceholder = "imagePlaceholder"
 }

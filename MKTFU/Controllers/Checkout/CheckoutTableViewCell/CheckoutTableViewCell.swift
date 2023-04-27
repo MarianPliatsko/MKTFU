@@ -38,16 +38,19 @@ class CheckoutTableViewCell: UITableViewCell {
         productTitle.text = product.productName
         productPrice.text = "\(product.price)$"
         
-        NetworkManager.shared.getImage(from: product.images[0], imageView: productImageView) { result in
-            switch result {
-            case .success(let image):
-                DispatchQueue.main.async {
-                    self.productImageView = image
+        if product.images.count == 0 {
+            productImageView.image = UIImage(named: ImageNameConstrants.imagePlaceholder)
+        } else {
+            NetworkManager.shared.getImage(from: product.images[0], imageView: productImageView) { result in
+                switch result {
+                case .success(let image):
+                    DispatchQueue.main.async {
+                        self.productImageView = image
+                    }
+                case .failure(let error):
+                    print(error)
                 }
-            case .failure(let error):
-                print(error)
             }
         }
     }
-    
 }

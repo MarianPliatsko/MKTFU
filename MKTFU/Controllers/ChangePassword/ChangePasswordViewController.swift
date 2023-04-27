@@ -14,6 +14,7 @@ class ChangePasswordViewController: UIViewController {
     //MARK: - Properties
     
     weak var coordinator: MainCoordinator?
+    var user = User()
     private var alert = CustomAlertView()
     private let validation = Validate()
     private let keyChain = KeychainSwift()
@@ -91,7 +92,7 @@ class ChangePasswordViewController: UIViewController {
             switch result {
             case .success(_):
                 DispatchQueue.main.async {
-                    self?.coordinator?.goToSuccessVC()
+                    self?.coordinator?.goToSuccessVC(user: self?.user ?? User())
                 }
             case .failure(let error):
                 print(error)

@@ -25,15 +25,11 @@ class FAQViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setup()
         setupTableView()
         getFAQs()
     }
-    
-    //MARK: - IBAction
-    
-    @IBAction private func howMKTFYWorksBtnPressed(_ sender: UIButton) {
-    }
-    
+
     //MARK: - Methods
     
     private func setup() {
