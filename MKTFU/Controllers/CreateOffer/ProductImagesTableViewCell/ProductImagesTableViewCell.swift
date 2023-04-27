@@ -115,13 +115,13 @@ extension ProductImagesTableViewCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        switch indexPath.item {
+        switch indexPath.section {
         case 0:
             guard let cell = imageCollectionView.dequeueReusableCell(
                 withReuseIdentifier: ImageUICollectionViewCell.identifier,
                 for: indexPath) as? ImageUICollectionViewCell else {return UICollectionViewCell()}
             mainImageView.kf.setImage(with: URL(string: images[0]))
-            cell.uiImage.kf.setImage(with: URL(string: images[indexPath.item]))
+            cell.setup(imageURL: images[indexPath.item])
             cell.onDeletePressed = { [weak self] in
                 self?.onDeletePressed?(self?.images[indexPath.item] ?? "")
             }

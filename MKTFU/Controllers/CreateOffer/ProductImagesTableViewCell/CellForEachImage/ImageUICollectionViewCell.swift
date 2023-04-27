@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ImageUICollectionViewCell: UICollectionViewCell {
     
@@ -13,6 +14,7 @@ class ImageUICollectionViewCell: UICollectionViewCell {
     
     static let identifier = "ImageUICollectionViewCell"
     var onDeletePressed: (() -> Void)?
+    private var imageURL = ""
     
     //MARK: - Outlet
     
@@ -34,6 +36,15 @@ class ImageUICollectionViewCell: UICollectionViewCell {
     
     
     //MARK: - Methods
+    
+    func setup(imageURL: String) {
+        self.imageURL = imageURL
+        getImage()
+    }
+    
+    func getImage() {
+        uiImage.kf.setImage(with: URL(string: imageURL))
+    }
     
     static func nib() -> UINib {
         let nib = UINib(nibName: identifier, bundle: nil)
